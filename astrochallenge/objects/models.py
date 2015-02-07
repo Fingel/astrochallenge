@@ -8,7 +8,7 @@ class AstroObject(models.Model):
     dec = models.DecimalField(max_digits=10, decimal_places=7)
     magnitude = models.DecimalField(max_digits=4, decimal_places=2)
     distance = models.IntegerField(default=0)
-    size = models.DecimalField(max_digits=5, decimal_places=3)
+    size = models.DecimalField(max_digits=7, decimal_places=3)
     constellation = models.CharField(max_length=200, blank=True)
     detailed_type = models.CharField(max_length=200, blank=True)
     common_name = models.CharField(max_length=200, blank=True)
@@ -16,7 +16,7 @@ class AstroObject(models.Model):
     image = models.ImageField(upload_to="astro_objects", blank=True)
 
     def __unicode__(self):
-        return self.common_name if self.common_name else self.pk
+        return self.common_name
 
 
 class CatalogObject(models.Model):
