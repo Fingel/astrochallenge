@@ -3,9 +3,18 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dosis', sans-serif;
+}
+p, div {
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
+}
 
-
-
+.navbar-brand {
+    font-weight: 700;
+    font-size: 24px;
+}
 
 
 
