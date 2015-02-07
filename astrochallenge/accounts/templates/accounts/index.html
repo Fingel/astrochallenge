@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Welcome to the Astro Challenge!</h1>
-This is the content {{ name }}
+{% if not user.is_authenticated %}
+<div class="hook">
+    <h1>Welcome to the Astro Challenge!</h1>
+    <p>The <b>Astro Challenge</b> is an online community of amateur
+    astronomers challenging themselves in the field of observational
+    astronomy. Users can browse the database of astronomical objects
+    and events, keep track of their observations and earn points. There are monthly
+    observation challenges, special awards for sketching and photography
+    and even prizes!</p>
+    <a href="{% url 'login' %}"><button class="btn btn-primary">Login</button></a>
+    <button class="btn btn-info">Register</button>
+</div>
+<div class="row">
+    <span class="col-md-12">
+        <h1>Latest Observations</h1>
+    </span>
+</div>
+{% endif %}
 {% endblock %}

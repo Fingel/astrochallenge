@@ -33,35 +33,49 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
+          <a href="../" class="navbar-brand">Astro Challenge</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Astro Challenge</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="#">Object Database</a>
+            </li>
+            <li>
+              <a href="#">Challenges</a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if not user.is_authenticated %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% else %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+          </ul>
+        </div>
       </div>
-    </nav>
+    </div>
 
 
     <div class="container">
-    {% block content %}
-    {% endblock %}
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <div {% if message.tags %} class="alert alert-danger {{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% block message %}
+          {% endblock %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      {% block content %}
+      {% endblock %}
 
       <hr>
 
