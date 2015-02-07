@@ -1,3 +1,5 @@
 from django.contrib import admin
+from astrochallenge.objects.models import AstroObject, CatalogObject
 
-# Register your models here.
+admin.site.register(AstroObject)
+admin.site.register(CatalogObject)

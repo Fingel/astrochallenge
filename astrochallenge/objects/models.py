@@ -15,8 +15,14 @@ class AstroObject(models.Model):
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="astro_objects", blank=True)
 
+    def __unicode__(self):
+        return self.common_name if self.common_name else self.pk
+
 
 class CatalogObject(models.Model):
     astro_object = models.ForeignKey(AstroObject)
     catalog = models.CharField(max_length=200, choices=settings.CATALOGS)
     designation = models.CharField(max_length=50)
+
+    def __unicode__(self):
+        return " {0} - {1}{2} ".format(self.astro_object.common_name, self.catalog, self.designation)

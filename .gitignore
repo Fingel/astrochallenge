@@ -54,3 +54,5 @@ docs/_build/
 
 local_settings.py
 *.sqlite3
+static/
+media/
