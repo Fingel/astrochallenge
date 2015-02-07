@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'astrochallenge.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^', include('astrochallenge.accounts.urls', namespace="accounts", app_name="accounts")),
+    url(r'^', include('astrochallenge.accounts.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 
