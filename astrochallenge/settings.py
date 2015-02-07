@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'astrochallenge.accounts',
     'astrochallenge.objects',
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +99,11 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
 MEDIA_URL = '/media/'
+
+BOOTSTRAP3 = {
+    'css_url': '/static/css/bootstrap.min.css',
+    'javascript_url': '/static/js/vendor/bootstrap.min.js',
+}
 
 # Astro Specific stuff
 
