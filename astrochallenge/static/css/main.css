@@ -10,6 +10,11 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
 
 }
+
+.avatar-small {
+    border-radius: 15px;
+    margin: -10px 5px -10px 5px;
+}
 .navbar-brand {
     font-family: 'Dosis', sans-serif;
     font-weight: 700;
