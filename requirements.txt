@@ -2,7 +2,9 @@ Django==1.7.4
 django-bootstrap3==5.1.1
 django-extensions==1.5.0
 django-gravatar2==1.2.1
+django-mailgun==0.2.2
 ipython==2.4.0
 Pillow==2.7.0
 psycopg2==2.5.4
+requests==2.5.1
 six==1.9.0

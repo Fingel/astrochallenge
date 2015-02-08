@@ -62,6 +62,10 @@ DATABASES = {
     }
 }
 
+EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
+MAILGUN_ACCESS_KEY = ''
+MAILGUN_SERVER_NAME = 'toxiccode.com.mailgun.org'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
