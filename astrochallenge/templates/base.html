@@ -55,13 +55,13 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if not user.is_authenticated %}
-            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'auth_login' %}">Login</a></li>
             {% else %}
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">{{ user.username }} <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
                 <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'auth_logout' %}">Logout</a></li>
               </ul>
             </li>
 
@@ -76,7 +76,6 @@
       {% bootstrap_messages %}
       {% block content %}
       {% endblock %}
-
       <hr>
 
       <footer>

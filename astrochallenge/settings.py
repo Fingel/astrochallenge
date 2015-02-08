@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'astrochallenge.accounts',
     'astrochallenge.objects',
+    'registration',
     'bootstrap3',
     'django_gravatar',
 )
@@ -64,7 +65,11 @@ DATABASES = {
 
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 MAILGUN_ACCESS_KEY = ''
-MAILGUN_SERVER_NAME = 'toxiccode.com.mailgun.org'
+MAILGUN_SERVER_NAME = 'astrochallenge.com'
+DEFAULT_FROM_EMAIL = 'noreply@astrochallenge.com'
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
