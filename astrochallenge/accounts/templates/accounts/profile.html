@@ -3,17 +3,23 @@
 {% block content %}
     <div class="row">
         <div class="col-md-6">
-            <span class="col-md-12">
-                <h1>{{ user.username }}</h1>
-            </span>
-            <span class="col-md-2">Name:</span><span class="col-md-10">{{user.first_name}} {{user.last_name}}</span>
-            </span>
-            <span class="col-md-2">Location:</span><span class="col-md-10">{{user.userprofile.location}}
-            ({{ user.userprofile.lat }}, {{ user.userprofile.lng }})</span>
-            <span class="col-md-12">{{ user.userprofile.profile_text }}</span>
+            <table class="table">
+                <tr><td>Name</td><td>{{user.first_name}} {{user.last_name}}</td></tr>
+                <tr><td>Location</td><td>{{user.userprofile.location}}</td></tr>
+                <tr><td>Latitude</td><td>{{user.userprofile.lat}}</td></tr>
+                <tr><td>Longitude</td><td>{{user.userprofile.lng}}</td></tr>
+                <tr><td colspan="2">{{user.userprofile.profile_text}}</td></tr>
+            </table>
         </div>
         <div class="col-md-6">
                 <p>{% gravatar user.email 150 %}</p>
+                <p><a href="{% gravatar_profile_url user.email %}">Change your avatar</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-info">Edit profile</button>
+            <a href="{% url 'auth_password_change' %}">Change your password</a>
         </div>
     </div>
 {% endblock %}
