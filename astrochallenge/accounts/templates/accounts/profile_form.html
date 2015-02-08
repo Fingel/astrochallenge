@@ -4,16 +4,33 @@
 {% block title %}{% trans "Edit profile" %}{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-6">
-        <h2>Edit Profile</h2>
-        <form method="post" action="">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            {% buttons %}
-            <button type="submit" class="btn btn-primary">Submit</button>
-            {% endbuttons %}
-        </form>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Edit Profile</h2>
+        </div>
     </div>
-</div>
+    <div class="row">
+    <div class="col-md-6">
+        <p class="help_text">
+            Please fill out the following fields to complete your profile.
+        </p>
+        <ul>
+            <li>Timezone: Used to determine your local time</li>
+            <li>Latitude/Longitude: Used to determine your location on earth</li>
+        </ul>
+        <p>Combined, this data determines which objects are visible to you
+        in the night sky!</p>
+    </div>
+    <div class="col-md-6">
+    <form method="post" action="">
+        {% csrf_token %}
+        {% bootstrap_form user_form %}
+        <hr/>
+        {% bootstrap_form profile_form %}
+        {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {% endbuttons %}
+    </form>
+    </div>
+    </div>
 {% endblock %}
