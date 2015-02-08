@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load gravatar %}
 {% block content %}
     <div class="row">
         <div class="col-md-6">
@@ -11,6 +12,8 @@
             ({{ user.userprofile.lat }}, {{ user.userprofile.lng }})</span>
             <span class="col-md-12">{{ user.userprofile.profile_text }}</span>
         </div>
-
+        <div class="col-md-6">
+                <p>{% gravatar user.email 150 %}</p>
+        </div>
     </div>
 {% endblock %}

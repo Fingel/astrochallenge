@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'astrochallenge.accounts',
     'astrochallenge.objects',
     'bootstrap3',
+    'django_gravatar',
 )
 
 MIDDLEWARE_CLASSES = (
