@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'registration',
     'bootstrap3',
     'django_gravatar',
+    'timezone_field',
 )
 
 MIDDLEWARE_CLASSES = (
