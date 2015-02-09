@@ -14,7 +14,8 @@
         </div>
         <div class="col-md-6">
                 <p>{% gravatar user.email 150 %}</p>
-                <p><a href="{% gravatar_profile_url user.email %}">Change your avatar</a></p>
+                <p><a href="{% gravatar_profile_url user.email %}">Change your avatar</a>
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Gravatar is a service that displays an image that is linked to your email address. Many sites use Gravatar so you only have to set your image once!"></span></p>
         </div>
     </div>
     <div class="row">
@@ -23,4 +24,11 @@
             <a href="{% url 'auth_password_change' %}"><button class="btn btn-danger">Change password</button></a>
         </div>
     </div>
+{% endblock %}
+{% block extra_javascript %}
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 {% endblock %}

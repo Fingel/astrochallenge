@@ -100,5 +100,8 @@
         {% bootstrap_javascript %}
 
         <script src="{{STATIC_PREFIX}}js/main.js"></script>
+
+        {% block extra_javascript %}
+        {% endblock %}
     </body>
 </html>
