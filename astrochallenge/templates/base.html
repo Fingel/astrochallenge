@@ -75,6 +75,16 @@
 
 
     <div class="container">
+      {% if user.is_authenticated %}
+        {% if not user.userprofile.lat or not user.userprofile.lng %}
+          <div class="alert alert-warning" role="alert">
+          Warning! You have not set your latitude/longitude! Make sure
+          you have these set, as well as your timezone, or certain
+          functions of this site will not work propery.
+          <a href="{% url 'edit_profile' %}">Edit profile</a>
+          </div>
+        {% endif %}
+      {% endif %}
       {% bootstrap_messages %}
       {% block content %}
       {% endblock %}

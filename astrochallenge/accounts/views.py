@@ -35,6 +35,7 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, "Profile sucessfully updated")
             return redirect('profile')
         else:
             messages.error(request, 'There was an error with the form')
