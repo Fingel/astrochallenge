@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -12,6 +12,11 @@ from forms import UserForm, ProfileForm
 def index(request):
     context = {"name": "austin"}
     return render(request, 'accounts/index.html', context)
+
+
+def member_profile(request, username):
+    member = get_object_or_404(User, username=username)
+    return render(request, 'accounts/memberprofile.html', {'member': member})
 
 
 @login_required
