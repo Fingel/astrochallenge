@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.files import File
-from astrochallenge.objects.models import AstroObject, CatalogObject
+from astrochallenge.objects.models import AstroObject, CatalogObject, Constellation
 from decimal import *
 import urllib
 import csv
@@ -21,7 +22,7 @@ class Command(BaseCommand):
                     type = row[2]
                 except:
                     type = "Unknown"
-                constellation = row[3]
+                constellation = Constellation.objects.get(abbreviation=row[3])
                 try:
                     magnitude = float(row[4])
                 except:
@@ -57,12 +58,12 @@ class Command(BaseCommand):
                     points = 100
                 astro_object.points = points
                 try:
-                    ca = CatalogObject.objects.get(catalog="NGC", designation=designation)
+                    ca = CatalogObject.objects.get(catalog="NGC", designation=id)
                     astro_object = ca.astro_object
                     astro_object.details = details
                     astro_object.save()
                     print "updated {0} with details".format(astro_object)
-                except:
+                except ObjectDoesNotExist:
                     astro_object.save()
                     catalog_object = CatalogObject(astro_object=astro_object, catalog="NGC", designation="{0}".format(id))
                     catalog_object.save()
