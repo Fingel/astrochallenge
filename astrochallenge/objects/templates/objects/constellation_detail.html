@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %} {{ object.latin_name }}{% endblock %}
+{% block content %}
+<h1>{{ object.latin_name }}</h1>
+<h3><em>{{ object.abbreviation }}</em> {{ object.english_name }}</h3>
+<p>Objects in database: {{ object.astroobject_set.count }}</p>
+</table>
+
+{% endblock %}1

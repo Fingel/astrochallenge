@@ -5,6 +5,11 @@ h1, h2, h3, h4, h5, h6 {
 p > a {
     text-decoration: underline;
 }
+
+.table-hover tbody tr:hover > td {
+  cursor: pointer
+}
+
 .hook {
     background-color: #1C1E22;
     border: 1px solid rgba(0, 0, 0, 0.6);

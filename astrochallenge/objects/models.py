@@ -3,10 +3,11 @@ from django.conf import settings
 
 
 class Constellation(models.Model):
-    abbreviation = models.CharField(max_length=3)
+    abbreviation = models.CharField(max_length=3, unique=True)
     latin_name = models.CharField(max_length=200)
     latin_genitive = models.CharField(max_length=200)
     english_name = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="constellations", blank=True, null=True)
 
     def __unicode__(self):
         return self.latin_name

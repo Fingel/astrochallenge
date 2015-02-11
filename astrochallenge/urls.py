@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^', include('astrochallenge.accounts.urls')),
+    url(r'^', include('astrochallenge.objects.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

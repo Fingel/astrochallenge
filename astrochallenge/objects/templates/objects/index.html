@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Object Database {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <h1><a href="{% url 'constellation-list' %}">Constellations</a></h1>
+    </div>
+    <div class="col-md-4">
+        <h1>Deep Space Objects</h1>
+    </div>
+    <div class="col-md-4">
+        <h1>Solar System Objects</h1>
+    </div>
+</div>
+{% endblock %}
