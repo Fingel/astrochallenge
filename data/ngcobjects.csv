@@ -1,0 +1,1166 @@
+ObjectNum,Name,Type,Constellation,Magnitude,Info,RAHour,RAMinute,DecSign,DecDeg,DecMinute
+4,,Galaxy,Psc,,eF,0,7.4,+,8,22
+7,ESO 409-22,Galaxy,Scl,,"Size: 2.5  eF, cL, mE, vgvlbM",0,8.4,-,29,55
+8,,Double Star,Peg,,"vF, N in n end",0,8.8,+,23,50
+10,ESO 349-32,Galaxy,Scl,,"Size: 2.7  F, cL, vlE, glbM",0,8.6,-,33,52
+17,NGC 34,,Cet,,"vF, eS, iR, D* 2' p; = 34",0,11,-,12,6
+18,,Double Star,Peg,,"F, vS, iR, mbM, 16 p 19s",0,9.4,+,27,43
+30,,Double Star,Peg,,neb *13,0,10.8,+,21,57
+32,,Asterism,Peg,,F,0,10.9,+,18,47
+33,,Double Star,Psc,,"eF, vS, or neb st",0,10.9,+,3,40
+40,PK 120+9.1,Planetary Nebula,Cep,11,"Size: 0.6  F, vS, R, vsmbM, *12 sp",0,13,+,72,32
+46,,Star,Psc,,nebula,0,14.1,+,5,59
+50,MCG 1-1-58,Galaxy,Cet,,vF,0,14.7,-,7,20
+55,Dunlop 507,Galaxy,Scl,8,"Size: 32.4  vB, vL, vmE, triN",0,14.9,-,39,11
+58,NGC 47,,Cet,,"vF, pS, R; = 47",0,14.5,-,7,10
+77,ESO 473-15,,Cet,,"eF, vS, iF (*?), *9 p 3'",0,20,-,22,31
+81,NPM1G +22.0016,Galaxy,And,,"eeF, sp 83",0,21.2,+,22,22
+90,UGC 208,Star,And,,"vF, lE",0,21.9,+,22,25
+98,ESO 242-5,Galaxy,Phe,,"Size: 1.8  vF, pS, R, bM, r",0,22.8,-,45,16
+100,UGC 231,Galaxy,Psc,,"Size: 5.8  vF, pS, mE, 2' long",0,24,+,16,29
+104,47 Tucanae,Globular Cluster,Tuc,4,"Size: 30.9  glob. cl.  !! vB, vL, vmCM",0,24.1,-,72,5
+106,,Galaxy,Psc,,"pF, vS, R, lbM",0,24.7,-,5,10
+107,MCG 2-2-14,Galaxy,Cet,,"F, pL, *7 sf 5'",0,25.6,-,8,17
+110,OCL 300,Open Cluster,Cas,,"Cl, pR, lC, st 9...12",0,27.4,+,71,23
+115,ESO 350-17,Galaxy,Scl,,"vF, pL, lE, D* 2' np",0,26.8,-,33,41
+129,OCL 294,Open Cluster,Cas,6.5,"Size: 21.  Cl, vL, pR, lC, st 9...13",0,29.9,+,60,14
+131,ESO 350-21,Galaxy,Scl,,"Size: 2.1  F, pL, pmE, vgbM, p of 2",0,29.6,-,33,16
+135,IC 26,,Cet,,"vF, vS, R",0,31.8,-,13,22
+136,OCL 295,Open Cluster,Cas,,"Size: 1.  glob. cl. , vF, S, eC",0,31.5,+,61,32
+147,UGC 326;D3,Galaxy,Cas,9.3,"Size: 12.9  vF, vL, iR, gsmbM *11",0,33.2,+,48,30
+153,NGC 151,,Cet,,"pF, pS, R, * nr nf; = 151",0,34,-,9,42
+156,,Double Star,Cet,,"vS, np 157",0,34.6,-,8,21
+158,,Double Star,Cet,,"vS, nf 157",0,34.9,-,8,19
+162,,Galaxy,And,,"eF, stellar, 160 sp",0,36.1,+,23,58
+171,NGC 175,,Cet,,"vF, pL, lE, 2 pB st sf; = 175",0,37.4,-,19,56
+172,ESO 474-5,Galaxy,Cet,,"Size: 2.6  eF, S, E, *13 close sp",0,37.3,-,22,36
+185,UGC 396,Galaxy,Cas,9.2,"Size: 11.5  pB, vL, iR, vgmbM, r",0,39,+,48,20
+188,OCL 309,Open Cluster,Cep,8.1,"Size: 14.  Cl, vL, R, 150-200 st 10...18",0,44,+,85,20
+195,MCG 2-2-79,Galaxy,Cet,,Size: 1.3  F,0,39.6,-,9,12
+205,M 110,Galaxy,And,8,"Size: 17.4  vB, vL, mE 165deg , vgvmbM; ",0,40.4,+,41,41
+206,,Cluster Nebulosity,And,,"vF, vL, mE 0deg",0,40.6,+,40,44
+207,MCG 3-2-35,,Cet,,"vF, S, lE, stellar",0,40,-,14,18
+211,NGC 203,Star,Psc,,"eF, S, mbMN",0,41,+,3,26
+217,MCG 2-2-85,Galaxy,Cet,,"Size: 3.3  F, S, lE 90deg , glbM",0,41.5,-,10,2
+221,M 32,Galaxy,And,8.2,"Size: 7.6  ! vvB, L, R, psmbMN; = M32",0,42.7,+,40,52
+224,M 31,Galaxy,And,3.5,"Size: 178.  !!! eeB, eL, vmE (Andromeda)",0,42.7,+,41,16
+225,OCL 305,Open Cluster,Cas,7,"Size: 12.  Cl, L, lC, st 9...10",0,43.4,+,61,47
+239,MCG 1-3-7,,Cet,,"pF, pS, E 20deg , bMN, *8 f 20s",0,44.6,-,3,47
+246,PK 118-74.1,Planetary Nebula,Cet,8,"Size: 3.8  vF, L, 4 st in dif neb",0,47,-,11,53
+247,ESO 540-22,Galaxy,Cet,8.9,"Size: 20.0  F, eL, vmE 172deg",0,47.1,-,20,46
+253,ESO 474-29,Galaxy,Scl,7.1,"Size: 25.1  !! vvB, vvL, vmE 54deg , gbM",0,47.6,-,25,17
+259,MCG 1-3-15,Galaxy,Cet,,"Size: 3.2  F, S, E 135deg , lbM",0,48.1,-,2,47
+264,ESO 295-6,Galaxy,Scl,,"Size: 0.9  F, S, R, vsvmbM *13",0,48.3,-,38,14
+272,OCL 312,Open Cluster,And,,"Cl, L, lC",0,51.4,+,35,50
+281,IC 11,Cluster Nebulosity,Cas,7,"Size: 35.  F, vL, dif, S triple * on np ",0,52.8,+,56,37
+285,KAZ 377,Galaxy,Cet,,"eF, S, R, 3rd of 4",0,53.7,-,13,10
+297,,Double Star,Cet,,eF,0,55,-,7,21
+300,ESO 295-20,Galaxy,Scl,9,"Size: 20.0  pB, vL, vmiE, vgpmbM",0,54.9,-,37,41
+301,,Galaxy,Cet,,"eF, S, iR, gbM, *8 p 30s",0,56.3,-,10,40
+302,,Star,Cet,,"eF, vS",0,56.4,-,10,39
+303,,Galaxy,Cet,,"eF, vS",0,54.8,-,16,40
+305,,Asterism,Psc,,"Cl, S, sc st",0,56,+,12,6
+308,,Star,Cet,,"vF, eS, 1' sf 307",0,56.4,-,1,47
+310,,Star,Cet,,stellar,0,56.9,-,1,46
+314,ESO 411-32,Galaxy,Scl,,"Size: 1.2  eF, vS, R, pB* f 2'",0,56.9,-,31,58
+319,ESO 243-13,Galaxy,Phe,,"Size: 1.1  eF, vS, R, lbM",0,57,-,43,50
+321,MCG 1-3-43,Galaxy,Cet,,"eF, vS",0,57.4,-,5,2
+322,ESO 243-15,Galaxy,Phe,,"Size: 1.3  vF, vS, R, lbM, 3 st p",0,57.2,-,43,44
+324,ESO 295-25,Galaxy,Phe,,"(?), F, S, stellar",0,58.6,-,40,30
+334,ESO 351-26,Galaxy,Scl,,"vF, S, R, glbM, 2 st 11 s",0,58.8,-,35,8
+335,ESO 541-6,Galaxy,Cet,,"Size: 1.2  vF, pS, E, bM",0,59.3,-,18,14
+343,,Star,Cet,,"eF, vS, iR, sbMN (*?)",1,0.8,-,23,14
+344,,Galaxy,Cet,,"Size: 0.9  eF, vS, iR, sbMN (*?)",1,1.6,-,23,16
+358,,Asterism,Cas,,"Cl, vlRi",1,5.2,+,62,2
+362,Dunlop 62,Globular Cluster,Tuc,6.6,"Size: 12.9  glob. cl. , vB, vL, vC, vmbM",1,3.2,-,70,51
+365,ESO 352-1,Galaxy,Scl,,"F, S, R, glbM",1,4.1,-,35,7
+366,OCL 316,Open Cluster,Cas,,"Size: 3.  Cl, S",1,6.4,+,62,14
+368,ESO 243-23,Galaxy,Phe,,"eF, vS, *7-8 sp 3'",1,4.4,-,43,16
+369,ESO 541-17,Galaxy,Cet,,"Size: 1.3  vF, vS, R, gbM",1,5.1,-,17,45
+372,,Triple Star,Psc,,"stellar, mbM, r",1,6.7,+,32,26
+373,,Galaxy,Psc,,"vF, vS",1,7,+,32,18
+377,ESO 541-19,Triple Star,Cet,,"vF, vS, mE, sbMN",1,6.3,-,20,3
+387,,Galaxy,Psc,,"vF, S, R",1,7.5,+,32,23
+390,,Galaxy,Psc,,"vF, vS, stellar",1,8.1,+,32,27
+396,,Galaxy,Psc,,"eF, S, lE",1,8,+,4,32
+408,,Galaxy,Psc,,"vF, vS, 410 f 8s",1,10.9,+,33,6
+409,ESO 352-12,Galaxy,Scl,,"Size: 1.5  eF, S, R, vS* nr",1,9.5,-,35,48
+415,ESO 352-14,Galaxy,Scl,,"vF, S, R, glbM",1,10.2,-,35,29
+424,ESO 296-4,Galaxy,Scl,,"Size: 2.1  vF, S, R, glbM",1,11.5,-,38,5
+433,OCL 319,Open Cluster,Cas,,"Size: 3.  Cl, S, lC",1,15.3,+,60,8
+438,ESO 296-7,Galaxy,Scl,,"pF, S, R, glbM",1,13.4,-,37,56
+453,,Triple Star,Psc,,"vF, vS, R, vF st inv",1,16.3,+,33,5
+457,OCL 321,Open Cluster,Cas,6.4,"Size: 13.  Cl, B, L, pRi, st 7, 8, 10",1,19.1,+,58,20
+461,ESO 352-33,Galaxy,Scl,,"Size: 1.2  pB, R, glbM",1,17.3,-,33,50
+462,NPM1G +03.0047,Galaxy,Psc,,"eF, vS, stellar",1,18.1,+,4,14
+464,,Galaxy,And,,S,1,19,+,34,58
+475,IC 97,Galaxy,Psc,,"eF, S",1,20,+,14,51
+480,,,Cet,,"eF, vS, R (neb?); = 481?",1,20.9,-,9,52
+482,ESO 296-13,Galaxy,Phe,,"eF, lE",1,20.3,-,40,57
+510,,Galaxy,Psc,,"vF, vS, lE",1,23.7,+,33,26
+519,ZWG 385.103,Galaxy,Cet,,"eeF, vS, R, v diffic",1,24.5,-,1,38
+526,,Galaxy,Scl,,"F, S, E, p of 2",1,23.9,-,35,3
+527,ESO 352-68,Galaxy,Scl,,"F, S, lE, bM, f of 2",1,24,-,35,6
+534,ESO 296-21,Galaxy,Scl,,"eeF, S, R, vgbM, 1st of 4",1,24.6,-,38,7
+540,ESO 542-12,Galaxy,Cet,,"Size: 1.4  vF, vS, R, sbMN",1,27.1,-,20,2
+544,ESO 296-24,Galaxy,Scl,,"eeF, S, R, vgbM, 2nd of 4",1,25.1,-,38,5
+546,ESO 296-25,Galaxy,Scl,,"eeF, S, R, vgbM, 3rd of 4",1,25.1,-,38,3
+548,UGC 1010,Galaxy,Cet,,"Size: 1.5  eF, eS",1,26,-,1,14
+549,,Galaxy,Scl,,"Size: 2.0  eeF, S, R, vgbM, 4th of 4",1,25.5,-,38,16
+556,ESO 476-13,,Cet,,"eF, vS, R, 3rd of 3",1,27.2,-,22,42
+558,IC 117,Galaxy,Cet,,"Size: 0.7  eF, S, E, *10 p; = IC 117",1,27.3,-,1,58
+559,OCL 322,Open Cluster,Cas,9.5,"Size: 4.  Cl, B, pL, pRi",1,29.5,+,63,18
+568,IC 1709,Galaxy,Scl,,"vF, S, R",1,27.9,-,35,43
+572,ESO 296-31,Galaxy,Scl,,"eF, S, att to S*, B* nr",1,28.6,-,39,18
+574,ESO 353-6,Galaxy,Scl,,"vS, D* pos 225deg   inv",1,29,-,35,35
+580,NGC 577,,Cet,,"pF, pS, R; = 577",1,30.7,-,2,0
+581,M 103,Open Cluster,Cas,7.4,"Size: 6.  Cl, pL, B, R, Ri, st 10...11; ",1,33.2,+,60,42
+588,,Nebulosity in External Galaxy,Tri,,"F, p of 2",1,32.7,+,30,40
+592,,Nebulosity in External Galaxy,Tri,,"F, pL, f of 2",1,33.2,+,30,39
+595,,Nebulosity in External Galaxy,Tri,,"vF, S, R, inv in M33",1,33.5,+,30,42
+597,ESO 353-11,Galaxy,Scl,,"F, S, R, bM",1,32.2,-,33,29
+598,M 33,Galaxy,Tri,5.7,"Size: 62.  ! eB, eL, R, vgbMN; = M33",1,33.9,+,30,39
+603,,Triple Star,Tri,,only an eF*?,1,34.4,+,30,11
+604,,Nebulosity in External Galaxy,Tri,,"B, vS, R, vvlbM",1,34.5,+,30,48
+607,,,Cet,,"*11, *14 close s",1,34.3,-,7,25
+616,,Double Star,Tri,,"neb D*, *8 np",1,36,+,33,46
+618,NGC 608,,Tri,,nonexistent,1,36.3,+,33,24
+619,ESO 353-21,Galaxy,Scl,,"eeF, vS, R, p of 2",1,34.8,-,36,28
+623,ESO 353-23,Galaxy,Scl,,"F, S, R, f of 2",1,35,-,36,29
+626,ESO 297-6,Galaxy,Scl,,"pF, S, R, bM",1,35.2,-,39,8
+627,NGC 614,,Tri,,nonexistent,1,37.1,+,33,35
+628,M 74,Galaxy,Psc,9.2,"Size: 10.2  glob. cl. , F, vL, R, vg, ps",1,36.7,+,15,47
+630,ESO 297-9,Galaxy,Scl,,"pF, S, R, bM",1,35.6,-,39,21
+633,ESO 297-11,Galaxy,Scl,,"pB, S, R, gbM, **  np",1,36.4,-,37,18
+641,ESO 244-42,Galaxy,Phe,,"F, S, R, gpmbM, p of 2",1,38.7,-,42,31
+644,ESO 244-43,Galaxy,Phe,,"F, S, vlE, glbM, f of 2",1,38.9,-,42,35
+650,M 76,Planetary Nebula,Per,12,"Size: 4.8  vB, p of Dneb; = M76",1,42.3,+,51,34
+654,OCL 330,Open Cluster,Cas,6.5,"Size: 5.  Cl, iF, Ri, one *6-7, st 11...",1,44.1,+,61,53
+657,OCL 337,Open Cluster,Cas,,"Cl, pRi, st 12",1,43.7,+,55,53
+663,OCL 333,Open Cluster,Cas,7.1,"Size: 16.  Cl, B, L, eRi, st pL",1,46,+,61,15
+667,ESO 477-2,Galaxy,Cet,,"eF, S, R, *10 np 100""",1,45.1,-,22,56
+696,ESO 353-50,Galaxy,For,,"F, S, R",1,49.4,-,34,55
+698,ESO 353-51,Galaxy,For,,"eF, S",1,49.6,-,34,50
+715,MCG 2-5-69,,Cet,,"eF, S, gbMN",1,53.2,-,12,50
+716,IC 1743,Galaxy,Ari,,"eF, S, R, B* f",1,52.9,+,12,32
+727,NGC 729,Galaxy,For,,"F, S, R, bM",1,53.7,-,35,52
+728,,Triple Star,Psc,,suspected neb,1,55.1,+,4,12
+729,NGC 727,Double Star,For,,"eeF, S, R",1,54,-,35,49
+730,,Star,Psc,,"vF, very stellar",1,55.3,+,5,37
+733,,Galaxy,Tri,,"vF, 2' p 736",1,56.4,+,33,4
+734,,Galaxy,Cet,,"vF, vS, R, bMN, *11 p 11s",1,54.8,-,17,3
+737,,,Tri,,only a faint star,1,56.7,+,33,3
+743,OCL 343,Open Cluster,Cas,,"Size: 5.  Cl, not Ri, D* (h 1098)",1,58.7,+,60,11
+748,MCG 1-6-4,Galaxy,Cet,,"Size: 2.9  pF, *9 np",1,56.4,-,4,28
+752,OCL 363,Open Cluster,And,5.7,"Size: 50.  Cl, vvL, Ri, st L & sc",1,57.8,+,37,41
+755,NGC 763,Galaxy,Cet,,"Size: 4.0  vF, pS, vlE",1,56.4,-,9,4
+758,NPM1G -03.0103,Galaxy,Cet,,"vF, vS",1,56,-,3,6
+760,,Double Star,Tri,,"vF, R, 761 nf",1,57.8,+,33,21
+764,,Double Star,Cet,,"eF, vS, iR, gbM",1,57.2,-,16,2
+771,50 CAS,,Cas,4,suspected neb* (50 Cas),2,3.4,+,72,25
+808,ESO 478-1,Galaxy,Cet,,"Size: 1.6  vF, pS, vlE",2,4,-,23,19
+822,ESO 298-9,Galaxy,Phe,,"cF, vS, R, sbM, r",2,6.6,-,41,9
+824,ESO 354-37,Galaxy,For,,"F, S, R, vsvmbM *13",2,6.8,-,36,28
+829,MCG 1-6-49,Galaxy,Cet,,"Size: 1.4  F, S, *11 s, 1st of 3",2,8.7,-,7,47
+832,,Galaxy,Tri,,"F, vS, *9-10 sp",2,10.1,+,35,32
+842,MCG 1-6-55,Galaxy,Cet,,"Size: 2.0  vF, vS, R, psbM, 3rd of 3",2,9.8,-,7,45
+843,,Triple Star,Tri,,"glob. cl. , F, S, R",2,11.1,+,32,6
+847,NGC 846,Galaxy,And,,"vF, pL, R; = 846",2,12.2,+,44,34
+849,ESO 478-9,Galaxy,Cet,,"eF, vS, R (neb?)",2,10.2,-,22,19
+854,ESO 354-47,Galaxy,For,,"cF, pS, lE 0deg , gbM",2,11.6,-,35,51
+859,NGC 856,,Cet,,"pF, pS, R, lbM; = 856",2,13.9,-,0,44
+862,ESO 298-20,Galaxy,Phe,,"F, vS, svmbM",2,13,-,42,4
+866,NGC 863,,Cet,,"pF, pS, R, lbM; = 863",2,14.6,-,0,46
+867,NGC 875,,Cet,,"eF, vS, R, bM; = 875",2,15.9,+,1,3
+869,OCL 350,Open Cluster,Per,4,"Size: 30.  ! Cl, vvL, vRi, st 7...14",2,19,+,57,9
+874,ESO 478-G018,,Cet,,no neby; = D*?,2,16.1,-,23,11
+876,UGC 1766,Galaxy,Ari,,"Size: 2.1  eF, S, R, 107"" sp 877",2,17.9,+,14,31
+879,KUG 0214-091,Galaxy,Cet,,"eF, pS, iR, bM",2,16.8,-,8,58
+880,,Galaxy,Cet,,"eF, vS, R, sbMN",2,18.4,-,4,11
+881,MCG 1-6-89,Galaxy,Cet,,"Size: 2.9  F, pS, E, bM, 2 or 3 st nr",2,18.7,-,6,35
+884,OCL 353,Open Cluster,Per,4,"Size: 30.  ! Cl, vL, vRi, ruby * M",2,22.4,+,57,7
+885,NGC 863,,Cet,,"vF, pS, R, lbM; = 863",2,14.6,-,0,46
+889,ESO 298-27,Galaxy,Phe,,"vF, vS, R, bM, *7 sf",2,19.1,-,41,45
+891,UGC 1831,Galaxy,And,10,"Size: 13.5  ! B, vL, vmE 22deg",2,22.6,+,42,21
+892,ESO 478-26,Galaxy,Cet,,"eF, eS, E?, neb?",2,20.7,-,23,7
+893,ESO 298-29,Galaxy,Phe,,"pF, pS, R, lbM, *8 f 4'",2,20,-,41,23
+896,SG 1.04,Nebula,Cas,,"Size: 27.  eF, pL, iF",2,24.8,+,61,54
+897,ESO 355-7,Galaxy,For,,"pB, S, R, psbM, *10 f 35""",2,21.1,-,33,42
+903,NPM1G +27.0093,Galaxy,Ari,,"eF, eS, R",2,23.8,+,27,22
+905,NPM1G -08.0091,Galaxy,Cet,,"eF, eS, R, *?",2,22.6,-,8,43
+913,,Galaxy,And,,"eF, vS, lbM",2,25.8,+,41,48
+939,ESO 246-11,Galaxy,Eri,,"vvF, S, R, gvlbM",2,26.4,-,44,26
+943,MCG 2-7-18,Galaxy,Cet,,"vF, R, Dneb with 942, F Nucl",2,29.2,-,10,50
+954,ESO 299-4,Galaxy,Eri,,"vF, pL, lE, gbM, *8 sf 3'",2,28.9,-,41,25
+963,IC 1808,Galaxy,Cet,,"eF, S, R, gbM, r; = IC 1808",2,30.5,-,4,14
+964,IC 1814,Galaxy,For,,"pB, pS, mE 215deg",2,31.1,-,36,1
+971,,Galaxy,Tri,,"vF, vS, R, 3rd of 5",2,34.2,+,32,59
+979,ESO 246-23,Galaxy,Eri,,"F, S, R, bet 2 st in par",2,31.5,-,44,31
+994,NGC 993,,Cet,,"eeF, pS, R, vF*; = 993",2,36.7,+,2,3
+1006,NGC 1010,,Cet,,"eeF, pS, R, lbM; = 1010",2,37.4,-,11,2
+1027,OCL 357,Open Cluster,Cas,6.7,"Size: 20.  Cl, L, sc st, one 10m",2,42.7,+,61,33
+1039,M 34,Open Cluster,Per,5.2,"Size: 35.  Cl, B, vL, lC, sc st 9; = M34",2,42,+,42,47
+1046,MCG 1-7-24,Galaxy,Cet,,"eF, vS, f of 2",2,41.2,+,8,43
+1049,ESO 356-SC3,Globular Cluster,For,,"pB, S, R, stellar",2,39.7,-,34,17
+1051,NGC 961,Galaxy,Cet,,"Size: 1.9  eF, lE npsf, * att np; = IC 2",2,41.1,-,6,56
+1059,,Double Star,Ari,,nonexistent,2,42.6,+,18,1
+1063,MCG 1-7-36,Galaxy,Cet,,"Size: 1.6  vF, pS, iR, r?",2,42.2,-,5,34
+1068,M 77,Galaxy,Cet,8.8,"Size: 6.9  vB, pL, iR, sbMrrN; = M77",2,42.7,-,0,1
+1080,MCG 1-8-3,Galaxy,Cet,,"Size: 1.4  vF, pS, iR",2,45.2,-,4,43
+1091,ESO 546-16,,Eri,,"vF, vS, R, sbMN",2,45.4,-,17,33
+1097,ESO 416-20,Galaxy,For,9.3,"Size: 9.3  vB, L, vmE 151deg , vbMN",2,46.3,-,30,17
+1108,,Galaxy,Eri,,"eF, pS, R",2,48.6,-,7,58
+1110,MCG 01-08-010,Galaxy,Eri,,"Size: 2.7  eF, pL, E 348deg",2,49.3,-,7,51
+1111,IC 1850,Galaxy,Ari,,"F, vS, stellar",2,49.7,+,13,8
+1119,ESO 546-24,,Eri,,"F, eS, R (F*?)",2,48.3,-,18,1
+1141,NGC 1143,,Cet,,"vF, S, p of Dneb; prob = 1143",2,55.2,+,0,28
+1142,NGC 1144,,Cet,,"pF, S, R, f of Dneb; prob = 1144",2,55.2,+,0,28
+1151,NPM1G -15.0157,Galaxy,Eri,,"eF, S, R (neb?), nr 1150",2,57.1,-,15,0
+1157,,Galaxy,Eri,,"eF, pS, E 0deg , sbMN",2,58.2,-,15,7
+1163,MCG 3-8-56,Galaxy,Eri,,"Size: 3.4  vF, pS, mE 75deg",3,0.3,-,17,9
+1165,ESO 417-8,Galaxy,For,,"Size: 3.1  vF, pL, E, vlbM",2,58.7,-,32,7
+1174,NGC 1186,,Per,,"pF, pS, lE, pB* close p; prob = 1186",3,5.5,+,42,49
+1180,NPM1G -15.0162,,Eri,,"eF, vS, R, bMN",2,57.1,-,15,0
+1181,,,Eri,,"eF, vS, R, bMN",2,57,-,15,2
+1182,NGC 1205,Galaxy,Eri,,"eF, pS, E 120deg , *10 sp 2'.5",3,3.5,-,9,40
+1188,MCG 03-08-068,,Eri,,"eF, vS, R, p 1209",3,3.7,-,15,30
+1202,KUG 0302-066,Galaxy,Eri,,"eF, S, 2 st 4' nf",3,4.9,-,6,29
+1205,NGC 1182,,Eri,,"eF, pS, E 25deg , *9.5 3' sp; = 1182",3,2.4,-,9,40
+1206,NPM1G -09.0143,Galaxy,Eri,,"eF, vS, vlE 0deg",3,6.1,-,8,50
+1212,IC 1883,Galaxy,Per,,"eF, S, R, Algol nr",3,8.6,+,40,51
+1217,ESO 300-10,Galaxy,For,,"pF, S, R, psbM",3,6.2,-,39,1
+1223,MCG 1-9-3,,Eri,,"eF, S, R, gbMN, p of 2",3,8.3,-,4,9
+1225,MCG 1-9-4,,Eri,,"eF, vS, R, f of 2",3,8.8,-,4,6
+1235,NGC 1233,Triple Star,Per,,"vF, S, lE",3,12.8,+,38,56
+1237,,Double Star,Eri,,"vF, S, E 170deg ; D*?",3,10.7,-,8,40
+1240,,Star,Ari,,"eF, vS; vS st?",3,12.9,+,30,34
+1251,,Double Star,Cet,,F,3,14.1,+,1,28
+1261,GCL 5,Globular Cluster,Hor,8.4,"Size: 6.9  glob. cl. , B, L, R, rr",3,12.3,-,55,13
+1269,NGC 1291,,Eri,,"vB, R, gmbM; = 1291",3,17.3,-,41,6
+1275,3C84;UGC 2669,Galaxy,Per,11.6,"Size: 2.6  F, S",3,19.8,+,41,31
+1276,,Galaxy,Per,,"vF, vS",3,19.9,+,41,33
+1279,PGC 12449,Galaxy,Per,,"vF, vS",3,20.1,+,41,28
+1287,KUG 0316-029,Galaxy,Eri,,"vF, vS, iR",3,18.6,-,2,45
+1290,NPM1G -14.0161,,Eri,,"eF, eS",3,19.4,-,13,59
+1295,MCG 2-9-30,,Eri,,"eF, vS, gbMN, *10 f 3'",3,20.1,-,14,0
+1306,ESO 481-23,Galaxy,For,,"Size: 1.4  vF, vS, gbM, *10.5 f 4'",3,21,-,25,31
+1310,ESO 357-19,Galaxy,For,,"Size: 2.3  glob. cl. , vF, pL, R, vgvlbM",3,21,-,37,8
+1312,,Double Star,Tau,,F,3,23.7,+,1,11
+1323,NPM1G -02.0119,Galaxy,Eri,,"eF, eS, *13 sp 25"" +/-",3,25,-,2,49
+1328,NPM1G -04.0149,Galaxy,Eri,,"vF, eS, R, bMN",3,25.6,-,4,8
+1333,LBN 741,Nebula,Per,,"Size: 9.  F, L, *10 nf",3,29.3,+,31,25
+1336,ESO 358-2,Galaxy,For,,"vF, S, vlE, gbM",3,26.6,-,35,44
+1342,OCL 401,Open Cluster,Per,6.7,"Size: 14.  Cl, vL, ab 60 st",3,31.6,+,37,20
+1348,OCL 391,Open Cluster,Per,,"Cl, lRi, st L",3,33.8,+,51,26
+1360,PK 220-53.1,Planetary Nebula,For,,"Size: 6.5  *8 in B, L neb, E ns",3,33.3,-,25,51
+1361,MCG 1-10-5,Galaxy,Eri,,"eF, eS, gbMN",3,34.2,-,6,15
+1363,IRAS03324-1000,Galaxy,Eri,,"vF, S, R, *7 sp 3'.5, sp of 2",3,34.8,-,9,50
+1364,,Galaxy,Eri,,"vF, S, vlE, nf of 2",3,35,-,9,50
+1372,NPM1G -16.0142,Galaxy,Eri,,"vF, vS, R, glbM",3,37,-,15,53
+1373,ESO 358-21,Galaxy,For,,"eF, vS, p of 3",3,35.1,-,35,11
+1375,ESO 358-24,Galaxy,For,,"Size: 1.9  B, S, lE, pmbM, 3rd of 3",3,35.2,-,35,16
+1378,ESO 358-**30,Double Star,For,,F,3,35.9,-,35,12
+1382,NGC 1380B,Galaxy,For,,Size: 2.1  F,3,37.1,-,35,12
+1388,NPM1G -16.0146,Galaxy,Eri,,"vF, vS, R, lbM",3,38.3,-,15,53
+1391,ESO 548-59,,Eri,,"eF, S, R, gbMN",3,38.5,-,18,21
+1392,,Galaxy,Eri,,"vF, pS, R",3,36.8,-,36,16
+1410,UGC 2821,Galaxy,Tau,,"makes Dneb with 1409, pos 0deg",3,41.2,-,1,17
+1413,NPM1G -15.0199,Galaxy,Eri,,"eF, vS, R, lbM",3,40.3,-,15,35
+1414,ESO 548-71,,Eri,,"eF, pS, mE 0deg , bMN",3,41.5,-,21,41
+1419,ESO 301-23,Galaxy,Eri,,"pF, pS, R, psbM",3,40.6,-,37,31
+1420,,Triple Star,Eri,,"F, vS, *13 p",3,42.7,-,5,51
+1428,ESO 358-53,Galaxy,For,,Size: 1.8  F,3,42.4,-,35,10
+1429,,Star,Eri,,"eF, vS, E 0deg , gbMN, f of 2",3,44,-,4,43
+1432,LBN 772,Nebula,Tau,,"Size: 30.  eF, vL, dif (Maia,  in Pleiad",3,45.8,+,24,22
+1435,CED 19I,Nebula,Tau,,"Size: 30.  vF, vL, dif (Merope)",3,46.1,+,23,47
+1436,NGC 1437,Galaxy,Eri,,"glob. cl. , vB, pmE, pgbM; = 1437",3,43.6,-,35,51
+1438,ESO 482-41,Galaxy,Eri,,"Size: 2.6  eF, mE, N, *10 f 1'",3,45.4,-,23,1
+1442,NGC 1440,Galaxy,Eri,,"pB, vS, bM; = 1440",3,45,-,18,16
+1443,,Star,Eri,,"vF, nf 1441",3,45.7,-,4,1
+1444,OCL 394,Open Cluster,Per,6.6,Size: 4.  Cl of ab 30 st 12...14,3,49.4,+,52,40
+1445,,Galaxy,Eri,,"vF, S, R, *9 np 2'",3,44.9,-,9,50
+1447,NPM1G -09.0165,Galaxy,Eri,,"vF, S, R, neb? *7-8 f 3'",3,45.8,-,8,59
+1450,,Galaxy,Eri,,"eF, pS, R (D, dist 0'.4?)",3,45.6,-,9,13
+1455,NGC 1452,Galaxy,Eri,,"Size: 2.6  vF, S, lE 30deg , sbMN; = 145",3,45.4,-,18,38
+1457,NGC 1448,Galaxy,Hor,,"pF, pL, eE 42deg , vgpmbM; = 1448",3,44.5,-,44,38
+1460,ESO 358-62,Galaxy,Eri,,"F, S, R, * att",3,46.1,-,36,41
+1464,NGC 1471,Galaxy,Eri,,"pF, S, R, 2 st nr",3,51.4,-,15,25
+1472,NPM1G -08.0152,Galaxy,Eri,,"vF, eS, stell N, 1st of 3",3,53.7,-,8,35
+1476,ESO 249-24,Galaxy,Hor,,"Size: 1.7  cF, S, E 90deg , gbM",3,52.1,-,44,32
+1477,NPM1G -08.0154,Galaxy,Eri,,"eF, vS, 2nd of 3",3,54,-,8,35
+1478,NPM1G -08.0155,Galaxy,Eri,,"eF, vS, 3rd of 3",3,54.1,-,8,34
+1480,,,Eri,,"eF, S, iR, f of 2, *10 f 30s",3,54.5,-,10,16
+1484,ESO 359-6,Galaxy,Eri,,"vF, L, E, vgvlbM",3,54.2,-,37,0
+1491,LBN 704,Nebula,Per,,"Size: 3.  vB, S, iF, bM, r, * inv",4,3.4,+,51,19
+1492,ESO 359-12,Galaxy,Eri,,"vF, vS, R",3,58.1,-,35,27
+1495,ESO 249-34,Galaxy,Hor,,"Size: 2.9  eF, S, lE 90deg , vgvlbM",3,58.4,-,44,28
+1499,LBN 756,Nebula,Per,,"Size: 145.  vF, vL, E ns, dif",4,0.7,+,36,37
+1502,OCL 383,Open Cluster,Cam,5.7,"Size: 8.  Cl, pRi, cC, iF",4,7.7,+,62,20
+1528,OCL 397,Open Cluster,Per,6.4,"Size: 24.  Cl, B, vRi, cC",4,15.4,+,51,14
+1540,ESO 420-14,Galaxy,Eri,,"Size: 1.2  vF, vS, E, gvlbM, r",4,15.2,-,28,29
+1545,OCL 399,Open Cluster,Per,6.2,"Size: 18.  Cl, pRi, lC, st L",4,20.9,+,50,15
+1547,ESO 550-G018,,Eri,,"pF, pS, iR, Cl",4,17.2,-,17,53
+1548,,Open Cluster,Per,,"Cl, vL, lRi, lC, st 10...12",4,21,+,36,56
+1554,LBN 817,Nebula,Tau,,"!!! var, S, R, Nn = *13",4,21.8,+,19,32
+1558,ESO 250-17,Galaxy,Hor,,"pF, S, E, gbM",4,19.3,-,45,2
+1562,NPM1G -15.0224,Galaxy,Eri,,"vF, eS, R, glbM",4,21.7,-,15,45
+1563,MCG 3-12-5,,Eri,,"eF, vS, R, lbM, D with 1564",4,22.9,-,15,44
+1564,NPM1G -15.0226,Galaxy,Eri,,"eF, vS, R, lbM, D with 1563",4,22.9,-,15,44
+1570,NGC 1571,Galaxy,Cae,,"F, S, R, gbM; = 1571",4,22.1,-,43,38
+1571,NGC 1570,Galaxy,Cae,,"vF, S, R, gbM, **  nf",4,22.2,-,43,38
+1572,ESO 303-14,Galaxy,Cae,,"pF, S, R, *13 nf 1'",4,22.6,-,40,36
+1579,LBN 766,Nebula,Per,,"Size: 12.  pB, vL, iR, mbM, *8 350deg , ",4,30.2,+,35,16
+1582,OCL 407,Open Cluster,Per,7,"Size: 37.  Cl, vL, pRi, lC, st L",4,32,+,43,51
+1584,ESO 551-6,Galaxy,Eri,,"F, eS, R, sbMN",4,28.1,-,17,32
+1585,ESO 303-18,Galaxy,Cae,,"pF, S, R, gbM, *12 288deg",4,27.5,-,42,9
+1592,ESO 421-G002,,Eri,,only F st,4,29.6,-,26,58
+1593,NGC 1608,Galaxy,Tau,,vF; = 1608,4,31.9,+,0,34
+1606,MCG 1-12-22,Galaxy,Eri,,eF,4,32.1,-,5,2
+1610,,Galaxy,Eri,,"eF, vS, R, bMN",4,34.1,-,4,42
+1616,ESO 251-10,Galaxy,Cae,,"F, S, E, vglbM",4,32.7,-,43,43
+1623,DRCG 10-7,Galaxy,Eri,,"eF, vS, R, gbMN",4,34.9,-,13,31
+1630,ESO 551-19,Galaxy,Eri,,"eF, eS, R",4,37.3,-,18,54
+1639,,Triple Star,Eri,,only 3 st 12.5 forming equilateral trian,4,40.9,-,17,0
+1647,OCL 457,Open Cluster,Tau,6.4,"Size: 45.  Cl, vL, st L, sc",4,46,+,19,4
+1655,,,Tau,,hazy *,4,46.2,+,20,56
+1658,ESO 304-16,Galaxy,Cae,,"F, pS, pmE, glbM",4,44,-,41,27
+1660,ESO 304-18,Galaxy,Cae,,"vF, S, lE, glbM",4,44.2,-,41,29
+1662,OCL 470,Open Cluster,Ori,6.4,Size: 20.  Cl of L & S sc st,4,48.5,+,10,56
+1663,OCL 461,Open Cluster,Ori,,"Cl, lRi, st L & S",4,48.6,+,13,10
+1668,ESO 251-30,Galaxy,Cae,,"eF, R, att to *14",4,46.1,-,44,43
+1679,ESO 422-1,Galaxy,Cae,,"Size: 3.2  vB, L, iR, 4 st inv",4,50,-,31,59
+1683,NPM1G -03.0218,Galaxy,Ori,,"vF, R",4,52.3,-,3,1
+1687,ESO 361-13,Galaxy,Cae,,"vF, S, R, vglbM",4,51.3,-,33,56
+1692,ESO 552-21,Galaxy,Lep,,"Size: 1.3  eF, vS, R",4,55.4,-,20,34
+1717,,Star,Ori,,np 1719 (F*?),4,59.2,-,0,15
+1742,,Star,Ori,,"vF, vS, 3s .6 f 1740",5,1.7,-,3,18
+1746,OCL 452,Open Cluster,Tau,6,"Size: 42.  Cl, P",5,3.6,+,23,49
+1750,,Open Cluster,Tau,,"Cl, st L, vc sc",5,3.9,+,23,39
+1758,OCL 453,Open Cluster,Tau,,"Cl, pC, st L and S",5,4.4,+,23,46
+1759,ESO 305-1,Galaxy,Cae,,"vF, pL, vglbM",5,0.8,-,38,43
+1781,NGC 1794,,Lep,,"eF, vS, stellar; = 1794",5,7.9,-,18,10
+1788,LBN 916,Nebula,Ori,,"Size: 8.  B, cL, R, bM *** ; *10 inv in ",5,6.9,-,3,21
+1807,OCL 462,Open Cluster,Tau,7,"Size: 17.  Cl, pRi, st L & S",5,10.7,+,16,32
+1827,ESO 362-6,Galaxy,Col,,"Size: 3.4  vF, vmE, long ray, *11 inv",5,10.1,-,36,58
+1843,MCG 2-14-8,Galaxy,Ori,,"Size: 1.8  F, S, R, lbM",5,14.1,-,10,38
+1851,Dunlop 508,Globular Cluster,Col,7.3,"Size: 11.0  glob. cl. ! vB, vL, R, vsvvb",5,14.1,-,40,3
+1857,OCL 428,Open Cluster,Aur,7,"Size: 6.  Cl, pRi, pC, st 7...",5,20.2,+,39,21
+1886,ESO 487-2,Galaxy,Lep,,"Size: 2.6  vF, pL, E 240deg , *9 p 11s ,",5,21.8,-,23,49
+1904,M 79,Globular Cluster,Lep,8,"Size: 8.7  glob. cl. , pL, eRi, eC, rrr;",5,24.5,-,24,33
+1906,MCG 3-14-15,,Lep,,"eF, pS, E 0deg , glbM",5,24.8,-,15,58
+1912,M 38,Open Cluster,Aur,6.4,"Size: 21.  Cl, B, vL, vRi, iF, st L & S;",5,28.7,+,35,50
+1952,M 1,Nebula,Tau,8.4,"Size: 6.  vB, vL, E 135deg +/- , vglbM, ",5,34.5,+,22,1
+1957,NPM1G -14.0249,Galaxy,Lep,,"eF, pS, R, bMN, *15 inv",5,32.9,-,14,7
+1960,M 36,Open Cluster,Aur,6,"Size: 12.  Cl, B, vL, vRi, lC, st 9...11",5,36.1,+,34,8
+1963,ESO 363-SC5,Galaxy,Col,,"Size: 3.5  Cl, st 8...11",5,33.3,-,36,25
+1973,CED 55B,Nebula,Ori,,Size: 5.  *8-9 inv in neb (1977),5,35.1,-,4,44
+1975,CED 55C,Nebula,Ori,,Size: 10.  B**  inv in neb (1977),5,35.4,-,4,41
+1976,M 42,Nebula,Ori,4,Size: 66.  !!! theta1 Ori and the great ,5,35.4,-,5,27
+1977,OCL 525,Nebula,Ori,,"Size: 20.  !!, 42 Ori and neb",5,35.5,-,4,52
+1980,OCL 529,Nebula,Ori,,"Size: 14.  vF, vvL, 44 Ori inv",5,35.4,-,5,54
+1981,OCL 525,Open Cluster,Ori,4.6,"Size: 25.  Cl, vB, lRi, st L, sc",5,35.2,-,4,26
+1982,M 43,Nebula,Ori,9,"Size: 20.  ! vB, vL, R with tail, mbM *8",5,35.6,-,5,16
+1985,PK 176+0.1,Nebula,Aur,,"cF, S, R, psbM",5,37.7,+,32,0
+1988,,Star,Tau,,"!!!, variable (?)",5,37.5,+,21,14
+1989,ESO 423-21,Galaxy,Col,,"Size: 1.8  vF, S, R, lbM, st nr",5,34.4,-,30,48
+1990,LBN 940,Nebula,Ori,,"Size: 50.  !!!, eL, E, epsilon Ori inv p",5,36.2,-,1,12
+1999,LBN 979,Nebula,Ori,,Size: 16.  *10-11 inv in neb,5,36.5,-,6,42
+2023,LBN 953,Nebula,Ori,,"Size: 10.  B* in M of L, lE neb",5,41.6,-,2,14
+2024,CED 55P,Nebula,Ori,,"Size: 30.  ! irr, B, vvL, black sp incl",5,41.9,-,1,51
+2045,,,Tau,,*8-9 with F neb,5,45,+,12,53
+2054,,Asterism,Ori,,only 3 S st and no neb,5,45.2,-,10,5
+2064,LBN 1627,Nebula,Ori,,"Size: 12.  eF, vS, *9-10 np 4'",5,46.3,+,0,0
+2067,DG 79,Nebula,Ori,,"Size: 8.  F, pL, M78 s",5,46.5,+,0,6
+2068,M 78,Nebula,Ori,8,"Size: 8.  B, L, wisp, gmbN, 3 st inv, r;",5,46.7,+,0,3
+2070,ESO 57-EN6,Cluster Nebulosity,Dor,8.2,"Size: 40.  !!! vB, vL, looped",5,38.6,-,69,5
+2071,LBN 938,Nebula,Ori,,"Size: 4.  D* (10 & 14m) with vF, L chev",5,47.2,+,0,18
+2099,M 37,Open Cluster,Aur,5.6,"Size: 24.  Cl, Ri, pCM, st L & S; = M37",5,52.4,+,32,33
+2119,UGC 3380,Galaxy,Ori,,"F, vS, R, bM",5,57.4,+,11,57
+2129,OCL 467,Open Cluster,Gem,6.7,"Size: 7.  Cl, pL, 40 or 50 st 8...15",6,1,+,23,18
+2131,ESO 488-50,Galaxy,Lep,,"vF, pS, R, gbM",5,58.7,-,26,38
+2149,VDB 66,Nebula,Mon,,"Size: 3.  F, *12 inv",6,3.5,-,9,44
+2163,,,Ori,,"eF, E, dif, *11 att s",6,7.8,+,18,40
+2168,M 35,Open Cluster,Gem,5.1,"Size: 28.  Cl, vL, cRi, pC, st 9...16; =",6,8.9,+,24,20
+2169,OCL 481,Open Cluster,Ori,5.9,"Size: 7.  Cl, S, lRi, pmC, **  (ADS 4728",6,8.4,+,13,57
+2170,LBN 994,Nebula,Mon,,"Size: 2.  *9 in vF, pL neb, E 170deg",6,7.5,-,6,24
+2174,CED 67A,Nebula,Ori,,"Size: 40.  eF, bet 3 vF st",6,9.7,+,20,30
+2175,OCL 476,Open Cluster,Ori,6.8,Size: 18.  *8 in neb,6,9.8,+,20,19
+2182,LBN 998,Nebula,Mon,,"Size: 3.  pB** , L* neb, E 90deg +/-",6,9.5,-,6,20
+2183,LBN 996,Nebula,Mon,,"Size: 1.  eF, S, lE, *11-12 sp",6,10.8,-,6,13
+2184,,Open Cluster,Ori,,"Cl, L, vlC",6,10.9,-,3,31
+2185,LBN 997,Nebula,Mon,,"Size: 3.  *11 and 4 S st in vF, L neb",6,11.1,-,6,13
+2195,,Nebula,Ori,,"F, S, 2 S st inv, *10 n 31""",6,14.4,+,17,39
+2200,ESO 254-39,Galaxy,Pup,,"eF, pS, R, vlbM",6,13.4,-,43,39
+2201,ESO 254-40,Galaxy,Pup,,"eF, S, R, pslbM",6,13.4,-,43,41
+2220,ESO 255-**4,Asterism,Pup,,"Cl, B, P, st 8...",6,21.8,-,44,46
+2225,,Open Cluster,Mon,,"Cl, P, lCM, st 12...15",6,26.6,-,9,39
+2232,OCL 545,Open Cluster,Mon,3.9,Size: 30.  B* (10 Mon) + Cl,6,26.6,-,4,45
+2237,OCL 511,Nebula,Mon,,"pB, vvL, dif, part of eL nebs ring ar 22",6,30.3,+,5,3
+2238,LBN 948,Cluster Nebulosity,Mon,,"S* in neby, part of eL nebs ring ar 2239",6,30.6,+,5,1
+2239,NGC 2244,Open Cluster,Mon,,"Size: 16.  *8 in L, P, B Cl",6,31,+,4,57
+2244,NGC 2239,Open Cluster,Mon,4.8,"Size: 24.  Cl, beautiful, st sc (12 Mon)",6,32.4,+,4,52
+2245,LBN 904,Nebula,Mon,,"Size: 5.  pL, com, mbN sf alm *, *7-8 nf",6,32.7,+,10,10
+2246,LBN 948,Nebula,Mon,,"eeF, L, irr R, e diffic",6,32.4,+,5,7
+2247,LBN 901,Nebula,Mon,,"Size: 4.  neb* in eF, eL neby, nf 2245",6,33.2,+,10,20
+2253,UGC 3511,Open Cluster,Cam,,"vF, st eS",6,42.4,+,66,20
+2255,ESO 365-31,Galaxy,Col,,"eF, S, lE, vlbM",6,34,-,34,47
+2261,LBN 920,Nebula,Mon,,"Size: 2.  B, vmE 330deg , N com = *11",6,39.2,+,8,44
+2264,OCL 495,Cluster Nebulosity,Mon,3.9,"Size: 60.  eL neb, 3deg  diam, densest 1",6,41.1,+,9,53
+2281,OCL 446,Open Cluster,Aur,5.4,"Size: 15.  Cl, pRi, vlC, st pL",6,49.3,+,41,4
+2282,IC 2172,Nebula,Mon,,"Size: 3.  *10 in F, R neby",6,46.9,+,1,19
+2287,M 41,Open Cluster,CMa,4.5,"Size: 38.  Cl, vL, B, lC, st 8...; = M41",6,47,-,20,44
+2301,OCL 540,Open Cluster,Mon,6,"Size: 12.  Cl, Ri, L, iF, st L & S",6,51.8,+,0,28
+2313,LDN 1653,Nebula,Mon,,"F, vS, R",6,58,-,7,57
+2316,NGC 2317,Nebula,Mon,,"Size: 4.  pF, S, R, r, S st inv",6,59.7,-,7,46
+2318,,Open Cluster,CMa,,"Cl, L, sc st 8...9",6,59.5,-,13,42
+2323,M 50,Open Cluster,Mon,5.9,"Size: 16.  ! Cl, vL, Ri, pC, E, st 12...",7,3.2,-,8,20
+2327,CED 89B,Nebula,CMa,,"pB**  inv in S, vF, neb",7,4.3,-,11,18
+2328,ESO 309-16,Galaxy,Pup,,"vF, S, vlE, bM, am st",7,2.5,-,42,3
+2338,,Asterism,Mon,,"Cl, vlC",7,7.7,-,5,37
+2343,OCL 565,Open Cluster,Mon,6.7,"Size: 7.  Cl, cL, P, lC",7,8.3,-,10,39
+2346,PK 215+3.1,Planetary Nebula,Mon,,"Size: 0.9  *10 att with S, vF, neb",7,9.4,-,0,48
+2351,,,Mon,,"Cl, lC, **  taken",7,13.5,-,10,29
+2354,OCL 639,Open Cluster,CMa,6.5,"Size: 20.  Cl, cRi, lC",7,14.3,-,25,44
+2359,LBN 1041,Nebula,CMa,,"Size: 8.  !!, vF, vvL, viF",7,18.6,-,13,12
+2360,OCL 589,Open Cluster,CMa,7.2,"Size: 13.  Cl, vL, Ri, pC, st 9...12",7,17.8,-,15,37
+2361,,Double Star,CMa,,"vvF, vS; part of 2359",7,18.4,-,13,13
+2362,OCL 633,Cluster Nebulosity,CMa,4.1,"Size: 8.  Cl, pL, Ri (30 CMa)",7,18.8,-,24,57
+2363,UGC 3847,Galaxy,Cam,,"neb* or vFvS, 2366 sf",7,28.7,+,69,4
+2364,,Open Cluster,Mon,,"Cl, pC, st pL, bifid",7,20.8,-,7,34
+2372,NGC 2371,Planetary Nebula,Gem,,"pB, S, R, bMN, f of Dneb",7,25.6,+,29,30
+2382,NGC 2380,,CMa,,"pF, S, R, bM; = 2380",7,23.9,-,27,32
+2386,,Triple Star,Gem,,stellar,7,28.6,+,33,46
+2390,,Star,Gem,,vF,7,29,+,33,50
+2392,PK 197+17.1,Planetary Nebula,Gem,10,"Size: 0.7  B, S, R, *9 M, *8 nf 100""",7,29.2,+,20,55
+2396,OCL 579,Open Cluster,Pup,7,"Size: 10.  Cl, vL, vlC",7,28.1,-,11,44
+2399,,Triple Star,CMi,,1st of 2 F neb (vS clusters?),7,29.9,-,0,13
+2400,,Triple Star,CMi,,2nd of 2 F neb (vS clusters?),7,30,-,0,13
+2403,UGC 3918,Galaxy,Cam,8.4,"Size: 17.8  !! cB, eL, vmE, vgmbMN",7,36.9,+,65,36
+2404,,Nebulosity in External Galaxy,Cam,,"vF, vS",7,37.1,+,65,42
+2408,,Asterism,Cam,,"Cl, vlC",7,40.5,+,71,39
+2419,GCL 12,Globular Cluster,Lyn,10.4,"Size: 4.1  pB, pL, lE 90deg , vgbM, *7-8",7,38.1,+,38,53
+2422,M 47,Open Cluster,Pup,4.4,"Size: 30.  Cl, B, vL, pRi, st L and S; =",7,36.6,-,14,30
+2423,OCL 592,Open Cluster,Pup,6.7,"Size: 19.  Cl, vL, Ri, pC, st vS",7,37.1,-,13,52
+2425,OCL 599,Open Cluster,Pup,,"Size: 3.  Cl, P, S, st vS",7,38.3,-,14,52
+2433,,Galaxy,CMi,,"eF, *15, 90"" sp",7,43,+,9,19
+2436,NGC 2431,Star,Lyn,,"vF, vS, R, bM",7,46.1,+,52,4
+2437,M 46,Open Cluster,Pup,6.1,"Size: 27.  !, Cl, vB, vRi, vL, inv PN ; ",7,41.8,-,14,49
+2439,OCL 688,Open Cluster,Pup,6.9,"Size: 10.  Cl, B, pRi, pL, lC,  st 9, 12",7,40.8,-,31,39
+2447,M 93,Open Cluster,Pup,6.2,"Size: 22.  Cl, L, pRi, lC, st 8...13; = ",7,44.6,-,23,52
+2451,OCL 716,Open Cluster,Pup,2.8,"Size: 45.  Cl, vvL, vlC, one *4.5",7,45.4,-,37,58
+2458,MCG 10-12-16,Galaxy,Lyn,,"vF, *12 close",7,55.4,+,56,43
+2459,,,CMi,,only a couple of F st,7,52,+,9,33
+2467,OCL 668,Cluster Nebulosity,Pup,7,"Size: 16.  pB, vL, R, er, *8 M",7,52.6,-,26,23
+2471,,Star,Lyn,,"*13, slightly nebulous",7,58.3,+,56,45
+2477,OCL 720,Open Cluster,Pup,5.8,"Size: 27.  !, Cl, B, Ri, L, lC, st 12",7,52.3,-,38,33
+2495,MCG 7-17-8,Galaxy,Lyn,,"Size: 0.4  follows 2493 2' or 3', eF, vS",8,0.6,+,39,50
+2506,OCL 593,Open Cluster,Mon,7.6,"Size: 7.  Cl, pL, vRi, C, st 11...20",8,0.2,-,10,47
+2515,,,Cnc,,"vF, cometic",8,3.4,+,20,11
+2516,OCL 776,Open Cluster,Car,3.8,"Size: 30.  Cl, vB, vL, pRi, st 7...13",7,58.3,-,60,52
+2519,,,Lyn,,"F, L, R, gbM, 42s  f 2518",8,8,+,51,7
+2520,NGC 2527,,Pup,,"Cl, B, pRi, pC; = 2527",8,2.5,-,28,11
+2527,NGC 2520,Open Cluster,Pup,6.5,"Size: 22.  Cl, vL, pRi, lC, st 10...15",8,5.3,-,28,10
+2530,UGC 4237,,Cnc,,"eF, lE, vS* n",8,7.9,+,17,49
+2531,,,Cnc,,vF,8,8,+,17,49
+2539,OCL 611,Open Cluster,Pup,6.5,"Size: 22.  Cl, vL, Ri, lC, st 11...13",8,10.7,-,12,50
+2546,OCL 726,Open Cluster,Pup,6.3,"Size: 41.  Cl, B, L, lC, iE, st 9...12",8,12.4,-,37,38
+2548,M 48,Open Cluster,Hya,5.8,"Size: 54.  Cl, vL, pRi, pmC, st 9...13; ",8,13.8,-,5,48
+2559,ESO 494-41,Galaxy,Pup,,"Size: 5.6  F, pL, gmbM, am 60 st",8,17.1,-,27,28
+2564,ESO 562-1,Galaxy,Pup,,"vF, S, R, gbM, am many st",8,18.6,-,21,49
+2568,OCL 727,Open Cluster,Pup,,"vF, pL, F* inv",8,18,-,37,6
+2571,OCL 701,Open Cluster,Pup,7,"Size: 13.  Cl, vL, cRi, lC, st 9...",8,18.9,-,29,44
+2625,MK 625,Galaxy,Cnc,,"Size: 0.4  eF, vS",8,38.4,+,19,42
+2626,ESO 313-N*4,Nebula,Vel,,"Size: 5.  *9 inv in pB, pL, R neb",8,35.6,-,40,40
+2632,M 44,Open Cluster,Cnc,3.1,Size: 95.  Praesepe; = M44,8,40.1,+,19,59
+2637,ZWG 89. 65,Galaxy,Cnc,,"eeF, vS",8,41.1,+,19,42
+2643,IC 2390,Galaxy,Cnc,,eF neb*,8,41.7,+,19,43
+2653,,Asterism,Cam,,"vF, vS, F* close n, 2655 s",8,55.6,+,78,25
+2663,ESO 371-14,Galaxy,Pyx,,"pF, pS, lE",8,45.1,-,33,48
+2682,M 67,Open Cluster,Cnc,6.9,"Size: 30.  ! Cl, vB, vL, eRi, lC, st 10.",8,50.4,+,11,49
+2689,,Galaxy,UMa,,"vvF, S",8,55.2,+,49,9
+2702,,Star,Hya,,"vF, vS, 4' nf 2699",8,55.9,-,3,3
+2703,,Double Star,Hya,,"eF, lE, doubtful",8,55.9,-,3,17
+2705,,Star,Hya,,"vF, vS, 3 st 14 f, nf",8,56,-,3,0
+2707,,Star,Hya,,"eF, S",8,56.2,-,3,4
+2722,NGC 2733,Galaxy,Hya,,"vF, vS, stellar",8,58.8,-,3,43
+2734,NPM1G +17.0238,Galaxy,Cnc,,"eF, vS, R",9,3,+,16,50
+2736,RCW 37,Galaxy,Vel,,"! eeF, vL, vvmE 19deg",9,0.4,-,45,54
+2754,ESO 564-16,Galaxy,Hya,,"eF, S, R, 1st of 3",9,5,-,19,5
+2757,ESO 564-**18,Double Star,Hya,,"eF, 2nd of 3; only a D*, dist 12""",9,5.5,-,19,2
+2775,UGC 4820,Galaxy,Cnc,10.3,"Size: 4.5  cB, cL, R, vgvsmbM, r",9,10.3,+,7,2
+2829,,Galaxy,Lyn,,"eF, vS, R, nf 2826",9,19.5,+,33,40
+2843,,Galaxy,Cnc,,S* and neb,9,20.4,+,18,57
+2845,ESO 314-10,Galaxy,Vel,,"vF, S, R, *12 att sf",9,18.6,-,38,0
+2846,,,Hya,,"vS Cl (neb?), *10 sf 4'",9,19.9,-,14,41
+2849,OCL 756,Open Cluster,Vel,,"eF, cL, R, vglbM, rr",9,19.3,-,40,31
+2850,NPM1G -04.0292,Galaxy,Hya,,"vF, vS, R, mbM",9,21,-,4,55
+2867,PK 278-5.1,Planetary Nebula,Car,10,"Size: 0.2  !! PN  = *8, vS, R, *15, 59de",9,21.4,-,58,19
+2868,NPM1G -10.0299,,Hya,,"eF, S, R, 10s  p 2869",9,23.4,-,10,25
+2869,NGC 2863,,Hya,,"eF, pS, E 170deg , gbM, bet 2 F st; = 28",9,23.6,-,10,26
+2871,,,Leo,,"eF, 2872 sf 1'",9,25.7,+,11,27
+2879,,Triple Star,Hya,,"vF, vS, R, lbM",9,25.4,-,11,40
+2883,ESO 372-24,Galaxy,Pyx,,"vF, S, vglbM, rrr, st 15",9,25.2,-,34,5
+2885,IC 538,Galaxy,Leo,,"eF, vS, E 90deg",9,29.6,+,22,57
+2886,,Triple Star,Hya,,"eeF, pL",9,26.5,-,21,46
+2897,NPM1G +02.0220,Galaxy,Hya,,"eF, S",9,29.8,+,2,12
+2912,,Galaxy,Leo,,"eF, 2911 sp",9,33.7,+,10,9
+2920,ESO 565-15,Galaxy,Hya,,"eF, S, R, p of 2",9,34.3,-,20,51
+2956,ESO 565-34,Galaxy,Hya,,"vF, vS, R, *9.5 sf 4'",9,39.3,-,19,6
+2961,MCG 12-9-63,Galaxy,UMa,,"Size: 0.9  cF, S, lE, nf 2959",9,45.4,+,68,36
+2973,,Galaxy,Ant,,"eF, pS, *8 f",9,38,-,30,8
+2975,NPM1G -16.0291,Galaxy,Hya,,"eeF, S, R, gbM",9,41.2,-,16,39
+3000,,Double Star,UMa,,"vF, S, iR, r",9,49.1,+,44,8
+3004,,Double Star,UMa,,"eF, suspected",9,49.2,+,44,7
+3028,ESO 566-16,Galaxy,Hya,,"F, S, R, lbM",9,49.9,-,19,10
+3029,MCG 1-25-47,Galaxy,Sex,,"pF, pS, R",9,48.7,-,8,3
+3031,M 81,Galaxy,UMa,6.9,"Size: 25.7  ! eB, eL, E 156deg , gsvmbMB",9,55.6,+,69,4
+3034,M 82,Galaxy,UMa,8.4,"Size: 11.2  vB, vL, vmE (ray); = M82",9,55.8,+,69,41
+3046,,Star,Ant,,"pF, R, sp of 2",9,53.3,-,27,19
+3063,,Double Star,UMa,,"F, pS, R",10,1.6,+,72,8
+3103,NGC 3100,Galaxy,Ant,,"eF, pL, R; = 3100",10,0.7,-,31,40
+3112,ESO 567-11,Galaxy,Hya,,"eF, eS, R; neb?",10,4,-,20,46
+3115,MCG 1-26-18,Galaxy,Sex,9.2,"Size: 8.3  vB, L, vmE 46deg , vgsmbMEN",10,5.2,-,7,43
+3120,ESO 374-29,Galaxy,Ant,,"F, pS, R, gbM",10,5.4,-,34,13
+3122,NGC 3110,Galaxy,Sex,,"F, S, lE, er",10,6.5,-,6,32
+3132,PK 272+12.1,Planetary Nebula,Vel,8,"Size: 0.8  !! PN , vB, vL, lE *9 M, 4s  ",10,7,-,40,26
+3133,,Galaxy,Hya,,"eF, vS, R",10,7.2,-,11,57
+3137,ESO 435-47,Galaxy,Ant,,"Size: 6.8  vF, S, lE",10,9.2,-,29,4
+3152,MCG 7-21-18A,Galaxy,LMi,,"Size: 1.0  eF, vS, iR, eF* close sp",10,13.6,+,38,50
+3157,IC 2555,Galaxy,Ant,,"vF, pS, E, *8-9 sp",10,11.8,-,31,38
+3161,MCG 7-21-22,Galaxy,LMi,,"Size: 1.0  vF, vS",10,14,+,38,39
+3171,ESO 567-31,Galaxy,Hya,,"eF, S, R, gbM",10,15.6,-,20,39
+3195,PK 296-20.1,Planetary Nebula,Cha,,"Size: 0.6  ! PN , pB, S, lE, 13s  d, 3 S",10,9.5,-,80,52
+3201,Dunlop 445,Globular Cluster,Vel,6.8,"Size: 18.2  glob. cl. , vL, iR, lCM, st ",10,17.6,-,46,25
+3210,,Galaxy,Dra,,"stellar, 1st of 3 in line, 1' apart",10,27.2,+,79,51
+3224,ESO 375-13,Galaxy,Ant,,"vF, pS, R, vgmbM",10,21.6,-,34,42
+3229,,Double Star,Sex,,F,10,23.4,+,0,4
+3234,NGC 3235,,Leo,,"pB, pS, R, psbM",10,24.9,+,27,1
+3242,PK 261+32.1,Planetary Nebula,Hya,9,"Size: 20.8  ! PN , vB, lE 147deg , 45"" d",10,24.8,-,18,38
+3244,ESO 317-24,Galaxy,Ant,,"Size: 1.9  vF, *11 n 90""",10,25.5,-,39,50
+3249,ESO 375-24,Galaxy,Ant,,"eF, pL, R, vgvlbM",10,26.3,-,34,58
+3257,ESO 375-36,Galaxy,Ant,,"Size: 1.1  vF, vS, R, psbM, 1st of 4",10,28.8,-,35,40
+3260,ESO 375-40,Galaxy,Ant,,"Size: 1.3  vvF, vS, R, pslbM, 3rd of 4",10,29.1,-,35,36
+3262,ESO 263-42,Galaxy,Vel,,"Size: 1.2  eF, S, R",10,29.2,-,44,10
+3263,ESO 263-43,Galaxy,Vel,,"Size: 3.6  F, S, mE 280deg , psbM",10,29.3,-,44,8
+3272,,Galaxy,LMi,,"F, vS, iR, 3277 nf",10,32.2,+,28,27
+3276,ESO 317-40,Galaxy,Ant,,"F, S, *8 p",10,31.1,-,39,57
+3278,ESO 317-43,Galaxy,Ant,,"F, S, R, D* nf",10,31.6,-,39,57
+3284,NGC 3286,Star,UMa,,"eF, vS",10,36,+,58,32
+3289,ESO 375-65,Galaxy,Ant,,"Size: 2.2  eF, vS, R",10,34.2,-,35,20
+3295,NGC 3280,Galaxy,Hya,,"eF, pL, bM, D or st inv; = 3280",10,32.7,-,12,38
+3296,IC 618,Galaxy,Hya,,"eF, pS, R, bM",10,32.7,-,12,43
+3315,ESO 501-G048,,Hya,,"vF, pL, iR, gvlbM, * 1' np; = 3314",10,37.3,-,27,46
+3321,NGC 3322,Galaxy,Hya,,"Size: 2.7  eF, pS, mE 160deg , * np end",10,38.8,-,11,39
+3322,NGC 3321,,Hya,,"F, iF, * p; = 3321",10,38.8,-,11,39
+3328,,,Leo,,"vS Cl, not nebs",10,39.7,+,9,13
+3333,ESO 376-2,Galaxy,Ant,,"eF, vS, mE, *15 att",10,39.9,-,36,3
+3339,NGC 3340,Star,Sex,,"eF, stellar",10,42.2,-,0,22
+3342,NGC 3332,Star,Leo,,"eF, eS",10,42.7,+,9,26
+3345,,Double Star,Leo,,eeF (if anything),10,43.6,+,11,59
+3351,M 95,Galaxy,Leo,9.7,"Size: 7.4  B, L, R, pgmbMN; = M95",10,44,+,11,42
+3360,MCG 2-28-3,,Sex,,"vF, R, pair with 3361",10,44.3,-,11,36
+3361,MCG 2-28-4,,Sex,,"mE 160deg , brighter than 3360",10,44.4,-,11,37
+3366,IC 2592,Galaxy,Vel,,"F, E, gbM, *6-7 vnr",10,35.2,-,43,41
+3368,M 96,Galaxy,Leo,9.2,"Size: 7.1  vB, vL, lE, vsvmbM, r; = M96",10,46.8,+,11,49
+3371,NGC 3384,Star,Leo,,"eF, R, 2nd of 3",10,47,+,13,48
+3372,Dunlop 309,Nebula,Car,,"Size: 120.  ! great neb, eta Car",10,43.8,-,59,52
+3373,NGC 3389,Star,Leo,,"F, R, 3rd of 3",10,47.2,+,13,40
+3378,ESO 318-12,Galaxy,Ant,,"cF, S, R, glbM",10,46.6,-,40,1
+3379,M 105,Galaxy,Leo,9.3,"Size: 4.5  vB, cL, R, psbM, r; = M105",10,47.8,+,12,35
+3398,IC 644,Galaxy,UMa,,"Size: 1.3  vF, S, E, er",10,51.5,+,55,23
+3402,NGC 3411,Galaxy,Hya,,"F, R",10,50,-,12,40
+3429,NGC 3428,Galaxy,Leo,,"pF, R",10,50.9,+,9,15
+3436,MCG 1-28-16,Galaxy,Leo,,eS,10,42.4,+,7,56
+3444,UGC 6004,Galaxy,Leo,,"Size: 1.2  eF, vS, pmE",10,53,+,10,13
+3446,ESO 264-SC45,Open Cluster,Vel,,"Cl, pL, P, lC, iF, st 9...13",10,52.1,-,45,9
+3453,ESO 569-17,Galaxy,Hya,,"F, S, R, bM",10,53.7,-,21,47
+3460,NGC 3457,,Leo,,"pB, R, no * nr; = 3457",10,54.8,+,17,36
+3461,,Galaxy,Leo,,F neb 5' nf 3460,10,54.9,+,17,39
+3498,,Triple Star,Leo,,"eF, pL",11,1.9,+,14,23
+3518,NGC 3110,Galaxy,Leo,,"eF, eS, lE",11,4.3,-,6,28
+3520,ESO 570-4,Asterism,Crt,,"eF, vS, iR, gbM, sev vF st inv",11,5.5,-,17,56
+3528,NGC 3497,Galaxy,Crt,,"Size: 3.0  F, S, R, pslbM, p of 2",11,7.3,-,19,28
+3529,IC 2625,Galaxy,Crt,,"Size: 1.5  eF, S, R, vlbM, f of 2",11,7.3,-,19,33
+3531,NGC 3526,,Leo,,"E 50deg , *11 at sp end; = 3526",11,6.9,+,7,10
+3532,OCL 839,Open Cluster,Car,3,"Size: 55.  !!, Cl, eL, R, lC, st 8...12",11,6.4,-,58,40
+3533,NGC 3557A,Galaxy,Cen,,"Size: 2.6  eeF, vS* att",11,7.2,-,37,10
+3544,NGC 3571,Galaxy,Crt,,"vF, L, mE 95deg , bM; = 3571",11,11.5,-,18,17
+3556,M 108,Galaxy,UMa,10.1,"Size: 8.3  cB, vL, vmE 79deg , pbM, r; =",11,11.5,+,55,40
+3560,NGC 3559,Star,Leo,,"F, S, R, gbM",11,10.7,+,11,11
+3568,ESO 377-20,Galaxy,Cen,,"Size: 2.4  vF, pL, R, * inv, 3 B st nr, ",11,10.8,-,37,27
+3573,ESO 377-22,Galaxy,Cen,,"eF, S, R, glbM, 3 st 11 f",11,11.3,-,36,51
+3574,MCG 5-27-22,Galaxy,Leo,,Size: 0.5  eF,11,12.2,+,27,37
+3587,M 97,Planetary Nebula,UMa,11.2,"Size: 3.2  !!, PN , vB, vL, R, vvg, vsbM",11,14.8,+,55,1
+3606,ESO 377-32,Galaxy,Hya,,"eF, S, R, gbM",11,16.2,-,33,49
+3623,M 65,Galaxy,Leo,9.3,"Size: 10.0  B, vL, mE 165deg +/- , gbMBN",11,18.9,+,13,5
+3626,NGC 3632,Galaxy,Leo,10.9,"Size: 3.1  B, S, vlE, sbM",11,20.1,+,18,21
+3627,M 66,Galaxy,Leo,9,"Size: 8.7  B, vL, mE 150deg , mbM, 2 st ",11,20.2,+,12,59
+3696,NGC 3704?,Galaxy,Crt,,"eF, eS, R, bMN",11,28.8,-,11,15
+3727,NPM1G -13.0331,Galaxy,Crt,,"eF, eS, R, gbMN, *11 sf 1'",11,33.7,-,13,52
+3730,MCG 1-30-3,Galaxy,Crt,,"eF, S, lE 140deg , glbnM",11,34.7,-,9,37
+3742,ESO 320-6,Galaxy,Cen,,"pF, pL, vlE, glbM",11,35.4,-,37,56
+3745,MCG 4-28-4,Galaxy,Leo,,"Size: 0.4  pB, pS, R",11,37.7,+,22,1
+3748,MCG 4-28-7,Galaxy,Leo,,"Size: 0.8  pB, pS, R",11,37.8,+,22,2
+3749,ESO 320-8,Galaxy,Cen,,"F, cS, lE, gvlbM",11,35.8,-,37,59
+3750,MCG 4-28-8,Galaxy,Leo,,"Size: 0.9  pB, R, cbM, 1st of 3 in line",11,37.9,+,21,58
+3752,UGC 6515,,Dra,,"pB, pL",11,37.6,+,75,17
+3754,MCG 4-28-11,Galaxy,Leo,,"Size: 0.4  vF, R, 3rd of 3 in line",11,37.9,+,21,59
+3760,NGC 3301,,Leo,,"B, pS, mbMN = *13, *11 p 4s , s 175""; = ",10,36.9,+,21,53
+3766,OCL 860,Open Cluster,Cen,5.3,"Size: 12.  Cl, pL, pRi, pC, st 8...13",11,36.1,-,61,37
+3771,,Galaxy,Crt,,"vF, eS, R, *10 p 15s",11,38.4,-,9,20
+3776,ZWG 12. 45,Galaxy,Vir,,"eF, vS",11,38.3,-,3,20
+3779,IC 717,,Crt,,eeF,11,38.9,-,10,37
+3803,,Galaxy,Leo,,"vF, S, R",11,40.3,+,17,49
+3834,MCG 3-30-65,Galaxy,Leo,,"Size: 1.9  vF, vS, slbMN *13",11,43.6,+,19,5
+3847,NGC 3856,,UMa,,"F, S, R, psbM",11,44.2,+,33,21
+3855,IC 2953,,UMa,,"eF, vS",11,44.3,+,33,20
+3856,NGC 3847,,UMa,,"vF, R, bM",11,44.4,+,33,20
+3874,,Double Star,Vir,,"vF, vS, suspected",11,45.8,+,8,33
+3903,ESO 378-24,Galaxy,Cen,,"pB, cS, vlE, lbM",11,49.1,-,37,30
+3905,MCG 1-30-35,Galaxy,Crt,,"Size: 1.8  vF, L, dif",11,49.1,-,9,44
+3908,NPM1G +12.0292,Galaxy,Leo,,"F, vS, R, mbM",11,49.9,+,12,11
+3918,PK 294+4.1,Planetary Nebula,Cen,8,"Size: 0.2  PN , !, S, R, blue, = *7, d =",11,50.3,-,57,11
+3992,M 109,Galaxy,UMa,9.8,"Size: 7.6  cB, vL, pmE, sbMBrN; = M109",11,57.6,+,53,23
+4007,NGC 4005,,Leo,,"eF, vS; = 4005",11,58.2,+,25,8
+4009,,Galaxy,Leo,,"vF, eS",11,58.4,+,25,13
+4034,UGC 7006,Galaxy,Dra,,"eF, S, iF, gvlbM",12,1.5,+,69,19
+4035,MCG 3-31-10,Galaxy,Crv,,"Size: 1.4  eF, pL, *9 45deg +/-",12,0.5,-,15,57
+4038,ESO 572-47,Galaxy,Crv,10.7,"Size: 2.6  pB, cL, R, vgbM",12,1.9,-,18,52
+4039,ESO 572-48,Galaxy,Crv,13,"Size: 3.2  pF, pL",12,1.9,-,18,53
+4056,,Galaxy,Com,,"eF, vS",12,4,+,20,19
+4057,NGC 4065,Galaxy,Com,,pB (decl very doubtful),12,5.3,+,20,19
+4069,,Galaxy,Com,,"vF, vS",12,4.2,+,20,20
+4107,NGC 4078,,Vir,,"pB, S, lE, *10-11 np",12,6.7,+,10,36
+4112,ESO 321-6,Galaxy,Cen,,"F, S, vlE, glbM, 3 B st nr",12,7.1,-,40,11
+4154,NGC 4149,Star,UMa,,"vF, S, E 90deg +/-",12,10.7,+,58,21
+4176,,Galaxy,Vir,,"eF, vS, R, slbM, *10",12,12.7,-,9,8
+4192,M 98,Galaxy,Com,10.1,"Size: 9.5  B, vL, vmE 152deg , vsvmbM; =",12,13.8,+,14,54
+4208,NGC 4212,,Com,,nonexistent,12,15.4,+,13,54
+4236,UGC 7306,Galaxy,Dra,9.7,"Size: 18.6  vF, eL, mE 160deg +/- , vgbM",12,16.7,+,69,28
+4244,UGC 7322,Galaxy,CVn,10.2,"Size: 16.2  pB, vL, eE 43deg , vgbM",12,17.5,+,37,49
+4254,M 99,Galaxy,Com,9.8,"Size: 5.4  !! B, L, R, gbM, r, 3-branche",12,18.8,+,14,25
+4258,M 106,Galaxy,CVn,8.3,"Size: 18.2  vB, vL, vmE 0deg , sbMBN; = ",12,19,+,47,18
+4295,MCG 5-29-68,Galaxy,Com,,"vF, S",12,21.2,+,28,9
+4303,M 61,Galaxy,Vir,9.7,"Size: 6.0  vB, vL, vsbM*, biN; = M61",12,21.9,+,4,28
+4317,,Star,Com,,"F, S",12,22.6,+,31,3
+4321,M 100,Galaxy,Com,9.4,"Size: 6.9  !! pF, vL, R, vg, psbMrN, 2-b",12,22.9,+,15,49
+4345,,Star,Dra,,"F, pL, gbM",12,22.7,+,75,20
+4372,GCL 19,Globular Cluster,Mus,7.8,"Size: 18.6  glob. cl. , pF, L, R, st 12.",12,25.8,-,72,40
+4374,M 84,Galaxy,Vir,9.3,"Size: 5.0  vB, pL, R, psbM, r; = M84",12,25.1,+,12,53
+4382,M 85,Galaxy,Com,9.2,"Size: 7.1  vB, pL, R, bM, * np; = M85",12,25.4,+,18,11
+4397,,Triple Star,Com,,"vF, S, 4394 sp",12,26,+,18,19
+4398,,Star,Vir,,"F, pS, 4390 p 14s , 14' s",12,26.1,+,10,42
+4406,M 86,Galaxy,Vir,9.2,"Size: 7.4  vB, L, R, gbMN, r; = M86",12,26.2,+,12,57
+4426,,Double Star,Com,,"Cl, F, S",12,27.2,+,27,51
+4427,,Double Star,Com,,vF; 2 or 3 F st in neb?,12,27.2,+,27,51
+4437,NGC 4517,,Vir,,"F, eE 75deg , *10 nf, place that of *; =",12,32.8,+,0,7
+4443,,Star,Vir,,"F, S",12,28.1,+,13,8
+4444,ESO 268-10,Galaxy,Cen,,"Size: 1.6  eF, L, R, vgbM",12,28.6,-,43,16
+4449,UGC 7592,Galaxy,CVn,9.4,"Size: 5.1  vB, cL, mE, D or bifid, rrr, ",12,28.2,+,44,6
+4453,MCG 1-32-73,Galaxy,Vir,,"Size: 0.6  F, pS, bM, r",12,28.7,+,6,30
+4472,M 49,Galaxy,Vir,8.4,"Size: 8.9  vB, L, R, mbM, r; = M49",12,29.8,+,8,0
+4486,M 87,Galaxy,Vir,8.6,"Size: 7.2  vB, vL, R, mbM, 3rd of 3; = M",12,30.8,+,12,24
+4499,ESO 322-22,Galaxy,Cen,,"vF, L, R, vglbM",12,32.1,-,39,58
+4501,M 88,Galaxy,Com,9.5,"Size: 6.9  B, vL, vmE; = M88",12,32,+,14,25
+4520,IC 799,Galaxy,Vir,,"vF, S, 2 vS st inv",12,33.8,-,7,23
+4548,M 91,Galaxy,Com,10.2,"Size: 5.4  B, L, lE, lbM; = M91",12,35.4,+,14,30
+4552,M 89,Galaxy,Vir,9.8,"Size: 4.2  pB, pS, R, gmbM; = M89",12,35.7,+,12,33
+4553,ESO 322-30,Galaxy,Cen,,"Size: 2.1  F, vlE, glbM",12,36.1,-,39,27
+4559,UGC 7766,Galaxy,Com,9.9,"Size: 10.5  vB, vL, mE 150deg , gbM, 3 s",12,36,+,27,58
+4565,UGC 7772,Galaxy,Com,9.6,"Size: 16.2  B, eL, eE 135deg , vsbMN = *",12,36.3,+,25,59
+4569,M 90,Galaxy,Vir,9.5,"Size: 9.5  pL, bMN; = M90",12,36.8,+,13,10
+4573,ESO 268-26,Galaxy,Cen,,"vF, S, *10 n 30""",12,37.7,-,43,37
+4574,ESO 380-49,Galaxy,Cen,,"vF, L, lE, vglbM",12,37.7,-,35,30
+4579,M 58,Galaxy,Vir,9.8,"Size: 5.4  B, L, iR, vmbM, r; = M58",12,37.7,+,11,49
+4582,,Star,Vir,,*12 in F neb,12,38.2,+,0,11
+4590,M 68,Globular Cluster,Hya,8.2,"Size: 12.0  glob. cl. , L, eRi, vC, iR, ",12,39.5,-,26,45
+4594,M 104,Galaxy,Vir,8.3,"Size: 8.9  !, vB, vL, eE 92deg , vsmbMN;",12,40,-,11,37
+4601,ESO 322-50,Galaxy,Cen,,"Size: 2.2  eF, L, R, pslbM, p of 2",12,40.8,-,40,54
+4609,OCL 890,Open Cluster,Cru,6.9,"Size: 5.  Cl, pL, pC, cE, st 10",12,42.3,-,62,58
+4616,ESO 322-56,Galaxy,Cen,,"Size: 1.6  eF, vS, R, * att nf, p of 2",12,42.3,-,40,39
+4621,M 59,Galaxy,Vir,9.8,"Size: 5.1  B, pL, lE, vsvmbM, 2 st p; = ",12,42,+,11,39
+4622,ESO 322-57,Galaxy,Cen,,"Size: 2.1  pF, S, R, pslbM, f of 2",12,42.6,-,40,45
+4629,UGC 7869,Double Star,Vir,,"pB, pL, E, lbM; biN?",12,42.6,-,1,21
+4631,UGC 7865,Galaxy,CVn,9.3,"Size: 15.1  !, vB, vL, eE 70deg +/- , bM",12,42.1,+,32,32
+4649,M 60,Galaxy,Vir,8.8,"Size: 7.2  vB, pL, R, f of Dneb; = M60",12,43.7,+,11,33
+4650,ESO 322-67,Galaxy,Cen,,"vF, R, bM, r",12,44.3,-,40,44
+4657,,Galaxy,CVn,,"Size: 1.2  !, pF, L, E 90deg +/- , nf of",12,44.2,+,32,12
+4661,NGC 4650B,Galaxy,Cen,,"Size: 1.1  F, pL, R, gbM",12,45.2,-,40,49
+4664,NGC 4624,,Vir,,"pB, 2 S st in M, S* p; = 4665",12,45.1,+,3,3
+4672,ESO 322-73,Galaxy,Cen,,"Size: 1.9  eF, S, R, vgbM",12,46.3,-,41,43
+4681,ESO 268-40,Galaxy,Cen,,"pF, S, R, gbM",12,47.5,-,43,20
+4697,MCG 1-33-10,Galaxy,Vir,9.3,"Size: 6.0  vB, L, lE 45deg +/- , smbMN",12,48.6,-,5,48
+4709,ESO 323-3,Galaxy,Cen,,"Size: 2.7  pB, cS, R, gbM",12,50.1,-,41,23
+4728,NGC 4728A,Galaxy,Com,,"Size: 1.1  eF, eS",12,50.5,+,27,26
+4729,ESO 323-16,Galaxy,Cen,,"Size: 1.3  neb, 1st of 3, p & a little s",12,51.8,-,41,8
+4730,ESO 323-17,Galaxy,Cen,,Size: 1.2  2nd of 3,12,52,-,41,9
+4736,M 94,Galaxy,CVn,8.2,"Size: 11.0  vB, L, iR, vsvmbMBN, r; = M9",12,50.9,+,41,7
+4740,IC 3864,Galaxy,Crv,,"pF, pS, R, mbM; = 4726",12,51.5,-,14,13
+4743,ESO 323-21,Galaxy,Cen,,"F, R, gbM",12,52.3,-,41,24
+4744,ESO 323-22,Galaxy,Cen,,"F, L, E, gbM, 3rd of 3",12,52.4,-,41,4
+4745,,Galaxy,Com,,"Size: 0.7  eF, *6 n",12,51.3,+,27,26
+4748,MCG 2-33-34,Galaxy,Crv,,"F, vS, iR, gbM",12,52.2,-,13,24
+4751,ESO 323-29,Galaxy,Cen,,"B, pS, R, vg, vsmbM",12,52.9,-,42,40
+4752,,Star,Com,,"vF, S, E, r",12,52.3,+,13,29
+4755,OCL 892,Open Cluster,Cru,4.2,"Size: 10.  Cl, vL, st vB (kappa Cru)",12,53.6,-,60,20
+4768,,Star,Vir,,"vF, vS, p 4770 on parallel",12,53.3,-,9,32
+4769,,Double Star,Vir,,"vF, vS, p 4770 on parallel",12,53.3,-,9,32
+4792,NPM1G -12.0432,Galaxy,Crv,,"Size: 1.1  vS, R, 7' nnp of 4794",12,55.1,-,12,30
+4805,,Galaxy,Com,,vF,12,55.4,+,27,57
+4811,ESO 323-47,Galaxy,Cen,,"eF, cS, R, gbM, p of 2",12,56.9,-,41,48
+4812,ESO 323-48,Galaxy,Cen,,"eF, S, R, gbM, f of 2",12,56.9,-,41,49
+4823,,,Vir,,"vS, sp of 4825",12,57.4,-,13,44
+4824,,Galaxy,Com,,"vF, vS",12,56.6,+,27,31
+4826,M 64,Galaxy,Com,8.5,"Size: 9.3  ! vB, vL, vmE 120deg +/- , bM",12,56.7,+,21,41
+4829,NPM1G -13.0404,Galaxy,Vir,,"vS, sf 4825",12,57.3,-,13,44
+4832,ESO 323-51,Galaxy,Cen,,"pF, vS, R, sbM *17, *10 70deg",12,57.8,-,39,44
+4833,Lac I-4,Globular Cluster,Mus,7.4,"Size: 13.5  glob. cl. , B, L, R, g, vsbM",12,59.6,-,70,53
+4844,,Star,Vir,,"F, S",12,58.1,-,13,4
+4847,,Galaxy,Vir,,"F, S neb*, *9 p 40s  on parallel",12,58.5,-,13,8
+4870,,Galaxy,CVn,,"pF, lE, bet 2 st",12,59.3,+,37,0
+4882,NGC 4886,,Com,,"vF, S, others near",13,0,+,27,59
+4889,NGC 4884,Galaxy,Com,11.4,"Size: 3.0  pB, pmE, bM, *7 n",13,0.1,+,27,58
+4891,,Star,Vir,,F neb*,13,0.8,-,13,26
+4909,ESO 269-35,Galaxy,Cen,,"eF, 3 or 4 st 11-12 f",13,2,-,42,46
+4916,,Galaxy,CVn,,"neb, nf 4914 (?)",13,0.7,+,37,22
+4918,,Galaxy,Vir,,"eF, eS, R, bMN, 4915 sp 4'",13,1.8,-,4,30
+4930,ESO 323-74,Galaxy,Cen,,"Size: 3.6  vF, R, triangle 2 st 8, 9, f",13,4.1,-,41,25
+4945,Dunlop 411,Galaxy,Cen,9,"Size: 20.0  B, vL, vmE 39deg",13,5.4,-,49,28
+4946,ESO 269-45,Galaxy,Cen,,"B, pS, R, gpmbM, p of 2",13,5.4,-,43,36
+4949,,Galaxy,Com,,"eF, S",13,4.2,+,29,2
+4950,ESO 269-47,Galaxy,Cen,,"eF, S, R, pslbM, f of 2",13,5.5,-,43,31
+4953,ESO 382-8,Galaxy,Cen,,"vF, pS, am 3 S st",13,6.1,-,37,34
+4960,NGC 4961,Galaxy,Com,,"F, S, R, N = *16",13,5.8,+,27,33
+4973,IC 847,,UMa,,"vF, S",13,5.5,+,53,41
+4975,MCG 1-34-2,Galaxy,Vir,,"Size: 0.5  vF, vS, R, psbM",13,8,-,5,1
+4982,,Asterism,Vir,,"vF, S",13,8.8,-,10,35
+4988,ESO 269-55,Galaxy,Cen,,"vF, S, E, r",13,9.8,-,43,6
+4994,NGC 4993,Galaxy,Hya,,"pF, cS, R, slbM, am st; = 4993",13,9.8,-,23,23
+5005,UGC 8256,Galaxy,CVn,9.8,"Size: 5.4  vB, vL, vmE 66deg , vsbMN",13,10.9,+,37,3
+5024,M 53,Globular Cluster,Com,7.7,"Size: 12.6  !, glob. cl. , B, vC, iR, vv",13,12.9,+,18,10
+5036,NPM1G -03.0451,Galaxy,Vir,,"eF, vS, R, gbM, 1st of 2",13,14.7,-,4,11
+5039,,Galaxy,Vir,,"eF, eS, E 45deg , 2nd of 2",13,14.9,-,4,10
+5051,ESO 444-1,Galaxy,Hya,,"Size: 1.4  neb, nf of 2",13,16.3,-,28,17
+5055,M 63,Galaxy,CVn,8.6,"Size: 12.3  vB, L, pmE 120deg +/- , vsmb",13,15.8,+,42,2
+5062,ESO 382-35,Galaxy,Cen,,"eF, vS, E, r",13,18.4,-,35,26
+5063,ESO 382-36,Galaxy,Cen,,"eF, vS, R, * nr",13,18.4,-,35,20
+5067,,Double Star,Vir,,"vF, vS",13,18.4,-,10,8
+5082,ESO 269-89,Galaxy,Cen,,"Size: 3.1  vF, S, R, 1st of 4",13,20.9,-,43,42
+5086,,Galaxy,Cen,,"eF, vS, R, 2nd of 4",13,21.2,-,43,46
+5091,ESO 270-4,Galaxy,Cen,,"Size: 2.2  cF, S, vlE, 4th of 4",13,21.2,-,43,44
+5097,2SZ 37,Galaxy,Vir,,"eF, eS, R, stell, nearly bet 2 st",13,20.9,-,12,29
+5099,NPM1G -12.0449,Galaxy,Vir,,"eF, eS, R",13,21.3,-,13,4
+5106,NGC 5100-1,Star,Vir,,"vF, vS; decl very doubtful",13,21.7,+,8,29
+5110,NGC 5111,Galaxy,Vir,,"eF, pS, R, in line with 2 pB st",13,22.5,-,13,5
+5128,Dunlop 482,Galaxy,Cen,7,"Size: 18.2  !!, vB, vL, vmE 122deg , bif",13,25.5,-,43,1
+5139,Omega Centauri,Globular Cluster,Cen,3.7,"Size: 36.3  !!!, glob. cl. , omega Cen",13,26.8,-,47,29
+5148,MCG 1-34-21,Galaxy,Vir,,"Size: 1.1  eF, S",13,26.6,+,2,19
+5160,,Double Star,Vir,,pF (vF D* with F* close?),13,28.3,+,5,59
+5194,M 51,Galaxy,CVn,8.4,"Size: 11.0  !!!, great spiral neb M51",13,29.9,+,47,12
+5200,,Double Star,Vir,,*12 in F neb,13,31.7,-,0,2
+5219,NGC 5244,Galaxy,Cen,,"vF, S, R, * n, nr; = 5244",13,38.7,-,45,51
+5220,ESO 383-36,Galaxy,Cen,,"vF, S, R, *10 f",13,35.9,-,33,28
+5226,,Galaxy,Vir,,"eF, pS, 5221 sp",13,35,+,13,54
+5236,M 83,Galaxy,Hya,7.6,"Size: 11.2  !! vB, vL, E 55deg , esbMN, ",13,37,-,29,52
+5237,ESO 270-22,Galaxy,Cen,,"F, pL, cE, vglbM",13,37.6,-,42,52
+5244,NGC 5219,Galaxy,Cen,,"vF, S, R, vglbM, *13 att",13,38.6,-,45,53
+5245,ZWG 45. 48,Galaxy,Vir,,"vF, vS",13,37.5,+,3,53
+5248,UGC 8616,Galaxy,Boo,10.2,"Size: 6.5  B, L, E 150deg , psbMrN",13,37.5,+,8,53
+5268,,?,Vir,,a nebula,13,42.1,-,13,52
+5272,M 3,Globular Cluster,CVn,6.4,"Size: 16.2  !!, glob. cl. , eB, vL, vsmb",13,42.2,+,28,23
+5286,Dunlop 388,Globular Cluster,Cen,7.6,"Size: 9.1  glob. cl. , vB, pL, R, rrr, s",13,46.4,-,51,22
+5291,ESO 445-30,Galaxy,Cen,,"Size: 1.4  vF, R, vlbM, **  p",13,47.4,-,30,25
+5310,,Star,Vir,,*12 in F neb,13,49.8,+,0,4
+5367,ESO 325-N*36,Nebula,Cen,,"Size: 4.  !, vB, vL, vl, vsmbM **",13,57.7,-,39,59
+5369,,Galaxy,Vir,,"vF, vS, R",13,56.8,-,5,29
+5397,ESO 384-31,Galaxy,Cen,,"vF, S, R, gbM",14,1.2,-,33,57
+5404,,Double Star,Vir,,*12 in neb,14,1.1,+,0,5
+5408,PK 317+19.1,Planetary Nebula,Cen,,"eF, E bet 2 vS st",14,3.3,-,41,23
+5428,,Star,Vir,,1st of 2 nr 5427,14,3.4,-,6,2
+5429,,Star,Vir,,"2nd of 2, in line with 5426-7",14,3.4,-,6,2
+5432,,Star,Vir,,vF,14,3.6,-,5,57
+5435,,Star,Vir,,"vF, *10-11 close f",14,3.8,-,5,54
+5446,NGC 5438,Galaxy,Boo,,"eF, eS",14,5.1,+,9,37
+5447,,Nebulosity in External Galaxy,UMa,,"pB, S, R, gmbM, conn with M101",14,2.5,+,54,17
+5449,,Nebulosity in External Galaxy,UMa,,"vF, pL, gvlbM, conn with M101",14,2.5,+,54,19
+5450,,Nebulosity in External Galaxy,UMa,,"F, pS, iR, glbM, conn with M101",14,2.5,+,54,14
+5451,,Nebulosity in External Galaxy,UMa,,"vF, pL, iR, vlbM, conn with M101",14,2.7,+,54,22
+5453,,Nebulosity in External Galaxy,UMa,,"F, pL, lE, vlbM, conn w M101",14,3,+,54,18
+5455,,Nebulosity in External Galaxy,UMa,,"pB, pS, R, psbM, conn w M101",14,3,+,54,12
+5457,M 101,Galaxy,UMa,7.7,"Size: 26.9  pB, vL, iR, g, vsmbMBSN; = M",14,3.2,+,54,21
+5459,UGC 9005,,Boo,,"F, S, lE, pB* sp",14,5.3,+,13,8
+5461,,Nebulosity in External Galaxy,UMa,,"B, pS, R, psbM, conn with M101",14,3.7,+,54,19
+5462,,Nebulosity in External Galaxy,UMa,,"pB, pL, iR, gbM, conn with M101",14,3.9,+,54,22
+5467,IC 973,Star,Vir,,"eF, vS, sp 5468",14,6.5,-,5,29
+5471,MCG 9-23-30,Nebulosity in External Galaxy,UMa,,"F, S, R, *12-13 p",14,4.6,+,54,24
+5488,IC 4375,Galaxy,Cen,,"F, R, *8 s nr; = IC 4375",14,8,-,33,18
+5509,MCG 4-34-3,Galaxy,Boo,,"vF, S, R, stellar Nucl",14,12.3,+,24,39
+5519,NGC 5570,,Boo,,"vF, pL, *10 p",14,14.4,+,7,26
+5570,NGC 5519,Galaxy,Boo,,"F, S, iR",14,19.4,+,7,26
+5588,NGC 5589,Double Star,Boo,,"vF, R, gbM",14,21.5,+,35,7
+5609,,Galaxy,Boo,,eeF,14,23.9,+,34,50
+5632,,Galaxy,Vir,,"neb, *11 f 150s",14,28.3,-,0,12
+5655,UGC 9333,Galaxy,Boo,,"eeF, sf of 2",14,31,+,13,59
+5664,IC 4455,,Lib,,"pF, S, E, gbM",14,33.7,-,14,35
+5670,ESO 272-19,Galaxy,Lup,,"Size: 2.0  vF, S, cE, bet 2 st",14,35.7,-,45,57
+5671,UGC 9297,,UMi,,"vF, pL, R, bM",14,27.7,+,69,38
+5688,ESO 272-22,Galaxy,Lup,,"Size: 3.9  F, S, vgbM, am st",14,39.5,-,45,2
+5694,GCL 29,Globular Cluster,Hya,10.2,"Size: 3.6  cB, cS, R, psbM, r, *9.5 sp",14,39.6,-,26,32
+5726,ESO 580-G012,,Lib,,"F, S, R, gbM, *10.5 np 3'",14,42.9,-,18,26
+5730,UGC 9456,,Boo,,"vF, cS, E 90deg +/-",14,40.3,+,42,45
+5744,ESO 580-23,Galaxy,Lib,,"eF, vS, neb?",14,43.9,-,18,29
+5782,UGC 9602,,Boo,,"eF, vS, E, * nr sf",14,55.9,+,11,53
+5786,ESO 327-37,Galaxy,Cen,,"F, mE, B* sf",14,59,-,42,1
+5801,NPM1G -13.0467,Galaxy,Lib,,"vF, vS, sbM, 1st of 3",15,0.4,-,13,54
+5802,NPM1G -13.0469,Galaxy,Lib,,"vF, vS, sbM, 2nd and brightest",15,0.5,-,13,55
+5803,NPM1G -13.0470,,Lib,,"vF, vS, sbM, 3rd of 3",15,1,-,13,54
+5804,UGC 9627,Galaxy,Boo,,"vF, vS, vsmbM, *6 nr",14,55.7,+,49,39
+5805,,Galaxy,Boo,,S,14,55.9,+,49,43
+5808,NGC 5819,,UMi,,"vF, S, iR, bet 2 st",14,53.8,+,73,1
+5823,OCL 936,Open Cluster,Cir,7.9,"Size: 10.  Cl, cL, Ri, lCM, st 13...14",15,5.7,-,55,36
+5834,NGC 5824,,Lup,,"eeF? B, stellar; = 5824",15,4,-,33,4
+5843,ESO 387-4,Galaxy,Lup,,"Size: 2.0  vF, S, lE, vlbM, r",15,7.5,-,36,20
+5868,NGC 5865,,Vir,,"eF, 5869 s 3'; = 5865",15,9.9,+,0,31
+5871,,Star,Vir,,"eF, forms trapez with 3 neb p",15,10.1,+,0,31
+5877,,Triple Star,Lib,,"vF, S, *12 att n",15,12.8,-,4,56
+5881,IC 1100,,Dra,,"pF, cS, R, vgbM (place?)",15,9.1,+,62,57
+5883,MCG 2-39-14,Galaxy,Lib,,"vF, pS, stellar N",15,15.2,-,14,37
+5884,,,Boo,,"only 2 F st (pos 170deg , dist 7"")",15,13.2,+,31,52
+5901,,Star,Boo,,"close n of 5900, eF, S",15,15.1,+,42,12
+5904,M 5,Globular Cluster,Ser,5.8,"Size: 17.4  !!, glob. cl. , vB, L, eCM, ",15,18.6,+,2,5
+5973,,Galaxy,Lib,,"F, S, iR",15,40.2,-,8,37
+6000,ESO 450-20,Galaxy,Sco,,"Size: 1.9  vF, S, R, sbM",15,49.9,-,29,24
+6025,OCL 939,Open Cluster,TrA,5.1,"Size: 12.  Cl, B, vL, pRi, lC, st 7...",16,3.7,-,60,30
+6026,PK 341+13.1,Planetary Nebula,Lup,,"Size: 0.8  F, S, R, gpmbM, triangle of s",16,1.4,-,34,32
+6039,NGC 6042,Star,Her,,"eeF, vS, R, sp of 3 in line",16,4.4,+,17,42
+6053,NGC 6057,Star,Her,,"eeF, S, R, v diffic; = IC 1180",16,5.4,+,18,8
+6059,,,Oph,,"vF, S, R",16,7.4,-,6,25
+6067,OCL 953,Open Cluster,Nor,5.6,"Size: 13.  Cl, vB, vL, vRi, lC, st 10...",16,13.2,-,54,13
+6079,IC 1200,,Dra,,"vF, vS",16,4.5,+,69,38
+6093,M 80,Globular Cluster,Sco,7.2,"Size: 8.9  !! glob. cl. , vB, L, vmbM (v",16,17,-,22,59
+6101,GCL 40,Globular Cluster,Aps,9.3,"Size: 10.7  glob. cl. , pF, L, iR, vgbM,",16,25.8,-,72,12
+6111,MCG 11-20-7,,Dra,,"vF, pS, lE, D* nr s",16,15.5,+,62,44
+6121,M 4,Globular Cluster,Sco,5.9,"Size: 26.3  Cl, 8 or 10 B st line, with ",16,23.6,-,26,32
+6124,Dunlop 514,Open Cluster,Sco,5.8,"Size: 29.  Cl, B, L, pRi, lCM, st 9...11",16,25.6,-,40,40
+6148,,Galaxy,Her,,"vF, S, with st",16,27.1,+,24,5
+6169,OCL 984,Open Cluster,Nor,7,"Size: 7.  Cl, mu Nor inv",16,34.1,-,44,3
+6171,M 107,Globular Cluster,Oph,8.1,"Size: 10.0  glob. cl. , L, vRi, vmC, R, ",16,32.5,-,13,3
+6193,OCL 975,Open Cluster,Ara,5.2,"Size: 15.  Cl, vL, lRi, lC, rrr, F neb i",16,41.3,-,48,46
+6199,,Star,Her,,eF,16,39,+,36,6
+6205,M 13,Globular Cluster,Her,5.9,"Size: 16.6  !! glob. cl. , eB, vRi, vgeC",16,41.7,+,36,28
+6218,M 12,Globular Cluster,Oph,6.6,"Size: 14.5  !! glob. cl. , vB, vL, iR, g",16,47.2,-,1,57
+6231,Dunlop 520,Cluster Nebulosity,Sco,2.6,"Size: 15.  Cl, B, cL, pRi, st 10...13",16,54,-,41,48
+6237,,Galaxy,Dra,,"eF, S, E",16,46.5,+,70,23
+6242,OCL 1001,Open Cluster,Sco,6.4,"Size: 9.  Cl, B, L, Ri, st 8...11",16,55.6,-,39,30
+6245,,Galaxy,Dra,,"vF, pL, R",16,45.5,+,70,48
+6250,OCL 991,Open Cluster,Ara,5.9,"Size: 8.  Cl, L, lRi, lC, st 8...12",16,58,-,45,48
+6253,OCL 972,Open Cluster,Ara,10,"Size: 5.  Cl, S, triangular, st 13",16,59.1,-,52,43
+6254,M 10,Globular Cluster,Oph,6.6,"Size: 15.1  ! glob. cl. , B, vL, R, gvmb",16,57.1,-,4,6
+6256,Pal 15,Globular Cluster,Sco,,"glob. cl. , vF, vL, iR, vgbM, rrr",16,59.5,-,37,7
+6266,M 62,Globular Cluster,Oph,6.6,"Size: 14.1  ! glob. cl. , vB, L, gmbM, r",17,1.2,-,30,7
+6273,M 19,Globular Cluster,Oph,7.2,"Size: 13.5  glob. cl. , vB, L, R, vCM, r",17,2.6,-,26,16
+6276,IC 1239,Galaxy,Her,,eF,17,0.3,+,23,7
+6281,OCL 1003,Cluster Nebulosity,Sco,5.4,"Size: 60.  Cl, L, pRi, lC, st 9...11",17,4.8,-,37,54
+6298,,,Dra,,"vF, eS, R, bet 2 st, f of 2",17,3.4,+,62,2
+6302,PK 349+1.1,Planetary Nebula,Sco,13,"Size: 0.8  pB, E pf, PN",17,13.7,-,37,6
+6303,UGC 10711,,Dra,,"eF, pL, mE, nearly bet 2 st",17,5.1,+,68,21
+6322,OCL 1000,Open Cluster,Sco,6,"Size: 10.  Cl, vL, pRi, lC (place of * n",17,18.5,-,42,57
+6333,M 9,Globular Cluster,Oph,7.9,"Size: 9.3  glob. cl. , B, L, R, eCM, rrr",17,19.2,-,18,31
+6334,ESO 392-EN9,Nebula,Sco,,"Size: 40.  cF, vL, icE, vglbf, *8 inv",17,20.5,-,35,43
+6337,PK 349-1.1,Planetary Nebula,Sco,,"Size: 0.8  !!! ring , eF, S, am st",17,22.3,-,38,29
+6341,M 92,Globular Cluster,Her,6.5,"Size: 11.2  glob. cl. , vB, vL, eCM, rrr",17,17.1,+,43,8
+6344,,Galaxy,Her,,"F, S, R, *12 nf, nr",17,17.2,+,42,27
+6352,Dunlop 417,Globular Cluster,Ara,8.2,"Size: 7.1  Cl (not neb), pF, L",17,25.5,-,48,25
+6354,ESO 333-**8,Asterism,Sco,,"eF, S",17,24.6,-,38,32
+6357,ESO 392-SC10,Nebula,Sco,,"Size: 50.  F, L, E, vglbM, D* inv",17,24.6,-,34,10
+6380,GCL 68,Globular Cluster,Sco,,"Size: 3.9  eF, pS, lE, *9 att",17,35.4,-,39,4
+6383,NGC 6374,Cluster Nebulosity,Sco,5.5,"Size: 80.  Cl, st 13, *6-7 in M",17,34.8,-,32,34
+6388,GCL 70,Globular Cluster,Sco,6.9,"Size: 8.7  glob. cl. , vB, L, R, pg, psv",17,36.3,-,44,44
+6397,Lac III-11,Globular Cluster,Ara,5.7,"Size: 25.7  glob. cl. , B, vL, Ri, st 13",17,40.7,-,53,40
+6402,M 14,Globular Cluster,Oph,7.6,"Size: 11.7  ! glob. cl. , B, vL, R, eRi,",17,37.6,-,3,15
+6405,M 6,Open Cluster,Sco,4.2,"Size: 15.  Cl, L, iR, lC, st 7, 10...; =",17,40.1,-,32,13
+6410,,Star,Dra,,"eeF, S, R, nearly bet 2 st, sp of 2",17,35.2,+,60,49
+6416,OCL 1031,Open Cluster,Sco,5.7,"Size: 18.  Cl, vL, Ri, lC",17,44.4,-,32,21
+6430,UGC 10966,Asterism,Her,,"vF, S, mE",17,44.6,+,18,9
+6432,ESO 520-**25,,Sgr,,only 4 st 12-13,17,47.4,-,24,53
+6444,Ru 132,Open Cluster,Sco,,"Size: 12.  Cl, vL, vRi, st 12...13",17,49.5,-,34,49
+6465,ESO 521-**2,,Sgr,,only 2 F D st,17,52.9,-,25,24
+6475,M 7,Open Cluster,Sco,3.3,"Size: 80.  Cl, vB, pRi, lC, st 7...12; =",17,53.9,-,34,49
+6477,,Galaxy,Dra,,"eeF, eS, R, v diffic, * nr",17,43.9,+,67,37
+6481,,Double Star,Oph,,"vS, bM",17,52.8,+,4,10
+6493,UGC 11011,Galaxy,Dra,,"Size: 1.4  F, eS, R, PN ?, F* vnr, sf of",17,50.4,+,61,33
+6494,M 23,Open Cluster,Sgr,5.5,"Size: 27.  Cl, B, vL, pRi, lC, st 10...;",17,56.8,-,19,1
+6499,,Double Star,Her,,S D* in neb,17,55.3,+,18,23
+6510,NGC 6511,,Dra,,"eeF, pS, lE, v diffic",17,54,+,60,48
+6514,M 20,Cluster Nebulosity,Sgr,6.3,"Size: 29.  !!! vB, vL, trifid, D* inv; =",18,2.3,-,23,2
+6523,M 8,Nebula,Sgr,5.8,"Size: 90.  !!! vB, eL, eiF, with L Cl; =",18,3.8,-,24,23
+6526,ESO 521-*N18,Nebula,Sgr,,"Size: 40.  F, L, cE",18,2.6,-,23,35
+6530,OCL 19,Open Cluster,Sgr,4.6,"Size: 15.  Cl, B, L, pRi, f M8",18,4.8,-,24,20
+6531,M 21,Open Cluster,Sgr,5.9,"Size: 13.  Cl, pRi, lC, st 9...12; = M21",18,4.6,-,22,30
+6541,Dunlop 473,Globular Cluster,CrA,6.6,"Size: 13.1  glob. cl. , B, R, eC, gbM, r",18,8,-,43,42
+6543,PK 96+29.1,Planetary Nebula,Dra,9,"Size: 5.8  PN , vB, pS, sbMvSN",17,58.6,+,66,38
+6556,,,Sgr,,"F, vL, cE, lbM, rr; no nebulosity?",18,10,-,27,31
+6558,GCL 89,Globular Cluster,Sgr,,"Size: 3.7  glob. cl. , pB, pL, R, glbM, ",18,10.3,-,31,46
+6559,LBN 29,Nebula,Sgr,,"Size: 8.  vF, vL, lE, **  inv",18,10,-,24,6
+6579,UGC 11153,,Her,,"F, p of Dneb",18,12.3,+,21,26
+6580,UGC 11153,,Her,,"F, f of Dneb",18,12.4,+,21,26
+6589,IC 1283;IC 4690,,Sgr,,"Size: 5.  D* in centre of eF, pL neby",18,16.9,-,19,46
+6590,LBN 43,Cluster Nebulosity,Sgr,,"Size: 4.  D* in centre of pF, pL, R neby",18,17,-,19,53
+6591,,Galaxy,Her,,"eeF, vS, stell",18,14,+,21,2
+6595,IC 4700,Open Cluster,Sgr,7,"Size: 11.  F, pL, cE, **  inv; = IC 4700",18,17,-,19,53
+6596,OCL 41,Open Cluster,Sgr,,"Cl, lC",18,17.5,-,16,40
+6603,,Open Cluster,Sgr,11,"Size: 5.  !, Cl, vRi, vmC, R, st 15 (Mil",18,18.4,-,18,25
+6604,OCL 56,Cluster Nebulosity,Ser,6.5,"Size: 60.  Cl, lRi, lC",18,18.1,-,12,14
+6605,OCL 47,Open Cluster,Ser,6,"Cl, lRi, lC, st 10...12",18,17.1,-,14,58
+6611,M 16,Cluster Nebulosity,Ser,6,"Size: 35.  Cl, at least 100 st L & S; = ",18,18.8,-,13,47
+6613,M 18,Open Cluster,Sgr,6.9,"Size: 9.  Cl, P, vlC; = M18",18,19.9,-,17,8
+6618,M 17,Cluster Nebulosity,Sgr,6,"Size: 46.  !!!, B, eL, eiF, 2 hooked; = ",18,20.8,-,16,11
+6626,M 28,Globular Cluster,Sgr,6.9,"Size: 11.2  !, glob. cl. , vB, L, R, geC",18,24.5,-,24,52
+6633,OCL 90,Open Cluster,Oph,4.6,"Size: 27.  Cl, lC, st L",18,27.7,+,6,34
+6637,M 69,Globular Cluster,Sgr,7.7,"Size: 7.1  glob. cl. , B, L, R, rrr, st ",18,31.4,-,32,21
+6639,,Open Cluster,Sct,,Cl (in Milky Way),18,30.1,-,13,12
+6656,M 22,Globular Cluster,Sgr,5.1,"Size: 24.0  !!, glob. cl. , vB, vL, R, v",18,36.4,-,23,54
+6660,NGC 6661,,Her,,"pB, pS, R, mbM, bet 2 st; = 6661",18,34.6,+,22,55
+6666,,,Lyr,,"eF, S, R, v diffic",18,35.3,+,33,35
+6669,UGC 11302,Galaxy,Her,,"eF, pL",18,38,+,22,4
+6681,M 70,Globular Cluster,Sgr,8.1,"Size: 7.8  glob. cl. , B, pL, R, gbM, st",18,43.2,-,32,18
+6685,UGC 11317,,Lyr,,"eeF, vS, R, v diffic, sp of 2",18,39.9,+,39,59
+6693,,Star,Lyr,,vF,18,41.6,+,36,55
+6694,M 26,Open Cluster,Sct,8,"Size: 15.  Cl, cL, pRi, pC, st 12...15; ",18,45.2,-,9,24
+6705,M 11,Open Cluster,Sct,5.8,"Size: 14.  !, Cl, vB, L, iR, Ri, *9, st ",18,51.1,-,6,16
+6709,OCL 100,Open Cluster,Aql,6.7,"Size: 13.  Cl, pRi, lC, iF",18,51.5,+,10,21
+6715,M 54,Globular Cluster,Sgr,7.7,"Size: 9.1  glob. cl. , vB, L, R, g, smbM",18,55.1,-,30,29
+6716,OCL 46,Open Cluster,Sgr,6.9,"Size: 7.  Cl, pRi, st 9...13",18,54.6,-,19,53
+6717,Pal 9,Globular Cluster,Sgr,,"Size: 3.9  F, S, rr, Cl + neb",18,55.1,-,22,42
+6720,M 57,Planetary Nebula,Lyr,9,"Size: 2.5  !!!, ring , B, pL, cE (in Lyr",18,53.6,+,33,2
+6726,ESO 396-N13,Nebula,CrA,,"Size: 2.  *6-7 in F, pL, neb",19,1.7,-,36,53
+6727,ESO 396-N14,Nebula,CrA,,"*8 in F, pL neb",19,1.8,-,36,54
+6729,ESO 396-N*15,Nebula,CrA,,Size: 1.  var* (11...) with neb!!,19,1.9,-,36,57
+6735,SAO 142915,Open Cluster,Aql,,"Cl, vL, P, st 12...",19,0.8,-,0,28
+6744,ESO 104-42,Galaxy,Pav,9,"Size: 15.5  cB, cL, R, vg, svmbM, r",19,9.8,-,63,51
+6752,Dunlop 295,Globular Cluster,Pav,5.4,"Size: 20.4  glob. cl. , B, vL, iR, rrr, ",19,10.9,-,59,59
+6765,PK 62+9.1,Planetary Nebula,Lyr,,"Size: 0.6  F, S, E",19,11.1,+,30,33
+6768,ESO 337-18,Galaxy,CrA,,"vF, S, R, pslbM",19,16.5,-,40,11
+6774,Ru 147,Open Cluster,Sgr,,"Cl, vL, lC",19,16.6,-,16,16
+6775,,Asterism,Aql,,"Cl, P, lC, st 10...11",19,16.8,-,0,55
+6779,M 56,Globular Cluster,Lyr,8.3,"Size: 7.1  glob. cl. , B, L, iR, gvmCM, ",19,16.6,+,30,11
+6785,,,Aql,,"eS, stellar",19,20.9,-,1,6
+6793,OCL 115,Open Cluster,Vul,,"Cl, P, lC",19,23.2,+,22,11
+6794,ESO 338-5,Galaxy,Sgr,,"eF, pS, R, vgvlbM",19,27.9,-,38,53
+6800,OCL 123,Open Cluster,Vul,,"Cl, vL, pRi, vlC, st 10...",19,27.2,+,25,8
+6805,ESO 338-14,Galaxy,Sgr,,"Size: 1.2  eF, R, vgbM",19,36.8,-,37,33
+6806,ESO 338-15,Galaxy,Sgr,,"eF, vS, *14 att",19,37.2,-,42,19
+6809,M 55,Globular Cluster,Sgr,7,"Size: 19.0  glob. cl. , pB, L, R, vRi, v",19,40,-,30,58
+6811,OCL 185,Open Cluster,Cyg,6.8,"Size: 13.  Cl, L, pRi, lC, st 11..14",19,38.2,+,46,34
+6813,SG 3.148,Nebula,Vul,,"Size: 3.  **  in vF, S neb",19,40.4,+,27,18
+6815,,Open Cluster,Vul,,"Cl, vL, pRi, lC, st 10...15",19,40.9,+,26,51
+6816,ESO 460-30,,Sgr,,"eF, pS, R, vlbM, *14 at pos 20deg , dist",19,44,-,28,33
+6820,LBN 135,Nebula,Vul,,"Size: 40.  F, S, R, bM",19,43.1,+,23,17
+6822,IC 4895,Galaxy,Sgr,9,"Size: 10.2  vF, vS, E, dif; = IC 4895",19,44.9,-,14,48
+6826,PK 83+12.1,Planetary Nebula,Cyg,10,"Size: 2.3  PN , B, pL, R, *11 M",19,44.8,+,50,31
+6827,Berk 48,Open Cluster,Vul,,"vF, E, dif, sev st inv",19,48.9,+,21,13
+6837,OCL 108,Open Cluster,Aql,,"Cl, S, P",19,53.5,+,11,41
+6838,M 71,Globular Cluster,Sge,8.3,"Size: 7.2  Cl, vL, vRi, pmC, st 11...16;",19,53.8,+,18,47
+6840,,Open Cluster,Aql,,"Cl, P, lC",19,55.3,+,12,6
+6841,ESO 461-23,Galaxy,Sgr,,"Size: 1.5  vF, S, R, psbM",19,57.8,-,31,49
+6843,,Open Cluster,Aql,,"Cl, S, P",19,56.1,+,12,9
+6849,ESO 339-32,,Sgr,,"pB, S, R, vS* np",20,1.3,-,40,13
+6852,PK 42-14.1,Planetary Nebula,Aql,,"Size: 0.5  F neb, am st",20,0.6,+,1,43
+6853,M 27,Planetary Nebula,Vul,8.1,"Size: 15.2  !!!, vB, vL, biN, iE (Dumbbe",19,59.6,+,22,43
+6857,,Planetary Nebula,Cyg,,"F, am Milky Way st",20,1.9,+,33,31
+6859,,Triple Star,Aql,,"vS Cl, *10 p 1s , s 1' 29""",20,3.9,+,0,26
+6863,,Asterism,Aql,,"Cl, S, vmC, st 19",20,5.1,-,3,34
+6864,M 75,Globular Cluster,Sgr,8.6,"Size: 6.0  glob. cl. , B, pL, R, vmbMBN,",20,6.1,-,21,55
+6865,,Galaxy,Aql,,"F, S, E",20,6,-,9,2
+6871,OCL 148,Open Cluster,Cyg,5.2,"Size: 20.  Cl, st L and S, **  inv",20,5.9,+,35,47
+6873,,Double Star,Sge,,"Cl, lC, st 10...13, **  inv",20,8.3,+,21,6
+6885,OCL 152,Open Cluster,Vul,6,"Size: 7.  Cl, vB, vL, Ri, lC, st 6...11",20,12,+,26,29
+6888,LBN 203,Nebula,Cyg,,"Size: 20.  F, vL, vmE, **  att",20,12,+,38,21
+6913,M 29,Open Cluster,Cyg,6.6,"Size: 7.  Cl, P, lC, st L and S; = M29",20,23.9,+,38,32
+6914,LBN 274,Nebula,Cyg,,"Size: 13.  vF, vL, iR, dif, 2 st att p",20,24.7,+,42,29
+6915,IRAS20251-0314,Galaxy,Aql,,"Size: 1.2  pB, S, R",20,27.8,-,3,5
+6919,ESO 285-27,Galaxy,Mic,,"eF, pS, R, vgvlbM",20,31.6,-,44,13
+6933,,Double Star,Del,,"pB, vS, 6934 f",20,33.6,+,7,23
+6934,GCL 117,Globular Cluster,Del,8.9,"Size: 5.9  glob. cl. , B, L, R, rrr, st ",20,34.2,+,7,24
+6936,ESO 528-22,,Cap,,"vF, vS, R, slbM",20,35.9,-,25,17
+6940,OCL 141,Open Cluster,Vul,6.3,"Size: 31.  Cl, vB, vL, vRi, cC, st pL",20,34.6,+,28,18
+6946,UGC 11597,Galaxy,Cep,8.9,"Size: 11.0  vF, vL, vg, vsbM, rr",20,34.8,+,60,9
+6947,ESO 401-3,Galaxy,Mic,,"Size: 2.0  vF, L, R, gbM",20,41.3,-,32,29
+6952,NGC 6951,Galaxy,Cep,,"pB, oval, dif, *15 close f; = 6951",20,37,+,66,6
+6953,,,Cep,,vS group of 4 st (no neb),20,37.7,+,65,46
+6960,LBN 191,Nebula,Cyg,,"Size: 70.  !! pB, cL, eiF, 52 Cyg inv",20,45.7,+,30,43
+6965,UGC 11630,,Aqr,,"vF, vS; = 6963",20,47.4,+,0,30
+6966,,Double Star,Aqr,,"eF, vS",20,47.4,+,0,22
+6973,,Star,Aqr,,"vF, S, r",20,52.1,-,5,53
+6974,SG 3.202,Nebula,Cyg,,"neb*, neby cE pf",20,50.8,+,31,52
+6975,NGC 6976,Galaxy,Aqr,,"vF, S; = 6976",20,52.4,-,5,46
+6979,,Nebula,Cyg,,"vF, S, iE, sev F st f nr",20,51,+,32,9
+6980,,Star,Aqr,,"vF, S, r",20,52.8,-,5,49
+6981,M 72,Globular Cluster,Aqr,9.4,"Size: 5.9  glob. cl. , pB, pL, R, gmCM, ",20,53.5,-,12,32
+6983,ESO 286-14,Galaxy,Mic,,"eF, cS, R",20,56.8,-,43,58
+6986,ESO 598-7,,Cap,,"vF, vS, R, glbMN",20,36.6,-,18,38
+6991,OCL 201,Open Cluster,Cyg,,"Cl, L, P, vlC",20,56.6,+,47,25
+6992,CED 182B,Nebula,Cyg,,"Size: 60.  !!, eF, eL, eE, eiF, bifurcat",20,56.4,+,31,43
+6994,M 73,Open Cluster,Aqr,9,"Size: 3.  Cl, eP, vlC, no neb; = M73",20,59,-,12,38
+6995,CED 182C,Nebula,Cyg,,"Size: 12.  F, eL, neb & st in groups",20,57.1,+,31,13
+6996,,Open Cluster,Cyg,,"Cl, P, lC",20,56.4,+,45,28
+6998,ESO 464-14,Galaxy,Mic,,"eeF, vS",21,1.6,-,28,1
+6999,ESO 464-15,Galaxy,Mic,,"Size: 0.9  eeF, vS",21,2,-,28,4
+7000,LBN 373,Nebula,Cyg,,"Size: 120.  F, eeL, dif nebulosity",20,58.8,+,44,20
+7005,,Open Cluster,Aqr,,"Cl, S, P",21,2,-,12,53
+7006,GCL 119,Globular Cluster,Del,10.6,"Size: 2.8  B, pL, R, gbM",21,1.5,+,16,11
+7009,PK 37-34.1,Planetary Nebula,Aqr,8,"Size: 1.7  !!!, PN , vB, S, elliptic",21,4.2,-,11,22
+7012,ESO 286-51,Galaxy,Mic,,"Size: 3.2  F, pL, E, vgvlbM, * p",21,6.8,-,44,49
+7019,ESO 529-22,Galaxy,Cap,,"Size: 0.7  vF, vS, R, sbMN",21,6.4,-,24,25
+7023,OCL 235,Cluster Nebulosity,Cep,7,"Size: 18.  *7 in eF, eL, neby",21,0.5,+,68,10
+7030,ESO 598-28,Galaxy,Cap,,"vF, vS, iR, bMN",21,11.2,-,20,30
+7035,ESO 530-15,Galaxy,Cap,,"Size: 1.2  eF, S, iR",21,10.8,-,23,8
+7045,,Double Star,Equ,,not a neb; only 2 F close st,21,14.8,+,4,31
+7057,ESO 287-17,Galaxy,Mic,,"eF, vS, R, p of 2",21,25,-,42,29
+7060,ESO 287-22,Galaxy,Mic,,"vF, pS, R, f of 2",21,25.9,-,42,24
+7063,OCL 192,Open Cluster,Cyg,7,"Size: 8.  Cl, P, st 10...",21,24.4,+,36,30
+7065,MCG 1-54-17,Galaxy,Aqr,,"Size: 1.4  vF, sbM",21,26.7,-,7,0
+7074,ZWG 401. 27,Galaxy,Peg,,"vF, S, E",21,29.5,+,6,42
+7075,ESO 343-4,Galaxy,Gru,,"cF, cS, R, pgbM",21,31.5,-,38,36
+7076,PK 101+08.1,Nebula,Cep,,"Size: 2.  vF, er",21,26.3,+,62,53
+7078,M 15,Globular Cluster,Peg,6.4,"Size: 12.3  !, glob. cl. , vB, vL, iR, v",21,30,+,12,10
+7087,ESO 343-8,Galaxy,Gru,,"cF, S, R, gbM",21,34.6,-,40,49
+7089,M 2,Globular Cluster,Aqr,6.5,"Size: 12.9  !!, glob. cl. , B, vL, gpmbM",21,33.5,-,0,49
+7091,IC 5114,Galaxy,Gru,,"eF, pL, vgbM, *6 f 40s",21,34.1,-,36,38
+7092,M 39,Open Cluster,Cyg,4.6,"Size: 32.  Cl, vL, vP, vlC, st 7...10; =",21,32.2,+,48,26
+7094,PK 66-28.1,Planetary Nebula,Peg,,"Size: 1.6  * in eeF neby, v diffic",21,36.9,+,12,47
+7095,ESO 027-G001,Galaxy,Gru,,"Size: 1.6  F, pL, R, vglbM, *13 inv; = 7",21,40.2,-,42,32
+7099,M 30,Globular Cluster,Cap,7.5,"Size: 11.0  !, glob. cl. , B, L, lE, gpm",21,40.4,-,23,11
+7108,NGC 7111,Galaxy,Aqr,,"vF, S, R, stell",21,42.4,-,6,47
+7109,ESO 403-15,Galaxy,PsA,,"eF, vS, am st",21,41.9,-,34,27
+7110,ESO 403-16,Galaxy,PsA,,"F, S, R, bM",21,42.2,-,34,10
+7122,,Double Star,Cap,,nebulous * 10-11 or vS Cl,21,45.7,-,8,49
+7127,OCL 219,Open Cluster,Cyg,,"Size: 3.  Cl, S, P, lC",21,43.9,+,54,37
+7130,IC 5135,Galaxy,PsA,,"pB, S, R, glbM; = IC 5135",21,48.3,-,34,57
+7133,,Nebula,Cep,,"vF, pL",21,42.6,+,66,3
+7134,,Asterism,Cap,,only 3 or 4 vF st (no neb),21,48.9,-,12,59
+7136,,Double Star,Cap,,"stellar, nebulosity doubtful",21,49.7,-,11,47
+7139,PK 104+7.1,Planetary Nebula,Cep,,"Size: 1.3  vF, cS, R, r",21,45.9,+,63,39
+7143,,Double Star,Cyg,,vF; D*? (inv in neb?),21,48.9,+,29,57
+7148,,Double Star,Peg,,"vF, vS, R",21,52.1,+,3,20
+7150,,Asterism,Cyg,,"neb, no description",21,50.4,+,49,45
+7154,ESO 404-8,Galaxy,PsA,,"Size: 1.3  B, pL, iR, glbM, r",21,55.4,-,34,49
+7158,,Triple Star,Cap,,"vF neb*, *9.5 nf 3'",21,57.4,-,11,36
+7160,OCL 236,Open Cluster,Cep,6.1,"Size: 7.  Cl, P, vlC",21,53.7,+,62,36
+7161,,Double Star,Peg,,"Cl, vS, st 19, bet 2 st 16",21,57,+,2,57
+7164,ZWG 377. 6,Galaxy,Aqr,,"eF, R, 4 vF st n",21,56.6,+,1,22
+7170,AM 2148-554,,Aqr,,"vF, pS, iR, bMN, D* p 36s",22,1.4,-,5,27
+7178,ESO 404-22,Galaxy,PsA,,"eF, S, R, *8 s 2'",22,2.5,-,35,49
+7186,,,Peg,,"vF, am 5 or 6 st",22,1,+,35,6
+7187,ESO 404-24,Galaxy,PsA,,"Size: 1.7  pF, pS, R, lbM",22,2.7,-,32,48
+7207,,Galaxy,Peg,,"vF, S",22,5.7,+,16,45
+7209,OCL 215,Open Cluster,Lac,6.7,"Size: 25.  Cl, L, cRi, pC, st 9...12",22,5.2,+,46,30
+7211,NPM1G -08.0602,Galaxy,Aqr,,"eF, S, stellar",22,6.2,-,8,7
+7233,ESO 289-8,Galaxy,Gru,,"Size: 2.2  F, vS, R, *8 f, f of 2",22,15.8,-,45,51
+7239,NPM1G -05.0643,Galaxy,Aqr,,"eF, vS",22,14.9,-,5,5
+7243,OCL 221,Open Cluster,Lac,6.4,"Size: 21.  Cl, L, P, lC, st vL",22,15.3,+,49,53
+7259,ESO 467-50,Galaxy,PsA,,"eF, pL, R, vlbM",22,23.1,-,28,59
+7262,ESO 405-17,Galaxy,PsA,,"eF, S, R, lbM",22,23.4,-,32,20
+7263,MCG 6-49-4,Galaxy,Lac,,"Size: 0.8  F, S, R",22,21.8,+,36,21
+7267,ESO 405-18,Galaxy,PsA,,"cB, pS, vlE, glbM, B***  sp",22,24.3,-,33,41
+7268,ESO 467-57,Galaxy,PsA,,"Size: 1.8  F, cS, vlE, p of 2",22,25.7,-,31,12
+7279,ESO 405-21,Galaxy,PsA,,"vF, pS, R, vgvlbM",22,27.1,-,35,8
+7281,OCL 238,Open Cluster,Cep,,"Cl, L, pRi, lC, st 10...16",22,24.7,+,57,50
+7287,ESO 602-20,Galaxy,Aqr,,"Size: 0.7  eF, slightly nebs D*",22,28.8,-,22,12
+7289,ESO 405-23,Galaxy,PsA,,"vF, S, R, gbM",22,29.2,-,35,27
+7293,PK 36-57.1,Planetary Nebula,Aqr,,"Size: 12.8  ! pF, vL, E or biN",22,29.6,-,20,48
+7297,ESO 345-18,Galaxy,Gru,,"eF, S, R, p of 2",22,30.9,-,37,49
+7299,ESO 345-19,Galaxy,Gru,,"eF, S, R, f of 2",22,31.4,-,37,49
+7313,ESO 533-52,Galaxy,PsA,,"eF, E",22,35.5,-,26,6
+7322,NGC 7334,Galaxy,Gru,,"vF, S, vlE, gbM",22,37.7,-,37,13
+7325,,Double Star,Peg,,"F, vS, 7331 f",22,36.8,+,34,22
+7326,,Double Star,Peg,,"eF, eS, 7331 f",22,36.8,+,34,25
+7327,,Star,Peg,,"eF, eS, np 7331",22,36.8,+,34,29
+7331,UGC 12113,Galaxy,Peg,9.5,"Size: 10.7  B, pL, pmE 163deg , smbM",22,37.1,+,34,25
+7334,NGC 7322,Galaxy,Gru,,eeF; = 7322,22,37.8,-,37,14
+7337,UGC 12120,Galaxy,Peg,,"Size: 1.3  eF, S, stellar",22,37.4,+,34,22
+7349,ESO 603-4,,Aqr,,"eF, vS, E 175deg , biN, bn",22,41.5,-,22,54
+7350,,Star,Peg,,vF,22,41,+,11,58
+7359,ESO 534-22,,Aqr,,"pF, vS, pmE, bMN",22,44.8,-,23,41
+7368,ESO 345-49,Galaxy,Gru,,"Size: 3.2  F, cS, lE, glbM",22,45.6,-,39,20
+7370,NPM1G +10.0561,Galaxy,Peg,,"eF, vS",22,45.5,+,11,3
+7382,ESO 406-15,Galaxy,Gru,,"eF, vS, R, *12 att np",22,50.3,-,36,51
+7384,,Galaxy,Peg,,"eF, 5' nf 7383",22,49.7,+,11,33
+7388,,Galaxy,Peg,,"vF, *11 f 2'.5",22,50.2,+,11,44
+7400,ESO 290-22,Galaxy,Gru,,"Size: 2.5  pF, lE, glbM, vS* inv",22,54.3,-,45,21
+7401,,Galaxy,Psc,,"eF, vS",22,53.1,+,1,10
+7403,,Star,Psc,,* slightly nebs? (prob not),22,53.1,+,1,29
+7404,IC 5260,Galaxy,Gru,,"vF, S, R",22,54.3,-,39,19
+7405,NPM1G +12.0573,Galaxy,Peg,,"eF, S, R",22,52.8,+,12,35
+7414,NPM1G +12.0575,Galaxy,Peg,,"eeF, S, R, v diffic, n of 2",22,55.3,+,13,15
+7429,OCL 249,Open Cluster,Cep,,"Cl, P, pC, st 9...11",22,55.9,+,59,59
+7439,UGC 12273,,Peg,,long patch of F neby,22,58.7,+,29,10
+7447,,,Aqr,,nonexistent; only a F***  np place,23,0.4,-,10,32
+7451,UGC 12299,,Peg,,"pF, pL, *10-11 sp 2'",23,0.4,+,8,25
+7453,,Triple Star,Aqr,,"B, vS, *11 close np",23,1.4,-,6,21
+7455,MK 523,Galaxy,Psc,,"eF, pS, cE, *10 nf 2'",23,0.6,+,7,17
+7472,NGC 7482,,Psc,,F neb*; = 7482,23,5.7,+,3,4
+7476,ESO 290-45,Galaxy,Gru,,"F, S, R, triangle with 2 st 7",23,5.2,-,43,7
+7477,NGC 7482,,Psc,,"F, S, bM *15, *17 att n; = 7482",23,5.7,+,3,4
+7478,KUG 2302+023,Galaxy,Psc,,"eF, E",23,4.9,+,2,35
+7479,UGC 12343,Galaxy,Peg,11,"Size: 4.1  pB, cL, mE 12deg , bet 2 st",23,4.9,+,12,19
+7484,ESO 407-6,Galaxy,Scl,,"pB, S, R, lbM, *8-9 att s",23,7.1,-,36,16
+7486,NPM1G +33.0480,Galaxy,Peg,,"vF, vS, 2' f 7485",23,6.2,+,34,4
+7493,,Star,Psc,,"vF, stellar",23,8.6,+,0,54
+7502,ESO 604-**5,Double Star,Aqr,,"eF, vS, E 290deg ; F D*?",23,10.8,-,21,46
+7504,,Star,Peg,,"vF, S, stellar",23,10.6,+,14,24
+7519,UGC 12424,,Peg,,"vF, pL",23,12.7,+,10,47
+7524,MCG 0-59-10,Galaxy,Psc,,"eF, vS",23,13.8,-,1,45
+7526,,Asterism,Aqr,,"eF, vS",23,13.9,-,9,12
+7528,,Galaxy,Peg,,"F, S",23,14.3,+,10,13
+7538,LBN 542,Nebula,Cep,,"Size: 10.  vF, L, 2 pB st inv",23,13.5,+,61,31
+7544,NPM1G -02.0508,Galaxy,Psc,,"eF, vS",23,15,-,2,12
+7545,ESO 347-4,Galaxy,Gru,,"F, S, vlE, vgvlbM, *10 att",23,15.5,-,38,32
+7551,,Galaxy,Peg,,neb* 13m,23,14.6,+,15,55
+7553,ZWG 454. 15,Galaxy,Peg,,"vF, vS, R",23,15.3,+,19,1
+7554,3ZW 99,Galaxy,Psc,,"eF, eS, alm stell, 7556 f",23,15.7,-,2,23
+7560,,Double Star,Psc,,"F, vS, iR, sp of 2",23,16,+,4,30
+7561,,,Psc,,"eF, stellar, nf of 2",23,16,+,4,31
+7564,ZWG 406. 36,Galaxy,Psc,,"vF, eS, stellar N",23,15.6,+,7,17
+7565,,Star,Psc,,vF,23,16.3,-,0,3
+7566,MCG 1-59-10,,Psc,,"vF, pS, E, er, 3 F st inv",23,16.6,-,2,21
+7575,,Star,Psc,,"F, S, vlE",23,17.3,+,6,39
+7577,,Galaxy,Psc,,*13.5 in vF neb,23,17.4,+,7,22
+7595,,Galaxy,Peg,,"F, stellar",23,18.5,+,9,54
+7596,IC 1477,Galaxy,Aqr,,"vF, pS, lE 0deg , lbMN",23,17.2,-,6,55
+7597,MCG 3-59-32,Galaxy,Peg,,"Size: 1.3  eF, vS, gbM",23,18.5,+,18,41
+7602,MCG 3-59-34,Galaxy,Peg,,"Size: 0.6  eF, eS, stellar",23,18.8,+,18,42
+7613,,Galaxy,Psc,,vF,23,19.9,+,0,24
+7616,,Galaxy,Peg,,"pF, dif",23,19.5,+,10,9
+7627,NGC 7641,,Peg,,"vF, S, mE, 2 st n; = 7641",23,22.5,+,11,54
+7632,IC 5313,Galaxy,Gru,,"F, S, R, lbM",23,22.1,-,42,30
+7635,LBN 549,Nebula,Cas,,"Size: 15.  vF, *8 inv l excentric",23,20.7,+,61,12
+7644,,Galaxy,Peg,,"vF, pS, lE",23,24.5,+,13,58
+7646,IC 5318,Galaxy,Aqr,,"vF, vS, E 260deg  (neb?), *9 n 3'.6",23,24,-,11,52
+7654,M 52,Open Cluster,Cas,6.9,"Size: 13.  Cl, L, Ri, mCM, R, st 9...13;",23,24.2,+,61,35
+7658,,Galaxy,Gru,,"D, both eF, S, R, 4 st p",23,26.5,-,39,14
+7662,PK 106-17.1,Planetary Nebula,And,9,"Size: 2.2  !!! PN  or ring , vB, pS, R, ",23,25.9,+,42,33
+7663,MCG 1-59-22,Galaxy,Aqr,,vF,23,26.7,-,4,56
+7686,OCL 251,Open Cluster,And,5.6,"Size: 15.  Cl, P, lC, st 7...11",23,30.2,+,49,8
+7699,,Galaxy,Psc,,"eF, vS",23,34.4,-,2,54
+7719,ESO 536-12,Galaxy,Aqr,,"eF, vS, R",23,38,-,22,58
+7745,MCG 4-56-4,Galaxy,Peg,,eF,23,44.8,+,25,53
+7756,,Star,Psc,,"neb, 5' sp 7757",23,48.5,+,4,7
+7758,ESO 606-10,Galaxy,Aqr,,"eF, vS, iR, sbM, D* 10 nf 50s",23,48.9,-,22,3
+7763,NPM1G -16.0627,Galaxy,Aqr,,"eF, vS, R, F* f",23,50.3,-,16,37
+7772,OCL 230,Open Cluster,Peg,,Cl of sc st 10m,23,51.8,+,16,15
+7776,IC 1514,,Aqr,,"eF, vS, lE, gbM; nonexistent?",23,52.7,-,13,23
+7789,OCL 269,Open Cluster,Cas,6.7,"Size: 16.  Cl, vL, vRi, vmC, st 11...18",23,57,+,56,44
+7791,,Double Star,Peg,,"vF, vS; F*?",23,58,+,10,45
+7799,,Galaxy,Peg,,"vF, vS, *16 close p",23,59.5,+,31,17
+7804,,,Psc,,"only a F D*, not nebs",0,1.3,+,7,45
+7807,ESO 538-15,Galaxy,Cet,,"Size: 1.0  eF, pS, iF",23,59.6,-,18,51
+7812,ESO 349-21,Galaxy,Scl,,"vF, S, R, am st",0,2.9,-,34,15
+7814,UGC 8,Galaxy,Peg,10.5,"Size: 6.3  cB, cL, E, vgbM",0,3.3,+,16,9
+7822,LBN 589,Nebula,Cep,,"Size: 60.  ! eeF, eeL",0,3.6,+,68,37
+7828,MCG 2-1-25,Galaxy,Cet,,"eF, S, E 130deg , sbMN, *15 sf",0,6.4,-,13,24
+7829,MCG 2-1-24,Galaxy,Cet,,"only a *13 at 100deg , 20"" from 7828",0,6.4,-,13,24
+7830,,Star,Psc,,"eF, neb* 13m",0,6.2,+,8,22
+7836,UGC 65,Galaxy,And,,"Size: 1.2  eF, vS, R, bet 2 st",0,8,+,33,4
+7839,,Double Star,Peg,,"vF, pS, dif, r",0,7,+,27,38
+7840,,Galaxy,Psc,,"eF, S",0,7.1,+,8,33

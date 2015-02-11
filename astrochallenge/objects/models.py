@@ -2,7 +2,18 @@ from django.db import models
 from django.conf import settings
 
 
+class Constellation(models.Model):
+    abbreviation = models.CharField(max_length=3)
+    latin_name = models.CharField(max_length=200)
+    latin_genitive = models.CharField(max_length=200)
+    english_name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.latin_name
+
+
 class AstroObject(models.Model):
+    constellation = models.ForeignKey(Constellation, blank=True, null=True)
     type = models.CharField(max_length=200)
     ra_hours = models.IntegerField(blank=True, null=True)
     ra_minutes = models.FloatField(blank=True, null=True)
@@ -12,7 +23,6 @@ class AstroObject(models.Model):
     magnitude = models.FloatField(blank=True, null=True)
     size = models.FloatField(blank=True, null=True)
     distance = models.FloatField(blank=True, null=True)
-    constellation = models.CharField(max_length=200, blank=True, default="")
     details = models.CharField(max_length=200, blank=True, default="")
     description = models.TextField(blank=True, default="")
     common_name = models.CharField(max_length=200, blank=True, default="")
@@ -27,6 +37,9 @@ class CatalogObject(models.Model):
     astro_object = models.ForeignKey(AstroObject)
     catalog = models.CharField(max_length=200, choices=settings.CATALOGS)
     designation = models.CharField(max_length=50)
+
+    class Meta:
+        unique_together = ('catalog', 'designation')
 
     def __unicode__(self):
         return " {0}{1} - ({2}) ".format(self.catalog, self.designation, self.astro_object)

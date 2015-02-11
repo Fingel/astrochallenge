@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.core.files import File
-from astrochallenge.objects.models import AstroObject, CatalogObject
+from astrochallenge.objects.models import AstroObject, CatalogObject, Constellation
 from decimal import *
 import urllib
 import csv
@@ -19,7 +19,7 @@ class Command(BaseCommand):
                 id = row[0]
                 ngc = row[1]
                 type = row[2]
-                constellation = row[3]
+                constellation = Constellation.objects.get(latin_name=row[3])
                 ra_hours = row[4]
                 ra_minutes = float(row[5])
                 dec_sign = row[6]
@@ -66,6 +66,7 @@ class Command(BaseCommand):
                 catalog_object = CatalogObject(astro_object=astro_object, catalog="M", designation="{0}".format(id))
                 catalog_object.save()
                 print "sucessfully saved {0}".format(catalog_object)
-                catalog_object = CatalogObject(astro_object=astro_object, catalog="NGC", designation="{0}".format(ngc[3:]))
+                if int(ngc[3:]) > 0:
+                    catalog_object = CatalogObject(astro_object=astro_object, catalog="NGC", designation="{0}".format(ngc[3:]))
                 catalog_object.save()
                 print "sucessfully saved {0}".format(catalog_object)
