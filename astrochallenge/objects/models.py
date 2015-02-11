@@ -4,19 +4,23 @@ from django.conf import settings
 
 class AstroObject(models.Model):
     type = models.CharField(max_length=200)
-    ra = models.DecimalField(max_digits=10, decimal_places=7)
-    dec = models.DecimalField(max_digits=10, decimal_places=7)
-    magnitude = models.DecimalField(max_digits=4, decimal_places=2)
-    distance = models.IntegerField(default=0)
-    size = models.DecimalField(max_digits=7, decimal_places=3)
-    constellation = models.CharField(max_length=200, blank=True)
-    detailed_type = models.CharField(max_length=200, blank=True)
-    common_name = models.CharField(max_length=200, blank=True)
+    ra_hours = models.IntegerField(blank=True, null=True)
+    ra_minutes = models.FloatField(blank=True, null=True)
+    dec_sign = models.CharField(max_length=1, choices=(('+', '+'), ('-', '-')), blank=True, default="")
+    dec_deg = models.IntegerField(blank=True, null=True)
+    dec_min = models.FloatField(blank=True, null=True)
+    magnitude = models.FloatField(blank=True, null=True)
+    size = models.FloatField(blank=True, null=True)
+    distance = models.FloatField(blank=True, null=True)
+    constellation = models.CharField(max_length=200, blank=True, default="")
+    details = models.CharField(max_length=200, blank=True, default="")
+    description = models.TextField(blank=True, default="")
+    common_name = models.CharField(max_length=200, blank=True, default="")
     points = models.IntegerField(default=0)
-    image = models.ImageField(upload_to="astro_objects", blank=True)
+    image = models.ImageField(upload_to="astro_objects", blank=True, null=True)
 
     def __unicode__(self):
-        return self.common_name
+        return self.common_name if self.common_name else "{0}-{1}:{2}".format(self.constellation, self.ra_hours, self.dec_deg)
 
 
 class CatalogObject(models.Model):
@@ -25,4 +29,4 @@ class CatalogObject(models.Model):
     designation = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return " {0} - {1}{2} ".format(self.astro_object.common_name, self.catalog, self.designation)
+        return " {0}{1} - ({2}) ".format(self.catalog, self.designation, self.astro_object)

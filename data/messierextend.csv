@@ -1,0 +1,111 @@
+ObjectNum,Name,Type,Constellation,RAHour,RAMinute,DecSign,DecDeg,DecMinute,Magnitude,Size,Distance (ly), longname
+1,NGC1952,Supernova Remnant,Taurus,5,34.5,+,22,1,8.4,6,6300,Crab Nebula
+2,NGC7089,Globular Cluster,Aquarius,21,33.5,-,0,49,6.5,12.9,37500,
+3,NGC5272,Globular Cluster,Canes Venatici,13,42.2,+,28,23,6.2,16.2,33900,
+4,NGC6121,Globular Cluster,Scorpius,16,23.6,-,26,32,5.6,26.3,7200,
+5,NGC5904,Globular Cluster,Serpens Caput,15,18.6,+,2,5,5.6,17.4,24500,
+6,NGC6405,Open Cluster,Scorpius,17,40.1,-,32,13,5.3,25,2000,Butterfly Cluster
+7,NGC6475,Open Cluster,Scorpius,17,53.9,-,34,49,4.1,80,800,Ptolemy's Cluster
+8,NGC6523,Diffuse Nebula,Sagittarius,18,3.8,-,24,23,6,90,5200,Lagoon Nebula
+9,NGC6333,Globular Cluster,Ophiucus,17,19.2,-,18,31,7.7,9.3,26700,
+10,NGC6254,Globular Cluster,Ophiucus,16,57.1,-,4,6,6.6,15.1,14400,
+11,NGC6705,Open Cluster,Scutum,18,51.1,-,6,16,6.3,14,6000,Wild Duck Cluster
+12,NGC6218,Globular Cluster,Ophiucus,16,47.2,-,1,57,6.7,14.5,16000,
+13,NGC6205,Globular Cluster,Hercules,16,41.7,+,36,28,5.8,16.6,22800,Hercules Globular Cluster
+14,NGC6402,Globular Cluster,Ophiucus,17,37.6,-,3,15,7.6,11.7,27400,
+15,NGC7078,Globular Cluster,Pegasus,21,30,+,12,10,6.2,12.3,33600,
+16,NGC6611,Open Cluster,Serpens Claudia,18,18.8,-,13,47,6.4,7,7000,Eagle Nebula Cluster
+17,NGC6618,Diffuse Nebula,Sagittarius,18,20.8,-,16,11,7,11,5000,"Omega, Swan, Horseshoe Nebula"
+18,NGC6613,Open Cluster,Sagittarius,18,19.9,-,17,8,7.5,9,4900,
+19,NGC6273,Globular Cluster,Ophiucus,17,2.6,-,26,16,6.8,13.5,27100,
+20,NGC6514,Diffuse Nebula,Sagittarius,18,2.3,-,23,2,9,28,5200,Trifid Nebula
+21,NGC6531,Open Cluster,Sagittarius,18,4.6,-,22,30,6.5,13,4250,
+22,NGC6656,Globular Cluster,Sagittarius,18,36.4,-,23,54,5.1,24,10100,
+23,NGC6494,Open Cluster,Sagittarius,17,56.8,-,19,1,6.9,27,2150,
+24,NGC6603,Star Cloud,Sagittarius,18,18.4,-,18,25,4.6,90,10000,Milky Way Patch
+25,NGC0000,Open Cluster,Sagittarius,18,31.7,-,19,14,6.5,40,2000,
+26,NGC6694,Open Cluster,Scutum,18,45.2,-,9,24,8,15,5000,
+27,NGC6853,Planetary Nebula,Vulpecula,19,59.6,+,22,43,7.4,8,1250,Dumbbell Nebula
+28,NGC6626,Globular Cluster,Sagittarius,18,24.5,-,24,52,6.8,11.2,17900,
+29,NGC6913,Open Cluster,Cygnus,20,23.9,+,38,32,7.1,7,4000,
+30,NGC7099,Globular Cluster,Capricornus,21,40.4,-,23,11,7.2,11,24800,
+31,NGC224,Spiral Galaxy,Andromeda,0,42.7,+,41,16,3.4,178,2900000,Andromeda Galaxy
+32,NGC221,Elliptical Galaxy,Andromeda,0,42.7,+,40,52,8.1,8,2900000,Satellite of M31
+33,NGC598,Spiral Galaxy,Triangulum,1,33.9,+,30,39,5.7,73,3000000,Triangulum/Pinwheel Galaxy
+34,NGC1039,Open Cluster,Perseus,2,42,+,42,47,5.5,35,1400,
+35,NGC2168,Open Cluster,Gemini,6,8.9,+,24,20,5.3,28,2800,
+36,NGC1960,Open Cluster,Auriga,5,36.1,+,34,8,6.3,12,4100,
+37,NGC2099,Open Cluster,Auriga,5,52.4,+,32,33,6.2,24,4400,
+38,NGC1912,Open Cluster,Auriga,5,28.7,+,35,50,7.4,21,4200,
+39,NGC7092,Open Cluster,Cygnus,21,32.2,+,48,26,5.2,32,825,
+40,NGC0000,Double Star,Ursa Major,12,22.2,+,58,5,9.3,0.81,510,
+41,NGC2287,Open Cluster,Canis Major,6,47,-,20,44,4.6,38,2300,
+42,NGC1976,Diffuse Nebula,Orion,5,35.4,-,5,27,4,85,1600,Great Orion Nebula
+43,NGC1982,Diffuse Nebula,Orion,5,35.6,-,5,16,9,20,1600,de Mairan's Nebula
+44,NGC2632,Open Cluster,Cancer,8,40.1,+,19,59,3.7,95,577,Beehive Cluster (Praesepe)
+45,NGC0000,Open Cluster,Taurus,3,47,+,24,7.2,1.6,110,380,"Pleiades, Subaru, Seven Sisters"
+46,NGC2437,Open Cluster,Puppis,7,41.8,-,14,49,6,27,5400,
+47,NGC2422,Open Cluster,Puppis,7,36.6,-,14,30,5.2,30,1600,
+48,NGC2548,Open Cluster,Hydra,8,13.8,-,5,48,5.5,54,1500,
+49,NGC4472,Elliptical Galaxy,Virgo,12,29.8,+,8,0,8.4,9,60000000,
+50,NGC2323,Open Cluster,Monocerus,7,3.2,-,8,20,6.3,16,3000,
+51,NGC5194,Spiral Galaxy,Canes Venatici,13,29.9,+,47,12,8.4,11,37000000,Whirlpool Galaxy
+52,NGC7654,Open Cluster,Cassiopeia,23,24.2,+,61,35,7.3,13,5000,
+53,NGC5024,Globular Cluster,Coma Berenices,13,12.9,+,18,10,7.6,12.6,56400,
+54,NGC6715,Globular Cluster,Sagittarius,18,55.1,-,30,29,7.6,9.1,82800,
+55,NGC6809,Globular Cluster,Sagittarius,19,40,-,30,58,6.3,19,16600,
+56,NGC6779,Globular Cluster,Lyra,19,16.6,+,30,11,8.3,7.1,31600,
+57,NGC6720,Planetary Nebula,Lyra,18,53.6,+,33,2,8.8,1.4,4100,Ring Nebula
+58,NGC4579,Spiral Galaxy,Virgo,12,37.7,+,11,49,9.7,5.5,60000000,
+59,NGC4621,Elliptical Galaxy,Virgo,12,42,+,11,39,9.6,5,60000000,
+60,NGC4649,Elliptical Galaxy,Virgo,12,43.7,+,11,33,8.8,7,60000000,
+61,NGC4303,Spiral Galaxy,Virgo,12,21.9,+,4,28,9.7,6,60000000,
+62,NGC6266,Globular Cluster,Ophiucus,17,1.2,-,30,7,6.5,14.1,21500,
+63,NGC5055,Spiral Galaxy,Canes Venatici,13,15.8,+,42,2,8.6,10,37000000,Sunflower Galaxy
+64,NGC4826,Spiral Galaxy,Coma Berenices,12,56.7,+,21,41,8.5,9.3,19000000,Blackeye Galaxy
+65,NGC3623,Spiral Galaxy,Leo,11,18.9,+,13,5,9.3,8,35000000,
+66,NGC3627,Spiral Galaxy,Leo,11,20.2,+,12,59,8.9,8,35000000,
+67,NGC2682,Open Cluster,Cancer,8,50.4,+,11,49,6.1,30,2700,
+68,NGC4590,Globular Cluster,Hydra,12,39.5,-,26,45,7.8,12,33300,
+69,NGC6637,Globular Cluster,Sagittarius,18,31.4,-,32,21,7.6,7.1,26700,
+70,NGC6681,Globular Cluster,Sagittarius,18,43.2,-,32,18,7.9,7.8,28000,
+71,NGC6838,Globular Cluster,Sagitta,19,53.8,+,18,47,8.3,7.2,11700,
+72,NGC6981,Globular Cluster,Aquarius,20,53.5,-,12,32,9.3,5.9,52800,
+73,NGC6994,Group/Asterism,Aquarius,20,59,-,12,38,9,2.8,2000,Group of 4 stars
+74,NGC628,Spiral Galaxy,Pisces,1,36.7,+,15,47,9.4,10.2,35000000,
+75,NGC6864,Globular Cluster,Sagittarius,20,6.1,-,21,55,8.5,6,57700,
+76,NGC650,Planetary Nebula,Perseus,1,42.3,+,51,34,10.1,2.7,3400,"Little Dumbell, Cork, Butterfly Nebula"
+77,NGC1068,Spiral Galaxy,Cetus,2,42.7,+,0,1,8.9,7,60000000,"Little Dumbell, Cork, Butterfly Nebula"
+78,NGC2068,Diffuse Nebula,Orion,5,46.7,+,0,3,8.3,8,1600,
+79,NGC1904,Globular Cluster,Lepus,5,24.5,-,24,33,7.7,8.7,41100,
+80,NGC6093,Globular Cluster,Scorpius,16,17,-,22,59,7.3,8.9,27400,
+81,NGC3031,Spiral Galaxy,Ursa Major,9,55.6,+,69,4,6.9,21,12000000,Bode's Galaxy
+82,NGC3034,Irregular Galaxy,Ursa Major,9,55.8,+,69,41,8.4,9,12000000,Cigar Galaxy
+83,NGC5236,Spiral Galaxy,Hydra,13,37,-,29,52,7.6,11,15000000,Southern Pinwheel Galaxy
+84,NGC4374,Lenticular (S0) Galaxy,Virgo,12,25.1,+,12,53,9.1,5,60000000,
+85,NGC4382,Lenticular (S0) Galaxy,Coma Berenices,12,25.4,+,18,11,9.1,7.1,60000000,
+86,NGC4406,Lenticular (S0) Galaxy,Virgo,12,26.2,+,12,57,8.9,7.5,60000000,
+87,NGC4486,Elliptical Galaxy,Virgo,12,30.8,+,12,24,8.6,7,60000000,Virgo A
+88,NGC4501,Spiral Galaxy,Coma Berenices,12,32,+,14,25,9.6,7,60000000,
+89,NGC4552,Elliptical Galaxy,Virgo,12,35.7,+,12,33,9.8,4,60000000,
+90,NGC4569,Spiral Galaxy,Virgo,12,36.8,+,13,10,9.5,9.5,60000000,
+91,NGC4548,Spiral Galaxy,Coma Berenices,12,35.4,+,14,30,10.2,5.4,60000000,
+92,NGC6341,Globular Cluster,Hercules,17,17.1,+,43,8,6.4,11.2,26400,
+93,NGC2447,Open Cluster,Puppis,7,44.6,-,23,52,6,22,3600,
+94,NGC4736,Spiral Galaxy,Canes Venatici,12,50.9,+,41,7,8.2,7,14500000,
+95,NGC3351,Spiral Galaxy,Leo,10,44,+,11,42,9.7,4.4,38000000,
+96,NGC3368,Spiral Galaxy,Leo,10,46.8,+,11,49,9.2,6,38000000,
+97,NGC3587,Planetary Nebula,Ursa Major,11,14.8,+,55,1,9.9,3.4,2600,Owl Nebula
+98,NGC4192,Spiral Galaxy,Coma Berenices,12,13.8,+,14,54,10.1,9.5,60000000,
+99,NGC4254,Spiral Galaxy,Coma Berenices,12,18.8,+,14,25,9.9,5.4,60000000,
+100,NGC4321,Spiral Galaxy,Coma Berenices,12,22.9,+,15,49,9.3,7,60000000,
+101,NGC5457,Spiral Galaxy,Ursa Major,14,3.2,+,54,21,7.9,22,27000000,Pinwheel Galaxy
+102,NGC5866,Lenticular (S0) Galaxy,Draco,15,6.5,+,55,46,9.9,5.2,40000000,Spindle Galaxy
+103,NGC581,Open Cluster,Cassiopeia,1,33.2,+,60,42,7.4,6,8000,
+104,NGC4594,Spiral Galaxy,Virgo,12,40,-,11,37,8,9,50000000,Sombrero Galaxy
+105,NGC3379,Elliptical Galaxy,Leo,10,47.8,+,12,35,9.3,2,38000000,
+106,NGC4258,Spiral Galaxy,Canes Venatici,12,19,+,47,18,8.4,19,25000000,
+107,NGC6171,Globular Cluster,Ophiucus,16,32.5,-,13,3,7.9,10,19600,
+108,NGC3556,Spiral Galaxy,Ursa Major,11,11.5,+,55,40,10,8,45000000,
+109,NGC3992,Spiral Galaxy,Ursa Major,11,57.6,+,53,23,9.8,7,55000000,
+110,NGC205,Elliptical Galaxy,Andromeda,0,40.4,+,41,41,8.5,17,2900000,Satellite of M31
