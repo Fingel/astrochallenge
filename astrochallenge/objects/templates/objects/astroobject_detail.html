@@ -4,6 +4,27 @@
 <div class="row">
     <div class="col-md-6">
         <h1>{{ object }}</h1>
+        <h3>{{ object.type }}</h3>
+        <table class="table">
+        <tr><td>Constellation</td><td><a href="{% url 'constellation-detail' object.constellation.abbreviation %}">{{ object.constellation.latin_name }}</a></td></tr>
+        <tr><td>Right ascension</td><td>{{ object.ra_hours }}<sup>h</sup>{{ object.ra_minutes}}<sup>m</sup></td></tr>
+        <tr><td>Declination</td><td><sup>{{ object.dec_sign }}</sup>{{ object.dec_deg }}&deg;{{ object.dec_min }}'</td></tr>
+        <tr><td>Magnitude</td><td>{{ object.magnitude }}</td></tr>
+        {% if object.distance %}
+        <tr><td>Distance</td><td>{{ object.distance }}ly</td></tr>
+        {% endif %}
+        {% if object.size %}
+        <tr><td>Size</td><td>{{ object.size }} arc min</td></tr>
+        {% endif %}
+        {% if object.description %}
+        <tr><td colspan="2">{{ object.description }}</td></tr>
+        {% endif %}
+    </table>
+    </div>
+    <div class="col-md-6">
+        {% if object.image %}
+        <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
+        {% endif %}
     </div>
 </div>
 

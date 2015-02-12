@@ -8,12 +8,12 @@
         <p>Object List:</p>
         <ul class="two-column">
         {% for dso in object.astroobject_set.all %}
-            <li>{{ dso.catalog_rep }}</li>
+            <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.catalog_rep }}</a></li>
         {% endfor %}
         </ul>
     </div>
     <div class="col-md-6">
-        <a href="{{ object.image.url }}" alt="object.latin_name"><img src="{{ object.image.url }}" class="img-responsive"></a>
+        <a href="{{ object.image.url }}" alt="{{ object.latin_name }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
     </div>
 </div>
 
