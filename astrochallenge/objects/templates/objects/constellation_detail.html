@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 {% block title %} {{ object.latin_name }}{% endblock %}
 {% block content %}
-<h1>{{ object.latin_name }}</h1>
-<h3><em>{{ object.abbreviation }}</em> {{ object.english_name }}</h3>
-<p>Objects in database: {{ object.astroobject_set.count }}</p>
-</table>
+<div class="row">
+    <div class="col-md-6">
+        <h1>{{ object.latin_name }}</h1>
+        <h3>{{ object.abbreviation }} - "{{ object.english_name }}"</h3>
+        <p>Object List:</p>
+        <ul class="two-column">
+        {% for dso in object.astroobject_set.all %}
+            <li>{{ dso.catalog_rep }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <a href="{{ object.image.url }}" alt="object.latin_name"><img src="{{ object.image.url }}" class="img-responsive"></a>
+    </div>
+</div>
 
 {% endblock %}1

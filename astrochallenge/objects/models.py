@@ -33,6 +33,11 @@ class AstroObject(models.Model):
     def __unicode__(self):
         return self.common_name if self.common_name else "{0}-{1}:{2}".format(self.constellation, self.ra_hours, self.dec_deg)
 
+    def catalog_rep(self):
+        ret_string = "/".join([str(co) for co in self.catalogobject_set.all()])
+        ret_string +=  " ({0})".format(self.common_name) if self.common_name else ""
+        return ret_string
+
 
 class CatalogObject(models.Model):
     astro_object = models.ForeignKey(AstroObject)
@@ -43,4 +48,4 @@ class CatalogObject(models.Model):
         unique_together = ('catalog', 'designation')
 
     def __unicode__(self):
-        return " {0}{1} - ({2}) ".format(self.catalog, self.designation, self.astro_object)
+        return "{0}{1}".format(self.catalog, self.designation)

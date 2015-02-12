@@ -23,10 +23,17 @@ p > a {
     border-radius: 15px;
     margin: -10px 5px -10px 5px;
 }
+
 .navbar-brand {
     font-family: 'Dosis', sans-serif;
     font-weight: 700;
     font-size: 24px;
+}
+
+.two-column {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
 }
 
 
