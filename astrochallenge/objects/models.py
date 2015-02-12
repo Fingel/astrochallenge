@@ -35,7 +35,7 @@ class AstroObject(models.Model):
 
     def catalog_rep(self):
         ret_string = "/".join([str(co) for co in self.catalogobject_set.all()])
-        ret_string +=  " ({0})".format(self.common_name) if self.common_name else ""
+        ret_string += " ({0})".format(self.common_name) if self.common_name else ""
         return ret_string
 
 

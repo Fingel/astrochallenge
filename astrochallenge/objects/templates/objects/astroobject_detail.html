@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block title %} {{ object }}{% endblock %}
 {% block content %}
 <div class="row">
@@ -7,15 +8,26 @@
         <h3>{{ object.type }}</h3>
         <table class="table">
         <tr><td>Constellation</td><td><a href="{% url 'constellation-detail' object.constellation.abbreviation %}">{{ object.constellation.latin_name }}</a></td></tr>
-        <tr><td>Right ascension</td><td>{{ object.ra_hours }}<sup>h</sup>{{ object.ra_minutes}}<sup>m</sup></td></tr>
-        <tr><td>Declination</td><td><sup>{{ object.dec_sign }}</sup>{{ object.dec_deg }}&deg;{{ object.dec_min }}'</td></tr>
-        <tr><td>Magnitude</td><td>{{ object.magnitude }}</td></tr>
+        <tr><td>Right ascension</td><td>{{ object.ra_hours | floatformat:"-3" }}<sup>h</sup>{{ object.ra_minutes | floatformat:"-3" }}<sup>m</sup></td></tr>
+        <tr><td>Declination</td><td><sup>{{ object.dec_sign }}</sup>{{ object.dec_deg }}&deg;{{ object.dec_min | floatformat:"-3" }}'</td></tr>
+        {% if object.magnitude < 1000 %}
+        <tr><td>Magnitude</td><td>{{ object.magnitude | floatformat:"-3" }}</td></tr>
+        {% endif %}
         {% if object.distance %}
-        <tr><td>Distance</td><td>{{ object.distance }}ly</td></tr>
+        <tr><td>Distance</td><td>{{ object.distance | floatformat:"-3" | intcomma }}ly</td></tr>
         {% endif %}
         {% if object.size %}
-        <tr><td>Size</td><td>{{ object.size }} arc min</td></tr>
+        <tr><td>Size</td><td>{{ object.size | floatformat:"-3" }} arc min</td></tr>
         {% endif %}
+        <tr>
+        <td>Catalog Designations</td>
+        <td>
+        {% for catalog_object in object.catalogobject_set.all %}
+            {{catalog_object.catalog}}{{catalog_object.designation}}
+        {% endfor %}
+        </td>
+        </tr>
+
         {% if object.description %}
         <tr><td colspan="2">{{ object.description }}</td></tr>
         {% endif %}
