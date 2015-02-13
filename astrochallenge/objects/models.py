@@ -31,7 +31,7 @@ class AstroObject(models.Model):
     image = models.ImageField(upload_to="astro_objects", blank=True, null=True)
 
     def __unicode__(self):
-        return self.common_name if self.common_name else "{0}-{1}:{2}".format(self.constellation, self.ra_hours, self.dec_deg)
+        return self.common_name if self.common_name else "{0}:{1}-{2}".format(self.constellation, self.ra_hours, self.dec_deg)
 
     def catalog_rep(self):
         ret_string = "/".join([str(co) for co in self.catalogobject_set.all()])
@@ -41,7 +41,7 @@ class AstroObject(models.Model):
 
 class CatalogObject(models.Model):
     astro_object = models.ForeignKey(AstroObject)
-    catalog = models.CharField(max_length=200, choices=settings.CATALOGS)
+    catalog = models.CharField(max_length=200, choices=settings.CATALOGS.items())
     designation = models.CharField(max_length=50)
 
     class Meta:

@@ -50,6 +50,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+)
+
 ROOT_URLCONF = 'astrochallenge.urls'
 
 WSGI_APPLICATION = 'astrochallenge.wsgi.application'
@@ -119,11 +124,11 @@ BOOTSTRAP3 = {
 
 # Astro Specific stuff
 
-CATALOGS = (
-    ('M', 'Messier'),
-    ('NGC', 'NGC'),
-    ('C', 'Caldwell')
-)
+CATALOGS = {
+    'M': 'Messier',
+    'NGC': 'NGC',
+    'C': 'Caldwell',
+}
 
 try:
     from local_settings import *
