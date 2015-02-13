@@ -4,13 +4,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 from models import UserProfile
 from forms import UserForm, ProfileForm
 
 
 def index(request):
-    context = {"name": "austin"}
+    context = {
+        "name": "austin",
+        "time": timezone.now(),
+        "sunset": request.user.userprofile.sunset
+    }
     return render(request, 'accounts/index.html', context)
 
 
@@ -40,6 +45,7 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            del(request.session['django_timezone'])
             messages.success(request, "Profile sucessfully updated")
             return redirect('profile')
         else:

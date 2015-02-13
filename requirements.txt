@@ -8,6 +8,7 @@ django-timezone-field==1.2
 ipython==2.4.0
 Pillow==2.7.0
 psycopg2==2.5.4
+pyephem==3.7.5.3
 pytz==2014.10
 requests==2.5.1
 six==1.9.0
