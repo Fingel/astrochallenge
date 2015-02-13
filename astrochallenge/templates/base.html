@@ -69,7 +69,7 @@
 
     <div class="container">
       {% if user.is_authenticated %}
-        {% if not user.userprofile.lat or not user.userprofile.lng %}
+        {% if user.userprofile.lat == 0.0 and user.userprofile.lng == 0.0 %}
           <div class="alert alert-warning" role="alert">
           Warning! You have not set your latitude/longitude! Make sure
           you have these set, as well as your timezone, or certain

@@ -12,14 +12,14 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, editable=False)
     timezone = TimeZoneField(default="UTC")
     location = models.CharField(max_length=200, blank=True, default="")
-    lat = models.DecimalField("latitude", max_digits=10, decimal_places=7, blank=True, null=True)
-    lng = models.DecimalField("longitude", max_digits=10, decimal_places=7, blank=True, null=True)
+    lat = models.FloatField("latitude", default=0.0)
+    lng = models.FloatField("longitude", default=0.0)
     profile_text = models.TextField(blank=True, default="")
 
     @property
     def observer(self):
         observer = ephem.Observer()
-        observer.lat, observer.lon, observer.date = str(self.lat), str(self.lng), timezone.localtime(timezone.now(), self.timezone)
+        observer.lat, observer.lon = str(self.lat), str(self.lng)
         return observer
 
     @property
@@ -27,6 +27,11 @@ class UserProfile(models.Model):
         sun = ephem.Sun()
         sun.compute(self.observer)
         return timezone.make_aware(self.observer.next_setting(sun).datetime(), pytz.UTC)
+
+    def az_alt_for_object(self, object):
+        object = object.fixed_body
+        object.compute(self.observer)
+        return (str(object.az), str(object.alt))
 
 
 @receiver(post_save, sender=User)

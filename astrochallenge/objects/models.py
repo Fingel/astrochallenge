@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+import ephem
 
 
 class Constellation(models.Model):
@@ -29,6 +30,23 @@ class AstroObject(models.Model):
     common_name = models.CharField(max_length=200, blank=True, default="")
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="astro_objects", blank=True, null=True)
+
+    @property
+    def ra_as_deg(self):
+        return float(self.ra_hours * 15 + self.ra_minutes / 60)
+
+    @property
+    def dec_as_deg(self):
+        degs = self.dec_deg + self.dec_min / 60
+        multiplier = -1 if self.dec_sign == '-' else 1
+        return degs * multiplier
+
+    @property
+    def fixed_body(self):
+        object = ephem.FixedBody()
+        object._ra = "{0}:{1}".format(self.ra_hours, self.ra_minutes)
+        object._dec = "{0}{1}:{2}".format(self.dec_sign, self.dec_deg, self.dec_min)
+        return object
 
     def __unicode__(self):
         return self.common_name if self.common_name else "{0}:{1}-{2}".format(self.constellation, self.ra_hours, self.dec_deg)
