@@ -12,9 +12,7 @@ from forms import UserForm, ProfileForm
 
 def index(request):
     context = {
-        "name": "austin",
         "time": timezone.now(),
-        "sunset": request.user.userprofile.sunset
     }
     return render(request, 'accounts/index.html', context)
 

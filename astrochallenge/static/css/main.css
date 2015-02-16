@@ -1,3 +1,13 @@
+@font-face {
+    font-family: futura;
+    src: url(../fonts/futurastd-medium-webfont.woff);
+}
+
+@font-face {
+    font-family: futura;
+    src: url(../fonts/futurastd-mediumoblique-webfont.woff);
+    font-style: italic;
+}
 body {
     padding-top: 60px;
     padding-bottom: 20px;
@@ -7,6 +17,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Dosis', sans-serif;
 }
 
+p, div {
+    font-family: futura, Trebuchet MS,Arial,sans-serif;
+    /*font-size: 16px;*/
+}
 p > a {
     text-decoration: underline;
 }
