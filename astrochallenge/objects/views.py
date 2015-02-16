@@ -23,6 +23,7 @@ class DSOListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(DSOListView, self).get_context_data(**kwargs)
+        context['constellations'] = [c.latin_name for c in Constellation.objects.all().order_by('latin_name')]
         if self.kwargs.get('catalog'):
             context['catalog'] = settings.CATALOGS[self.kwargs['catalog']]
             return context

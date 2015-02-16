@@ -13,18 +13,25 @@ body {
     padding-bottom: 20px;
 }
 
+/*a {
+    text-decoration: underline;
+}
+*/
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Dosis', sans-serif;
 }
 
 p, div {
     font-family: futura, Trebuchet MS,Arial,sans-serif;
-    /*font-size: 16px;*/
-}
-p > a {
-    text-decoration: underline;
 }
 
+h1 > a {
+    text-decoration: none;
+}
+
+.navbar a{
+    text-decoration: none;
+}
 .table-hover tbody tr:hover > td {
   cursor: pointer
 }
@@ -35,7 +42,6 @@ p > a {
     margin-top: 15px;
     padding: 0px 30px 20px 30px;
     border-radius: 5px;
-
 }
 
 .avatar-small {
