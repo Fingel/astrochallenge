@@ -1,3 +1,4 @@
 from django.contrib import admin
+from astro_comments.models import CustomComment
 
-# Register your models here.
+admin.site.register(CustomComment)
