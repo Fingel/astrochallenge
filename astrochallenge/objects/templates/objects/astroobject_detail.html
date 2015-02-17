@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load humanize %}
+{% load comments bootstrap3 humanize %}
 {% block title %} {{ object }}{% endblock %}
 {% block content %}
 <div class="row">
@@ -16,7 +16,8 @@
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
             <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations (42)</a></li>
-            <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion (19)</a></li>
+            {% get_comment_count for object as comment_count %}
+            <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion ({{ comment_count }})</a></li>
           </ul>
 
   <!-- Tab panes -->
@@ -51,9 +52,40 @@
         </table>
         </div>
         <div role="tabpanel" class="tab-pane" id="observations">observations.</div>
-        <div role="tabpanel" class="tab-pane" id="discussion">discussions</div>
+        <div role="tabpanel" class="tab-pane" id="discussion">
+            {% render_comment_list for object %}
+            {% if user.is_authenticated %}
+            {% get_comment_form for object as form %}
+              <form action="{% comment_form_target %}" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                <button class="btn btn-default" type="submit" name="submit" value="Post">Post</button>
+                <!-- <button class="btn btn-primary" type="submit" name="preview" value="Preview">Preview</button> -->
+                <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_discussion" />
+                {% endbuttons %}
+              </form>
+            {% else %}
+            <p> Please login to post comments</p>
+            {% endif %}
+        </div>
       </div>
     </div>
 </div>
 
+{% endblock %}
+{% block extra_javascript %}
+<script type="text/javascript">
+// Javascript to enable link to tab
+var hash = document.location.hash;
+var prefix = "tab_";
+if (hash) {
+    $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+}
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown', function (e) {
+    window.location.hash = e.target.hash.replace("#", "#" + prefix);
+});
+</script>
 {% endblock %}

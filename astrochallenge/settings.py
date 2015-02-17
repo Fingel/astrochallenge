@@ -32,13 +32,19 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     'astrochallenge.accounts',
     'astrochallenge.objects',
     'registration',
     'bootstrap3',
     'django_gravatar',
     'timezone_field',
+    'django_comments',
+    'astro_comments',
 )
+
+COMMENTS_APP = 'astro_comments'
+SITE_ID = 1
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
