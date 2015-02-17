@@ -3,40 +3,56 @@
 {% block title %} {{ object }}{% endblock %}
 {% block content %}
 <div class="row">
-    <div class="col-md-6">
-        <h1>{{ object }}</h1>
-        <h3>{{ object.type }}</h3>
-        <table class="table">
-        <tr><td>Constellation</td><td><a href="{% url 'constellation-detail' object.constellation.abbreviation %}">{{ object.constellation.latin_name }}</a></td></tr>
-        <tr><td>Right ascension</td><td>{{ object.ra_hours | floatformat:"-3" }}<sup>h</sup>{{ object.ra_minutes | floatformat:"-3" }}<sup>m</sup></td></tr>
-        <tr><td>Declination</td><td><sup>{{ object.dec_sign }}</sup>{{ object.dec_deg }}&deg;{{ object.dec_min | floatformat:"-3" }}'</td></tr>
-        {% if object.magnitude < 1000 %}
-        <tr><td>Magnitude</td><td>{{ object.magnitude | floatformat:"-3" }}</td></tr>
-        {% endif %}
-        {% if object.distance %}
-        <tr><td>Distance</td><td>{{ object.distance | floatformat:"-3" | intcomma }}ly</td></tr>
-        {% endif %}
-        {% if object.size %}
-        <tr><td>Size</td><td>{{ object.size | floatformat:"-3" }} arc min</td></tr>
-        {% endif %}
-        <tr>
-        <td>Catalog Designations</td>
-        <td>
-        {% for catalog_object in object.catalogobject_set.all %}
-            {{catalog_object.catalog}}{{catalog_object.designation}}
-        {% endfor %}
-        </td>
-        </tr>
-
-        {% if object.description %}
-        <tr><td colspan="2">{{ object.description }}</td></tr>
-        {% endif %}
-    </table>
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
+        <h1 class="no-top-margin">{{ object }}</h1>
         {% if object.image %}
         <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
         {% endif %}
+        <br/>
+        <button class="btn btn-success col-xs-12">Make Observation</button>
+    </div>
+    <div class="col-md-9">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+            <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations (42)</a></li>
+            <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion (19)</a></li>
+          </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="info">
+        <table class="table">
+            <tr><td>Type</td><td>{{ object.type }}</td></tr>
+            <tr><td>Constellation</td><td><a href="{% url 'constellation-detail' object.constellation.abbreviation %}">{{ object.constellation.latin_name }}</a></td></tr>
+            <tr><td>Right ascension</td><td>{{ object.ra_hours | floatformat:"-3" }}<sup>h</sup>{{ object.ra_minutes | floatformat:"-3" }}<sup>m</sup></td></tr>
+            <tr><td>Declination</td><td><sup>{{ object.dec_sign }}</sup>{{ object.dec_deg }}&deg;{{ object.dec_min | floatformat:"-3" }}'</td></tr>
+            {% if object.magnitude < 1000 %}
+            <tr><td>Magnitude</td><td>{{ object.magnitude | floatformat:"-3" }}</td></tr>
+            {% endif %}
+            {% if object.distance %}
+            <tr><td>Distance</td><td>{{ object.distance | floatformat:"-3" | intcomma }}ly</td></tr>
+            {% endif %}
+            {% if object.size %}
+            <tr><td>Size</td><td>{{ object.size | floatformat:"-3" }} arc min</td></tr>
+            {% endif %}
+            <tr>
+            <td>Catalog Designations</td>
+            <td>
+            {% for catalog_object in object.catalogobject_set.all %}
+                {{catalog_object.catalog}}{{catalog_object.designation}}
+            {% endfor %}
+            </td>
+            </tr>
+
+            {% if object.description %}
+            <tr><td colspan="2">{{ object.description }}</td></tr>
+            {% endif %}
+        </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="observations">observations.</div>
+        <div role="tabpanel" class="tab-pane" id="discussion">discussions</div>
+      </div>
     </div>
 </div>
 

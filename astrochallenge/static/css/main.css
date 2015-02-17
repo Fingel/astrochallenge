@@ -32,8 +32,17 @@ h1 > a {
 .navbar a{
     text-decoration: none;
 }
+
+.nav-tabs {
+    font-size: 16px;
+}
+
 .table-hover tbody tr:hover > td {
   cursor: pointer
+}
+
+.no-top-margin {
+    margin-top: 0px;
 }
 
 .hook {
