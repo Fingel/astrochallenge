@@ -21,6 +21,14 @@
         {% localtime off %}
         UTC: {{ time }}<br/>
         {% endlocaltime %}
+        {% for observation in observations %}
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{ observation.user_profile.user.username }} observed a {{ observation.thing }} on {{ observation.date }}</p>
+                <h4><a href="{{ observation.url }}">{{ observation.name }}</a> Points earned: {{ observation.points_earned }}</h4>
+            </div>
+        </div>
+        {% endfor %}
     </span>
 </div>
 {% endblock %}

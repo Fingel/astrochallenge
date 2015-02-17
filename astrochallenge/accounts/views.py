@@ -7,11 +7,15 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 from models import UserProfile
+from astrochallenge.objects.models import Observation
 from forms import UserForm, ProfileForm
 
 
 def index(request):
+    observations = Observation.objects.all()
+
     context = {
+        "observations": observations,
         "time": timezone.now(),
     }
     return render(request, 'accounts/index.html', context)

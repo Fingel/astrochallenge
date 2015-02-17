@@ -16,6 +16,9 @@ class UserProfile(models.Model):
     lng = models.FloatField("longitude", default=0.0)
     profile_text = models.TextField(blank=True, default="")
 
+    def __unicode__(self):
+        return self.user.username
+
     @property
     def observer(self):
         observer = ephem.Observer()

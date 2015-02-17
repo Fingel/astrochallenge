@@ -1,6 +1,47 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.core import urlresolvers
+from datetime import datetime
 import ephem
+
+from astrochallenge.accounts.models import UserProfile
+
+
+class Observation(models.Model):
+    user_profile = models.ForeignKey(UserProfile)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey()
+    date = models.DateTimeField()
+    points_earned = models.PositiveIntegerField(default=0)
+    description = models.TextField(blank=True, default="")
+
+    def __unicode__(self):
+        return "{0}-{1}".format(self.date, self.user_profile.user.username)
+
+    @property
+    def thing(self):
+        thing = ""
+        if self.content_type.model_class() == AstroObject:
+            thing = "deep space object ({0})".format(self.content_object.type)
+        elif self.content_type.model_class() == Constellation:
+            thing = "constellation"
+        return thing
+
+    @property
+    def name(self):
+        name = ""
+        if self.content_type.model_class() == AstroObject:
+            name = str(self.content_object)
+        elif self.content_type.model_class() == Constellation:
+            name = self.content_object.latin_name
+        return name
+
+    @property
+    def url(self):
+        return urlresolvers.reverse("{0}-detail".format(self.content_type.model), args=(self.object_id,))
 
 
 class Constellation(models.Model):
