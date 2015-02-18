@@ -21,6 +21,9 @@ class Observation(models.Model):
     lng = models.FloatField("longitude", default=0.0)
     description = models.TextField(blank=True, default="")
 
+    class Meta:
+        ordering = ['-date']
+
     def __unicode__(self):
         return "{0}-{1}".format(self.date, self.user_profile.user.username)
 

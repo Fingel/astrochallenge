@@ -16,19 +16,7 @@
 <div class="row">
     <span class="col-md-12">
         <h1>Latest Observations</h1>
-        Time zone: {{ TIME_ZONE }} <br/>
-        Time: {% now "DATETIME_FORMAT" %} <br/>
-        {% localtime off %}
-        UTC: {{ time }}<br/>
-        {% endlocaltime %}
-        {% for observation in observations %}
-        <div class="row">
-            <div class="col-md-12">
-                <p>{{ observation.user_profile.user.username }} observed a {{ observation.thing }} on {{ observation.date }}</p>
-                <h4><a href="{{ observation.url }}">{{ observation.name }}</a> Points earned: {{ observation.points_earned }}</h4>
-            </div>
-        </div>
-        {% endfor %}
+        {% include "objects/includes/observation_list.html" with observations=observations %}
     </span>
 </div>
 {% endblock %}

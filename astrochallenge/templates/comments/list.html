@@ -1,10 +1,11 @@
-<dl id="comments">
-  {% for comment in comment_list %}
-    <dt id="c{{ comment.id }}">
-        {{ comment.submit_date }} - {{ comment.name }}
-    </dt>
-    <dd>
+{% for comment in comment_list %}
+<div class="row observation-row" id="c{{ comment.id }}">
+    <div class="col-md-1">
+    {% include "accounts/includes/user_info.html" with user_profile=comment.user.userprofile size=60 %}
+    </div>
+    <div class="col-md-11">
+        <p><em>{{ comment.submit_date }}</em></p>
         <p>{{ comment.comment }}</p>
-    </dd>
-  {% endfor %}
-</dl>
+    </div>
+</div>
+{% endfor %}
