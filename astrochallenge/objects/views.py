@@ -1,9 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic import View
 from django.conf import settings
 
 from models import Constellation, CatalogObject, AstroObject
+from astrochallenge.objects.forms import ObservationForm
+
+# class CreateObservationView(View):
+#     def post(self, request):
+#         observation_form = ObservationForm(request.POST)
+#         if observation_form.is_valid():
 
 
 class DSODetailView(DetailView):
@@ -12,6 +19,14 @@ class DSODetailView(DetailView):
             return get_object_or_404(AstroObject, pk=self.kwargs['pk'])
         catalog_object = get_object_or_404(CatalogObject, catalog=self.kwargs['catalog'], designation=self.kwargs['designation'])
         return catalog_object.astro_object
+
+    def get_context_data(self, **kwargs):
+        context = super(DSODetailView, self).get_context_data(**kwargs)
+        context['observation_form'] = ObservationForm(initial={
+            'lat': self.request.user.userprofile.lat,
+            'lng': self.request.user.userprofile.lng,
+            })
+        return context
 
 
 class DSOListView(ListView):
