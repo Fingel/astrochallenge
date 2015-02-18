@@ -4,7 +4,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.generic import GenericRelation
 from django.core import urlresolvers
-from datetime import datetime
 import ephem
 
 from astrochallenge.accounts.models import UserProfile
@@ -46,7 +45,7 @@ class Observation(models.Model):
         return name
 
     def get_absolute_url(self):
-        return urlresolvers.reverse("{0}-detail".format(self.content_type.model), args=(self.object_id,))
+        return urlresolvers.reverse("{0}-detail".format(self.content_type.model), args=(self.object_id,)) + "#tab_observations"
 
 
 class Constellation(models.Model):

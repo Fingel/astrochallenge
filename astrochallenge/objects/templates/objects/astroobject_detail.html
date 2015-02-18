@@ -9,7 +9,22 @@
         <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
         {% endif %}
         <br/>
-        <button class="btn btn-success col-xs-12">Make Observation</button>
+        {% if user.is_authenticated %}
+        <button class="btn btn-success col-xs-12" id="make-observation" >Make Observation</button>
+        <div id="observation-form" style="display:none">
+            <form method="post" action="{% url 'post-observation' %}">
+                {% csrf_token %}
+                {% bootstrap_form observation_form %}
+                {% buttons %}
+                <button class="btn btn-default" type="submit">Submit</button>
+                <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_observations"/>
+                {% endbuttons %}
+            </form>
+        </div>
+        {% else %}
+        <p>Please <a href="{% url 'auth_login' %}">login</a> to make an observation of this object</p>
+        {% endif %}
+
     </div>
     <div class="col-md-9">
           <!-- Nav tabs -->
@@ -89,5 +104,9 @@ if (hash) {
 $('.nav-tabs a').on('shown', function (e) {
     window.location.hash = e.target.hash.replace("#", "#" + prefix);
 });
+$("#make-observation").click(function(){
+    $(this).hide();
+    $("#observation-form").slideDown();
+})
 </script>
 {% endblock %}

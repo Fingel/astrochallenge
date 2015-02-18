@@ -1,9 +1,7 @@
 from django.core.management.base import BaseCommand
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.files import File
 from astrochallenge.objects.models import AstroObject, CatalogObject, Constellation
 from decimal import *
-import urllib
 import csv
 
 

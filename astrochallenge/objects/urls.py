@@ -1,11 +1,11 @@
-from django.conf.urls import patterns, url, include
+from django.conf.urls import patterns, url
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
 
 from astrochallenge.objects.models import Constellation, AstroObject
-from astrochallenge.objects.views import DSODetailView, DSOListView
+from astrochallenge.objects.views import DSODetailView, DSOListView, post_observation, delete_observation
 
 urlpatterns = patterns('',
     url(r'^objects/$', TemplateView.as_view(template_name="objects/index.html"), name="object-index"),
@@ -17,3 +17,8 @@ urlpatterns = patterns('',
     url(r'^objects/dso/(?P<pk>\d+)/$', DSODetailView.as_view(), name="astroobject-detail"),
     url(r'^objects/dso/(?P<catalog>\w+)/(?P<designation>\d+)/$', DSODetailView.as_view(), name="astroobject-detail"),
 )
+
+urlpatterns += patterns('',
+    url(r'^observation/$', post_observation, name="post-observation"),
+    url(r'^observation/(?P<observation_id>\d+)/delete/$', delete_observation, name="delete-observation")
+    )

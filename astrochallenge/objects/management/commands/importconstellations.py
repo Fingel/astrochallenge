@@ -1,8 +1,6 @@
 from django.core.management.base import BaseCommand
-from django.core.files import File
-from astrochallenge.objects.models import AstroObject, CatalogObject, Constellation
+from astrochallenge.objects.models import Constellation
 from decimal import *
-import urllib
 import csv
 
 

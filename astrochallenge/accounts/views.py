@@ -1,12 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.forms.models import inlineformset_factory
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-from models import UserProfile
 from astrochallenge.objects.models import Observation
 from forms import UserForm, ProfileForm
 
@@ -53,4 +50,3 @@ def edit_profile(request):
         else:
             messages.error(request, 'There was an error with the form')
             return render(request, 'accounts/profile_form.html', {'user_form': user_form, 'profile_form': profile_form})
-

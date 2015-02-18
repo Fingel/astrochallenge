@@ -1,4 +1,3 @@
-from django import forms
 from django_comments.forms import CommentForm
 from django.contrib.contenttypes.models import ContentType
 from django.utils.encoding import force_unicode

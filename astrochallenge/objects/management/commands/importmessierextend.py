@@ -1,8 +1,6 @@
 from django.core.management.base import BaseCommand
-from django.core.files import File
 from astrochallenge.objects.models import AstroObject, CatalogObject, Constellation
 from decimal import *
-import urllib
 import csv
 
 
@@ -28,10 +26,11 @@ class Command(BaseCommand):
                 magnitude = float(row[9])
                 size = float(row[10])
                 distance = float(row[11])
+                m_name = "M{0}".format(id)
                 try:
-                    common_name = row[12]
+                    common_name = "{0} - {1}".format(m_name, row[12])
                 except:
-                    common_name = ""
+                    common_name = m_name
 
                 astro_object = AstroObject(
                     type=type,

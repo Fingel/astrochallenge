@@ -5,7 +5,11 @@
        {% include "accounts/includes/user_info.html" with user_profile=observation.user_profile size=60 %}
     </div>
     <div class="col-sm-11">
-        <p><span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span> was observed by: <span class="emphasize"><a href="{% url 'member-profile' observation.user_profile.user.username %}">{{ observation.user_profile.user.username }}</a></span> on {{ observation.date }}</p>
+        <p><span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span> was observed by: <span class="emphasize"><a href="{% url 'member-profile' observation.user_profile.user.username %}">{{ observation.user_profile.user.username }}</a></span> on {{ observation.date }}
+        {% if observation.user_profile == user.userprofile %}
+            <a href="{% url 'delete-observation' observation.id %}">Delete</a>
+        {% endif %}
+        </p>
         <p>Points earned: {{ observation.points_earned }}</p>
         <!-- <blockquote> -->
             <p><em>"{{ observation.description }}"</em></p>
