@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.generic import GenericRelation
 from django.core import urlresolvers
 from datetime import datetime
 import ephem
@@ -16,6 +17,8 @@ class Observation(models.Model):
     content_object = GenericForeignKey()
     date = models.DateTimeField()
     points_earned = models.PositiveIntegerField(default=0)
+    lat = models.FloatField("latitude", default=0.0)
+    lng = models.FloatField("longitude", default=0.0)
     description = models.TextField(blank=True, default="")
 
     def __unicode__(self):
@@ -39,8 +42,7 @@ class Observation(models.Model):
             name = self.content_object.latin_name
         return name
 
-    @property
-    def url(self):
+    def get_absolute_url(self):
         return urlresolvers.reverse("{0}-detail".format(self.content_type.model), args=(self.object_id,))
 
 
@@ -50,6 +52,7 @@ class Constellation(models.Model):
     latin_genitive = models.CharField(max_length=200)
     english_name = models.CharField(max_length=200)
     image = models.ImageField(upload_to="constellations", blank=True, null=True)
+    observations = GenericRelation(Observation)
 
     def __unicode__(self):
         return self.latin_name
@@ -71,6 +74,7 @@ class AstroObject(models.Model):
     common_name = models.CharField(max_length=200, blank=True, default="")
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="astro_objects", blank=True, null=True)
+    observations = GenericRelation(Observation)
 
     @property
     def ra_as_deg(self):

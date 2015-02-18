@@ -15,7 +15,7 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
-            <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations (42)</a></li>
+            <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations ({{ object.observations.all | length }})</a></li>
             {% get_comment_count for object as comment_count %}
             <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion ({{ comment_count }})</a></li>
           </ul>
@@ -51,7 +51,9 @@
             {% endif %}
         </table>
         </div>
-        <div role="tabpanel" class="tab-pane" id="observations">observations.</div>
+        <div role="tabpanel" class="tab-pane" id="observations">
+            {% include "objects/includes/observation_list.html" with observations=object.observations.all %}
+        </div>
         <div role="tabpanel" class="tab-pane" id="discussion">
             {% render_comment_list for object %}
             {% if user.is_authenticated %}
