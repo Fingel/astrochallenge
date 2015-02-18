@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load tz %}
+{% block title %}Home{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
 <div class="hook">

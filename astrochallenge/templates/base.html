@@ -53,7 +53,7 @@
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               <img class="avatar-small" src="{% gravatar_url user.email 30 %}">
-              {{ user.username }} <span class="caret"></span></a>
+              {{ user.username }} ({{user.userprofile.points}}) <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
                 <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'auth_logout' %}">Logout</a></li>

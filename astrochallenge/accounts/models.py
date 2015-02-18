@@ -20,6 +20,13 @@ class UserProfile(models.Model):
         return self.user.username
 
     @property
+    def points(self):
+        points = 0
+        for observation in self.observation_set.all():
+            points += observation.points_earned
+        return points
+
+    @property
     def observer(self):
         observer = ephem.Observer()
         observer.lat, observer.lon = str(self.lat), str(self.lng)
