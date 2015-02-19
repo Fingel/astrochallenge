@@ -44,10 +44,11 @@ def post_observation(request, next=None):
 
     observation_form.instance.user_profile = request.user.userprofile
 
-    try:
-        observation_form.instance.points_earned = target.points
-    except:
-        pass
+    if not target.observations.filter(user_profile__user__username=request.user.username).exists():
+        try:
+            observation_form.instance.points_earned = target.points
+        except:
+            pass
 
     observation_form.save()
     return next_redirect(request, fallback=next or observation_form.instance.get_absolute_url())
