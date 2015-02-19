@@ -27,9 +27,9 @@ class Command(BaseCommand):
                 size = float(row[10])
                 distance = float(row[11])
                 m_name = "M{0}".format(id)
-                try:
+                if row[12]:
                     common_name = "{0} - {1}".format(m_name, row[12])
-                except:
+                else:
                     common_name = m_name
 
                 astro_object = AstroObject(

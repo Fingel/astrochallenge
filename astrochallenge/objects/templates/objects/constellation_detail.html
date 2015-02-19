@@ -8,7 +8,7 @@
         <p>Object List:</p>
         <ul class="two-column">
         {% for dso in object.astroobject_set.all %}
-            <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.catalog_rep }}</a></li>
+            <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.common_name }}</a></li>
         {% endfor %}
         </ul>
     </div>
