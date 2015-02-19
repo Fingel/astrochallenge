@@ -31,6 +31,7 @@ class Command(BaseCommand):
                 dec_sign = row[8]
                 dec_deg = row[9]
                 dec_min = float(row[10])
+                common_name = "NGC{0}".format(id)
 
                 astro_object = AstroObject(
                     type=type,
@@ -42,6 +43,7 @@ class Command(BaseCommand):
                     magnitude=magnitude,
                     details=details,
                     constellation=constellation,
+                    common_name=common_name,
                 )
                 points = 1
                 if magnitude < 10:
