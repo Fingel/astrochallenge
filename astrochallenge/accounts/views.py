@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -9,7 +10,18 @@ from forms import UserForm, ProfileForm
 
 
 def index(request):
-    observations = Observation.objects.all()
+    observation_list = Observation.objects.all()
+    paginator = Paginator(observation_list, 5)
+    page = request.GET.get('page')
+
+    try:
+        observations = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        observations = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        observations = paginator.page(paginator.num_pages)
 
     context = {
         "observations": observations,

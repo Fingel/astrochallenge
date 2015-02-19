@@ -9,9 +9,6 @@
         <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
         {% endif %}
         <br/>
-        {% if user|has_observed:object %}
-        <p>You have already observed this object, so you will not receieve additional points for more observations</p>
-        {% endif %}
         {% include "objects/includes/observation_form.html" with observation_form=observation_form %}
     </div>
     <div class="col-md-9">
@@ -55,7 +52,7 @@
         </table>
         </div>
         <div role="tabpanel" class="tab-pane" id="observations">
-            {% include "objects/includes/observation_list.html" with observations=object.observations.all %}
+            {% include "objects/includes/observation_list.html" with observations=object.observations.all|slice:":1000" %}
         </div>
         <div role="tabpanel" class="tab-pane" id="discussion">
             {% render_comment_list for object %}
@@ -95,6 +92,6 @@ $('.nav-tabs a').on('shown', function (e) {
 $("#make-observation").click(function(){
     $(this).hide();
     $("#observation-form").slideDown();
-})
+});
 </script>
 {% endblock %}

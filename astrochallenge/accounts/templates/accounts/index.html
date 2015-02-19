@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load tz %}
+{% load tz bootstrap3 %}
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
@@ -19,5 +19,9 @@
         <h1>Latest Observations</h1>
         {% include "objects/includes/observation_list.html" with observations=observations %}
     </span>
+    <nav>
+    <div class="pull-right">
+    {% bootstrap_pagination observations %}
+    </div>
 </div>
 {% endblock %}
