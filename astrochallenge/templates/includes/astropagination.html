@@ -1,0 +1,21 @@
+<nav class="pull-right">
+  <ul class="pagination">
+    <li {% if pages.current.number == 1 %} class="disabled" {% endif %}>
+      <a href="{{pages.previous.path}}{{url_hash}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo; Previous</span>
+      </a>
+    </li>
+    {% for page in pages %}
+    <li {% if page.is_current %} class="disabled" {% endif %}>
+        <a href="{{page.path}}{{url_hash}}">
+            <span>{{page.label}}</span>
+        </a>
+    </li>
+    {% endfor %}
+    <li {% if pages.current.number == pages|length %} class="disabled" {% endif %}>
+      <a href="{{pages.next.path}}{{url_hash}}" aria-label="Next">
+        <span aria-hidden="true">Next &raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>

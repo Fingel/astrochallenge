@@ -12,15 +12,4 @@
 </div>
 {% endfor %}
 {% get_pages %}
-<nav class="pull-right">
-  <ul class="pagination">
-    <li>
-      <a href="{{pages.previous.path}}#tab_discussion" aria-label="Previous">
-        <span aria-hidden="true">&laquo; Previous</span>
-      </a>
-      <a href="{{pages.next.path}}#tab_discussion" aria-label="Next">
-        <span aria-hidden="true">Next &raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+{% include 'includes/astropagination.html' with url_hash='#tab_discussion' %}
