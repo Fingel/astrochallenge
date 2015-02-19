@@ -3,8 +3,10 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.generic import GenericRelation
+from django.utils import timezone
 from django.core import urlresolvers
 import ephem
+import pytz
 
 from astrochallenge.accounts.models import UserProfile
 
@@ -94,6 +96,19 @@ class AstroObject(models.Model):
         object._ra = "{0}:{1}".format(self.ra_hours, self.ra_minutes)
         object._dec = "{0}{1}:{2}".format(self.dec_sign, self.dec_deg, self.dec_min)
         return object
+
+    def observation_info(self, observer):
+        p_object = self.fixed_body
+        p_object.compute(observer)
+        up = True if ephem.degrees(p_object.alt) > 0 else False
+        return {
+            'alt': str(p_object.alt),
+            'az': str(p_object.az),
+            'up': up,
+            'neverup': p_object.neverup,
+            'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if p_object.rise_time else None,
+            'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if p_object.set_time else None
+        }
 
     def __unicode__(self):
         return self.common_name if self.common_name else "{0}:{1}-{2}".format(self.constellation, self.ra_hours, self.dec_deg)

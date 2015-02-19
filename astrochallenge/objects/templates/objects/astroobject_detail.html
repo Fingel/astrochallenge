@@ -23,6 +23,33 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="info">
+        <h4>Current Info for {{user.username|default:"Observer"}}</h4>
+        <p> as of {% now 'SHORT_DATETIME_FORMAT' %}</p>
+        {% if user.is_authenticated %}
+        <table class="table">
+            <tr><td>Up</td><td>
+            {% if current_info.up %}
+            <span class="green"><b>Yes</b></span>
+            {% else %}
+            <span class="red"><b>No</b></span>
+            {% endif %}
+            </td></tr>
+            <tr><td>Never Up?</td><td>
+            {% if current_info.neverup %}
+            <span class="red"><b>True</b></span>
+            {% else %}
+            <span class="green"><b>False</b></span>
+            {% endif %}
+            </td></tr>
+            <tr><td>Az</td><td>{{current_info.az}}</td></tr>
+            <tr><td>Alt</td><td>{{current_info.alt}}</td></tr>
+            <tr><td>Next Rise</td><td>{{current_info.rise|default:"N/A"}}</td></tr>
+            <tr><td>Next Set</td><td>{{current_info.set|default:"N/A"}}</td></tr>
+        </table>
+        {% else %}
+        <p>Please <a href="{% url 'auth_login' %}">login</a> to view current observation details</p>
+        {% endif %}
+        <h4>General Info</h4>
         <table class="table">
             <tr><td>Type</td><td>{{ object.type }}</td></tr>
             <tr><td>Constellation</td><td><a href="{% url 'constellation-detail' object.constellation.abbreviation %}">{{ object.constellation.latin_name }}</a></td></tr>

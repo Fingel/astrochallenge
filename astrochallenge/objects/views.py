@@ -64,6 +64,7 @@ class DSODetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(DSODetailView, self).get_context_data(**kwargs)
         if self.request.user.is_authenticated():
+            context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
             context['observation_form'] = ObservationForm(initial={
                 'content_type': ContentType.objects.get(model="astroobject").id,
                 'object_id': self.get_object().pk,

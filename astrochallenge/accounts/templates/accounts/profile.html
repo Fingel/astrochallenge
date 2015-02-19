@@ -9,6 +9,7 @@
                 <tr><td>Timezone</td><td>{{user.userprofile.timezone}}</td></tr>
                 <tr><td>Latitude</td><td>{{user.userprofile.lat}}</td></tr>
                 <tr><td>Longitude</td><td>{{user.userprofile.lng}}</td></tr>
+                <tr><td>Altitude</td><td>{{user.userprofile.elevation}}m</td></tr>
                 <tr><td colspan="2">{{user.userprofile.profile_text | linebreaks }}</td></tr>
             </table>
         </div>
@@ -20,7 +21,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <a href="{% url 'edit-profile' %}"><button class="btn btn-info">Edit profile</button></a>
+            <a href="{% url 'edit-profile' %}"><button class="btn btn-default">Edit profile</button></a>
             <a href="{% url 'auth_password_change' %}"><button class="btn btn-danger">Change password</button></a>
         </div>
     </div>

@@ -11,9 +11,10 @@ from timezone_field import TimeZoneField
 class UserProfile(models.Model):
     user = models.OneToOneField(User, editable=False)
     timezone = TimeZoneField(default="UTC")
-    location = models.CharField(max_length=200, blank=True, default="")
-    lat = models.FloatField("latitude", default=0.0)
-    lng = models.FloatField("longitude", default=0.0)
+    location = models.CharField(max_length=200, blank=True, default="", help_text="Doesn't need to be accurate, just a description of your location. e.g \"San Francisco\"")
+    lat = models.FloatField("latitude", default=0.0, help_text="The latitude form which you most often observe from.")
+    lng = models.FloatField("longitude", default=0.0, help_text="The longitude from which you most often observe from.")
+    elevation = models.IntegerField(default=0, help_text="The elevation, in meters, from which you most often observe from.")
     profile_text = models.TextField(blank=True, default="")
 
     def __unicode__(self):
@@ -29,7 +30,7 @@ class UserProfile(models.Model):
     @property
     def observer(self):
         observer = ephem.Observer()
-        observer.lat, observer.lon = str(self.lat), str(self.lng)
+        observer.lat, observer.lon, observer.elevation = str(self.lat), str(self.lng), self.elevation
         return observer
 
     @property
@@ -37,11 +38,6 @@ class UserProfile(models.Model):
         sun = ephem.Sun()
         sun.compute(self.observer)
         return timezone.make_aware(self.observer.next_setting(sun).datetime(), pytz.UTC)
-
-    def az_alt_for_object(self, object):
-        object = object.fixed_body
-        object.compute(self.observer)
-        return (str(object.az), str(object.alt))
 
 
 @receiver(post_save, sender=User)
