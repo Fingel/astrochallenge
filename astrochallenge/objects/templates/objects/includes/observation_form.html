@@ -1,0 +1,19 @@
+{% load bootstrap3 objects_extras %}
+{% if user.is_authenticated %}
+<button class="btn btn-success col-md-12" id="make-observation" >Make Observation</button>
+<div id="observation-form" style="display:none">
+        {% if user|has_observed:object %}
+        <p>You have already observed this object, so you will not receieve additional points for more observations</p>
+        {% endif %}
+    <form method="post" action="{% url 'post-observation' %}">
+        {% csrf_token %}
+        {% bootstrap_form observation_form %}
+        {% buttons %}
+        <button class="btn btn-default" type="submit">Submit</button>
+        <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_observations"/>
+        {% endbuttons %}
+    </form>
+</div>
+{% else %}
+<p>Please <a href="{% url 'auth_login' %}">login</a> to make an observation of this object</p>
+{% endif %}

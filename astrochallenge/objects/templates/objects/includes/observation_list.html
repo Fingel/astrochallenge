@@ -1,4 +1,5 @@
-{% load gravatar %}
+{% load gravatar endless %}
+{% paginate 5 observations using "ob_page" %}
 {% for observation in observations %}
 <div class="row observation-row">
     <div class="col-sm-1">
@@ -17,3 +18,16 @@
     </div>
 </div>
 {% endfor %}
+{% get_pages %}
+<nav class="pull-right">
+  <ul class="pagination">
+    <li>
+      <a href="{{pages.previous.path}}#tab_observations" aria-label="Previous">
+        <span aria-hidden="true">&laquo; Previous</span>
+      </a>
+      <a href="{{pages.next.path}}#tab_observations" aria-label="Next">
+        <span aria-hidden="true">Next &raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
