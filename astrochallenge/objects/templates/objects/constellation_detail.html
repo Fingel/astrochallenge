@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
+{% load objects_extras %}
 {% block title %} {{ object.latin_name }}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col-md-6">
         <h1>{{ object.latin_name }}</h1>
-        <h3>{{ object.abbreviation }} - "{{ object.english_name }}"</h3>
-        <p>Object List:</p>
+        <table class="table">
+        <tr><td>Abbreviation</td><td>{{ object.abbreviation }}</td></tr>
+        <tr><td>Translation</td><td>{{ object.english_name }}</td></tr>
+        </table>
         <ul class="two-column">
         {% for dso in object.astroobject_set.all %}
-            <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.common_name }}</a></li>
+            <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.common_name }}
+            {% if user|has_observed:dso %}
+                <span class="glyphicon glyphicon-ok green"></span>
+            {% endif %}
+            </a></li>
         {% endfor %}
         </ul>
     </div>
