@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, get_object_or_404
-from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.base import TemplateView
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
@@ -9,6 +9,8 @@ from django.http import HttpResponseForbidden
 from django_comments.views.utils import next_redirect
 from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
+from django_datatables_view.base_datatable_view import BaseDatatableView
+from django.db.models import Q
 
 from models import Constellation, CatalogObject, AstroObject, Observation
 from astrochallenge.objects.forms import ObservationForm
@@ -74,12 +76,8 @@ class DSODetailView(DetailView):
         return context
 
 
-class DSOListView(ListView):
-    def get_queryset(self):
-        if self.kwargs.get('catalog'):
-            return AstroObject.objects.filter(catalogobject__catalog=self.kwargs['catalog'])
-        else:
-            return AstroObject.objects.all()
+class DSOListView(TemplateView):
+    template_name = "objects/astroobject_list.html"
 
     def get_context_data(self, **kwargs):
         context = super(DSOListView, self).get_context_data(**kwargs)
@@ -90,3 +88,43 @@ class DSOListView(ListView):
         else:
             context['catalog'] = "All"
             return context
+
+
+class DSOListViewJson(BaseDatatableView):
+    model = AstroObject
+    columns = ['pk', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
+    order_columns = ['pk', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
+
+    def filter_queryset(self, qs):
+        """ If search['value'] is provided then filter all searchable columns using istartswith
+        """
+        if not self.pre_camel_case_notation:
+            # get global search value
+            search = self.request.GET.get('search[value]', None)
+            col_data = self.extract_datatables_column_data()
+            q = Q()
+            for col_no, col in enumerate(col_data):
+                # apply global search to all searchable columns
+                if search and col['searchable']:
+                    q |= Q(**{'{0}__icontains'.format(self.columns[col_no].replace(".", "__")): search})
+
+                # column specific filter
+                if col['search.value']:
+                    qs = qs.filter(**{'{0}__icontains'.format(self.columns[col_no].replace(".", "__")): col['search.value']})
+            qs = qs.filter(q)
+        return qs
+
+    def render_column(self, row, column):
+        if column == "observed":
+            if self.request.user.is_authenticated():
+                if row.observations.filter(user_profile__user__username=self.request.user.username).exists():
+                    return "<span class=\"green glyphicon glyphicon-ok\"></span>"
+            return ""
+        else:
+            return super(DSOListViewJson, self).render_column(row, column)
+
+    def get_initial_queryset(self):
+        if not self.kwargs.get('catalog') or self.kwargs.get('catalog') == 'all':
+            return AstroObject.objects.all()
+        else:
+            return AstroObject.objects.filter(catalogobject__catalog=self.kwargs['catalog'])

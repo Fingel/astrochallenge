@@ -17,9 +17,9 @@
         <div class="form-group">
             <label for="catalog">Catalog:</label>
             <select class="form-control" id="catalog">
-                <option href="{% url 'astroobject-list' 'M' %}" {% if catalog == 'Messier'%} selected {% endif %}>Messier</option>
-                <option href="{% url 'astroobject-list' 'NGC' %}" {% if catalog == 'NGC'%} selected {% endif %}>NGC</option>
-                <option href="{% url 'astroobject-list' %}" {% if catalog == 'All'%} selected {% endif %}>All</option>
+                <option value="all">All</option>
+                <option value="M">Messier</option>
+                <option value="NGC">NGC</option>
             </select>
         </div>
          <div class="form-group">
@@ -48,26 +48,11 @@
         <table class="table table-striped table-hover " id="table">
             <thead>
                 <tr>
-                    <td>Name</td><td>Designations</td><td>Constellation</td><td>Type</td><td>Magnitude</td><td>Points</td><td>Observed</td>
+                    <td>id</td><td>Name</td><td>Constellation</td><td>Type</td><td>Magnitude</td><td>Points</td><td>Observed</td>
                 </tr>
             </thead>
             <tbody>
-        {% for astroobject in object_list %}
-            <tr href="{% url 'astroobject-detail' astroobject.pk %}">
-                <td><a href="{% url 'astroobject-detail' astroobject.pk %}">{{ astroobject }}</a></td>
-                <td>
-                {% for catalog_object in astroobject.catalogobject_set.all %}
-                    {{catalog_object.catalog}}{{catalog_object.designation}}
-                {% endfor %}
-                </td>
-                <td><a href="{% url 'constellation-detail' astroobject.constellation.abbreviation %}"> {{ astroobject.constellation }}</a></td>
-                <td>{{ astroobject.type }}</td>
-                <td>{% if astroobject.magnitude < 100 %}{{ astroobject.magnitude }}{% endif %}</td>
-                <td>{{ astroobject.points }}</td>
-                <td>{{ user|has_observed:astroobject }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
+            </tbody>
         </table>
     </div>
 </div>
@@ -75,21 +60,28 @@
 {% block extra_javascript %}
 <script src="{% get_static_prefix %}js/vendor/jquery.dataTables.min.js"></script>
 <script src="{% get_static_prefix %}js/vendor/dataTables.bootstrap.js"></script>
-<script src="{% get_static_prefix %}/js/vendor/natural.js"></script>
 <script type="text/javascript">
     table = $("#table").DataTable({
-        'lengthChange': false,
-        'sDom': 'lrtip',
+        "processing": true,
+        "serverSide": true,
+        "ajax": "{% url 'astroobject-list-json' %}",
         columnDefs: [
-            { type: 'natural', targets: 0}
-        ]
-    });
-    $('#table').on('click', 'tbody tr', function(){
-        window.location.href = $(this).attr('href');
-    });
-    $('#catalog').change(function(){
-        window.location.href = $(this).find(':selected').attr('href');
+            { 'targets': [ 0 ], visible: false, searchable: false},
+            { 'targets': [ 6 ], 'searchable': false},
+            { 'targets': [ 1, 2, 3, 6], orderable: false},
+         ],
+        'lengthChange': false,
+        'sDom': 'lrtip'
     })
+    $('#catalog').change(function(){
+        catalog = $(this).val() + "/";
+        table.ajax.url("{% url 'astroobject-list-json' %}/" + catalog);
+        table.draw();
+    })
+    $('#table tbody').on( 'click', 'tr', function () {
+        window.location.href = "/objects/dso/" + table.row( this ).data()[0];
+    });
+
     $('#search').keyup(function(){
         table.search($(this).val()).draw();
     })
