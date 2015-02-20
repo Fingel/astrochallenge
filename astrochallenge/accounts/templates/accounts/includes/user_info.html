@@ -1,21 +1,10 @@
 {% load gravatar %}
 <div class="row">
     <div class="col-xs-12">
-<img class="profile-image" class="img-responsive" src="{% gravatar_url user_profile.user.email size %}"/><br/>
+        <img class="profile-image img-responsive" src="{% gravatar_url user_profile.user.email size %}"/>
     </div>
-</div>
-<div class="row">
     <div class="col-xs-12">
-        {{ user_profile.user.username }}
+        <span class="no-wrap profile-tidbit"><span class="glyphicon glyphicon-star"></span>{{ user_profile.points }} </span>
+        <span class="no-wrap profile-tidbit"><span class="glyphicon glyphicon-eye-open"></span>{{ user_profile.observation_set.all | length }}</span>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-    <span class="no-wrap"><span class="glyphicon glyphicon-star"></span> {{ user_profile.points }}</span>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-<span class="no-wrap"><span class="glyphicon glyphicon-eye-open"></span> {{ user_profile.observation_set.all | length }}</span>
-</div>
 </div>

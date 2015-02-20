@@ -1,12 +1,12 @@
-{% load endless %}
+{% load endless gravatar %}
 {% paginate 5 comment_list using "c_page" %}
 {% for comment in comment_list %}
 <div class="row observation-row" id="c{{ comment.id }}">
     <div class="col-sm-1">
-    {% include "accounts/includes/user_info.html" with user_profile=comment.user.userprofile size=60 %}
+    <img class="profile-image" src="{% gravatar_url user.email 50 %}">
     </div>
     <div class="col-sm-11">
-        <p><em>{{ comment.submit_date }}</em></p>
+        <p>{{comment.user.username}} - <em>{{ comment.submit_date }}</em></p>
         <p>{{ comment.comment }}</p>
     </div>
 </div>

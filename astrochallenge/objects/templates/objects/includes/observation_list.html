@@ -2,11 +2,11 @@
 {% paginate 5 observations using "ob_page" %}
 {% for observation in observations %}
 <div class="row observation-row">
-    <div class="col-sm-1">
-       {% include "accounts/includes/user_info.html" with user_profile=observation.user_profile size=60 %}
+    <div class="col-sm-2">
+       {% include "accounts/includes/user_info.html" with user_profile=observation.user_profile size=100 %}
     </div>
-    <div class="col-sm-11">
-        <p><span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span> was observed by: <span class="emphasize"><a href="{% url 'member-profile' observation.user_profile.user.username %}">{{ observation.user_profile.user.username }}</a></span> on {{ observation.date }}
+    <div class="col-sm-10">
+        <p><span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span> was observed by <span class="emphasize"><a href="{% url 'member-profile' observation.user_profile.user.username %}">{{ observation.user_profile.user.username }}</a></span> on {{ observation.date }}
         {% if observation.user_profile == user.userprofile %}
             <a href="{% url 'delete-observation' observation.id %}">Delete</a>
         {% endif %}
