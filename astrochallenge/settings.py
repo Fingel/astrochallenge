@@ -100,6 +100,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = '/'
+
 TEMPLATE_DIRS = (
     os.path.join(APP_ROOT, 'templates'),
 )
