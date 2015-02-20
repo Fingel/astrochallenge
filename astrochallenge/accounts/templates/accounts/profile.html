@@ -4,27 +4,31 @@
     <div class="row">
         <div class="col-md-6">
             <table class="table">
-                <tr><td>Name</td><td>{{user.first_name}} {{user.last_name}}</td></tr>
-                <tr><td>Location</td><td>{{user.userprofile.location}}</td></tr>
-                <tr><td>Timezone</td><td>{{user.userprofile.timezone}}</td></tr>
-                <tr><td>Latitude</td><td>{{user.userprofile.lat}}</td></tr>
-                <tr><td>Longitude</td><td>{{user.userprofile.lng}}</td></tr>
-                <tr><td>Altitude</td><td>{{user.userprofile.elevation}}m</td></tr>
-                <tr><td colspan="2">{{user.userprofile.profile_text | linebreaks }}</td></tr>
+                <tr><td>Name</td><td>{{member.first_name}} {{member.last_name}}</td></tr>
+                <tr><td>Location</td><td>{{member.userprofile.location}}</td></tr>
+                <tr><td>Timezone</td><td>{{member.userprofile.timezone}}</td></tr>
+                <tr><td>Latitude</td><td>{{member.userprofile.lat}}</td></tr>
+                <tr><td>Longitude</td><td>{{member.userprofile.lng}}</td></tr>
+                <tr><td>Altitude</td><td>{{member.userprofile.elevation}}m</td></tr>
+                <tr><td colspan="2">{{member.userprofile.profile_text | linebreaks }}</td></tr>
             </table>
         </div>
         <div class="col-md-6">
-                <p>{% gravatar user.email 150 %}</p>
-                <p><a href="{% gravatar_profile_url user.email %}">Change your avatar</a>
+                <p>{% gravatar member.email 150 %}</p>
+                {% if member == user %}
+                <p><a href="{% gravatar_profile_url member.email %}">Change your avatar</a>
                 <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Gravatar is a service that displays an image that is linked to your email address. Many sites use Gravatar so you only have to set your image once!"></span></p>
+                {% endif %}
         </div>
     </div>
+    {% if member == user %}
     <div class="row">
         <div class="col-md-12">
             <a href="{% url 'edit-profile' %}"><button class="btn btn-default">Edit profile</button></a>
             <a href="{% url 'auth_password_change' %}"><button class="btn btn-danger">Change password</button></a>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
 {% block extra_javascript %}
 <script type="text/javascript">

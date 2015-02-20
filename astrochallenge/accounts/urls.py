@@ -5,8 +5,7 @@ from astrochallenge.accounts import views
 urlpatterns = patterns('',
     (r'^accounts/', include('registration.backends.default.urls')),
     url(r'^$', views.index, name='index'),
-    url(r'^accounts/member/(?P<username>\w+)/$', views.member_profile, name="member-profile"),
-    url(r'^accounts/profile/$', views.profile, name='profile'),
-    url(r'^accounts/profile/edit$', views.edit_profile, name='edit-profile')
+    url(r'^accounts/edit/$', views.edit_profile, name='edit-profile'),
+    url(r'^accounts/profile/(?P<username>\w+)/$', views.profile, name='profile'),
 
 )

@@ -18,14 +18,9 @@ def index(request):
     return render(request, 'accounts/index.html', context)
 
 
-def member_profile(request, username):
+def profile(request, username):
     member = get_object_or_404(User, username=username)
-    return render(request, 'accounts/memberprofile.html', {'member': member})
-
-
-@login_required
-def profile(request):
-    return render(request, 'accounts/profile.html', {})
+    return render(request, 'accounts/profile.html', {'member': member})
 
 
 @login_required

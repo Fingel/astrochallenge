@@ -55,7 +55,7 @@
               <img class="avatar-small" src="{% gravatar_url user.email 30 %}">
               {{ user.username }} ({{user.userprofile.points}}) <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="download">
-                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'profile' user.username %}">Profile</a></li>
                 <li><a href="{% url 'auth_logout' %}">Logout</a></li>
               </ul>
             </li>
@@ -74,7 +74,7 @@
           Warning! You have not set your latitude/longitude! Make sure
           you have these set, as well as your timezone, or certain
           functions of this site will not work propery.
-          <a href="{% url 'edit_profile' %}">Edit profile</a>
+          <a href="{% url 'edit-profile' %}">Edit profile</a>
           </div>
         {% endif %}
       {% endif %}
