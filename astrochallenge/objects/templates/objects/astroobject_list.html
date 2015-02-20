@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static objects_extras %}
 {% block title %} Deep Space Objects {% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% get_static_prefix %}css/dataTables.bootstrap.css"/>
@@ -48,7 +48,7 @@
         <table class="table table-striped table-hover " id="table">
             <thead>
                 <tr>
-                    <td>Name</td><td>Designations</td><td>Constellation</td><td>Type</td><td>Magnitude</td><td>Points</td>
+                    <td>Name</td><td>Designations</td><td>Constellation</td><td>Type</td><td>Magnitude</td><td>Points</td><td>Observed</td>
                 </tr>
             </thead>
             <tbody>
@@ -64,6 +64,7 @@
                 <td>{{ astroobject.type }}</td>
                 <td>{% if astroobject.magnitude < 100 %}{{ astroobject.magnitude }}{% endif %}</td>
                 <td>{{ astroobject.points }}</td>
+                <td>{{ user|has_observed:astroobject }}</td>
             </tr>
         {% endfor %}
         </tbody>
