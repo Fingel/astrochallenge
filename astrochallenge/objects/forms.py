@@ -1,12 +1,11 @@
 from django.forms.models import ModelForm
 from django.forms import HiddenInput, DateTimeField
-from django.utils.timezone import utc
 from models import Observation
-from datetime import datetime
+from django.utils import timezone
 
 
 class ObservationForm(ModelForm):
-    date = DateTimeField(initial=datetime.now().replace(tzinfo=utc))
+    date = DateTimeField(initial=timezone.now)
 
     class Meta:
         model = Observation
