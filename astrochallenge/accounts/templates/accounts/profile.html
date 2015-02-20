@@ -3,15 +3,27 @@
 {% block content %}
     <div class="row">
         <div class="col-md-6">
-            <table class="table">
-                <tr><td>Name</td><td>{{member.first_name}} {{member.last_name}}</td></tr>
-                <tr><td>Location</td><td>{{member.userprofile.location}}</td></tr>
-                <tr><td>Timezone</td><td>{{member.userprofile.timezone}}</td></tr>
-                <tr><td>Latitude</td><td>{{member.userprofile.lat}}</td></tr>
-                <tr><td>Longitude</td><td>{{member.userprofile.lng}}</td></tr>
-                <tr><td>Altitude</td><td>{{member.userprofile.elevation}}m</td></tr>
-                <tr><td colspan="2">{{member.userprofile.profile_text | linebreaks }}</td></tr>
-            </table>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+                <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations ({{ member.userprofile.observation_set.all | length }})</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="info">
+                    <table class="table">
+                        <tr><td>Name</td><td>{{member.first_name}} {{member.last_name}}</td></tr>
+                        <tr><td>Location</td><td>{{member.userprofile.location}}</td></tr>
+                        <tr><td>Timezone</td><td>{{member.userprofile.timezone}}</td></tr>
+                        <tr><td>Latitude</td><td>{{member.userprofile.lat}}</td></tr>
+                        <tr><td>Longitude</td><td>{{member.userprofile.lng}}</td></tr>
+                        <tr><td>Altitude</td><td>{{member.userprofile.elevation}}m</td></tr>
+                        <tr><td colspan="2">{{member.userprofile.profile_text | linebreaks }}</td></tr>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="observations">
+                    {% include "objects/includes/observation_list.html" with observations=member.userprofile.observation_set.all %}
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
                 <p>{% gravatar member.email 150 %}</p>
@@ -19,6 +31,8 @@
                 <p><a href="{% gravatar_profile_url member.email %}">Change your avatar</a>
                 <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Gravatar is a service that displays an image that is linked to your email address. Many sites use Gravatar so you only have to set your image once!"></span></p>
                 {% endif %}
+                <h4>Points: {{ member.userprofile.points }}</h4>
+                <h4>Observations: {{ member.userprofile.observation_set.all|length }}
         </div>
     </div>
     {% if member == user %}
@@ -31,6 +45,20 @@
     {% endif %}
 {% endblock %}
 {% block extra_javascript %}
+<script type="text/javascript">
+// Javascript to enable link to tab
+var hash = document.location.hash;
+var prefix = "tab_";
+if (hash) {
+    $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+}
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown', function (e) {
+    window.location.hash = e.target.hash.replace("#", "#" + prefix);
+});
+
+</script>
 <script type="text/javascript">
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
