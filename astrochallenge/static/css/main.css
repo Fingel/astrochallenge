@@ -70,8 +70,14 @@ h1 > a {
     -moz-columns: 2;
 }
 
-label[for=id_honeypot]
-{
+#comment-form-div {
+    margin-top: 80px;
+}
+label[for=id_honeypot] {
+    display: none;
+}
+
+label[for=id_comment] {
     display: none;
 }
 

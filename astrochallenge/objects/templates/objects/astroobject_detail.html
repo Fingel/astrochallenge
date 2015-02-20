@@ -98,6 +98,7 @@
             {% render_comment_list for object %}
             {% if user.is_authenticated %}
             {% get_comment_form for object as form %}
+            <div id="comment-form-div">
               <form action="{% comment_form_target %}" method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
@@ -106,6 +107,7 @@
                 <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_discussion" />
                 {% endbuttons %}
               </form>
+            </div>
             {% else %}
             <p> Please login to post comments</p>
             {% endif %}
