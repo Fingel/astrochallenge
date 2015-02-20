@@ -10,6 +10,11 @@ def has_observed(user, object):
 
 @register.filter
 def last_observation(user, object):
+    return object.observations.filter(user_profile__user__username=user.username).first()
+
+
+@register.filter
+def first_observation(user, object):
     return object.observations.filter(user_profile__user__username=user.username).last()
 
 
