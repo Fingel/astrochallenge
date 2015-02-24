@@ -70,7 +70,7 @@ class SolarSystemObject(models.Model):
     ephemeride = models.CharField(max_length=1000, default="")
     description = models.TextField(default="")
     mass = models.FloatField(null=True, blank=True)
-    mass_unit = models.CharField(max_length=1, choices=(('s', 's'), ('e', 'e'), ('j', 'j')), default="e")
+    mass_unit = models.CharField(max_length=1, choices=(('s', 'solar mass'), ('e', 'earth mass'), ('j', 'jupiter mass')), default="e")
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="ss_objects", blank=True, null=True)
     observations = GenericRelation(Observation)
