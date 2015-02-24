@@ -44,6 +44,7 @@ class Command(BaseCommand):
                     distance=distance,
                     constellation=constellation,
                     common_name=common_name,
+                    index=id,
                 )
                 points = 1
                 if magnitude < 10:

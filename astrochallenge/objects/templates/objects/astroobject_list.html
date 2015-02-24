@@ -66,7 +66,7 @@
         "serverSide": true,
         "ajax": "{% url 'astroobject-list-json' %}",
         columnDefs: [
-            { 'targets': [ 0 ], visible: false, searchable: false},
+            { 'targets': [ 0, 1 ], visible: false, searchable: false},
             { 'targets': [ 6 ], 'searchable': false},
             { 'targets': [ 1, 2, 3, 6], orderable: false},
          ],
@@ -79,7 +79,7 @@
         table.draw();
     })
     $('#table tbody').on( 'click', 'tr', function () {
-        window.location.href = "/objects/dso/" + table.row( this ).data()[0];
+        window.location.href = "/objects/dso/" + table.row( this ).data()[1];
     });
 
     $('#search').keyup(function(){

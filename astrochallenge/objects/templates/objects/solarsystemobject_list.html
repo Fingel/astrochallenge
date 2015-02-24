@@ -1,37 +1,76 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static objects_extras humanize %}
 {% block title %} Solar System {% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% get_static_prefix %}css/dataTables.bootstrap.css">
 {% endblock %}
 {% block content %}
-<table class="table table-striped table-hover" id="table">
-    <thead>
-        <tr>
-            <td>Name</td><td>Type</td><td>Mass</td><td>Orbits</td>
-        </tr>
-    </thead>
-    <tbody>
-{% for solar_system_object in object_list %}
-    <tr href="">
-        <td>{{ solar_system_object.name }}</td>
-        <td>{{ solar_system_object.get_type_display }}</td>
-        <td>{{ solar_system_object.mass }} {{ solar_system_object.get_mass_unit_display}}</td>
-        <td>{{ solar_system_object.parent|default:""}}</td>
-    </tr>
-{% endfor %}
-</tbody>
-</table>
+<div class="row">
+    <div class="col-md-3">
+    <h1>Solar System Objects</h1>
+    <form autocomplete="off">
+        <div class="form-group">
+            <label for="search">Search:</label>
+            <input type="text" id="search" placeholder="ex: Jupiter, Ceres" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="type-search">Type:</label>
+            <select class="form-control" id="type-search">
+                <option value="">All</option>
+                <option value="Planet">Planet</option>
+                <option value="Star">Star</option>
+                <option value="Minor Planet">Minor Planet</option>
+                <option value="Moon">Moon</option>
+                <option value="Asteroid">Asteroid</option>
+                <option value="Comet">Comet</option>
+                <option value="Spacecraft">Spacecraft</option>
+                <option value="Satellite">Satellite</option>
+            </select>
+        </div>
+        </form>
+        <p>{{'s'|mass_unicode}} Solar Masses</p>
+        <p>{{'e'|mass_unicode}} Earth Masses</p>
+        <p>{{'j'|mass_unicode|safe}} Jupiter Masses</p>
+    </div>
+    <div class="col-md-9">
+        <table class="table table-striped table-hover" id="table">
+            <thead>
+                <tr>
+                    <td>Name</td><td>Type</td><td>Mass</td><td>Orbits</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for solar_system_object in object_list %}
+                <tr href="{{solar_system_object.get_absolute_url}}">
+                    <td>{{ solar_system_object.name }}</td>
+                    <td>{{ solar_system_object.get_type_display|capfirst }}</td>
+                    <td>{{ solar_system_object.mass|intcomma }}{{ solar_system_object.get_mass_unit_display|mass_unicode|safe}}</td>
+                    <td>{{ solar_system_object.parent|default:""}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
 {% block extra_javascript %}
 <script src="{% get_static_prefix %}js/vendor/jquery.dataTables.min.js"></script>
 <script src="{% get_static_prefix %}js/vendor/dataTables.bootstrap.js"></script>
 <script type="text/javascript">
-    $("#table").DataTable({
-        'lengthChange': false
-    });
-    $('#table').on('click', 'tbody tr', function(){
+    table = $("#table").DataTable({
+        'lengthChange': false,
+        'sDom': 'lrtip',
+        'aaSorting': []
+    })
+     $('#table').on('click', 'tbody tr', function(){
         window.location.href = $(this).attr('href');
+    })
+
+    $('#search').keyup(function(){
+        table.search($(this).val()).draw();
+    })
+    $('#type-search').change(function(){
+        table.columns([1]).search($(this).find(':selected').val()).draw();
     })
 </script>
 {% endblock %}

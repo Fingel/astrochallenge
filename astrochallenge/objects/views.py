@@ -92,8 +92,8 @@ class DSOListView(TemplateView):
 
 class DSOListViewJson(BaseDatatableView):
     model = AstroObject
-    columns = ['pk', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
-    order_columns = ['pk', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
+    columns = ['index', 'pk', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
+    order_columns = ['index', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
 
     def filter_queryset(self, qs):
         """ If search['value'] is provided then filter all searchable columns using istartswith
