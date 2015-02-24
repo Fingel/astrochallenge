@@ -141,6 +141,17 @@ CATALOGS = {
     'C': 'Caldwell',
 }
 
+SOLAR_SYSTEM_OBJECT_TYPES = (
+    ('P', 'planet'),
+    ('MP', 'minor planet'),
+    ('M', 'moon'),
+    ('A', 'asteroid'),
+    ('C', 'comet'),
+    ('S', 'satellite'),
+    ('SC', 'spacecraft'),
+    ('ST', 'star'),
+)
+
 try:
     from local_settings import *
 except ImportError:

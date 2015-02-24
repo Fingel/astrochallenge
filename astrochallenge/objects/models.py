@@ -62,14 +62,35 @@ class Constellation(models.Model):
         return self.latin_name
 
 
+class SolarSystemObject(models.Model):
+    name = models.CharField(max_length=200)
+    type = models.CharField(max_length=50, choices=settings.SOLAR_SYSTEM_OBJECT_TYPES)
+    parent = models.ForeignKey('self', null=True, blank=True)
+    index = models.IntegerField(default=999999)  # might want to add this to astroobject as well
+    ephemeride = models.CharField(max_length=1000, default="")
+    description = models.TextField(default="")
+    mass = models.FloatField(null=True, blank=True)
+    mass_unit = models.CharField(max_length=1, choices=(('s', 's'), ('e', 'e'), ('j', 'j')), default="e")
+    points = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="ss_objects", blank=True, null=True)
+    observations = GenericRelation(Observation)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['index']
+
+
 class AstroObject(models.Model):
     constellation = models.ForeignKey(Constellation, blank=True, null=True)
     type = models.CharField(max_length=200)
-    ra_hours = models.IntegerField(blank=True, null=True)
-    ra_minutes = models.FloatField(blank=True, null=True)
-    dec_sign = models.CharField(max_length=1, choices=(('+', '+'), ('-', '-')), blank=True, default="")
-    dec_deg = models.IntegerField(blank=True, null=True)
-    dec_min = models.FloatField(blank=True, null=True)
+    index = models.IntegerField(default=999999)
+    ra_hours = models.IntegerField()
+    ra_minutes = models.FloatField()
+    dec_sign = models.CharField(max_length=1, choices=(('+', '+'), ('-', '-')), default="+")
+    dec_deg = models.IntegerField()
+    dec_min = models.FloatField()
     magnitude = models.FloatField(blank=True, null=True)
     size = models.FloatField(blank=True, null=True)
     distance = models.FloatField(blank=True, null=True)
@@ -79,6 +100,9 @@ class AstroObject(models.Model):
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="astro_objects", blank=True, null=True)
     observations = GenericRelation(Observation)
+
+    class Meta:
+        ordering = ['index']
 
     @property
     def ra_as_deg(self):

@@ -3,6 +3,14 @@ from astrochallenge.objects.models import Constellation
 from decimal import *
 import csv
 
+"""
+ORDER IN WHICH IMPORTS SHOULD BE PERFORMED:
+1. CONSTELLATIONS
+2. MESSIER OBJECTS
+3. NGC OBJECTS
+4. IMAGES
+"""
+
 
 class Command(BaseCommand):
     args = '<file>'
