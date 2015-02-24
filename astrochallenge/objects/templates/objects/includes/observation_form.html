@@ -10,7 +10,7 @@
         {% bootstrap_form observation_form %}
         {% buttons %}
         <button class="btn btn-default" type="submit">Submit</button>
-        <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_observations"/>
+        <input type="hidden" name="next" value="{% url next_target object.pk %}#tab_observations"/>
         {% endbuttons %}
     </form>
 </div>

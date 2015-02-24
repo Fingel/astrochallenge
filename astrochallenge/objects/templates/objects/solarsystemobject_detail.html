@@ -22,7 +22,7 @@
         &nbsp;Points: {{ object.points }}
         </h4></p>
         {% endif %}
-        {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='astroobject-detail' %}
+        {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='solarsystemobject-detail' %}
     </div>
     <div class="col-md-9">
           <!-- Nav tabs -->
@@ -47,13 +47,6 @@
             <span class="red"><b>No</b></span>
             {% endif %}
             </td></tr>
-            <tr><td>Never Up?</td><td>
-            {% if current_info.neverup %}
-            <span class="red"><b>True</b></span>
-            {% else %}
-            <span class="green"><b>False</b></span>
-            {% endif %}
-            </td></tr>
             <tr><td>Az</td><td>{{current_info.az}}</td></tr>
             <tr><td>Alt</td><td>{{current_info.alt}}</td></tr>
             <tr><td>Next Rise</td><td>{{current_info.rise|default:"N/A"}}</td></tr>
@@ -63,29 +56,31 @@
         <p>Please <a href="{% url 'auth_login' %}">login</a> to view current observation details</p>
         {% endif %}
         <h4>General Info</h4>
+        <p>as of {% now 'SHORT_DATETIME_FORMAT' %}</p>
         <table class="table">
-            <tr><td>Type</td><td>{{ object.type }}</td></tr>
-            <tr><td>Constellation</td><td><a href="{% url 'constellation-detail' object.constellation.abbreviation %}">{{ object.constellation.latin_name }}</a></td></tr>
-            <tr><td>Right ascension</td><td>{{ object.ra_hours | floatformat:"-3" }}<sup>h</sup>{{ object.ra_minutes | floatformat:"-3" }}<sup>m</sup></td></tr>
-            <tr><td>Declination</td><td><sup>{{ object.dec_sign }}</sup>{{ object.dec_deg }}&deg;{{ object.dec_min | floatformat:"-3" }}'</td></tr>
-            {% if object.magnitude < 1000 %}
-            <tr><td>Magnitude</td><td>{{ object.magnitude | floatformat:"-3" }}</td></tr>
+            <tr><td>Type</td><td>{{ object.get_type_display|capfirst }}</td></tr>
+            <tr><td>Right ascension</td><td>{{ object.general_info.ra }}</td></tr>
+            <tr><td>Declination</td><td>{{ object.general_info.dec }}</td></tr>
+            {% if object.general_info.magnitude %}
+            <tr><td>Magnitude</td><td>{{ object.general_info.magnitude | floatformat:"-3" }}</td></tr>
             {% endif %}
-            {% if object.distance %}
-            <tr><td>Distance</td><td>{{ object.distance | floatformat:"-3" | intcomma }}ly</td></tr>
+            {% if object.general_info.phase %}
+            <tr><td>% illuminated</td><td>{{ object.general_info.phase |floatformat:"-3" }}</td></tr>
             {% endif %}
-            {% if object.size %}
-            <tr><td>Size</td><td>{{ object.size | floatformat:"-3" }} arc min</td></tr>
+            {% if object.general_info.earth_distance %}
+            <tr><td>Distance from Earth</td><td>{{ object.general_info.earth_distance | floatformat:"-5" | intcomma }}AU</td></tr>
+            {% endif %}
+            {% if object.general_info.sun_distance %}
+            <tr><td>Distance from Sun</td><td>{{ object.general_info.sun_distance | floatformat:"-5" | intcomma }}AU</td></tr>
+            {% endif %}
+            {% if object.general_info.elongation %}
+            <tr><td>Elongation</td><td>{{ object.general_info.elongation }}</td></tr>
+            {% endif %}
+            {% if object.mass %}
+            <tr><td>Mass</td><td>{{ object.mass|intcomma }} {{ object.mass_unit|mass_unicode|safe }}</td></tr>
             {% endif %}
             <tr>
-            <td>Catalog Designations</td>
-            <td>
-            {% for catalog_object in object.catalogobject_set.all %}
-                {{catalog_object.catalog}}{{catalog_object.designation}}
-            {% endfor %}
-            </td>
             </tr>
-
             {% if object.description %}
             <tr><td colspan="2">{{ object.description }}</td></tr>
             {% endif %}
@@ -104,7 +99,7 @@
                 {% bootstrap_form form %}
                 {% buttons %}
                 <button class="btn btn-default" type="submit" name="submit" value="Post">Post</button>
-                <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_discussion" />
+                <input type="hidden" name="next" value="{% url 'solarsystemobject-detail' object.pk %}#tab_discussion" />
                 {% endbuttons %}
               </form>
             </div>

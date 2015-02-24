@@ -56,6 +56,20 @@ def post_observation(request, next=None):
     return next_redirect(request, fallback=next or observation_form.instance.get_absolute_url())
 
 
+class SSODetailView(DetailView):
+    def get_context_data(self, **kwargs):
+        context = super(SSODetailView, self).get_context_data(**kwargs)
+        if self.request.user.is_authenticated():
+            context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
+            context['observation_form'] = ObservationForm(initial={
+                'content_type': ContentType.objects.get(model="solarsystemobject").id,
+                'object_id': self.get_object().pk,
+                'lat': self.request.user.userprofile.lat,
+                'lng': self.request.user.userprofile.lng,
+                })
+        return context
+
+
 class DSODetailView(DetailView):
     def get_object(self):
         if self.kwargs.get('pk'):

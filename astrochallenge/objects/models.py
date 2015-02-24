@@ -44,6 +44,8 @@ class Observation(models.Model):
             name = str(self.content_object)
         elif self.content_type.model_class() == Constellation:
             name = self.content_object.latin_name
+        elif self.content_type.model_class() == SolarSystemObject:
+            name = str(self.content_object)
         return name
 
     def get_absolute_url(self):
@@ -75,14 +77,47 @@ class SolarSystemObject(models.Model):
     image = models.ImageField(upload_to="ss_objects", blank=True, null=True)
     observations = GenericRelation(Observation)
 
+    class Meta:
+        ordering = ['index']
+
+    @property
+    def ephem_object(self):
+        if self.ephemeride[:7] == 'pyephem':
+            return getattr(ephem, self.ephemeride.split(':')[1])()
+        else:
+            return ephem.readdb(self.ephemeride)
+
+    @property
+    def general_info(self):
+        p_object = self.ephem_object
+        p_object.compute()
+        return {
+            "dec": str(p_object.dec),
+            "ra": str(p_object.ra),
+            "elongation": str(p_object.elong),
+            "earth_distance": str(p_object.earth_distance),
+            "sun_distance": str(p_object.sun_distance),
+            "phase": str(p_object.phase),
+            "magnitude": str(p_object.mag),
+        }
+
+    def observation_info(self, observer):
+        p_object = self.ephem_object
+        p_object.compute(observer)
+        up = True if ephem.degrees(p_object.alt) > 0 else False
+        return {
+            'alt': str(p_object.alt),
+            'az': str(p_object.az),
+            'up': up,
+            'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if p_object.rise_time else None,
+            'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if p_object.set_time else None
+        }
+
     def __unicode__(self):
         return self.name
 
     def get_absolute_url(self):
-        return urlresolvers.reverse("solarsystemobject-detail", args=(self.pk))
-
-    class Meta:
-        ordering = ['index']
+        return urlresolvers.reverse("solarsystemobject-detail", args=(self.pk,))
 
 
 class AstroObject(models.Model):

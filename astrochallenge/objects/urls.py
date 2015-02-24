@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
 from astrochallenge.objects.models import Constellation, SolarSystemObject
-from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, post_observation, delete_observation
+from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, SSODetailView, post_observation, delete_observation
 
 urlpatterns = patterns('',
     url(r'^objects/$', TemplateView.as_view(template_name="objects/index.html"), name="object-index"),
@@ -16,7 +16,10 @@ urlpatterns = patterns('',
     url(r'^objects/dso/json/(?P<catalog>\D+)/$', DSOListViewJson.as_view(), name="astroobject-list-json"),
     url(r'^objects/dso/(?P<pk>\d+)/$', DSODetailView.as_view(), name="astroobject-detail"),
     url(r'^objects/dso/(?P<catalog>\w+)/(?P<designation>\d+)/$', DSODetailView.as_view(), name="astroobject-detail"),
-    url(r'^objects/solarsystem/$', ListView.as_view(model=SolarSystemObject), name="solarsystemobject-list")
+    url(r'^objects/solarsystem/$', ListView.as_view(model=SolarSystemObject), name="solarsystemobject-list"),
+    url(r'^objects/solarsystem/(?P<slug>\D+)/$', SSODetailView.as_view(model=SolarSystemObject, slug_field="name"), name="solarsystemobject-detail"),
+    url(r'^objects/solarsystem/(?P<slug>\d+)/$', SSODetailView.as_view(model=SolarSystemObject, slug_field="pk"), name="solarsystemobject-detail"),
+
 )
 
 urlpatterns += patterns('',
