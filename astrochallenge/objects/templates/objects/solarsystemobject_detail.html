@@ -82,7 +82,7 @@
             <tr>
             </tr>
             {% if object.description %}
-            <tr><td colspan="2">{{ object.description }}</td></tr>
+            <tr><td colspan="2">{{ object.description | linebreaks }}</td></tr>
             {% endif %}
         </table>
         </div>
