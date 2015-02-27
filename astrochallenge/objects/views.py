@@ -106,7 +106,7 @@ class DSOListView(TemplateView):
 
 class DSOListViewJson(BaseDatatableView):
     model = AstroObject
-    columns = ['index', 'pk', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
+    columns = ['index', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
     order_columns = ['index', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
 
     def filter_queryset(self, qs):
