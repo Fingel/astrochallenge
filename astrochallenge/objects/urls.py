@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
 from astrochallenge.objects.models import Constellation, SolarSystemObject
-from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, SSODetailView, post_observation, delete_observation
+from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, SSODetailView, post_observation, delete_observation, post_finderchart
 
 urlpatterns = patterns('',
     url(r'^objects/$', TemplateView.as_view(template_name="objects/index.html"), name="object-index"),
@@ -19,10 +19,13 @@ urlpatterns = patterns('',
     url(r'^objects/solarsystem/$', ListView.as_view(model=SolarSystemObject), name="solarsystemobject-list"),
     url(r'^objects/solarsystem/(?P<slug>\D+)/$', SSODetailView.as_view(model=SolarSystemObject, slug_field="name"), name="solarsystemobject-detail"),
     url(r'^objects/solarsystem/(?P<slug>\d+)/$', SSODetailView.as_view(model=SolarSystemObject, slug_field="pk"), name="solarsystemobject-detail"),
-
 )
 
 urlpatterns += patterns('',
     url(r'^observation/$', post_observation, name="post-observation"),
     url(r'^observation/(?P<observation_id>\d+)/delete/$', delete_observation, name="delete-observation")
-    )
+)
+
+urlpatterns += patterns('',
+    url(r'^finderchart/$', post_finderchart, name="post-finderchart"),
+)

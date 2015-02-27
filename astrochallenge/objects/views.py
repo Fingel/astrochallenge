@@ -11,9 +11,11 @@ from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 from django_datatables_view.base_datatable_view import BaseDatatableView
 from django.db.models import Q
+from django.http import HttpResponse
 
 from models import Constellation, CatalogObject, AstroObject, Observation
-from astrochallenge.objects.forms import ObservationForm
+from astrochallenge.objects.forms import ObservationForm, FinderChartForm
+from utils import FchartSettings, generate_fchart
 
 
 @login_required
@@ -25,6 +27,32 @@ def delete_observation(request, observation_id):
     else:
         observation.delete()
         return redirect(redirect_url)
+
+
+@csrf_protect
+@require_POST
+def post_finderchart(request, next=None):
+    data = request.POST.copy()
+    content_type = data.get("content_type")
+    object_id = data.get("object_id")
+    if content_type is None or object_id is None:
+        return ValueError("Missing content type or object id")
+    model = ContentType.objects.get(pk=content_type).model_class()
+    target = model.objects.get(pk=object_id)
+
+    finder_chart_form = FinderChartForm(data)
+    if not finder_chart_form.is_valid():
+        messages.error(request, "Finder Chart form invalid")
+        return next_redirect(request, fallback=next or target.get_absolute_url())
+    settings = FchartSettings(
+        limiting_magnitude_stars=finder_chart_form.cleaned_data['limiting_magnitude_stars'],
+        limiting_magnitude_deepsky=finder_chart_form.cleaned_data['limiting_magnitude_deepsky'],
+        fieldsize=finder_chart_form.cleaned_data['field_of_view']
+    )
+
+    settings.add_target(target.ra, target.dec, str(target))
+    generate_fchart(settings)
+    return HttpResponse("Posted" + str(settings.sourcelist))
 
 
 @csrf_protect
@@ -79,14 +107,20 @@ class DSODetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(DSODetailView, self).get_context_data(**kwargs)
+        content_type = ContentType.objects.get(model="astroobject").id
+        object_id = self.get_object().pk
+        context['finder_chart_form'] = FinderChartForm(initial={
+            'content_type': content_type,
+            'object_id': object_id,
+        })
         if self.request.user.is_authenticated():
             context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
             context['observation_form'] = ObservationForm(initial={
-                'content_type': ContentType.objects.get(model="astroobject").id,
-                'object_id': self.get_object().pk,
+                'content_type': content_type,
+                'object_id': object_id,
                 'lat': self.request.user.userprofile.lat,
                 'lng': self.request.user.userprofile.lng,
-                })
+            })
         return context
 
 

@@ -101,6 +101,14 @@ class SolarSystemObject(models.Model):
             "magnitude": str(p_object.mag),
         }
 
+    @property
+    def ra(self):
+        return self.general_info['ra']
+
+    @property
+    def dec(self):
+        return self.general_info['dec']
+
     def observation_info(self, observer):
         p_object = self.ephem_object
         p_object.compute(observer)
@@ -143,14 +151,12 @@ class AstroObject(models.Model):
         ordering = ['index']
 
     @property
-    def ra_as_deg(self):
-        return float(self.ra_hours * 15 + self.ra_minutes / 60)
+    def ra(self):
+        return "{0}:{1}:0".format(self.ra_hours, self.ra_minutes)
 
     @property
-    def dec_as_deg(self):
-        degs = self.dec_deg + self.dec_min / 60
-        multiplier = -1 if self.dec_sign == '-' else 1
-        return degs * multiplier
+    def dec(self):
+        return "{0}{1}:{2}:0".format(self.dec_sign, self.dec_deg, self.dec_min)
 
     @property
     def fixed_body(self):
