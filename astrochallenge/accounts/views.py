@@ -5,14 +5,19 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 from astrochallenge.objects.models import Observation
+from astrochallenge.objects.utils import moon_phase
 from forms import UserForm, ProfileForm
 
 
 def index(request):
     observations = Observation.objects.all()
+    percentage, name, letter = moon_phase()
 
     context = {
         "observations": observations,
+        "moon_illuminated": percentage * 100,
+        "moon_name": name,
+        "moon_letter": letter,
         "time": timezone.now(),
     }
     return render(request, 'accounts/index.html', context)

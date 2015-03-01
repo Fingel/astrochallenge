@@ -10,6 +10,32 @@ from fchart.deepsky import *
 from fchart.star_catalog import *
 from fchart.skymap_engine import *
 from fchart.pdf import *
+from django.utils import timezone
+import ephem
+
+
+def moon_phase(when=timezone.now()):
+    tau = 2 * ephem.pi
+    waxing = ["N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0"]
+    waning = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]
+    waning.reverse()
+    sun = ephem.Sun()
+    moon = ephem.Moon()
+    names = ['Waxing Crescent', 'Waxing Gibbous',
+         'Waning Gibbous', 'Waning Crescent']
+    sun.compute(when)
+    moon.compute(when)
+    sunlon = ephem.Ecliptic(sun).lon
+    moonlon = ephem.Ecliptic(moon).lon
+    angle = (moonlon - sunlon) % tau
+    quarter = int(angle * 4.0 // tau)
+    print int(moon.moon_phase * 14)
+    print quarter
+    if quarter <= 1:
+        letter = waxing[int(moon.moon_phase * 14)]
+    else:
+        letter = waning[int(moon.moon_phase * 14)]
+    return (moon.moon_phase, names[quarter], letter)
 
 
 class FchartSettings:

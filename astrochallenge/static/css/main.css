@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: moonphases;
+    src :url(../fonts/moon_phases.woff);
+}
+
+@font-face {
     font-family: futura;
     src: url(../fonts/futurastd-mediumoblique-webfont.woff);
     font-style: italic;
@@ -122,6 +127,11 @@ label[for=id_comment] {
 
 .green {
     color: green;
+}
+
+.moon {
+    font-size: 32px;
+    font-family: moonphases;
 }
 
 
