@@ -35,7 +35,7 @@ def moon_phase(when=timezone.now()):
         letter = waxing[int(moon.moon_phase * 14)]
     else:
         letter = waning[int(moon.moon_phase * 14)]
-    return (moon.moon_phase, names[quarter], letter)
+    return (moon.moon_phase * 100, names[quarter], letter)
 
 
 class FchartSettings:

@@ -129,8 +129,13 @@ label[for=id_comment] {
     color: green;
 }
 
+#moon-info {
+    padding-top: 20px;
+    font-size: 18px;
+}
 .moon {
-    font-size: 32px;
+    font-size: 4em;
+    line-height: 0.5;
     font-family: moonphases;
 }
 

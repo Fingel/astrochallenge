@@ -20,10 +20,12 @@
         {% include "objects/includes/observation_list.html" with observations=observations %}
     </div>
     <div class="col-md-3">
-    <span class="moon">{{moon_letter}}</span>{{moon_name}}: {{ moon_illuminated | floatformat:"-1" }}%
-    <h3>Twitter</h3>
-     <a class="twitter-timeline" data-chrome="nofooter noheader transparent noscrollbar noborders" data-tweet-limit="4" href="https://twitter.com/astrochallenger" data-widget-id="571916701059411968">Tweets by @astrochallenger</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-     </script>
+        <div id="moon-info">
+            <center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
+        </div>
+        <h3>Twitter</h3>
+         <a class="twitter-timeline" data-chrome="nofooter noheader transparent noscrollbar noborders" data-tweet-limit="4" href="https://twitter.com/astrochallenger" data-widget-id="571916701059411968">Tweets by @astrochallenger</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+         </script>
      </div>
 </div>
 {% endblock %}

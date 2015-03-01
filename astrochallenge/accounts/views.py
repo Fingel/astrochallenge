@@ -15,7 +15,7 @@ def index(request):
 
     context = {
         "observations": observations,
-        "moon_illuminated": percentage * 100,
+        "moon_percentage": percentage,
         "moon_name": name,
         "moon_letter": letter,
         "time": timezone.now(),
