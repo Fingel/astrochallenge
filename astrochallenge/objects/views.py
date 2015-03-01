@@ -12,6 +12,8 @@ from django.conf import settings
 from django_datatables_view.base_datatable_view import BaseDatatableView
 from django.db.models import Q
 from django.http import HttpResponse
+from django.core.servers.basehttp import FileWrapper
+import os
 
 from models import Constellation, CatalogObject, AstroObject, Observation
 from astrochallenge.objects.forms import ObservationForm, FinderChartForm
@@ -52,7 +54,13 @@ def post_finderchart(request, next=None):
 
     settings.add_target(target.ra, target.dec, str(target), content_type, object_id)
     file = generate_fchart(settings)
-    return HttpResponse("Posted" + file.name)
+    wrapper = FileWrapper(file)
+    response = HttpResponse(wrapper, content_type='application/pdf')
+    response['Content-Length'] = os.path.getsize(file.name)
+    # Without streaming
+    # response = HttpResponse(file, content_type='application/pdf')
+    # response['Content-Disposition'] = 'attachment; filename="{0}"'.format(file.name)
+    return response
 
 
 @csrf_protect

@@ -21,12 +21,12 @@ class ObservationForm(ModelForm):
 class FinderChartForm(forms.Form):
     field_of_view = forms.FloatField(
         label="Field of view (degrees)",
-        initial=7.0,
+        initial=15.0,
         validators=[MinValueValidator(0.0), MaxValueValidator(50.0)]
     )
     limiting_magnitude_stars = forms.FloatField(
         label="Minimum magnitude for stars",
-        initial=9.0,
+        initial=10.0,
     )
     limiting_magnitude_deepsky = forms.FloatField(
         label="Minimum magnite for deep sky objects",
