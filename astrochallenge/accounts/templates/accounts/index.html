@@ -15,9 +15,14 @@
 </div>
 {% endif %}
 <div class="row">
-    <span class="col-md-12">
+    <div class="col-md-9">
         <h1>Latest Observations</h1>
         {% include "objects/includes/observation_list.html" with observations=observations %}
-    </span>
+    </div>
+    <div class="col-md-3">
+    <h3>Twitter</h3>
+     <a class="twitter-timeline" data-chrome="nofooter noheader transparent noscrollbar noborders" data-tweet-limit="4" href="https://twitter.com/astrochallenger" data-widget-id="571916701059411968">Tweets by @astrochallenger</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+     </script>
+     </div>
 </div>
 {% endblock %}
