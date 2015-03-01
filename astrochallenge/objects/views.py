@@ -50,9 +50,9 @@ def post_finderchart(request, next=None):
         fieldsize=finder_chart_form.cleaned_data['field_of_view']
     )
 
-    settings.add_target(target.ra, target.dec, str(target))
-    generate_fchart(settings)
-    return HttpResponse("Posted" + str(settings.sourcelist))
+    settings.add_target(target.ra, target.dec, str(target), content_type, object_id)
+    file = generate_fchart(settings)
+    return HttpResponse("Posted" + file.name)
 
 
 @csrf_protect

@@ -1,7 +1,7 @@
 import fchart
-import uuid
 import os
 import string
+from django.conf import settings
 from numpy import *
 from fchart.fonts import FontMetrics
 from fchart.astrocalc import *
@@ -21,7 +21,7 @@ class FchartSettings:
         self.force_messier = False
         self.force_asterisms = False
         self.force_unknown = False
-        self.output_dir = '/home/austin'
+        self.output_dir = settings.MEDIA_ROOT + '/fcharts/'
         self.extra_positions_list = []
         self.language = EN
         self.sourcelist = []
@@ -29,12 +29,19 @@ class FchartSettings:
         self.caption = False
         self.fieldcentre = (-1, -1)
         self.uuid = uuid.uuid4()
+        self.object_id = 0
+        self.content_type = 0
 
-    def add_target(self, ra, dec, label):
+    def add_target(self, ra, dec, label, object_id, content_type):
         self.sourcelist.append("{0},{1},{2}".format(ra, dec, label))
+        self.object_id = object_id
+        self.content_type = content_type
 
 
 def generate_fchart(settings):
+    filename = settings.output_dir + "{0}-{1}-{2}.pdf".format(settings.content_type, settings.object_id, str(settings.fieldsize).replace(".", "_"))
+    if os.path.isfile(filename):
+        return open(filename)
     data_dir = os.path.join(fchart.get_data('catalogs'))
     font_metrics = FontMetrics(os.path.join(fchart.get_data('font-metrics')))
     starcatalog = StarCatalog(data_dir + os.sep + 'tyc2.bin', data_dir + os.sep + 'index.dat')
@@ -73,7 +80,6 @@ def generate_fchart(settings):
 
     # For all sources...
     for source in settings.sourcelist:
-        filename = ''
         # Parse sourcename
         if source.upper().rstrip().lstrip() == 'ALLMESSIER':
             print 'alles'
@@ -82,8 +88,6 @@ def generate_fchart(settings):
                 print 'M ' + str(object.messier)
                 ra = object.ra
                 dec = object.dec
-                artist = None
-                filename = settings.output_dir + os.sep + str(settings.uuid) + '.pdf'
                 artist = PDFDrawing(filename,
                                     settings.paperwidth,
                                     settings.paperwidth,
@@ -128,7 +132,6 @@ def generate_fchart(settings):
                     ra, dec = hms2rad(rah, ram, ras), dms2rad(decd, decm, decs, sign)
                     cat = ''
                     name = string.join(data[2:], ',')
-                    filename = settings.output_dir + os.sep + str(settings.uuid)
                 else:
                     print 'Position specification needs three part argument, separated by comma\'s: "ra,dec,caption"'
                     sys.exit(-1)
@@ -195,10 +198,6 @@ def generate_fchart(settings):
             print cat, name
 
             if ra >= 0.0:
-                artist = None
-                if filename == '':
-                    filename = settings.output_dir + os.sep + str(settings.uuid) + '.pdf'
-
                 artist = PDFDrawing(filename,
                                     settings.paperwidth,
                                     settings.paperwidth,
@@ -221,7 +220,7 @@ def generate_fchart(settings):
             pass  # if source == 'allmessier'
         pass  # for source in sourcelist
 
-    pass
+    return open(filename)
 
 
 def msort(x, y):
