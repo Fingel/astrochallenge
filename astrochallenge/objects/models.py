@@ -186,6 +186,9 @@ class AstroObject(models.Model):
         ret_string += " ({0})".format(self.common_name) if self.common_name else ""
         return ret_string
 
+    def get_absolute_url(self):
+        return urlresolvers.reverse("astroobject-detail", args=(self.pk,))
+
 
 class CatalogObject(models.Model):
     astro_object = models.ForeignKey(AstroObject)

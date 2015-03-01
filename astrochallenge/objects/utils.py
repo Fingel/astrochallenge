@@ -28,7 +28,6 @@ class FchartSettings:
         self.output_type = "PDF"
         self.caption = False
         self.fieldcentre = (-1, -1)
-        self.uuid = uuid.uuid4()
         self.object_id = 0
         self.content_type = 0
 
@@ -39,7 +38,13 @@ class FchartSettings:
 
 
 def generate_fchart(settings):
-    filename = settings.output_dir + "{0}-{1}-{2}.pdf".format(settings.content_type, settings.object_id, str(settings.fieldsize).replace(".", "_"))
+    filename = settings.output_dir + "{0}-{1}-{2}-{3}-{4}.pdf".format(
+        settings.content_type,
+        settings.object_id,
+        str(settings.fieldsize).replace(".", "_"),
+        str(settings.limiting_magnitude_stars).replace(".", "_"),
+        str(settings.limiting_magnitude_deepsky).replace(".", "_")
+    )
     if os.path.isfile(filename):
         return open(filename)
     data_dir = os.path.join(fchart.get_data('catalogs'))

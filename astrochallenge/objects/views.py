@@ -162,6 +162,7 @@ class DSOListViewJson(BaseDatatableView):
             qs = qs.filter(q)
         return qs
 
+    # Shitty mcshit datatables
     def render_column(self, row, column):
         if column == "observed":
             if self.request.user.is_authenticated():
@@ -169,7 +170,20 @@ class DSOListViewJson(BaseDatatableView):
                     return "<span class=\"green glyphicon glyphicon-ok\"></span>"
             return ""
         else:
-            return super(DSOListViewJson, self).render_column(row, column)
+            if hasattr(row, 'get_%s_display' % column):
+                # It's a choice field
+                text = getattr(row, 'get_%s_display' % column)()
+            else:
+                try:
+                    text = getattr(row, column)
+                except AttributeError:
+                    obj = row
+                    for part in column.split('.'):
+                        if obj is None:
+                            break
+                        obj = getattr(obj, part)
+                    text = obj
+            return text
 
     def get_initial_queryset(self):
         if not self.kwargs.get('catalog') or self.kwargs.get('catalog') == 'all':
