@@ -62,7 +62,7 @@
         <div id="c{{ comment.id }}">
             <div class="comment-author">
                 <a href="{% url 'profile' comment.user.username %}">
-                <img class="profile-image" src="{% gravatar_url user.email 40 %}">
+                <img class="profile-image" src="{% gravatar_url comment.user.email 40 %}">
                 <span class="pull-right">{{ comment.submit_date|date:"j M" }}</span>
                 <span class="comment-author-username">{{comment.user.username}}</span>
                 </a>
