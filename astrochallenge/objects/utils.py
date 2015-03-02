@@ -10,11 +10,10 @@ from fchart.deepsky import *
 from fchart.star_catalog import *
 from fchart.skymap_engine import *
 from fchart.pdf import *
-from django.utils import timezone
 import ephem
 
 
-def moon_phase(when=timezone.now()):
+def moon_phase(when):
     tau = 2 * ephem.pi
     waxing = ["N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "0"]
     waning = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]

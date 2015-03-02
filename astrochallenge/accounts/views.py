@@ -13,7 +13,7 @@ from forms import UserForm, ProfileForm
 def index(request):
     observations = Observation.objects.all()
     comments = CustomComment.objects.all()[:5]
-    percentage, name, letter = moon_phase()
+    percentage, name, letter = moon_phase(timezone.now())
 
     context = {
         "comments": comments,
