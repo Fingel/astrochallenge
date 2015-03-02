@@ -108,11 +108,11 @@ def generate_fchart(settings):
                 pass
         else:
             if object.mag <= settings.limiting_magnitude_deepsky and \
-                   object.type != deepsky.GALCL and \
-                   (object.type != deepsky.STARS or settings.force_asterisms
-                    or (object.messier > 0 and object.type == deepsky.STARS)) \
-                   and (object.type != deepsky.PG or settings.force_unknown or
-                        object.type == deepsky.PG and object.mag > -5.0):
+                    object.type != deepsky.GALCL and \
+                    (object.type != deepsky.STARS or settings.force_asterisms or
+                    (object.messier > 0 and object.type == deepsky.STARS)) \
+                    and (object.type != deepsky.PG or settings.force_unknown or
+                    object.type == deepsky.PG and object.mag > -5.0):
                 reduced_deeplist.append(object)
                 pass
             pass

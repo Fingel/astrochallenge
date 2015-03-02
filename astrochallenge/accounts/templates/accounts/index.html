@@ -45,9 +45,9 @@
                 <p><span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span> was observed by <span class="emphasize"><a href="{% url 'profile' observation.user_profile.user.username %}">{{ observation.user_profile.user.username }}</a></span>
                 </p>
                 <p>Points earned: {{ observation.points_earned }}</p>
-                <!-- <blockquote> -->
-                    <p><em>"{{ observation.description }}"</em></p>
-                <!-- </blockquote> -->
+                {% autoescape off %}
+                    <p>{{ observation.description | truncatewords:200}}</p>
+                {% endautoescape %}
             </div>
         </div>
         {% endfor %}

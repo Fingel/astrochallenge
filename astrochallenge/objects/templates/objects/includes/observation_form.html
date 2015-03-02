@@ -1,18 +1,44 @@
 {% load bootstrap3 objects_extras %}
 {% if user.is_authenticated %}
-<button class="btn btn-success col-md-12" id="make-observation" >Make Observation</button>
-<div id="observation-form" style="display:none">
+<button class="btn btn-success col-md-12" id="make-observation" data-toggle="modal" data-target="#observation-modal">Make Observation</button>
+<div class="modal fade" id="observation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Log Observation</h4>
+      </div>
+      <div class="modal-body">
+        <div id="observation-form">
         {% if user|has_observed:object %}
         <p>You have already observed this object, so you will not receieve additional points for more observations</p>
         {% endif %}
-    <form method="post" action="{% url 'post-observation' %}">
-        {% csrf_token %}
-        {% bootstrap_form observation_form %}
-        {% buttons %}
-        <button class="btn btn-default" type="submit">Submit</button>
-        <input type="hidden" name="next" value="{% url next_target object.pk %}#tab_observations"/>
-        {% endbuttons %}
-    </form>
+        <form method="post" action="{% url 'post-observation' %}">
+            {% csrf_token %}
+            {{observation_form.content_type}}
+            {{observation_form.object_id}}
+            <span class="col-xs-12">
+            {% bootstrap_field observation_form.date %}
+            </span>
+            <span class="col-xs-6">
+            {% bootstrap_field observation_form.lng %}
+            </span>
+            <span class="col-xs-6">
+            {% bootstrap_field observation_form.lat %}
+            </span>
+            <span class="col-xs-12">
+            {% bootstrap_field observation_form.description %}
+            </span>
+            {% buttons %}
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-default" type="submit">Submit</button>
+            <input type="hidden" name="next" value="{% url next_target object.pk %}#tab_observations"/>
+            {% endbuttons %}
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% else %}
 <p>Please <a href="{% url 'auth_login' %}">login</a> to record an observation of this object.</p>

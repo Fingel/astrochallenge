@@ -144,9 +144,5 @@ if (hash) {
 $('.nav-tabs a').on('shown', function (e) {
     window.location.hash = e.target.hash.replace("#", "#" + prefix);
 });
-$("#make-observation").click(function(){
-    $(this).hide();
-    $("#observation-form").slideDown();
-});
 </script>
 {% endblock %}
