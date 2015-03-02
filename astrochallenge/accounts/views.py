@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation
 from astrochallenge.objects.utils import moon_phase
 from forms import UserForm, ProfileForm
@@ -11,9 +12,11 @@ from forms import UserForm, ProfileForm
 
 def index(request):
     observations = Observation.objects.all()
+    comments = CustomComment.objects.all()[:5]
     percentage, name, letter = moon_phase()
 
     context = {
+        "comments": comments,
         "observations": observations,
         "moon_percentage": percentage,
         "moon_name": name,

@@ -130,12 +130,29 @@ label[for=id_comment] {
     padding-top: 20px;
     font-size: 18px;
 }
+#sunset-info {
+    font-size: 18px;
+    padding: 10px 0px;
+}
+
+#sunset {
+    width: 75%;
+    padding-bottom: 5px;
+}
 .moon {
     font-size: 4em;
     line-height: 0.5;
     font-family: moonphases;
 }
 
+.comment-author {
+    line-height: 1.5;
+}
+.comment-author img {
+    float: left;
+    padding-right: 10px;
+    vertical-align: top;
+}
 
 
 

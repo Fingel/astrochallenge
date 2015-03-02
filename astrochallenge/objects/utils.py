@@ -29,8 +29,6 @@ def moon_phase(when=timezone.now()):
     moonlon = ephem.Ecliptic(moon).lon
     angle = (moonlon - sunlon) % tau
     quarter = int(angle * 4.0 // tau)
-    print int(moon.moon_phase * 14)
-    print quarter
     if quarter <= 1:
         letter = waxing[int(moon.moon_phase * 14)]
     else:

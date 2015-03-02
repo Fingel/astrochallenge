@@ -15,9 +15,22 @@
 </div>
 {% endif %}
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-2">
+    {% if user.is_authenticated %}
+        <div id="sunset-info">
+            <center>
+            <img src="{{STATIC_URL}}/images/sunset.svg" id="sunset" class="img-responsive"/>
+            <b>{{user.userprofile.sunset|date:"P"}}</b>
+            </center>
+        </div>
+        {% endif %}
+        <div id="moon-info">
+            <center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
+        </div>
+    </div>
+    <div class="col-md-7">
         <h1>Latest Observations</h1>
-        {% paginate 6 observations using "ob_page" %}
+        {% paginate 10 observations using "ob_page" %}
         {% for observation in observations %}
         <div class="row observation-row">
             <div class="col-sm-2">
@@ -28,10 +41,8 @@
                 {% endif %}
             </div>
             <div class="col-sm-10">
-                <p><span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span> was observed by <span class="emphasize"><a href="{% url 'profile' observation.user_profile.user.username %}">{{ observation.user_profile.user.username }}</a></span> on {{ observation.date }}
-                {% if observation.user_profile == user.userprofile %}
-                    <a href="{% url 'delete-observation' observation.id %}">Delete</a>
-                {% endif %}
+                <a href="{{ observation.get_absolute_url }}#tab_observations"><span class="pull-right">{{ observation.date|date:"SHORT_DATETIME_FORMAT" }}</span></a>
+                <p><span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span> was observed by <span class="emphasize"><a href="{% url 'profile' observation.user_profile.user.username %}">{{ observation.user_profile.user.username }}</a></span>
                 </p>
                 <p>Points earned: {{ observation.points_earned }}</p>
                 <!-- <blockquote> -->
@@ -44,12 +55,34 @@
         {% include 'includes/astropagination.html' with url_hash='#tab_observations' %}
     </div>
     <div class="col-md-3">
-        <div id="moon-info">
-            <center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
+        <div class="row">
+        <div class="col-md-12">
+        <h3>Recent Comments</h3>
+        {% for comment in comments %}
+        <div id="c{{ comment.id }}">
+            <div class="comment-author">
+                <a href="{% url 'profile' comment.user.username %}">
+                <img class="profile-image" src="{% gravatar_url user.email 40 %}">
+                <span class="pull-right">{{ comment.submit_date|date:"j M" }}</span>
+                <span class="comment-author-username">{{comment.user.username}}</span>
+                </a>
+                <br/>
+                <a href="{{comment.content_object.get_absolute_url}}#tab_discussion"<span class="comment-target">{{comment.content_object}}</span></a>
+            </div>
+            <div class="comment">
+                <p>{{ comment.comment|truncatewords:50}}</p>
+            </div>
         </div>
+        {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+        <div claass="col-md-12">
         <h3>Twitter</h3>
          <a class="twitter-timeline" data-chrome="nofooter noheader transparent noscrollbar noborders" data-tweet-limit="4" href="https://twitter.com/astrochallenger" data-widget-id="571916701059411968">Tweets by @astrochallenger</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
          </script>
+         </div>
+         </div>
      </div>
 </div>
 {% endblock %}
