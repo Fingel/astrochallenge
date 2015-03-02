@@ -54,10 +54,29 @@ class FchartSettings:
         self.object_id = 0
         self.content_type = 0
 
-    def add_target(self, ra, dec, label, object_id, content_type):
+    def add_target(self, ra, dec, label, object_id, content_type, x_label=''):
         self.sourcelist.append("{0},{1},{2}".format(ra, dec, label))
         self.object_id = object_id
         self.content_type = content_type
+        rasplit = ra.split(':')
+        decsplit = dec.split(':')
+        rah, ram, ras = 0.0, 0.0, 0.0
+        rah = float(rasplit[0])
+        if len(rasplit) >= 2:
+            ram = float(rasplit[1])
+        if len(rasplit) >= 3:
+            ras = float(rasplit[2])
+
+        decd, decm, decs, sign = 0.0, 0.0, 0.0, 1
+        decd = abs(float(decsplit[0]))
+        if decsplit[0][0] == '-':
+            sign = -1
+        if len(decsplit) >= 2:
+            decm = float(decsplit[1])
+        if len(decsplit) >= 3:
+            decs = float(decsplit[2])
+        rax, decx = hms2rad(rah, ram, ras), dms2rad(decd, decm, decs, sign)
+        self.extra_positions_list.append([rax, decx, x_label, 'r'])
 
 
 def generate_fchart(settings):

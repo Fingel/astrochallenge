@@ -39,7 +39,8 @@ def post_finderchart(request, next=None):
     object_id = data.get("object_id")
     if content_type is None or object_id is None:
         return ValueError("Missing content type or object id")
-    model = ContentType.objects.get(pk=content_type).model_class()
+    c_type = ContentType.objects.get(pk=content_type)
+    model = c_type.model_class()
     target = model.objects.get(pk=object_id)
 
     finder_chart_form = FinderChartForm(data)
@@ -51,8 +52,8 @@ def post_finderchart(request, next=None):
         limiting_magnitude_deepsky=finder_chart_form.cleaned_data['limiting_magnitude_deepsky'],
         fieldsize=finder_chart_form.cleaned_data['field_of_view']
     )
-
-    settings.add_target(target.ra, target.dec, str(target), content_type, object_id)
+    x_label = str(target) if c_type.model == 'solarsystemobject' else ''
+    settings.add_target(target.ra, target.dec, str(target), content_type, object_id, x_label)
     file = generate_fchart(settings)
     wrapper = FileWrapper(file)
     response = HttpResponse(wrapper, content_type='application/pdf')
@@ -95,11 +96,17 @@ def post_observation(request, next=None):
 class SSODetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(SSODetailView, self).get_context_data(**kwargs)
+        content_type = ContentType.objects.get(model="solarsystemobject").id
+        object_id = self.get_object().pk
+        context['finder_chart_form'] = FinderChartForm(initial={
+            'content_type': content_type,
+            'object_id': object_id,
+        })
         if self.request.user.is_authenticated():
             context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
             context['observation_form'] = ObservationForm(initial={
-                'content_type': ContentType.objects.get(model="solarsystemobject").id,
-                'object_id': self.get_object().pk,
+                'content_type': content_type,
+                'object_id': object_id,
                 'lat': self.request.user.userprofile.lat,
                 'lng': self.request.user.userprofile.lng,
                 })

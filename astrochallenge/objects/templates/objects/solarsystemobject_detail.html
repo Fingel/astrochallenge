@@ -28,6 +28,7 @@
           <!-- Nav tabs -->
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+            <li role="presentation"><a href="#finder" aria-controls="finder" role="tab" data-toggle="tab">Finder Chart</a></li>
             <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations ({{ object.observations.all | length }})</a></li>
             {% get_comment_count for object as comment_count %}
             <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion ({{ comment_count }})</a></li>
@@ -88,6 +89,19 @@
         </div>
         <div role="tabpanel" class="tab-pane" id="observations">
             {% include "objects/includes/observation_list.html" with observations=object.observations.all %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="finder">
+            <h4>Generate a finder chart</h4>
+            <div id="finder-form" class="col-md-3">
+            <form action="{% url 'post-finderchart' %}" method="post">
+                {% csrf_token %}
+                {% bootstrap_form finder_chart_form %}
+                {% buttons %}
+                 <button class="btn btn-default" type="submit" name="submit" value="Post">Generate Chart</button>
+                <input type="hidden" name="next" value="{% url 'solarsystemobject-detail' object.pk %}#tab_finder" />
+                {% endbuttons %}
+            </form>
+            </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="discussion">
             {% render_comment_list for object %}
