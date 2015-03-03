@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
-{% load gravatar %}
+{% load gravatar endless %}
 {% block content %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-2">
+                <h2>{{ member.username }}</h2>
+                <p>{% gravatar member.email 150 %}</p>
+                {% if member == user %}
+                <p><a href="{% gravatar_profile_url member.email %}">Change your avatar</a>
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Gravatar is a service that displays an image that is linked to your email address. Many sites use Gravatar so you only have to set your image once!"></span></p>
+                {% endif %}
+                <h4>Points: {{ member.userprofile.points }}</h4>
+                <h4>Observations: {{ member.userprofile.observation_set.all|length }}
+        </div>
+        <div class="col-md-10">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
-                <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations ({{ member.userprofile.observation_set.all | length }})</a></li>
+                <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observation Log ({{ member.userprofile.observation_set.all | length }})</a></li>
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="info">
@@ -21,18 +31,42 @@
                     </table>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="observations">
-                    {% include "objects/includes/observation_list.html" with observations=member.userprofile.observation_set.all %}
+                    {% with observations=member.userprofile.observation_set.all %}
+                    {% paginate 5 observations using "ob_page" %}
+                    {% for observation in observations %}
+                    <div class="row observation-row">
+                        <div class="col-xs-2">
+                            <a href="{{observation.content_object.get_absolute_url}}">
+                            <div class="col-xs-12">
+                                {% if observation.content_object.image %}
+                                <img class="img-responsive" src="{{observation.content_object.image.url}}"/>
+                                {% else %}
+                                <img class="img-responsive" src="{{STATIC_URL}}images/default.png">
+                                {% endif %}
+                            </div>
+                            </a>
+                        </div>
+                        <div class="col-xs-10">
+                            <a href="{{observation.content_object.get_absolute_url}}">
+                                <span class="emphasize">{{ observation.content_object }}</span>
+                            </a>
+                            <span class="pull-right">{{ observation.date }}
+                            {% if observation.user_profile == member.userprofile %}
+                                <a href="{% url 'delete-observation' observation.id %}">Delete</a>
+                            {% endif %}
+                            </span>
+                            <p>Points earned: {{ observation.points_earned }}</p>
+                            <!-- <blockquote> -->
+                                <p>{{ observation.description | linebreaks }}</p>
+                            <!-- </blockquote> -->
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% get_pages %}
+                    {% include 'includes/astropagination.html' with url_hash='#tab_observations' %}
+                    {% endwith %}
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-                <p>{% gravatar member.email 150 %}</p>
-                {% if member == user %}
-                <p><a href="{% gravatar_profile_url member.email %}">Change your avatar</a>
-                <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Gravatar is a service that displays an image that is linked to your email address. Many sites use Gravatar so you only have to set your image once!"></span></p>
-                {% endif %}
-                <h4>Points: {{ member.userprofile.points }}</h4>
-                <h4>Observations: {{ member.userprofile.observation_set.all|length }}
         </div>
     </div>
     {% if member == user %}
