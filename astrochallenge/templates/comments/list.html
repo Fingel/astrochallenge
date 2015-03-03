@@ -2,12 +2,19 @@
 {% paginate 5 comment_list using "c_page" %}
 {% for comment in comment_list %}
 <div class="row observation-row" id="c{{ comment.id }}">
-    <div class="col-sm-1">
-    <img class="profile-image" src="{% gravatar_url user.email 50 %}">
+     <div class="col-xs-2">
+        <a href="{% url 'profile' user.username %}">
+        <div class="col-xs-12">
+            <img class="profile-image img-responsive" src="{% gravatar_url user.email size=100 %}"/>
+        </div>
+        <div class="col-xs-12">
+            {{user.username}} ({{ user.userprofile.points }})
+        </div>
+        </a>
     </div>
-    <div class="col-sm-11">
-        <p>{{comment.user.username}} - <em>{{ comment.submit_date }}</em></p>
-        <p>{{ comment.comment }}</p>
+    <div class="col-xs-10">
+        <span class="pull-right">{{ comment.submit_date }}</span>
+        <p>{{ comment.comment | linebreaks }}</p>
     </div>
 </div>
 {% endfor %}

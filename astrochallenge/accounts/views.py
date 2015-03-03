@@ -49,7 +49,7 @@ def edit_profile(request):
             profile_form.save()
             del(request.session['django_timezone'])
             messages.success(request, "Profile sucessfully updated")
-            return redirect('profile')
+            return redirect('profile', username=request.user.username)
         else:
             messages.error(request, 'There was an error with the form')
             return render(request, 'accounts/profile_form.html', {'user_form': user_form, 'profile_form': profile_form})
