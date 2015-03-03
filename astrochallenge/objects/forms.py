@@ -25,7 +25,7 @@ class FinderChartForm(forms.Form):
     field_of_view = forms.FloatField(
         label="Field of view (degrees)",
         initial=15.0,
-        validators=[MinValueValidator(0.0), MaxValueValidator(50.0)]
+        validators=[MinValueValidator(0.0), MaxValueValidator(100.0)]
     )
     limiting_magnitude_stars = forms.FloatField(
         label="Min. magnitude for stars",
