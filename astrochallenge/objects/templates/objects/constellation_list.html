@@ -5,32 +5,53 @@
 <link rel="stylesheet" href="{% get_static_prefix %}css/dataTables.bootstrap.css">
 {% endblock %}
 {% block content %}
-<table class="table table-striped table-hover" id="table">
-    <thead>
-        <tr>
-            <td>Abbreviation</td><td>Latin Name</td><td>English Name</td>
-        </tr>
-    </thead>
-    <tbody>
-{% for constellation in object_list %}
-    <tr href="{% url 'constellation-detail' constellation.abbreviation %}">
-        <td>{{ constellation.abbreviation }}</td>
-        <td>{{ constellation.latin_name }}</td>
-        <td>{{ constellation.english_name }}</td>
-    </tr>
-{% endfor %}
-</tbody>
-</table>
+<div class="row">
+    <div class="col-md-3">
+        <div class="colwrap">
+            <h1>Constellations</h1>
+            <form autocomplete="off">
+                <div class="form-group">
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" placeholder="ex: Orion" class="form-control"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="colwrap">
+            <table class="table table-striped table-hover" id="table">
+                <thead>
+                    <tr>
+                        <td>Abbreviation</td><td>Latin Name</td><td>English Name</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for constellation in object_list %}
+                <tr href="{% url 'constellation-detail' constellation.abbreviation %}">
+                    <td>{{ constellation.abbreviation }}</td>
+                    <td>{{ constellation.latin_name }}</td>
+                    <td>{{ constellation.english_name }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
 {% block extra_javascript %}
 <script src="{% get_static_prefix %}js/vendor/jquery.dataTables.min.js"></script>
 <script src="{% get_static_prefix %}js/vendor/dataTables.bootstrap.js"></script>
 <script type="text/javascript">
-    $("#table").DataTable({
-        'lengthChange': false
+    var table = $("#table").DataTable({
+        'lengthChange': false,
+        'sDom': 'lrtip',
     });
     $('#table').on('click', 'tbody tr', function(){
         window.location.href = $(this).attr('href');
+    })
+    $('#search').keyup(function(){
+        table.search($(this).val()).draw();
     })
 </script>
 {% endblock %}
