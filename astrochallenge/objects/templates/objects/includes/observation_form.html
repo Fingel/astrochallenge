@@ -1,6 +1,20 @@
 {% load bootstrap3 objects_extras %}
+{% if user|has_observed:object %}
+{% with user|first_observation:object as first_observation %}
+<h4>
+Observed: <span class="glyphicon glyphicon-ok green"></span>
+&nbsp;Points Earned: {{ first_observation.points_earned }}
+</h4>
+<p>You first observed this object on: {{ first_observation.date }}</p>
+{% endwith %}
+{% else %}
+<p><h4>
+Observed: <span class="glyphicon glyphicon-remove red"></span>
+&nbsp;Points: {{ object.points }}
+</h4></p>
+{% endif %}
 {% if user.is_authenticated %}
-<button class="btn btn-success col-md-12" id="make-observation" data-toggle="modal" data-target="#observation-modal">Make Observation</button>
+<button class="btn btn-success col-md-12" id="make-observation" data-toggle="modal" data-target="#observation-modal">Log Observation</button>
 <div class="modal fade" id="observation-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -11,8 +25,10 @@
       <div class="modal-body">
         <div id="observation-form">
         {% if user|has_observed:object %}
-        <p>You have already observed this object, so you will not receieve additional points for more observations</p>
+        <p>Note: You have already observed this object, so you will not receieve additional points for more observations.</p>
         {% endif %}
+        <p>Provide the time and most accurate location possible for this observation. In your description detail how difficult it was to find the object,
+        what equipment you used, what the object looked like, etc.</p>
         <form method="post" action="{% url 'post-observation' %}">
             {% csrf_token %}
             {{observation_form.content_type}}
@@ -31,7 +47,7 @@
             </span>
             {% buttons %}
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button class="btn btn-default" type="submit">Submit</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
             <input type="hidden" name="next" value="{% url next_target object.pk %}#tab_observations"/>
             {% endbuttons %}
         </form>

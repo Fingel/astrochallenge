@@ -16,6 +16,9 @@ class ObservationForm(ModelForm):
             'content_type': HiddenInput(),
             'object_id': HiddenInput(),
         }
+        labels = {
+            'description': 'Describe your observation'
+        }
 
 
 class FinderChartForm(forms.Form):
@@ -25,11 +28,11 @@ class FinderChartForm(forms.Form):
         validators=[MinValueValidator(0.0), MaxValueValidator(50.0)]
     )
     limiting_magnitude_stars = forms.FloatField(
-        label="Minimum magnitude for stars",
+        label="Min. magnitude for stars",
         initial=10.0,
     )
     limiting_magnitude_deepsky = forms.FloatField(
-        label="Minimum magnite for deep sky objects",
+        label="Min. magnitude for DSOs",
         initial=12.5
     )
     object_id = forms.IntegerField(widget=forms.HiddenInput)

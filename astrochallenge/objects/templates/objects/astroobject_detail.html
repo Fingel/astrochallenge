@@ -8,20 +8,6 @@
         {% if object.image %}
         <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
         {% endif %}
-        {% if user|has_observed:object %}
-        {% with user|first_observation:object as first_observation %}
-        <h4>
-        Observed: <span class="glyphicon glyphicon-ok green"></span>
-        &nbsp;Points Earned: {{ first_observation.points_earned }}
-        </h4>
-        <p>You first observed this object on: {{ first_observation.date }}
-        {% endwith %}
-        {% else %}
-        <p><h4>
-        Observed: <span class="glyphicon glyphicon-remove red"></span>
-        &nbsp;Points: {{ object.points }}
-        </h4></p>
-        {% endif %}
         {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='astroobject-detail' %}
     </div>
     <div class="col-md-9">
@@ -93,17 +79,7 @@
         </table>
         </div>
         <div role="tabpanel" class="tab-pane" id="finder">
-            <h4>Generate a finder chart</h4>
-            <div id="finder-form" class="col-md-3">
-            <form action="{% url 'post-finderchart' %}" method="post">
-                {% csrf_token %}
-                {% bootstrap_form finder_chart_form %}
-                {% buttons %}
-                 <button class="btn btn-default" type="submit" name="submit" value="Post">Generate Chart</button>
-                <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_finder" />
-                {% endbuttons %}
-            </form>
-            </div>
+             {% include "objects/includes/finder_chart_form.html" with finder_char_form=finder_chart_form %}
         </div>
         <div role="tabpanel" class="tab-pane" id="observations">
             {% include "objects/includes/observation_list.html" with observations=object.observations.all %}
