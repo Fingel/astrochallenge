@@ -4,6 +4,7 @@
 {% block content %}
 <div class="row">
     <div class="col-md-6">
+    <div class="colwrap">
         <h1>{{ object.latin_name }}</h1>
         <table class="table">
         <tr><td>Abbreviation</td><td>{{ object.abbreviation }}</td></tr>
@@ -18,9 +19,12 @@
             </a></li>
         {% endfor %}
         </ul>
+        </div>
     </div>
     <div class="col-md-6">
+        <div class="colwrap">
         <a href="{{ object.image.url }}" alt="{{ object.latin_name }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
+        </div>
     </div>
 </div>
 

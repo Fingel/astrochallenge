@@ -5,7 +5,8 @@
 {% endblock %}
 {% block content %}
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
+            <div class="colwrap">
                 <h2>{{ member.username }}</h2>
                 <p>{% gravatar member.email 150 %}</p>
                 {% if member == user %}
@@ -14,13 +15,20 @@
                 {% endif %}
                 <h4>Points: {{ member.userprofile.points }}</h4>
                 <h4>Observations: {{ member.userprofile.observation_set.all|length }}
+                </h4>
+                {% if member == user %}
+                <a href="{% url 'edit-profile' %}"><button class="btn btn-default">Edit profile</button></a>
+                <a href="{% url 'auth_password_change' %}"><button class="btn btn-danger">Change password</button></a>
+                {% endif %}
+            </div>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-9">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Profile</a></li>
                 <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observation Log ({{ member.userprofile.observation_set.all | length }})</a></li>
             </ul>
+            <div class="colwrap">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="info">
                     <table class="table">
@@ -71,15 +79,9 @@
                 </div>
             </div>
         </div>
-    </div>
-    {% if member == user %}
-    <div class="row">
-        <div class="col-md-12">
-            <a href="{% url 'edit-profile' %}"><button class="btn btn-default">Edit profile</button></a>
-            <a href="{% url 'auth_password_change' %}"><button class="btn btn-danger">Change password</button></a>
         </div>
     </div>
-    {% endif %}
+
 {% endblock %}
 {% block extra_javascript %}
 <script type="text/javascript">

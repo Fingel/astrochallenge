@@ -4,11 +4,13 @@
 {% block content %}
 <div class="row">
     <div class="col-md-3">
+        <div class="colwrap">
         <h1 class="no-top-margin">{{ object }}</h1>
         {% if object.image %}
         <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
         {% endif %}
         {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='solarsystemobject-detail' %}
+    </div>
     </div>
     <div class="col-md-9">
           <!-- Nav tabs -->
@@ -21,6 +23,7 @@
           </ul>
 
   <!-- Tab panes -->
+<div class="colwrap">
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="info">
         <h4>Current Info for {{user.username|default:"Observer"}}</h4>
@@ -97,6 +100,7 @@
             <p> Please login to post comments</p>
             {% endif %}
         </div>
+      </div>
       </div>
     </div>
 </div>

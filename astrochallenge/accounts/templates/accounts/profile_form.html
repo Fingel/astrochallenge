@@ -5,12 +5,9 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-12">
-            <h2>Edit Profile</h2>
-        </div>
-    </div>
-    <div class="row">
     <div class="col-md-6">
+        <div class="colwrap">
+                <h2>Edit Profile</h2>
         <p>
             Please fill out the following fields to complete your profile.
         </p>
@@ -23,7 +20,9 @@
         <p>Combined, this data determines which objects are visible to you
         in the night sky!</p>
     </div>
+    </div>
     <div class="col-md-6">
+    <div class="colwrap">
     <form method="post" action="">
         {% csrf_token %}
         {% bootstrap_form user_form %}
@@ -33,6 +32,7 @@
         <button type="submit" class="btn btn-primary">Submit</button>
         {% endbuttons %}
     </form>
+    </div>
     </div>
     </div>
 {% endblock %}

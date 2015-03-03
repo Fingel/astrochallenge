@@ -7,6 +7,7 @@
 {% block content %}
 <div class="row">
     <div class="col-md-3">
+    <div class="colwrap">
     <h1>Solar System Objects</h1>
     <form autocomplete="off">
         <div class="form-group">
@@ -32,7 +33,9 @@
         <p>{{'e'|mass_unicode}} Earth Masses</p>
         <p>{{'j'|mass_unicode|safe}} Jupiter Masses</p>
     </div>
+    </div>
     <div class="col-md-9">
+        <div class="colwrap">
         <table class="table table-striped table-hover" id="table">
             <thead>
                 <tr>
@@ -50,6 +53,7 @@
             {% endfor %}
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 {% endblock %}

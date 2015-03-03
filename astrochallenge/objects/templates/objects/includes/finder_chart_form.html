@@ -6,7 +6,7 @@ object with different field of views.</p>
 <p>Limiting the magnitude (remember, lower magnitude means brighter!) of stars and objects can make sure your chart is not cluttered with
 dim objects that you may not be visible to you anyway. The defaults are good, but try experimenting with raising and lowering the values.</p>
 
-<div id="finder-form">
+<div id="finder-form" class="form-group">
 <form action="{% url 'post-finderchart' %}" method="post">
     {% csrf_token %}
     {{ finder_chart_form.content_type }}
