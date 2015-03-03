@@ -3,12 +3,12 @@
 {% for comment in comment_list %}
 <div class="row observation-row" id="c{{ comment.id }}">
      <div class="col-xs-2">
-        <a href="{% url 'profile' user.username %}">
+        <a href="{% url 'profile' comment.user.username %}">
         <div class="col-xs-12">
-            <img class="profile-image img-responsive" src="{% gravatar_url user.email size=100 %}"/>
+            <img class="profile-image img-responsive" src="{% gravatar_url comment.user.email size=100 %}"/>
         </div>
         <div class="col-xs-12">
-            {{user.username}} ({{ user.userprofile.points }})
+            {{comment.user.username}} ({{ comment.user.userprofile.points }})
         </div>
         </a>
     </div>

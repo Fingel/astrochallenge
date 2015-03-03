@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load gravatar endless %}
+{% block title %}
+{{ member.username }}
+{% endblock %}
 {% block content %}
     <div class="row">
         <div class="col-md-2">

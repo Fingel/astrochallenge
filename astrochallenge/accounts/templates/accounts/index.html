@@ -3,19 +3,22 @@
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
-<div class="hook">
-    <h1>Welcome to the Astro Challenge!</h1>
+<div class="hook colwrap">
+    <center><h1>Welcome to Astro Challenge!</h1></center>
     <p>The <b>Astro Challenge</b> is an online community of amateur
     astronomers challenging themselves in the field of observational
     astronomy. Users can browse the database of astronomical objects
     and events, keep track of their observations and earn points. There are monthly
     observation challenges and special awards for sketching and photography.</p>
-    <a href="{% url 'auth_login' %}"><button class="btn btn-primary">Login</button></a>
-    <a href="{% url 'registration_register' %}"><button class="btn btn-info">Register</button></a>
+    <center>
+    <a href="{% url 'auth_login' %}"><button class="btn btn-primary btn-lg">Login</button></a>
+    <a href="{% url 'registration_register' %}"><button class="btn btn-info btn-lg">Register</button></a>
+    </center>
 </div>
 {% endif %}
 <div class="row">
     <div class="col-md-2">
+    <div class="colwrap">
     {% if user.is_authenticated %}
         <div id="sunset-info">
             <center>
@@ -27,9 +30,12 @@
         <div id="moon-info">
             <center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
         </div>
+        </div>
     </div>
     <div class="col-md-7">
+        <div class="colwrap">
         <h1>Latest Observations</h1>
+        <hr/>
         {% paginate 10 observations using "ob_page" %}
         {% for observation in observations %}
         <div class="row observation-row">
@@ -58,10 +64,13 @@
         {% get_pages %}
         {% include 'includes/astropagination.html' with url_hash='#tab_observations' %}
     </div>
+    </div>
     <div class="col-md-3">
+        <div class="colwrap">
         <div class="row">
         <div class="col-md-12">
         <h3>Recent Comments</h3>
+        <hr/>
         {% for comment in comments %}
         <div id="c{{ comment.id }}">
             <div class="comment-author">
@@ -81,12 +90,14 @@
             </div>
         </div>
         <div class="row">
-        <div claass="col-md-12">
+        <div class="col-md-12">
         <h3>Twitter</h3>
+        <hr/>
          <a class="twitter-timeline" data-chrome="nofooter noheader transparent noscrollbar noborders" data-tweet-limit="4" href="https://twitter.com/astrochallenger" data-widget-id="571916701059411968">Tweets by @astrochallenger</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
          </script>
          </div>
          </div>
+     </div>
      </div>
 </div>
 {% endblock %}

@@ -3,12 +3,12 @@
 {% for observation in observations %}
 <div class="row observation-row">
     <div class="col-xs-2">
-        <a href="{% url 'profile' user.username %}">
+        <a href="{% url 'profile' observation.user_profile.user.username %}">
         <div class="col-xs-12">
-            <img class="profile-image img-responsive" src="{% gravatar_url user.email size=100 %}"/>
+            <img class="profile-image img-responsive" src="{% gravatar_url observation.user_profile.user.email size=100 %}"/>
         </div>
         <div class="col-xs-12">
-            {{user.username}} ({{ user.userprofile.points }})
+            {{observation.user_profile.user.username}} ({{ observation.user_profile.points }})
         </div>
         </a>
     </div>
