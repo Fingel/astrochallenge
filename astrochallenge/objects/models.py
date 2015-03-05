@@ -181,10 +181,9 @@ class AstroObject(models.Model):
     def __unicode__(self):
         return self.common_name if self.common_name else "{0}:{1}-{2}".format(self.constellation, self.ra_hours, self.dec_deg)
 
+    @property
     def catalog_rep(self):
-        ret_string = "/".join([str(co) for co in self.catalogobject_set.all()])
-        ret_string += " ({0})".format(self.common_name) if self.common_name else ""
-        return ret_string
+        return ", ".join([str(co) for co in self.catalogobject_set.all()])
 
     def get_absolute_url(self):
         return urlresolvers.reverse("astroobject-detail", args=(self.pk,))

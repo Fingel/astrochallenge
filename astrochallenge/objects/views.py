@@ -14,6 +14,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.core.servers.basehttp import FileWrapper
 import os
+import re
 
 from models import Constellation, CatalogObject, AstroObject, Observation
 from astrochallenge.objects.forms import ObservationForm, FinderChartForm
@@ -155,26 +156,32 @@ class DSOListView(TemplateView):
 
 class DSOListViewJson(BaseDatatableView):
     model = AstroObject
-    columns = ['pk', 'index', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
+    columns = ['pk', 'index', 'common_name', 'catalog_rep', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
     order_columns = ['index', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
 
     def filter_queryset(self, qs):
-        """ If search['value'] is provided then filter all searchable columns using istartswith
-        """
         if not self.pre_camel_case_notation:
             # get global search value
             search = self.request.GET.get('search[value]', None)
             col_data = self.extract_datatables_column_data()
             q = Q()
             for col_no, col in enumerate(col_data):
+                print col
+                # regex to search for Catalog Objects
+                if col['name'] == 'designations':
+                        p = re.compile('^([M-NGC]+)(\d+)', re.IGNORECASE)
+                        m = p.match(search)
+                        if m:
+                            q |= Q(**{'catalogobject__catalog__istartswith': m.group(1), 'catalogobject__designation__istartswith': m.group(2)})
+
                 # apply global search to all searchable columns
-                if search and col['searchable']:
+                elif search and col['searchable']:
                     q |= Q(**{'{0}__icontains'.format(self.columns[col_no].replace(".", "__")): search})
 
                 # column specific filter
                 if col['search.value']:
                     qs = qs.filter(**{'{0}__icontains'.format(self.columns[col_no].replace(".", "__")): col['search.value']})
-            qs = qs.filter(q)
+            qs = qs.filter(q).distinct()
         return qs
 
     # Shitty mcshit datatables

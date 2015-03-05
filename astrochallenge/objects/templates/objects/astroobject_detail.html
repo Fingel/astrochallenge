@@ -69,11 +69,7 @@
             {% endif %}
             <tr>
             <td>Catalog Designations</td>
-            <td>
-            {% for catalog_object in object.catalogobject_set.all %}
-                {{catalog_object.catalog}}{{catalog_object.designation}}
-            {% endfor %}
-            </td>
+            <td> {{ object.catalog_rep }}</td>
             </tr>
 
             {% if object.description %}
