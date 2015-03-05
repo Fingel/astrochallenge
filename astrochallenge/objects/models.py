@@ -85,21 +85,27 @@ class SolarSystemObject(models.Model):
         if self.ephemeride[:7] == 'pyephem':
             return getattr(ephem, self.ephemeride.split(':')[1])()
         else:
-            return ephem.readdb(self.ephemeride)
+            try:
+                return ephem.readdb(self.ephemeride)
+            except:
+                return None
 
     @property
     def general_info(self):
         p_object = self.ephem_object
-        p_object.compute()
-        return {
-            "dec": str(p_object.dec),
-            "ra": str(p_object.ra),
-            "elongation": str(p_object.elong),
-            "earth_distance": str(p_object.earth_distance),
-            "sun_distance": str(p_object.sun_distance),
-            "phase": str(p_object.phase),
-            "magnitude": str(p_object.mag),
-        }
+        if p_object:
+            p_object.compute()
+            return {
+                "dec": str(p_object.dec),
+                "ra": str(p_object.ra),
+                "elongation": str(p_object.elong),
+                "earth_distance": str(p_object.earth_distance),
+                "sun_distance": str(p_object.sun_distance),
+                "phase": str(p_object.phase),
+                "magnitude": str(p_object.mag),
+            }
+        else:
+            return {}
 
     @property
     def ra(self):
@@ -111,15 +117,18 @@ class SolarSystemObject(models.Model):
 
     def observation_info(self, observer):
         p_object = self.ephem_object
-        p_object.compute(observer)
-        up = True if ephem.degrees(p_object.alt) > 0 else False
-        return {
-            'alt': str(p_object.alt),
-            'az': str(p_object.az),
-            'up': up,
-            'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if p_object.rise_time else None,
-            'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if p_object.set_time else None
-        }
+        if p_object:
+            p_object.compute(observer)
+            up = True if ephem.degrees(p_object.alt) > 0 else False
+            return {
+                'alt': str(p_object.alt),
+                'az': str(p_object.az),
+                'up': up,
+                'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if observer.next_rising(p_object) else None,
+                'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if observer.next_setting(p_object) else None
+            }
+        else:
+            return {}
 
     def __unicode__(self):
         return self.name
@@ -174,8 +183,8 @@ class AstroObject(models.Model):
             'az': str(p_object.az),
             'up': up,
             'neverup': p_object.neverup,
-            'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if p_object.rise_time else None,
-            'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if p_object.set_time else None
+            'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if observer.next_rising(p_object) else None,
+            'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if observer.next_setting(p_object) else None
         }
 
     def __unicode__(self):
