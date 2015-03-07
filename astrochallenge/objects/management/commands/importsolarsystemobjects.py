@@ -80,7 +80,7 @@ class Command(BaseCommand):
 
         jupiter = SolarSystemObject(
             index=5,
-            name="Juipter",
+            name="Jupiter",
             type="P",
             ephemeride="pyephem:Jupiter",
             description="The largest planet",
@@ -133,6 +133,48 @@ class Command(BaseCommand):
             image="ss_objects/neptune.jpg"
         )
         neptune.save()
+
+        phobos = SolarSystemObject(
+            index=9,
+            name="Phobos",
+            type="M",
+            ephemeride="pyephem:Phobos",
+            description="The larger of Mars' two moons. Phobos is named after the son of Ares and Venus and embodies horror. Due to tidal interactions Phobos is predicted to crash into the Martian surface in about 50 million years.",
+            mass=1.0669E16,
+            mass_unit="kg",
+            points=1,
+            parent=mars,
+            image="ss_objects/phobos.jpg"
+        )
+        phobos.save()
+
+        deimos = SolarSystemObject(
+            index=10,
+            name="Deimos",
+            type="M",
+            ephemeride="pyephem:Deimos",
+            description="The smaller of Mars' two moons. Like Mars' other moon Phobos, Deimos is too small to achieve geostatic equilibrium as has an irregular shape. In Greek mythology Deimos was the son of Ares and Venus and the twin brother of Phobos and was the personification of Terror.",
+            mass=1.4762E15,
+            mass_unit="kg",
+            points=1,
+            parent=mars,
+            image="ss_objects/deimos.jpg"
+        )
+        deimos.save()
+
+        moon = SolarSystemObject(
+            index=11,
+            name="Moon",
+            type="M",
+            ephemeride="pyephem:Moon",
+            description="",
+            mass=7.3477E22,
+            mass_unit="kg",
+            points=100,
+            parent=earth,
+            image="ss_objects/moon.jpg"
+        )
+        moon.save()
 
         for ss_object in ss_objects:
             ss_object.save()

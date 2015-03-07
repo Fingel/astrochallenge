@@ -49,8 +49,17 @@
         <p>as of {% now 'SHORT_DATETIME_FORMAT' %}</p>
         <table class="table">
             <tr><td>Type</td><td>{{ object.get_type_display|capfirst }}</td></tr>
-            <tr><td>Right ascension</td><td>{{ object.general_info.ra }}</td></tr>
-            <tr><td>Declination</td><td>{{ object.general_info.dec }}</td></tr>
+            {% if object.solarsystemobject_set.all %}
+            <tr><td>Satellites</td><td>
+            {% for object in object.solarsystemobject_set.all %}
+                <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
+            {% endfor %}
+            {% endif %}
+            {% if object.parent %}
+            <tr><td>Planet</td><td><a href="{{ object.parent.get_absolute_url }}">{{ object.parent.name }}</a></td></tr>
+            {% endif %}
+            <tr><td>Right ascension</td><td>{{ object.general_info.ra }} (Hours)</td></tr>
+            <tr><td>Declination</td><td>{{ object.general_info.dec }} (Deg)</td></tr>
             {% if object.general_info.magnitude %}
             <tr><td>Magnitude</td><td>{{ object.general_info.magnitude | floatformat:"-3" }}</td></tr>
             {% endif %}
@@ -69,8 +78,10 @@
             {% if object.mass %}
             <tr><td>Mass</td><td>{{ object.mass|intcomma }} {{ object.mass_unit|mass_unicode|safe }}</td></tr>
             {% endif %}
-            <tr>
-            </tr>
+            {% if object.type == 'M' and object.name != 'Moon' %}
+            <tr><td>Earth Visible</td><td>{{ object.general_info.earth_visible }}</td></tr>
+            <tr><td>Offset (+E/-W)(+S/+N)(+front/-behind)</td><td>{{ object.general_info.x | floatformat:"-5" }} {{ object.general_info.y | floatformat:"-5"}} {{ object.general_info.z | floatformat:"-5"}} {{ object.parent.name }} radii</td></tr>
+            {% endif %}
             {% if object.description %}
             <tr><td colspan="2">{{ object.description | linebreaks }}</td></tr>
             {% endif %}

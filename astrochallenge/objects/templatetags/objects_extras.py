@@ -11,7 +11,7 @@ def mass_unicode(mass_unit):
         return u'\u2609'
     if mass_unit == 'j':
         return "<sub>j</sub>"
-    return ""
+    return mass_unit
 
 
 @register.filter

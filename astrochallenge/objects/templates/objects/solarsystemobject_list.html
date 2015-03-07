@@ -65,16 +65,16 @@
         'lengthChange': false,
         'sDom': 'lrtip',
         'aaSorting': []
-    })
+    });
      $('#table').on('click', 'tbody tr', function(){
         window.location.href = $(this).attr('href');
-    })
+    });
 
     $('#search').keyup(function(){
         table.search($(this).val()).draw();
-    })
+    });
     $('#type-search').change(function(){
         table.columns([1]).search($(this).find(':selected').val()).draw();
-    })
+    });
 </script>
 {% endblock %}

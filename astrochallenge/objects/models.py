@@ -72,7 +72,7 @@ class SolarSystemObject(models.Model):
     ephemeride = models.CharField(max_length=1000, default="")
     description = models.TextField(default="")
     mass = models.FloatField(null=True, blank=True)
-    mass_unit = models.CharField(max_length=1, choices=(('s', 's'), ('e', 'e'), ('j', 'j')), default="e")
+    mass_unit = models.CharField(max_length=5, choices=(('s', 's'), ('e', 'e'), ('j', 'j'), ('kg', 'kg')), default="e")
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="ss_objects", blank=True, null=True)
     observations = GenericRelation(Observation)
@@ -95,15 +95,26 @@ class SolarSystemObject(models.Model):
         p_object = self.ephem_object
         if p_object:
             p_object.compute()
-            return {
+            info = {
                 "dec": str(p_object.dec),
                 "ra": str(p_object.ra),
-                "elongation": str(p_object.elong),
-                "earth_distance": str(p_object.earth_distance),
-                "sun_distance": str(p_object.sun_distance),
-                "phase": str(p_object.phase),
-                "magnitude": str(p_object.mag),
             }
+            if self.type == 'P' or self.name == 'Moon':
+                info.update({
+                    "elongation": str(p_object.elong),
+                    "earth_distance": str(p_object.earth_distance),
+                    "sun_distance": str(p_object.sun_distance),
+                    "phase": str(p_object.phase),
+                    "magnitude": str(p_object.mag),
+                })
+            elif self.type == 'M' and self.name is not 'Moon':
+                info.update({
+                    "earth_visible": True if p_object.earth_visible > 0 else False,
+                    "x": str(p_object.x),
+                    "y": str(p_object.y),
+                    "z": str(p_object.z),
+                })
+            return info
         else:
             return {}
 
@@ -120,13 +131,18 @@ class SolarSystemObject(models.Model):
         if p_object:
             p_object.compute(observer)
             up = True if ephem.degrees(p_object.alt) > 0 else False
-            return {
+            info = {
                 'alt': str(p_object.alt),
                 'az': str(p_object.az),
                 'up': up,
-                'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if observer.next_rising(p_object) else None,
-                'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if observer.next_setting(p_object) else None
             }
+            if self.type == 'P' or self.name == 'Moon':
+                info.update({
+                    'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if observer.next_rising(p_object) else None,
+                    'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if observer.next_setting(p_object) else None,
+                })
+
+            return info
         else:
             return {}
 
