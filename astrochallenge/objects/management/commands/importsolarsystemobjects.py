@@ -288,5 +288,62 @@ class Command(BaseCommand):
         )
         hyperion.save()
 
+        #  Jupiter
+
+        europa = SolarSystemObject(
+            index=13,
+            name="Europa",
+            type="M",
+            ephemeride="pyephem:Europa",
+            description="",
+            mass=0.008,
+            mass_unit="e",
+            points=50,
+            parent=jupiter,
+            image="ss_objects/europa.jpg"
+        )
+        europa.save()
+
+        io = SolarSystemObject(
+            index=13,
+            name="Io",
+            type="M",
+            ephemeride="pyephem:Io",
+            description="",
+            mass=0.015,
+            mass_unit="e",
+            points=50,
+            parent=jupiter,
+            image="ss_objects/io.jpg"
+        )
+        io.save()
+
+        ganymede = SolarSystemObject(
+            index=13,
+            name="Ganymede",
+            type="M",
+            ephemeride="pyephem:Ganymede",
+            description="",
+            mass=0.025,
+            mass_unit="e",
+            points=50,
+            parent=jupiter,
+            image="ss_objects/ganymede.jpg"
+        )
+        ganymede.save()
+
+        callisto = SolarSystemObject(
+            index=13,
+            name="Callisto",
+            type="M",
+            ephemeride="pyephem:Callisto",
+            description="",
+            mass=0.018,
+            mass_unit="e",
+            points=1,
+            parent=jupiter,
+            image="ss_objects/callisto.jpg"
+        )
+        callisto.save()
         for ss_object in ss_objects:
             ss_object.save()
