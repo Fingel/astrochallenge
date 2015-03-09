@@ -61,7 +61,8 @@
                             <a href="{{observation.content_object.get_absolute_url}}">
                                 <span class="emphasize">{{ observation.content_object }}</span>
                             </a>
-                            <span class="pull-right">{{ observation.date }}
+                            <span class="pull-right">
+                            <a href="{{ observation.get_absolute_url }}">{{ observation.date }}</a>
                             {% if observation.user_profile == member.userprofile %}
                                 <a href="{% url 'delete-observation' observation.id %}">Delete</a>
                             {% endif %}

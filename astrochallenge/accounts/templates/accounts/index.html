@@ -45,16 +45,17 @@
                 {% else %}
                 <img class="img-responsive" src="{{STATIC_URL}}images/default.png">
                 {% endif %}
+                <br/>
+                <a href="{% url 'profile' observation.user_profile.user.username %}">
+                <p><img class="profile-image" src="{% gravatar_url observation.user_profile.user.email 60 %}"><br/>
+                {{ observation.user_profile.user.username }} ({{ observation.user_profile.points }})</p>
+                </a>
             </div>
             <div class="col-sm-10">
-                <span class="pull-right user-data">
-                    <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"SHORT_DATETIME_FORMAT" }}</a></p>
-                    <a href="{% url 'profile' observation.user_profile.user.username %}">
-                    <p><img class="profile-image" src="{% gravatar_url observation.user_profile.user.email 60 %}"><br/>
-                    {{ observation.user_profile.user.username }} ({{ observation.user_profile.points }})</p>
-                    </a>
+                <span class="pull-right">
+                    <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"SHORT_DATETIME_FORMAT" }} <span class="glyphicon glyphicon-link"></span></a></p>
                 </span>
-                <span class="emphasize"><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span>
+                <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span>
                 </p>
                 <p>Points earned: {{ observation.points_earned }}</p>
                 <p>{{ observation.description | linebreaks | truncatewords:200}}</p>

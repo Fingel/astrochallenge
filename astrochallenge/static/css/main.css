@@ -174,10 +174,6 @@ label[for=id_comment] {
     vertical-align: top;
 }
 
-.user-data {
-    text-align: right;
-}
-
 #finder-form {
     height: 150px;
 }
@@ -202,4 +198,7 @@ div.satellite-text {
     font-size: 1.2em;
 }
 
-
+.observation-detail ul {
+    list-style: none;
+    padding: 0px;
+}

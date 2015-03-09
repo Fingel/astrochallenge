@@ -49,7 +49,7 @@ class Observation(models.Model):
         return name
 
     def get_absolute_url(self):
-        return urlresolvers.reverse("{0}-detail".format(self.content_type.model), args=(self.object_id,))
+        return urlresolvers.reverse("observation-detail", args=(self.pk,))
 
 
 class Constellation(models.Model):
