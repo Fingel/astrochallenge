@@ -134,8 +134,22 @@ class Command(BaseCommand):
         )
         neptune.save()
 
-        phobos = SolarSystemObject(
+        moon = SolarSystemObject(
             index=9,
+            name="Moon",
+            type="M",
+            ephemeride="pyephem:Moon",
+            description="",
+            mass=7.3477E22,
+            mass_unit="kg",
+            points=100,
+            parent=earth,
+            image="ss_objects/moon.jpg"
+        )
+        moon.save()
+
+        phobos = SolarSystemObject(
+            index=10,
             name="Phobos",
             type="M",
             ephemeride="pyephem:Phobos",
@@ -149,7 +163,7 @@ class Command(BaseCommand):
         phobos.save()
 
         deimos = SolarSystemObject(
-            index=10,
+            index=11,
             name="Deimos",
             type="M",
             ephemeride="pyephem:Deimos",
@@ -162,19 +176,117 @@ class Command(BaseCommand):
         )
         deimos.save()
 
-        moon = SolarSystemObject(
-            index=11,
-            name="Moon",
+        titan = SolarSystemObject(
+            index=12,
+            name="Titan",
             type="M",
-            ephemeride="pyephem:Moon",
-            description="",
-            mass=7.3477E22,
-            mass_unit="kg",
-            points=100,
-            parent=earth,
-            image="ss_objects/moon.jpg"
+            ephemeride="pyephem:Titan",
+            description="Titan is Saturn's largest moon. It has a dense atmosphere and surface liquid in the form of liquid methane. Titan is the only body outside of earth that is known to have active hydrology.",
+            mass=0.0225,
+            mass_unit="e",
+            points=50,
+            parent=saturn,
+            image="ss_objects/titan.jpg"
         )
-        moon.save()
+        titan.save()
+
+        enceladus = SolarSystemObject(
+            index=12,
+            name="Enceladus",
+            type="M",
+            ephemeride="pyephem:Enceladus",
+            description="",
+            mass=1.080E20,
+            mass_unit="kg",
+            points=1,
+            parent=saturn,
+            image="ss_objects/enceladus.jpg"
+        )
+        enceladus.save()
+
+        mimas = SolarSystemObject(
+            index=12,
+            name="Mimas",
+            type="M",
+            ephemeride="pyephem:Mimas",
+            description="",
+            mass=3.7493E19,
+            mass_unit="kg",
+            points=1,
+            parent=saturn,
+            image="ss_objects/mimas.jpg"
+        )
+        mimas.save()
+
+        rhea = SolarSystemObject(
+            index=12,
+            name="Rhea",
+            type="M",
+            ephemeride="pyephem:Rhea",
+            description="",
+            mass=2.306E21,
+            mass_unit="kg",
+            points=1,
+            parent=saturn,
+            image="ss_objects/rhea.jpg"
+        )
+        rhea.save()
+
+        iapetus = SolarSystemObject(
+            index=12,
+            name="Iapetus",
+            type="M",
+            ephemeride="pyephem:Iapetus",
+            description="",
+            mass=1.805E21,
+            mass_unit="kg",
+            points=1,
+            parent=saturn,
+            image="ss_objects/iapetus.jpg"
+        )
+        iapetus.save()
+
+        dione = SolarSystemObject(
+            index=12,
+            name="Dione",
+            type="M",
+            ephemeride="pyephem:Dione",
+            description="",
+            mass=1.095E21,
+            mass_unit="kg",
+            points=1,
+            parent=saturn,
+            image="ss_objects/dione.jpg"
+        )
+        dione.save()
+
+        tethys = SolarSystemObject(
+            index=12,
+            name="Tethys",
+            type="M",
+            ephemeride="pyephem:Tethys",
+            description="",
+            mass=6.174E20,
+            mass_unit="kg",
+            points=1,
+            parent=saturn,
+            image="ss_objects/tethys.jpg"
+        )
+        tethys.save()
+
+        hyperion = SolarSystemObject(
+            index=12,
+            name="Hyperion",
+            type="M",
+            ephemeride="pyephem:Hyperion",
+            description="",
+            mass=5.6199E18,
+            mass_unit="kg",
+            points=1,
+            parent=saturn,
+            image="ss_objects/hyperion.jpg"
+        )
+        hyperion.save()
 
         for ss_object in ss_objects:
             ss_object.save()
