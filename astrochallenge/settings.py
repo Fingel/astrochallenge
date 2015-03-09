@@ -143,7 +143,7 @@ CATALOGS = {
 
 SOLAR_SYSTEM_OBJECT_TYPES = (
     ('P', 'planet'),
-    ('MP', 'minor planet'),
+    ('DP', 'dwarf planet'),
     ('M', 'moon'),
     ('A', 'asteroid'),
     ('C', 'comet'),

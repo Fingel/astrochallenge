@@ -418,5 +418,35 @@ class Command(BaseCommand):
         )
         ariel.save()
 
+        #  Neptune
+
+        triton = SolarSystemObject(
+            index=15,
+            name="Triton",
+            type="M",
+            ephemeride="pyephem:Neptune",
+            description="",
+            mass=2.14E22,
+            mass_unit="kg",
+            points=1,
+            parent=neptune,
+            image="ss_objects/triton.jpg"
+        )
+        triton.save()
+
+        pluto = SolarSystemObject(
+            index=16,
+            name="Pluto",
+            type="DP",
+            ephemeride="pyephem:Pluto",
+            description="",
+            mass=0.002,
+            mass_unit="e",
+            points=1,
+            parent=sun,
+            image="ss_objects/pluto.jpg"
+        )
+        pluto.save()
+
         for ss_object in ss_objects:
             ss_object.save()
