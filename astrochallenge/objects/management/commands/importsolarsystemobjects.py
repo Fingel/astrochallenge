@@ -345,5 +345,78 @@ class Command(BaseCommand):
             image="ss_objects/callisto.jpg"
         )
         callisto.save()
+
+        #  Uranus
+
+        miranda = SolarSystemObject(
+            index=14,
+            name="Miranda",
+            type="M",
+            ephemeride="pyephem:Miranda",
+            description="",
+            mass=6.59E19,
+            mass_unit="kg",
+            points=1,
+            parent=uranus,
+            image="ss_objects/miranda.jpg"
+        )
+        miranda.save()
+
+        titania = SolarSystemObject(
+            index=14,
+            name="Titania",
+            type="M",
+            ephemeride="pyephem:Titania",
+            description="",
+            mass=3.527E21,
+            mass_unit="kg",
+            points=1,
+            parent=uranus,
+            image="ss_objects/titania.jpg"
+        )
+        titania.save()
+
+        umbriel = SolarSystemObject(
+            index=14,
+            name="Umbriel",
+            type="M",
+            ephemeride="pyephem:Umbriel",
+            description="",
+            mass=1.172E21,
+            mass_unit="kg",
+            points=1,
+            parent=uranus,
+            image="ss_objects/umbriel.jpg"
+        )
+        umbriel.save()
+
+        oberon = SolarSystemObject(
+            index=14,
+            name="Oberon",
+            type="M",
+            ephemeride="pyephem:Oberon",
+            description="",
+            mass=3.014E21,
+            mass_unit="kg",
+            points=1,
+            parent=uranus,
+            image="ss_objects/oberon.jpg"
+        )
+        oberon.save()
+
+        ariel = SolarSystemObject(
+            index=14,
+            name="Ariel",
+            type="M",
+            ephemeride="pyephem:Ariel",
+            description="",
+            mass=1.353E21,
+            mass_unit="kg",
+            points=1,
+            parent=uranus,
+            image="ss_objects/ariel.jpg"
+        )
+        ariel.save()
+
         for ss_object in ss_objects:
             ss_object.save()
