@@ -182,7 +182,24 @@ label[for=id_comment] {
     height: 150px;
 }
 
+.ss-object-satellite {
+    height: 200px;
+    background-color: #000000;
+    border: 1px solid #272B30;
+}
 
+.ss-object-satellite img {
+    margin: auto;
+    max-height: 175px;
+}
 
+div.satellite-text {
+    position: absolute;
+    bottom: 0px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+}
 
 
