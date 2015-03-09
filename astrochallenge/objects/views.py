@@ -24,12 +24,12 @@ from utils import FchartSettings, generate_fchart
 @login_required
 def delete_observation(request, observation_id):
     observation = get_object_or_404(Observation, pk=observation_id)
-    redirect_url = observation.get_absolute_url()
     if not observation.user_profile == request.user.userprofile:
         return HttpResponseForbidden("You cannot delete this observation")
     else:
         observation.delete()
-        return redirect(redirect_url)
+        messages.success(request, 'Observation deleted')
+        return redirect('profile', username=request.user.username)
 
 
 @csrf_protect
@@ -91,6 +91,7 @@ def post_observation(request, next=None):
             pass
 
     observation_form.save()
+    messages.success(request, "Observation recorded sucessfully.")
     return next_redirect(request, fallback=next or observation_form.instance.get_absolute_url())
 
 

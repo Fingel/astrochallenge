@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load gravatar thumbnail %}
+{% load gravatar thumbnail django_markdown %}
 {% block title %}{{ object.user_profile.user.username }} - {{ observation.date }} - {{ observation.content_object }} {% endblock %}
 {% block content %}
 {% with object.content_object as target %}
@@ -33,7 +33,9 @@
     </div>
     <div class="col-md-9">
         <div class="colwrap">
-            {{ observation.description|linebreaks }}
+            <div class="markdown-text">
+            {{ observation.description|markdown_safe }}
+            </div>
         </div>
     </div>
 </div>

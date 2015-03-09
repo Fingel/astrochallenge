@@ -202,3 +202,20 @@ div.satellite-text {
     list-style: none;
     padding: 0px;
 }
+
+.markItUpContainer {
+    background-color: #FFFFFF;
+    width: 530px;
+}
+
+.markItUpPreviewFrame img {
+    max-width: 100%;
+}
+.markdown-text img {
+    max-width: 100%;
+}
+
+.markItUpEditor {
+    max-width: 100%;
+
+}

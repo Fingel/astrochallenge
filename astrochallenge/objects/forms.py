@@ -4,6 +4,7 @@ from django import forms
 from django.forms import HiddenInput, DateTimeField
 from models import Observation
 from django.utils import timezone
+from django_markdown.widgets import MarkdownWidget
 
 
 class ObservationForm(ModelForm):
@@ -15,9 +16,10 @@ class ObservationForm(ModelForm):
         widgets = {
             'content_type': HiddenInput(),
             'object_id': HiddenInput(),
+            'description': MarkdownWidget(),
         }
         labels = {
-            'description': 'Describe your observation'
+            'description': 'Describe your observation. Markdown is used for formatting. Click the green "check" for a preview.'
         }
 
 

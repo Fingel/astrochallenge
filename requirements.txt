@@ -21,3 +21,4 @@ requests==2.5.1
 six==1.9.0
 easy_thumbnails
 fchart
+django-markdown

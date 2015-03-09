@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'astro_comments',
     'endless_pagination',
     'easy_thumbnails',
+    'django_markdown',
 )
 
 COMMENTS_APP = 'astro_comments'

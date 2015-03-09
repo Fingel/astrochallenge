@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load gravatar endless thumbnail %}
+{% load gravatar endless thumbnail django_markdown %}
 {% block title %}
 {{ member.username }}
 {% endblock %}
@@ -68,8 +68,9 @@
                             {% endif %}
                             </span>
                             <p>Points earned: {{ observation.points_earned }}</p>
-                            <!-- <blockquote> -->
-                                <p>{{ observation.description | linebreaks }}</p>
+                            <div class="markdown-text">
+                                {{ observation.description | markdown_safe }}
+                            </div>
                             <!-- </blockquote> -->
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load tz bootstrap3 endless gravatar thumbnail %}
+{% load tz bootstrap3 endless gravatar thumbnail django_markdown %}
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
@@ -55,10 +55,16 @@
                 <span class="pull-right">
                     <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"SHORT_DATETIME_FORMAT" }} <span class="glyphicon glyphicon-link"></span></a></p>
                 </span>
-                <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}#tab_observations">{{ observation.name }}</a></span>
+                <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}">{{ observation.name }}</a></span>
                 </p>
                 <p>Points earned: {{ observation.points_earned }}</p>
-                <p>{{ observation.description | linebreaks | truncatewords:200}}</p>
+                <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
+                {% if observation.description|length > 500 %}
+                <a href="{{ observation.get_absolute_url }}">
+                Read more
+                </a>
+                {% endif %}
+                </div></p>
             </div>
         </div>
         {% endfor %}

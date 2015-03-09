@@ -1,4 +1,7 @@
-{% load bootstrap3 objects_extras %}
+{% load bootstrap3 objects_extras django_markdown %}
+{% block extra_javascript %}
+{% markdown_media %}
+{% endblock %}
 {% if user|has_observed:object %}
 {% with user|first_observation:object as first_observation %}
 <h4>
