@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from astrochallenge.objects.models import SolarSystemObject
+from django.conf import settings
 from decimal import *
 
 
@@ -448,5 +449,36 @@ class Command(BaseCommand):
         )
         pluto.save()
 
+        #  Minor planets
+
+        soft03bright = open(settings.PROJECT_ROOT + '/data/Soft03Bright.txt', 'r')
+        for line in soft03bright:
+            if line[0] == '#':
+                pass
+            else:
+                ss_object = SolarSystemObject(
+                    index=999999,
+                    name=line.split(',')[0],
+                    type='DP',
+                    ephemeride=line,
+                    points=1,
+                    parent=sun
+                )
+                ss_objects.append(ss_object)
+        #  Comets. Soft03Cmt.txt for full list, newcomets.txt for new
+        comets = open(settings.PROJECT_ROOT + '/data/newcomets.txt', 'r')
+        for line in comets:
+            if line[0] == '#':
+                pass
+            else:
+                ss_object = SolarSystemObject(
+                    index=999999,
+                    name=line.split(',')[0],
+                    type='C',
+                    ephemeride=line,
+                    points=1,
+                    parent=sun
+                )
+                ss_objects.append(ss_object)
         for ss_object in ss_objects:
             ss_object.save()
