@@ -45,7 +45,7 @@
         {% else %}
         <p>Please <a href="{% url 'auth_login' %}">login</a> to view current observation details</p>
         {% endif %}
-        {% if object.name != 'sun' and object.solarsystemobject_set.all %}
+        {% if object.name != 'Sun' and object.solarsystemobject_set.all %}
             <div class="row">
             <div class="col-md-12">
             <h4>Satellites</h4>
@@ -66,12 +66,6 @@
         <p>as of {% now 'SHORT_DATETIME_FORMAT' %}</p>
         <table class="table">
             <tr><td>Type</td><td>{{ object.get_type_display|capfirst }}</td></tr>
-            {% if object.solarsystemobject_set.all %}
-            <tr><td>Satellites</td><td>
-            {% for object in object.solarsystemobject_set.all %}
-                <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
-            {% endfor %}
-            {% endif %}
             {% if object.parent %}
             <tr><td>Orbits</td><td><a href="{{ object.parent.get_absolute_url }}">{{ object.parent.name }}</a></td></tr>
             {% endif %}

@@ -111,8 +111,13 @@ label[for=id_comment] {
     margin: 5px;
     border: 1px solid #000;
     padding: 5px;
+    min-height: 220px;
 }
 
+.user-deets {
+    display: inline-block;
+    width: 80px;
+}
 .observation-row:nth-child(2n+1){
     background-color: #353A41;
 }
@@ -147,18 +152,21 @@ label[for=id_comment] {
 }
 
 #moon-info {
-    padding-top: 20px;
+    padding: 20px;
     font-size: 18px;
+    display: inline-block;
 }
 #sunset-info {
     font-size: 18px;
-    padding: 10px 0px;
+    padding: 20px;
+    display: inline-block;
 }
 
 #sunset {
-    width: 75%;
+    width: 100px;
     padding-bottom: 5px;
 }
+
 .moon {
     font-size: 4em;
     line-height: 0.5;
