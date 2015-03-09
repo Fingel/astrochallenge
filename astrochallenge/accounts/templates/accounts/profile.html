@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load gravatar endless %}
+{% load gravatar endless thumbnail %}
 {% block title %}
 {{ member.username }}
 {% endblock %}
@@ -50,7 +50,7 @@
                             <a href="{{observation.content_object.get_absolute_url}}">
                             <div class="col-xs-12">
                                 {% if observation.content_object.image %}
-                                <img class="img-responsive" src="{{observation.content_object.image.url}}"/>
+                                <img class="img-responsive" src="{{observation.content_object.image|thumbnail_url:'log'}}"/>
                                 {% else %}
                                 <img class="img-responsive" src="{{STATIC_URL}}images/default.png">
                                 {% endif %}

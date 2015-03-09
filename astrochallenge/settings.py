@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django_comments',
     'astro_comments',
     'endless_pagination',
+    'easy_thumbnails',
 )
 
 COMMENTS_APP = 'astro_comments'
@@ -132,6 +133,16 @@ BOOTSTRAP3 = {
     'css_url': '/static/css/bootstrap.min.css',
     'javascript_url': '/static/js/vendor/bootstrap.min.js',
 }
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'detail': {'size': (500, 500), 'crop': False},
+        'satellite': {'size': (175, 175), 'crop': False},
+        'log': {'size': (200, 200), 'crop': False},
+    }
+}
+
+THUMBNAIL_BASEDIR = 'thumbs'
 
 # Astro Specific stuff
 

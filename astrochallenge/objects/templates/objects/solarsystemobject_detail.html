@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load comments bootstrap3 humanize objects_extras %}
+{% load comments bootstrap3 humanize objects_extras thumbnail %}
 {% block title %} {{ object }}{% endblock %}
 {% block content %}
 <div class="row">
@@ -7,7 +7,7 @@
         <div class="colwrap">
         <h1 class="no-top-margin">{{ object }}</h1>
         {% if object.image %}
-        <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
+        <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image|thumbnail_url:'detail' }}" class="img-responsive"></a>
         {% endif %}
         {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='solarsystemobject-detail' %}
     </div>
@@ -52,7 +52,7 @@
             {% for object in object.solarsystemobject_set.all %}
                 <a href="{{ object.get_absolute_url }}">
                     <div class="col-md-3 ss-object-satellite">
-                        <img class="img-responsive" src="{{ object.image.url }}" alt="satellite">
+                        <img class="img-responsive" src="{{ object.image|thumbnail_url:'satellite' }}" alt="satellite">
                         <div class="satellite-text">
                         {{ object.name }}
                         </div>
