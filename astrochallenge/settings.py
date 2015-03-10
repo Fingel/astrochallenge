@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'endless_pagination',
     'easy_thumbnails',
     'django_markdown',
+    'bootstrap3_datetime',
 )
 
 COMMENTS_APP = 'astro_comments'

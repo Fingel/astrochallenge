@@ -1,5 +1,6 @@
 {% load bootstrap3 objects_extras django_markdown %}
 {% block extra_javascript %}
+{{ observation_form.media }}
 {% markdown_media %}
 {% endblock %}
 {% if user|has_observed:object %}
@@ -36,13 +37,13 @@ Observed: <span class="glyphicon glyphicon-remove red"></span>
             {% csrf_token %}
             {{observation_form.content_type}}
             {{observation_form.object_id}}
-            <span class="col-xs-4">
+            <span class="col-xs-6">
             {% bootstrap_field observation_form.date %}
             </span>
-            <span class="col-xs-4">
+            <span class="col-xs-3">
             {% bootstrap_field observation_form.lng %}
             </span>
-            <span class="col-xs-4">
+            <span class="col-xs-3">
             {% bootstrap_field observation_form.lat %}
             </span>
             <span class="col-xs-12">

@@ -79,8 +79,8 @@ def post_observation(request, next=None):
     observation_form = ObservationForm(data, user=request.user)
 
     if not observation_form.is_valid():
-        messages.error(request, "Observation form invalid")
-        return next_redirect(request, fallback=next or observation_form.intsance.get_absolute_url())
+        messages.error(request, "Error with observation submission:" + str(observation_form.errors))
+        return redirect(target.get_absolute_url())
 
     observation_form.instance.user_profile = request.user.userprofile
 

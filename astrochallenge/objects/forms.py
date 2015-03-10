@@ -4,19 +4,28 @@ from django import forms
 from django.forms import HiddenInput, DateTimeField, ModelChoiceField
 from django.utils import timezone
 from django_markdown.widgets import MarkdownWidget
+from bootstrap3_datetime.widgets import DateTimePicker
 
 from models import Observation
 from astrochallenge.accounts.models import Equipment
 
 
 class ObservationForm(ModelForm):
-    date = DateTimeField(initial=timezone.now)
-    equipment = ModelChoiceField(queryset=Equipment.objects.none(), empty_label="None")
+    date = DateTimeField(initial=timezone.now, widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD HH:mm:ss"}
+        ))
+    equipment = ModelChoiceField(queryset=Equipment.objects.none(), empty_label="Not specified", required=False)
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super(ObservationForm, self).__init__(*args, **kwargs)
         self.fields['equipment'].queryset = Equipment.objects.filter(user_profile=user.userprofile)
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date > timezone.now():
+            raise forms.ValidationError("Unless you've learned to bend the laws of time and space, you can't observe in the future!")
+        return date
 
     class Meta:
         model = Observation
