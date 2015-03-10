@@ -68,7 +68,7 @@
                                 <a href="{% url 'delete-observation' observation.id %}">Delete</a>
                             {% endif %}
                             </span>
-                            <p>Points earned: {{ observation.points_earned }}</p>
+                            <p>Observed with: {{ observation.equipment }}</p>
                             <div class="markdown-text">
                                 {{ observation.description | markdown_safe }}
                             </div>
@@ -87,7 +87,7 @@
                             {% for eq in member.userprofile.equipment_set.all %}
                             <tr>
                                 <td>{{ eq.instrument }}</td>
-                                <td>0</td>
+                                <td>{{ eq.observation_count }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

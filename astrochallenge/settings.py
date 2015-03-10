@@ -164,6 +164,14 @@ SOLAR_SYSTEM_OBJECT_TYPES = (
     ('ST', 'star'),
 )
 
+QUALITATIVE_RATINGS = (
+    ('P', 'poor'),
+    ('BA', 'below average'),
+    ('A', 'average'),
+    ('AA', 'above average'),
+    ('E', 'excellent'),
+)
+
 try:
     from local_settings import *
 except ImportError:

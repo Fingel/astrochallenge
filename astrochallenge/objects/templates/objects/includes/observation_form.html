@@ -36,14 +36,24 @@ Observed: <span class="glyphicon glyphicon-remove red"></span>
             {% csrf_token %}
             {{observation_form.content_type}}
             {{observation_form.object_id}}
-            <span class="col-xs-12">
+            <span class="col-xs-4">
             {% bootstrap_field observation_form.date %}
             </span>
-            <span class="col-xs-6">
+            <span class="col-xs-4">
             {% bootstrap_field observation_form.lng %}
             </span>
-            <span class="col-xs-6">
+            <span class="col-xs-4">
             {% bootstrap_field observation_form.lat %}
+            </span>
+            <span class="col-xs-12">
+            {% bootstrap_field observation_form.equipment %}
+            <a href="{% url 'edit-profile' %}"><span class="pull-right">Add equipment</span></a>
+            </span>
+            <span class="col-xs-6">
+            {% bootstrap_field observation_form.seeing %}
+            </span>
+            <span class="col-xs-6">
+            {% bootstrap_field observation_form.light_pollution %}
             </span>
             <span class="col-xs-12">
             {% bootstrap_field observation_form.description %}

@@ -6,33 +6,38 @@
 <div class="row observation-detail">
     <div class="col-md-3">
         <div class="colwrap">
+            <div class="row">
+                <a href="{% url 'profile' observation.user_profile.user.username %}">
+                <center><h4>{{ observation.user_profile.user.username }}</h4></center>
+                <div class="col-xs-6">
+                    <img class="img-responsive" src="{% gravatar_url observation.user_profile.user.email 200 %}">
+                </div>
+                <div class="col-xs-6">
+                    <ul>
+                    <li>{{ observation.date|date:"SHORT_DATE_FORMAT" }}</li>
+                    <li>{{ observation.date|date:"P" }}</li>
+                    <li>{{ observation.points_earned }} points</li>
+                    <li><a href="https://www.openstreetmap.org/?mlat={{observation.lat}}&mlon={{observation.lng}}" target="_blank"><span class="glyphicon glyphicon-map-marker"></span> view</a></li>
+                    </ul>
+                </div>
+                </a>
+            </div>
             <div clas="row">
                 <a href="{{ target.get_absolute_url }}"><center><h4>{{ target }}</h4></center>
                 <img src="{{ target.image|thumbnail_url:'detail'}}" alt="{{ target.name }}" class="img-responsive" style="margin-bottom: 10px;">
                 </a>
-                <center><a href="{% url 'profile' observation.user_profile.user.username %}"><h4>{{ observation.user_profile.user.username }}</h4></a></center>
-            </div>
-            <div class="row">
-            <a href="{% url 'profile' observation.user_profile.user.username %}">
-            <div class="col-xs-6">
-                <img class="img-responsive" src="{% gravatar_url observation.user_profile.user.email 200 %}">
-            </div>
-            <div class="col-xs-6">
-
-                <ul>
-                <li>{{ observation.date|date:"SHORT_DATE_FORMAT" }}</li>
-                <li>{{ observation.date|date:"P" }}</li>
-                <li>{{ observation.points_earned }} points</li>
-                <li><a href="https://www.openstreetmap.org/?mlat={{observation.lat}}&mlon={{observation.lng}}" target="_blank"><span class="glyphicon glyphicon-map-marker"></span> view</a></li>
-
-                </ul>
-            </div>
-            </a>
             </div>
         </div>
     </div>
     <div class="col-md-9">
         <div class="colwrap">
+            <div>
+                <ul>
+                <li>Observed with: {{ observation.equipment }}</li>
+                <li>Seeing: {{ observation.get_seeing_display }}</li>
+                <li>Light pollution: {{ observation.get_light_pollution_display }}</li>
+                </ul>
+            </div>
             <div class="markdown-text">
             {{ observation.description|markdown_safe }}
             </div>

@@ -44,6 +44,11 @@ class Equipment(models.Model):
     user_profile = models.ForeignKey(UserProfile)
     instrument = models.CharField(max_length=200)
 
+    @property
+    def observation_count(self):
+        Observation = models.get_model('objects', 'Observation')
+        return Observation.objects.filter(equipment=self).count()
+
     def __unicode__(self):
         return self.instrument
 

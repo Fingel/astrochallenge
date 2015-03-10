@@ -8,7 +8,7 @@ from django.core import urlresolvers
 import ephem
 import pytz
 
-from astrochallenge.accounts.models import UserProfile
+from astrochallenge.accounts.models import UserProfile, Equipment
 
 
 class Observation(models.Model):
@@ -20,6 +20,9 @@ class Observation(models.Model):
     points_earned = models.PositiveIntegerField(default=0)
     lat = models.FloatField("latitude", default=0.0)
     lng = models.FloatField("longitude", default=0.0)
+    equipment = models.ForeignKey(Equipment, null=True, blank=True)
+    seeing = models.CharField(max_length=2, choices=settings.QUALITATIVE_RATINGS, default='A')
+    light_pollution = models.CharField(max_length=2, choices=settings.QUALITATIVE_RATINGS, default='A')
     description = models.TextField(blank=True, default="")
 
     class Meta:

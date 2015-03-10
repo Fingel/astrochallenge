@@ -76,7 +76,7 @@ def post_observation(request, next=None):
         return ValueError("Missing content type or object id")
     model = ContentType.objects.get(pk=content_type).model_class()
     target = model.objects.get(pk=object_id)
-    observation_form = ObservationForm(data)
+    observation_form = ObservationForm(data, user=request.user)
 
     if not observation_form.is_valid():
         messages.error(request, "Observation form invalid")
@@ -106,7 +106,7 @@ class SSODetailView(DetailView):
         })
         if self.request.user.is_authenticated():
             context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
-            context['observation_form'] = ObservationForm(initial={
+            context['observation_form'] = ObservationForm(user=self.request.user, initial={
                 'content_type': content_type,
                 'object_id': object_id,
                 'lat': self.request.user.userprofile.lat,
@@ -132,7 +132,7 @@ class DSODetailView(DetailView):
         })
         if self.request.user.is_authenticated():
             context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
-            context['observation_form'] = ObservationForm(initial={
+            context['observation_form'] = ObservationForm(user=self.request.user, initial={
                 'content_type': content_type,
                 'object_id': object_id,
                 'lat': self.request.user.userprofile.lat,

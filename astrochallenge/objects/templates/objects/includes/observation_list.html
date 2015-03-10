@@ -15,7 +15,7 @@
             <a href="{% url 'delete-observation' observation.id %}">Delete</a>
         {% endif %}
         </span>
-        <p>Points earned: {{ observation.points_earned }}</p>
+        <p>Observed with: {{ observation.equipment }}</p>
         <div class="markdown-text">
         {{ observation.description | markdown_safe }}</p>
         </div>
