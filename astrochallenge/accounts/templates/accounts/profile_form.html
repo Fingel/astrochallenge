@@ -19,7 +19,20 @@
         <p><a target="_blank" href="http://www.latlong.net/">Find your Latitude/Longitude</a></p>
         <p>Combined, this data determines which objects are visible to you
         in the night sky!</p>
-    </div>
+        <h3>Equipment</h3>
+        <ul>
+        {% for eq in user.userprofile.equipment_set.all %}
+        <li>{{ eq }} <span class="red"><a href="{% url 'delete-equipment' eq.pk %}">[delete]</a></span></li>
+        {% endfor %}
+        </ul>
+        <form method="post" action="{% url 'add-equipment' %}">
+        {% csrf_token %}
+        {% bootstrap_form equipment_form %}
+        {% buttons %}
+        <button type="submit" class="btn btn-primary">Add instrument</button>
+        {% endbuttons %}
+        </form>
+        </div>
     </div>
     <div class="col-md-6">
     <div class="colwrap">

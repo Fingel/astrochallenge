@@ -3,11 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.views.decorators.http import require_POST, require_GET
 
 from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation
+from astrochallenge.accounts.models import Equipment
 from astrochallenge.objects.utils import moon_phase
-from forms import UserForm, ProfileForm
+from forms import UserForm, ProfileForm, EquipmentForm
 
 
 def index(request):
@@ -32,13 +34,38 @@ def profile(request, username):
 
 
 @login_required
+@require_POST
+def add_equipment(request):
+    equipment_form = EquipmentForm(request.POST)
+    if equipment_form.is_valid():
+        equipment = equipment_form.save(commit=False)
+        equipment.user_profile = request.user.userprofile
+        equipment.save()
+        messages.success(request, "Equipment added")
+    else:
+        messages.error(request, "There was an error with your submission")
+    return redirect('edit-profile')
+
+
+@login_required
+@require_GET
+def delete_equipment(request, pk):
+    equipment = get_object_or_404(Equipment, pk=pk, user_profile=request.user.userprofile)
+    equipment.delete()
+    messages.success(request, "Equipment deleted.")
+    return redirect('edit-profile')
+
+
+@login_required
 def edit_profile(request):
     if request.method == 'GET':
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.userprofile)
+        equipment_form = EquipmentForm()
         context = {
             'user_form': user_form,
             'profile_form': profile_form,
+            'equipment_form': equipment_form,
         }
         return render(request, 'accounts/profile_form.html', context)
     if request.method == 'POST':

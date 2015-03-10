@@ -40,9 +40,20 @@ class UserProfile(models.Model):
         return timezone.make_aware(self.observer.next_setting(sun).datetime(), pytz.UTC)
 
 
+class Equipment(models.Model):
+    user_profile = models.ForeignKey(UserProfile)
+    instrument = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.instrument
+
+
+#  Initial account setup
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, **kwargs):
     try:
         instance.userprofile
     except:
-        UserProfile(user=instance).save()
+        up = UserProfile(user=instance)
+        up.save()
+        Equipment(instrument="Naked eye", user_profile=up).save()

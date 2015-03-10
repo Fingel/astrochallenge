@@ -27,6 +27,7 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Profile</a></li>
                 <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observation Log ({{ member.userprofile.observation_set.all | length }})</a></li>
+                <li role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" data-toggle="tab">Equipment</a></li>
             </ul>
             <div class="colwrap">
             <div class="tab-content">
@@ -63,7 +64,7 @@
                             </a>
                             <span class="pull-right">
                             <a href="{{ observation.get_absolute_url }}">{{ observation.date }}</a>
-                            {% if observation.user_profile == member.userprofile %}
+                            {% if observation.user_profile == user.userprofile %}
                                 <a href="{% url 'delete-observation' observation.id %}">Delete</a>
                             {% endif %}
                             </span>
@@ -78,6 +79,19 @@
                     {% get_pages %}
                     {% include 'includes/astropagination.html' with url_hash='#tab_observations' %}
                     {% endwith %}
+                </div>
+                <div role="tabpanel" class="tab-pane" id="equipment">
+                    <table class="table">
+                        <thead><tr><td>Instrument</td><td>Observations</td></tr></thead>
+                        <tbody>
+                            {% for eq in member.userprofile.equipment_set.all %}
+                            <tr>
+                                <td>{{ eq.instrument }}</td>
+                                <td>0</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
