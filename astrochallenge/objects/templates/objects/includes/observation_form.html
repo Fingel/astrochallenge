@@ -1,5 +1,12 @@
 {% load bootstrap3 objects_extras django_markdown %}
 {% block extra_javascript %}
+{% if error %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#observation-modal').modal({'show': true});
+});
+</script>
+{% endif %}
 {{ observation_form.media }}
 {% markdown_media %}
 {% endblock %}

@@ -13,6 +13,7 @@ from django_datatables_view.base_datatable_view import BaseDatatableView
 from django.db.models import Q
 from django.http import HttpResponse
 from django.core.servers.basehttp import FileWrapper
+from django.shortcuts import render
 import os
 import re
 
@@ -80,7 +81,10 @@ def post_observation(request, next=None):
 
     if not observation_form.is_valid():
         messages.error(request, "Error with observation submission:" + str(observation_form.errors))
-        return redirect(target.get_absolute_url())
+        context = get_object_context(request, target)
+        context['observation_form'] = observation_form
+        context["error"] = True
+        return render(request, 'objects/{0}_detail.html'.format(target.__class__.__name__.lower()), context)
 
     observation_form.instance.user_profile = request.user.userprofile
 
@@ -95,24 +99,29 @@ def post_observation(request, next=None):
     return next_redirect(request, fallback=next or observation_form.instance.get_absolute_url())
 
 
-class SSODetailView(DetailView):
-    def get_context_data(self, **kwargs):
-        context = super(SSODetailView, self).get_context_data(**kwargs)
-        content_type = ContentType.objects.get(model="solarsystemobject").id
-        object_id = self.get_object().pk
-        context['finder_chart_form'] = FinderChartForm(initial={
+def get_object_context(request, object):
+    context = {}
+    content_type = ContentType.objects.get_for_model(object).id
+    object_id = object.pk
+    context['object'] = object
+    context['finder_chart_form'] = FinderChartForm(initial={
+        'content_type': content_type,
+        'object_id': object_id,
+    })
+    if request.user.is_authenticated():
+        context['current_info'] = object.observation_info(request.user.userprofile.observer)
+        context['observation_form'] = ObservationForm(user=request.user, initial={
             'content_type': content_type,
             'object_id': object_id,
+            'lat': request.user.userprofile.lat,
+            'lng': request.user.userprofile.lng,
         })
-        if self.request.user.is_authenticated():
-            context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
-            context['observation_form'] = ObservationForm(user=self.request.user, initial={
-                'content_type': content_type,
-                'object_id': object_id,
-                'lat': self.request.user.userprofile.lat,
-                'lng': self.request.user.userprofile.lng,
-                })
-        return context
+    return context
+
+
+class SSODetailView(DetailView):
+    def get_context_data(self, **kwargs):
+        return get_object_context(self.request, self.get_object())
 
 
 class DSODetailView(DetailView):
@@ -123,22 +132,7 @@ class DSODetailView(DetailView):
         return catalog_object.astro_object
 
     def get_context_data(self, **kwargs):
-        context = super(DSODetailView, self).get_context_data(**kwargs)
-        content_type = ContentType.objects.get(model="astroobject").id
-        object_id = self.get_object().pk
-        context['finder_chart_form'] = FinderChartForm(initial={
-            'content_type': content_type,
-            'object_id': object_id,
-        })
-        if self.request.user.is_authenticated():
-            context['current_info'] = self.get_object().observation_info(self.request.user.userprofile.observer)
-            context['observation_form'] = ObservationForm(user=self.request.user, initial={
-                'content_type': content_type,
-                'object_id': object_id,
-                'lat': self.request.user.userprofile.lat,
-                'lng': self.request.user.userprofile.lng,
-            })
-        return context
+        return get_object_context(self.request, self.get_object())
 
 
 class DSOListView(TemplateView):
