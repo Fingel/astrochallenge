@@ -2,6 +2,7 @@ import fchart
 import os
 import string
 from django.conf import settings
+from django.utils import timezone
 from numpy import *
 from fchart.fonts import FontMetrics
 from fchart.astrocalc import *
@@ -11,6 +12,15 @@ from fchart.star_catalog import *
 from fchart.skymap_engine import *
 from fchart.pdf import *
 import ephem
+
+
+def calculate_points(object):
+    points = object.points
+    current_challenges = object.challenge_set.filter(start_time__lt=timezone.now(), end_time__gt=timezone.now())
+    for challenge in current_challenges:
+        points += (object.points * challenge.multiplier) - object.points
+        points += challenge.bonus
+    return points
 
 
 def moon_phase(when):

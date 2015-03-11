@@ -9,6 +9,7 @@ import ephem
 import pytz
 
 from astrochallenge.accounts.models import UserProfile, Equipment
+from astrochallenge.objects.utils import calculate_points
 
 
 class Observation(models.Model):
@@ -42,14 +43,10 @@ class Observation(models.Model):
 
     @property
     def name(self):
-        name = ""
-        if self.content_type.model_class() == AstroObject:
-            name = str(self.content_object)
-        elif self.content_type.model_class() == Constellation:
-            name = self.content_object.latin_name
-        elif self.content_type.model_class() == SolarSystemObject:
-            name = str(self.content_object)
-        return name
+        if self.content_type.model_class() == Constellation:
+            return self.content_object.latin_name
+        else:
+            return str(self.content_object)
 
     def get_absolute_url(self):
         return urlresolvers.reverse("observation-detail", args=(self.pk,))
@@ -82,6 +79,10 @@ class SolarSystemObject(models.Model):
 
     class Meta:
         ordering = ['index']
+
+    @property
+    def bonus_points(self):
+        return calculate_points(self) - self.points
 
     @property
     def ephem_object(self):
@@ -177,6 +178,10 @@ class AstroObject(models.Model):
 
     class Meta:
         ordering = ['index']
+
+    @property
+    def bonus_points(self):
+        return calculate_points(self) - self.points
 
     @property
     def ra(self):

@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'astrochallenge.accounts',
     'astrochallenge.objects',
+    'astrochallenge.challenges',
     'registration',
     'bootstrap3',
     'django_gravatar',

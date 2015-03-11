@@ -23,6 +23,15 @@ Observed: <span class="glyphicon glyphicon-ok green"></span>
 Observed: <span class="glyphicon glyphicon-remove red"></span>
 &nbsp;Points: {{ object.points }}
 </h4></p>
+{% if object.challenge_set %}
+<p>Bonus points: {{ object.bonus_points }}</p>
+<p>Current Challenges:</p>
+<ul>
+{% for challenge in object.challenge_set.all %}
+<li>{{ challenge }}</li>
+{% endfor %}
+</ul>
+{% endif %}
 {% endif %}
 {% if user.is_authenticated %}
 <button class="btn btn-success form-control" id="make-observation" data-toggle="modal" data-target="#observation-modal">Log Observation</button>

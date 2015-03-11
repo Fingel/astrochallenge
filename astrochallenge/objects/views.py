@@ -90,7 +90,7 @@ def post_observation(request, next=None):
 
     if not target.observations.filter(user_profile__user__username=request.user.username).exists():
         try:
-            observation_form.instance.points_earned = target.points
+            observation_form.instance.points_earned = target.points + target.bonus_points
         except:
             pass
 
