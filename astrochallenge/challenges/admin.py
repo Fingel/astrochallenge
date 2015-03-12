@@ -1,6 +1,5 @@
 from django.contrib import admin
-from models import Challenge, NumericalChallenge, CompletedChallenge
+from models import Challenge, CompletedChallenge
 
 admin.site.register(Challenge)
-admin.site.register(NumericalChallenge)
 admin.site.register(CompletedChallenge)

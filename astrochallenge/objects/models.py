@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -232,3 +234,32 @@ class CatalogObject(models.Model):
 
     def __unicode__(self):
         return "{0}{1}".format(self.catalog, self.designation)
+
+
+@receiver(post_save, sender=Observation)
+def process_challenges(sender, instance, **kwargs):
+    from astrochallenge.challenges.models import Challenge, CompletedChallenge
+    user_profile = instance.user_profile
+
+    challenges = Challenge.objects.filter(target__in=[instance.content_type.name, 'composite'], start_time__lt=timezone.now(), end_time__gt=timezone.now())
+    for challenge in challenges:
+        if not CompletedChallenge.objects.filter(user_profile=user_profile, challenge=challenge).exists():
+            challenge_met = False
+            if challenge.type == 'numeric':
+                if challenge.target == 'composite' and user_profile.observation_set.count() >= challenge.number:
+                    challenge_met = True
+                if challenge.target == instance.content_type.name and user_profile.observation_set.filter(content_type_id=instance.content_type_id).count() >= challenge.number:
+                    challenge_met = True
+            elif challenge.type == 'set':
+                objects = set([observation.content_object for observation in user_profile.observation_set.all()])
+                if challenge.target == 'composite':
+                    if objects.issuperset(set(challenge.solarsystemobjects.all()).union(set(challenge.astroobjects.all()))):
+                        challenge_met = True
+                elif challenge.target == 'astro object':
+                    if objects.issuperset(set(challenge.astroobjects.all())):
+                        challenge_met = True
+                elif challenge.target == 'solar system object':
+                    if objects.issuperset(set(challenge.solarsystemobjects.all())):
+                        challenge_met = True
+            if challenge_met:
+                CompletedChallenge(user_profile=user_profile, challenge=challenge).save()

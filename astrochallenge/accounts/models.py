@@ -25,6 +25,8 @@ class UserProfile(models.Model):
         points = 0
         for observation in self.observation_set.all():
             points += observation.points_earned
+        for completed_challenge in self.completedchallenge_set.all():
+            points += completed_challenge.challenge.complete_bonus
         return points
 
     @property

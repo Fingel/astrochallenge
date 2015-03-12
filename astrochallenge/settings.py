@@ -174,6 +174,12 @@ QUALITATIVE_RATINGS = (
     ('E', 'excellent'),
 )
 
+CHALLENGE_TYPES = (
+    ('astro object', 'astro object'),
+    ('solar ststem object', 'solar system object'),
+    ('composite', 'composite'),
+)
+
 try:
     from local_settings import *
 except ImportError:
