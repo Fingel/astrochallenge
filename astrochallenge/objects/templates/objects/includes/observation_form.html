@@ -27,7 +27,7 @@ $(document).ready(function(){
         {% if object.bonus_points %}
             <p>Bonus points: {{ object.bonus_points }}</p>
         {% endif %}
-        <p>Current Challenges:</p>
+        <p>Available Challenges:</p>
         <ul>
         {% for challenge in object.challenge_set.all %}
             <li>{{ challenge }}</li>

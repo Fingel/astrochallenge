@@ -139,6 +139,7 @@ BOOTSTRAP3 = {
 
 THUMBNAIL_ALIASES = {
     '': {
+        'tiny': {'size': (100, 100), 'crop': False},
         'detail': {'size': (500, 500), 'crop': False},
         'satellite': {'size': (175, 175), 'crop': False},
         'log': {'size': (200, 200), 'crop': False},
@@ -178,7 +179,7 @@ QUALITATIVE_RATINGS = (
 CHALLENGE_TYPES = (
     ('astro object', 'astro object'),
     ('solar ststem object', 'solar system object'),
-    ('composite', 'composite'),
+    ('composite', 'solar system or deep space object'),
 )
 
 try:

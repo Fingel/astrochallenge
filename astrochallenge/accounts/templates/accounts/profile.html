@@ -26,8 +26,8 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Profile</a></li>
-                <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observation Log ({{ member.userprofile.observation_set.all | length }})</a></li>
-                <li role="presentation"><a href="#challenges" aria-controls="challenges" role="tab" data-toggle="tab">Trophy Case</a></li>
+                <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observation Log ({{ member.userprofile.observation_set.count }})</a></li>
+                <li role="presentation"><a href="#challenges" aria-controls="challenges" role="tab" data-toggle="tab">Trophy Case ({{ member.userprofile.completedchallenge_set.count }})</a></li>
                 <li role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" data-toggle="tab">Equipment</a></li>
             </ul>
             <div class="colwrap">

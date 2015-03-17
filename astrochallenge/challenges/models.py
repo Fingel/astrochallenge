@@ -36,6 +36,10 @@ class Challenge(models.Model):
     def get_absolute_url(self):
         return urlresolvers.reverse("challenge-detail", args=(self.pk,))
 
+    @property
+    def all_objects(self):
+        return set(self.solarsystemobjects.all()).union(set(self.astroobjects.all()))
+
     def __unicode__(self):
         return self.name
 

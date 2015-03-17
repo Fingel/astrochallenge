@@ -1,5 +1,76 @@
 {% extends 'base.html' %}
+{% load thumbnail objects_extras gravatar endless %}
+{% with object as challenge %}
 {% block title %}{{ object.name }}{% endblock %}
 {% block content %}
-{{challenge}}
+<div class="row">
+    <div class="col-md-12">
+        <div class="colwrap">
+            <center>
+                <h1>{{ challenge.name }}</h1>
+                <h3>Difficulty: {{ challenge.get_rating_display }}</h3>
+            </center>
+
+            <p>{{ challenge.description }}</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="colwrap">
+            <img class="img-responsive" src="{{ challenge.image|thumbnail_url:'challenge' }}"/>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="colwrap">
+            <h3>Targets</h3>
+            <hr/>
+            {% if challenge.type == 'numeric' %}
+                Observe
+                {{ challenge.number }} {{ challenge.get_target_display }} {{ challenge.numer|pluralize }}
+            {% else %}
+                <table class="table table-striped">
+                {% for object in challenge.all_objects %}
+                    <tr>
+                    <td>
+                    <img class="img-responsive" src="{{ object.image|thumbnail_url:'tiny' }}">
+                    </td>
+
+                    <td><a href="{{ object.get_absolute_url }}"><h3>{{ object }}
+                    {% if user|has_observed:object %}
+                    <span class="glyphicon glyphicon-ok green"></span>
+                    {% endif %}
+                    </h3>
+                    {{object.points|add:object.bonus_points}} points </a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="colwrap">
+            <h3>Users Completed</h3>
+            <hr/>
+            <table class="table table-striped">
+            {% paginate 20 challenge.completedchallenge_set.all as completed_challenges %}
+            {% for completed_challenge in completed_challenges %}
+            <tr><td><img class="profile-image" src="{% gravatar_url completed_challenge.user_profile.user.email 100 %}"></td>
+            <td>
+            {% with completed_challenge.user_profile as user_profile %}
+            <a href="{% url 'profile' user_profile.user.username %}">
+            <h3>{{ user_profile.user.username }}</h3>
+            <span class="glyphicon glyphicon-star"></span>{{ user_profile.points }}<br/>
+            <span class="glyphicon glyphicon-eye-open"></span> {{ user_profile.observation_set.count }}
+            </a>
+            {% endwith %}
+            </td></tr>
+            {% endfor %}
+            </table>
+            {% get_pages %}
+            {% include 'includes/astropagination.html' %}
+        </div>
+    </div>
+</div>
 {% endblock %}
+{% endwith %}
