@@ -43,6 +43,7 @@ urlpatterns = patterns('',
     url('^markdown/', include('django_markdown.urls')),
     url(r'^', include('astrochallenge.accounts.urls')),
     url(r'^', include('astrochallenge.objects.urls')),
+    url(r'^', include('astrochallenge.challenges.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
 

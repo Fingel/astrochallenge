@@ -232,24 +232,28 @@ div.satellite-text {
 
 }
 
+.challenge {
+    padding: 10px;
+}
 .challenge img {
     position: relative;
+    width: 100%;
+    max-height: 350px;
 
 }
 
 .challenge h2 {
     position: absolute;
     top: 0px;
-    left: 15px;
     text-align: center;
-    width: 256px;
+    width: 95%;
 }
 
 .challenge h3 {
     position: absolute;
     bottom: 10px;
-    left: 100px;
-    width: 256px;
+    width: 95%;
     font-size: 75px;
+    text-align: center;
     text-shadow: 2px 1px 4px #181818;
 }

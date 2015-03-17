@@ -142,7 +142,7 @@ THUMBNAIL_ALIASES = {
         'detail': {'size': (500, 500), 'crop': False},
         'satellite': {'size': (175, 175), 'crop': False},
         'log': {'size': (200, 200), 'crop': False},
-        'challenge': {'size': (256, 256), 'crop': 'smart'},
+        'challenge': {'size': (350, 350), 'crop': 'smart'},
     }
 }
 

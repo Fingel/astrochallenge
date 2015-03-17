@@ -1,5 +1,7 @@
 from django.db import models
 from django.conf import settings
+from django.core import urlresolvers
+
 from astrochallenge.objects.models import AstroObject, SolarSystemObject
 from astrochallenge.accounts.models import UserProfile
 
@@ -27,6 +29,12 @@ class Challenge(models.Model):
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     image = models.ImageField(upload_to="challenges", blank=True, null=True)
+
+    class Meta:
+        ordering = ['rating']
+
+    def get_absolute_url(self):
+        return urlresolvers.reverse("challenge-detail", args=(self.pk,))
 
     def __unicode__(self):
         return self.name

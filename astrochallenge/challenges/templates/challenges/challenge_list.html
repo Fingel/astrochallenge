@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load endless %}
+{% block title %} Challenges {% endblock %}
+{% block content %}
+<div class="row">
+<div class="colwrap">
+{% with object_list as challenges %}
+{% paginate 12 challenges %}
+{% include "challenges/includes/challenge_list.html" %}
+{% get_pages %}
+{% include 'includes/astropagination.html' %}
+{% endwith %}
+</div>
+</div>
+{% endblock %}
