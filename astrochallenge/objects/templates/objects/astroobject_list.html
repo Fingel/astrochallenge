@@ -91,10 +91,10 @@
         table.search($(this).val()).draw();
     })
     $('#type-search').change(function(){
-        table.columns([3]).search($(this).find(':selected').val()).draw();
+        table.columns([5]).search($(this).find(':selected').val()).draw();
     })
     $('#const-search').change(function(){
-        table.columns([2]).search($(this).find(':selected').val()).draw();
+        table.columns([4]).search($(this).find(':selected').val()).draw();
     })
 </script>
 {% endblock %}
