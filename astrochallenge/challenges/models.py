@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.core import urlresolvers
+from operator import attrgetter
 
 from astrochallenge.objects.models import AstroObject, SolarSystemObject
 from astrochallenge.accounts.models import UserProfile
@@ -38,7 +39,9 @@ class Challenge(models.Model):
 
     @property
     def all_objects(self):
-        return set(self.solarsystemobjects.all()).union(set(self.astroobjects.all()))
+        all_objects = list(self.solarsystemobjects.all())
+        all_objects += list(self.astroobjects.all())
+        return sorted(all_objects, key=attrgetter('pk'))
 
     def __unicode__(self):
         return self.name

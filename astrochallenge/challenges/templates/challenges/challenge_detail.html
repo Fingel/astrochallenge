@@ -29,8 +29,9 @@
                 Observe
                 {{ challenge.number }} {{ challenge.get_target_display }} {{ challenge.numer|pluralize }}
             {% else %}
+                {% paginate 20 challenge.all_objects as objects %}
                 <table class="table table-striped">
-                {% for object in challenge.all_objects %}
+                {% for object in objects %}
                     <tr>
                     <td>
                     <img class="img-responsive" src="{{ object.image|thumbnail_url:'tiny' }}">
@@ -45,6 +46,8 @@
                     </tr>
                 {% endfor %}
                 </table>
+                {% get_pages %}
+                {% include 'includes/astropagination.html' %}
             {% endif %}
         </div>
     </div>
