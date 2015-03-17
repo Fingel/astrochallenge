@@ -27,74 +27,82 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Profile</a></li>
                 <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observation Log ({{ member.userprofile.observation_set.all | length }})</a></li>
+                <li role="presentation"><a href="#challenges" aria-controls="challenges" role="tab" data-toggle="tab">Trophy Case</a></li>
                 <li role="presentation"><a href="#equipment" aria-controls="equipment" role="tab" data-toggle="tab">Equipment</a></li>
             </ul>
             <div class="colwrap">
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="info">
-                    <table class="table">
-                        <tr><td>Name</td><td>{{member.first_name}} {{member.last_name}}</td></tr>
-                        <tr><td>Location</td><td>{{member.userprofile.location}}</td></tr>
-                        <tr><td>Timezone</td><td>{{member.userprofile.timezone}}</td></tr>
-                        <tr><td>Latitude</td><td>{{member.userprofile.lat}}</td></tr>
-                        <tr><td>Longitude</td><td>{{member.userprofile.lng}}</td></tr>
-                        <tr><td>Altitude</td><td>{{member.userprofile.elevation}}m</td></tr>
-                        <tr><td colspan="2">{{member.userprofile.profile_text | linebreaks }}</td></tr>
-                    </table>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="observations">
-                    {% with observations=member.userprofile.observation_set.all %}
-                    {% paginate 5 observations using "ob_page" %}
-                    {% for observation in observations %}
-                    <div class="row observation-row">
-                        <div class="col-xs-2">
-                            <a href="{{observation.content_object.get_absolute_url}}">
-                            <div class="col-xs-12">
-                                {% if observation.content_object.image %}
-                                <img class="img-responsive" src="{{observation.content_object.image|thumbnail_url:'log'}}"/>
-                                {% else %}
-                                <img class="img-responsive" src="{{STATIC_URL}}images/default.png">
-                                {% endif %}
-                            </div>
-                            </a>
-                        </div>
-                        <div class="col-xs-10">
-                            <a href="{{observation.content_object.get_absolute_url}}">
-                                <span class="emphasize">{{ observation.content_object }}</span>
-                            </a>
-                            <span class="pull-right">
-                            <a href="{{ observation.get_absolute_url }}">{{ observation.date }}</a>
-                            {% if observation.user_profile == user.userprofile %}
-                                <a href="{% url 'delete-observation' observation.id %}">Delete</a>
-                            {% endif %}
-                            </span>
-                            <p>Observed with: {{ observation.equipment }}</p>
-                            <div class="markdown-text">
-                                {{ observation.description | markdown_safe }}
-                            </div>
-                            <!-- </blockquote> -->
-                        </div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="info">
+                        <table class="table">
+                            <tr><td>Name</td><td>{{member.first_name}} {{member.last_name}}</td></tr>
+                            <tr><td>Location</td><td>{{member.userprofile.location}}</td></tr>
+                            <tr><td>Timezone</td><td>{{member.userprofile.timezone}}</td></tr>
+                            <tr><td>Latitude</td><td>{{member.userprofile.lat}}</td></tr>
+                            <tr><td>Longitude</td><td>{{member.userprofile.lng}}</td></tr>
+                            <tr><td>Altitude</td><td>{{member.userprofile.elevation}}m</td></tr>
+                            <tr><td colspan="2">{{member.userprofile.profile_text | linebreaks }}</td></tr>
+                        </table>
                     </div>
-                    {% endfor %}
-                    {% get_pages %}
-                    {% include 'includes/astropagination.html' with url_hash='#tab_observations' %}
-                    {% endwith %}
-                </div>
-                <div role="tabpanel" class="tab-pane" id="equipment">
-                    <table class="table">
-                        <thead><tr><td>Instrument</td><td>Observations</td></tr></thead>
-                        <tbody>
-                            {% for eq in member.userprofile.equipment_set.all %}
-                            <tr>
-                                <td>{{ eq.instrument }}</td>
-                                <td>{{ eq.observation_count }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    <div role="tabpanel" class="tab-pane" id="observations">
+                        {% with observations=member.userprofile.observation_set.all %}
+                        {% paginate 5 observations using "ob_page" %}
+                        {% for observation in observations %}
+                        <div class="row observation-row">
+                            <div class="col-xs-2">
+                                <a href="{{observation.content_object.get_absolute_url}}">
+                                <div class="col-xs-12">
+                                    {% if observation.content_object.image %}
+                                    <img class="img-responsive" src="{{observation.content_object.image|thumbnail_url:'log'}}"/>
+                                    {% else %}
+                                    <img class="img-responsive" src="{{STATIC_URL}}images/default.png">
+                                    {% endif %}
+                                </div>
+                                </a>
+                            </div>
+                            <div class="col-xs-10">
+                                <a href="{{observation.content_object.get_absolute_url}}">
+                                    <span class="emphasize">{{ observation.content_object }}</span>
+                                </a>
+                                <span class="pull-right">
+                                <a href="{{ observation.get_absolute_url }}">{{ observation.date }}</a>
+                                {% if observation.user_profile == user.userprofile %}
+                                    <a href="{% url 'delete-observation' observation.id %}">Delete</a>
+                                {% endif %}
+                                </span>
+                                <p>Observed with: {{ observation.equipment }}</p>
+                                <div class="markdown-text">
+                                    {{ observation.description | markdown_safe }}
+                                </div>
+                                <!-- </blockquote> -->
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% get_pages %}
+                        {% include 'includes/astropagination.html' with url_hash='#tab_observations' %}
+                        {% endwith %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="challenges">
+
+                        {% paginate 9 challenges using "ch_page" %}
+                        {% include "challenges/includes/challenge_list.html" with challenges=challenges %}
+                        {% get_pages %}
+                        {% include 'includes/astropagination.html' with url_hash='#tab_challenges' %}
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="equipment">
+                        <table class="table">
+                            <thead><tr><td>Instrument</td><td>Observations</td></tr></thead>
+                            <tbody>
+                                {% for eq in member.userprofile.equipment_set.all %}
+                                <tr>
+                                    <td>{{ eq.instrument }}</td>
+                                    <td>{{ eq.observation_count }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 

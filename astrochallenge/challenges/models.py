@@ -3,6 +3,14 @@ from django.conf import settings
 from astrochallenge.objects.models import AstroObject, SolarSystemObject
 from astrochallenge.accounts.models import UserProfile
 
+difficulty_levels = (
+    (1, 'trivial'),
+    (2, 'easy'),
+    (3, 'moderate'),
+    (4, 'difficult'),
+    (5, 'extremely difficult')
+)
+
 
 class Challenge(models.Model):
     target = models.CharField(max_length=200, choices=settings.CHALLENGE_TYPES)
@@ -10,6 +18,8 @@ class Challenge(models.Model):
     solarsystemobjects = models.ManyToManyField(SolarSystemObject, null=True, blank=True)
     astroobjects = models.ManyToManyField(AstroObject, null=True, blank=True)
     name = models.CharField(max_length=200)
+    description = models.TextField(blank=True, default="")
+    rating = models.PositiveIntegerField(default=3, choices=difficulty_levels)
     number = models.PositiveIntegerField(default=1)
     multiplier = models.IntegerField(default=1)
     bonus = models.IntegerField(default=0)
@@ -29,6 +39,7 @@ class CompletedChallenge(models.Model):
 
     class Meta:
         unique_together = ('user_profile', 'challenge')
+        ordering = ['-date']
 
     def __unicode__(self):
         return "{0}-{1}-{2}".format(str(self.user_profile), str(self.challenge), str(self.date))

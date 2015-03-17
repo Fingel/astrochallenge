@@ -118,6 +118,10 @@ label[for=id_comment] {
     display: inline-block;
     width: 80px;
 }
+
+.user-deets img {
+    max-height: 80px;
+}
 .observation-row:nth-child(2n+1){
     background-color: #353A41;
 }
@@ -226,4 +230,26 @@ div.satellite-text {
 .markItUpEditor {
     max-width: 100%;
 
+}
+
+.challenge img {
+    position: relative;
+
+}
+
+.challenge h2 {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    text-align: center;
+    width: 256px;
+}
+
+.challenge h3 {
+    position: absolute;
+    bottom: 10px;
+    left: 100px;
+    width: 256px;
+    font-size: 75px;
+    text-shadow: 2px 1px 4px #181818;
 }

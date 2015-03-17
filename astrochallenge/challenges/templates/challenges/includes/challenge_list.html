@@ -1,0 +1,14 @@
+{% load thumbnail challenges_extras %}
+<div class="row">
+    {% for challenge in challenges %}
+    <div class="col-md-4 challenge">
+        <img class="img-responsive" src="{{challenge.image|thumbnail_url:'challenge'}}">
+        <h2>{{ challenge.name }}</h2>
+        {% if user|has_completed_challenge:challenge %}
+        <h3>
+        <span class="glyphicon glyphicon-ok green"></span>
+        </h3>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>

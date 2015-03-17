@@ -30,7 +30,8 @@ def index(request):
 
 def profile(request, username):
     member = get_object_or_404(User, username=username)
-    return render(request, 'accounts/profile.html', {'member': member})
+    challenges = [completed_challenge.challenge for completed_challenge in member.userprofile.completedchallenge_set.all()]
+    return render(request, 'accounts/profile.html', {'member': member, 'challenges': challenges})
 
 
 @login_required
