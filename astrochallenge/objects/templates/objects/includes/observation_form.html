@@ -16,7 +16,7 @@ $(document).ready(function(){
     Observed: <span class="glyphicon glyphicon-ok green"></span>
     &nbsp;Points Earned: {{ first_observation.points_earned }}
     </h4>
-    <p>You first observed this object on {{ first_observation.date }}</p>
+    <p>You first observed this object on <a href="{{ first_observation.get_absolute_url }}">{{ first_observation.date }}</a></p>
     {% endwith %}
 {% else %}
     <p><h4>
@@ -30,7 +30,7 @@ $(document).ready(function(){
         <p>Available Challenges:</p>
         <ul>
         {% for challenge in object.challenge_set.all %}
-            <li>{{ challenge }}</li>
+            <li><a href="{{ challenge.get_absolute_url }}">{{ challenge }}</a></li>
         {% endfor %}
         </ul>
     {% endif %}

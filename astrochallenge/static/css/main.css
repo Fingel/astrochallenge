@@ -23,10 +23,10 @@ body {
     color: #E1E1E1;
 }
 
-/*a {
-    text-decoration: underline;
+a {
+    font-weight: 600;
 }
-*/
+
 .colwrap {
     border-radius: 5px;
     background-color: #272B30;
@@ -111,7 +111,7 @@ label[for=id_comment] {
     margin: 5px;
     border: 1px solid #000;
     padding: 5px;
-    min-height: 220px;
+    min-height: 230px;
 }
 
 .user-deets {
@@ -232,28 +232,31 @@ div.satellite-text {
 
 }
 
-.challenge {
+.challenge-list {
     padding: 10px;
 }
-.challenge img {
+.challenge-list > img {
     position: relative;
     width: 100%;
     max-height: 350px;
 
 }
-
-.challenge h2 {
+.challenge-list > h2, .challenge-list > h3, .challenge-list > h4 {
     position: absolute;
-    top: 0px;
     text-align: center;
     width: 95%;
 }
+.challenge-list > h2 {
+    top: 0px;
+}
 
-.challenge h3 {
-    position: absolute;
+.challenge-list > h3 {
     bottom: 10px;
-    width: 95%;
     font-size: 75px;
-    text-align: center;
     text-shadow: 2px 1px 4px #181818;
+}
+
+.challenge-list > .difficulty {
+    top: 20px;
+    font-size: 24px;
 }

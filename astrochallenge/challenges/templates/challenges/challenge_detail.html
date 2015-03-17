@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load thumbnail objects_extras gravatar endless %}
+{% load thumbnail objects_extras gravatar endless django_markdown %}
 {% with object as challenge %}
 {% block title %}{{ object.name }}{% endblock %}
 {% block content %}
@@ -9,9 +9,20 @@
             <center>
                 <h1>{{ challenge.name }}</h1>
                 <h3>Difficulty: {{ challenge.get_rating_display }}</h3>
+                <h4>
+                    {% if challenge.complete_bonus %}
+                    Points: {{ challenge.complete_bonus }}
+                    {% endif %}
+                    {% if challenge.bonus %}
+                    Object Bonus: {{ challenge.bonus }}
+                    {% endif %}
+                    {% if challenge.multiplier > 1 %}
+                    Observation Multiplier: x{{ challenge.multiplier }}
+                    {% endif %}
+                </h4>
             </center>
 
-            <p>{{ challenge.description }}</p>
+            <p>{{ challenge.description|markdown_safe }}</p>
         </div>
     </div>
 </div>
@@ -55,6 +66,7 @@
         <div class="colwrap">
             <h3>Users Completed</h3>
             <hr/>
+            {% if challenge.completedchallenge_set.all %}
             <table class="table table-striped">
             {% paginate 20 challenge.completedchallenge_set.all as completed_challenges %}
             {% for completed_challenge in completed_challenges %}
@@ -72,6 +84,9 @@
             </table>
             {% get_pages %}
             {% include 'includes/astropagination.html' %}
+            {% else %}
+            <p>Nobody has completed this challenge! Will you be the first?</p>
+            {% endif %}
         </div>
     </div>
 </div>

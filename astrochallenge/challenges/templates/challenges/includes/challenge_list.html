@@ -2,10 +2,11 @@
 <div class="row">
     {% for challenge in challenges %}
     <a href="{{ challenge.get_absolute_url }}">
-    <div class="col-md-4 col-sm-6 challenge">
+    <div class="col-md-4 col-sm-6 challenge-list">
         <img class="img-responsive" src="{{challenge.image|thumbnail_url:'challenge'}}">
-        <h2>{{ challenge.name }}</h2>
-        {% if user|has_completed_challenge:challenge %}
+        <h2>{{ challenge.name }}<br/>
+        <span class="difficulty">{{challenge.rating|rating_stars|safe }}</span></h2>
+        {% if user.is_authenticated and user|has_completed_challenge:challenge %}
         <h3>
         <span class="glyphicon glyphicon-ok green"></span>
         </h3>
