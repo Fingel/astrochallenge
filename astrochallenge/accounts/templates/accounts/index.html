@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load tz bootstrap3 endless gravatar thumbnail django_markdown %}
+{% load tz bootstrap3 endless gravatar thumbnail django_markdown challenges_extras %}
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
@@ -29,6 +29,14 @@
         {% endif %}
         <div id="moon-info">
             <center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
+        </div>
+        <div id="next-challenge">
+            <center><h3>Try This</h3></center>
+            <a href="{{ next_challenge.get_absolute_url }}">
+            <h4>{{ next_challenge.name }}</h4>
+            <p>{{ next_challenge.rating|rating_stars|safe }}</p>
+            <img class="img-responsive" src="{{ next_challenge.image|thumbnail_url:'log' }}" alt="challenge">
+            </a>
         </div>
         </div>
     </div>

@@ -9,6 +9,7 @@ from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation
 from astrochallenge.accounts.models import Equipment
 from astrochallenge.objects.utils import moon_phase
+from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from forms import UserForm, ProfileForm, EquipmentForm
 
 
@@ -16,6 +17,14 @@ def index(request):
     observations = Observation.objects.all()
     comments = CustomComment.objects.all()[:5]
     percentage, name, letter = moon_phase(timezone.now())
+    next_challenge = None
+    if request.user.is_authenticated():
+        for challenge in Challenge.current_challenges():
+            if not CompletedChallenge.objects.filter(user_profile=request.user.userprofile, challenge=challenge).exists():
+                next_challenge = challenge
+                break
+    else:
+        next_challenge = Challenge.current_challenges().first()
 
     context = {
         "comments": comments,
@@ -24,6 +33,7 @@ def index(request):
         "moon_name": name,
         "moon_letter": letter,
         "time": timezone.now(),
+        "next_challenge": next_challenge,
     }
     return render(request, 'accounts/index.html', context)
 

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.core import urlresolvers
+from django.utils import timezone
 from operator import attrgetter
 
 from astrochallenge.objects.models import AstroObject, SolarSystemObject
@@ -36,6 +37,10 @@ class Challenge(models.Model):
 
     def get_absolute_url(self):
         return urlresolvers.reverse("challenge-detail", args=(self.pk,))
+
+    @staticmethod
+    def current_challenges():
+        return Challenge.objects.filter(start_time__lt=timezone.now(), end_time__gt=timezone.now())
 
     @property
     def all_objects(self):
