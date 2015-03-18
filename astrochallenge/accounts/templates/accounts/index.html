@@ -60,7 +60,7 @@
                 </div>
                 <div class="user-deets" style="position: absolute;">
                 <a href="{% url 'profile' observation.user_profile.user.username %}">
-                <img class="profile-image" src="{% gravatar_url observation.user_profile.user.email 80 %}"><br/>
+                <img class="profile-image" src="{% gravatar_url observation.user_profile.user.email 80 %}">
                 {{ observation.user_profile.user.username }} ({{ observation.user_profile.points }})
                 </a>
                 </div>

@@ -116,11 +116,12 @@ label[for=id_comment] {
 
 .user-deets {
     display: inline-block;
-    width: 80px;
 }
 
 .user-deets img {
-    max-height: 80px;
+    width: 80px;
+    height: 80px;
+    margin-right: 5px;
 }
 .observation-row:nth-child(2n+1){
     background-color: #353A41;
