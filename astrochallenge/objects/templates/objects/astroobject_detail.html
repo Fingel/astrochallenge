@@ -117,7 +117,7 @@ if (hash) {
 }
 
 // Change hash for page-reload
-$('.nav-tabs a').on('shown', function (e) {
+$('.nav-tabs a').on('click', function (e) {
     window.location.hash = e.target.hash.replace("#", "#" + prefix);
 });
 </script>

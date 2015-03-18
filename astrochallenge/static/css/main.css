@@ -261,3 +261,7 @@ div.satellite-text {
     top: 20px;
     font-size: 24px;
 }
+
+.table-fixed {
+    table-layout: fixed;
+}

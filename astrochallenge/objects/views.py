@@ -14,11 +14,13 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.core.servers.basehttp import FileWrapper
 from django.shortcuts import render
+from django.utils import timezone
 import os
 import re
 
 from models import Constellation, CatalogObject, AstroObject, Observation
 from astrochallenge.objects.forms import ObservationForm, FinderChartForm
+from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from utils import FchartSettings, generate_fchart
 
 
@@ -96,6 +98,32 @@ def post_observation(request, next=None):
 
     observation_form.save()
     messages.success(request, "Observation recorded sucessfully.")
+
+    #  Process challenges
+    challenges = Challenge.objects.filter(target__in=[observation_form.instance.content_type.name, 'composite'], start_time__lt=timezone.now(), end_time__gt=timezone.now())
+    for challenge in challenges:
+        if not CompletedChallenge.objects.filter(user_profile=request.user.userprofile, challenge=challenge).exists():
+            challenge_met = False
+            if challenge.type == 'numeric':
+                if challenge.target == 'composite' and request.user.userprofile.observation_set.count() >= challenge.number:
+                    challenge_met = True
+                if challenge.target == observation_form.instance.content_type.name and request.user.userprofile.observation_set.filter(content_type_id=observation_form.instance.content_type_id).count() >= challenge.number:
+                    challenge_met = True
+            elif challenge.type == 'set':
+                objects = set([observation.content_object for observation in request.user.userprofile.observation_set.all()])
+                if challenge.target == 'composite':
+                    if objects.issuperset(set(challenge.solarsystemobjects.all()).union(set(challenge.astroobjects.all()))):
+                        challenge_met = True
+                elif challenge.target == 'astro object':
+                    if objects.issuperset(set(challenge.astroobjects.all())):
+                        challenge_met = True
+                elif challenge.target == 'solar system object':
+                    if objects.issuperset(set(challenge.solarsystemobjects.all())):
+                        challenge_met = True
+            if challenge_met:
+                CompletedChallenge(user_profile=request.user.userprofile, challenge=challenge).save()
+                messages.success(request, "Congratulations! You completed the challenge: {0} and earned {1} points!".format(str(challenge), challenge.complete_bonus))
+
     return next_redirect(request, fallback=next or observation_form.instance.get_absolute_url())
 
 
