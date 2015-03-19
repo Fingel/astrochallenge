@@ -72,7 +72,7 @@
                 </span>
                 <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}">{{ observation.name }}</a></span>
                 </p>
-                <p>Observed with: {{ observation.equipment }}</p>
+                <p>Observed with: {{ observation.equipment|default:'Not Specified' }}</p>
                 <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
                 {% if observation.description|length > 500 %}
                 <a href="{{ observation.get_absolute_url }}">
