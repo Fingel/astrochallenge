@@ -37,9 +37,12 @@ class UserProfile(models.Model):
 
     @property
     def sunset(self):
-        sun = ephem.Sun()
-        sun.compute(self.observer)
-        return timezone.make_aware(self.observer.next_setting(sun).datetime(), pytz.UTC)
+        try:
+            sun = ephem.Sun()
+            sun.compute(self.observer)
+            return timezone.make_aware(self.observer.next_setting(sun).datetime(), pytz.UTC)
+        except:
+            return "No Set/No Rise!"
 
 
 class Equipment(models.Model):

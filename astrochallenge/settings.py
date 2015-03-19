@@ -89,7 +89,7 @@ MAILGUN_SERVER_NAME = 'astrochallenge.com'
 DEFAULT_FROM_EMAIL = 'noreply@astrochallenge.com'
 
 ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_AUTO_LOGIN = False
+REGISTRATION_AUTO_LOGIN = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

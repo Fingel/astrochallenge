@@ -141,9 +141,14 @@ class SolarSystemObject(models.Model):
                 'up': up,
             }
             if self.type == 'P' or self.name == 'Moon':
+                try:
+                    next_rising = observer.next_rising(p_object)
+                    next_setting = observer.next_setting(p_object)
+                except:
+                    next_rising, next_setting = None, None
                 info.update({
-                    'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if observer.next_rising(p_object) else None,
-                    'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if observer.next_setting(p_object) else None,
+                    'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
+                    'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None,
                 })
 
             return info
@@ -202,13 +207,18 @@ class AstroObject(models.Model):
         p_object = self.fixed_body
         p_object.compute(observer)
         up = True if ephem.degrees(p_object.alt) > 0 else False
+        try:
+            next_rising = observer.next_rising(p_object)
+            next_setting = observer.next_setting(p_object)
+        except:
+            next_rising, next_setting = None, None
         return {
             'alt': str(p_object.alt),
             'az': str(p_object.az),
             'up': up,
             'neverup': p_object.neverup,
-            'rise': timezone.make_aware(observer.next_rising(p_object).datetime(), pytz.UTC) if observer.next_rising(p_object) else None,
-            'set': timezone.make_aware(observer.next_setting(p_object).datetime(), pytz.UTC) if observer.next_setting(p_object) else None
+            'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
+            'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None
         }
 
     def __unicode__(self):

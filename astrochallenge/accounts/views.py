@@ -82,6 +82,7 @@ def edit_profile(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.userprofile)
+        equipment_form = EquipmentForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -90,4 +91,4 @@ def edit_profile(request):
             return redirect('profile', username=request.user.username)
         else:
             messages.error(request, 'There was an error with the form')
-            return render(request, 'accounts/profile_form.html', {'user_form': user_form, 'profile_form': profile_form})
+            return render(request, 'accounts/profile_form.html', {'user_form': user_form, 'profile_form': profile_form, 'equipment_form': equipment_form})
