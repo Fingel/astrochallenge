@@ -90,12 +90,13 @@ class FchartSettings:
 
 
 def generate_fchart(settings):
-    filename = settings.output_dir + "{0}-{1}-{2}-{3}-{4}.pdf".format(
+    filename = settings.output_dir + "{0}-{1}-{2}-{3}-{4}-{5}.pdf".format(
         settings.content_type,
         settings.object_id,
         str(settings.fieldsize).replace(".", "_"),
         str(settings.limiting_magnitude_stars).replace(".", "_"),
-        str(settings.limiting_magnitude_deepsky).replace(".", "_")
+        str(settings.limiting_magnitude_deepsky).replace(".", "_"),
+        str(timezone.now()),
     )
     if os.path.isfile(filename):
         return open(filename)

@@ -26,18 +26,18 @@
                 <a href="{{ target.get_absolute_url }}"><center><h4>{{ target }}</h4></center>
                 <img src="{{ target.image|thumbnail_url:'detail'}}" alt="{{ target.name }}" class="img-responsive" style="margin-bottom: 10px;">
                 </a>
+                            <div>
+                <ul>
+                <li>Observed with: {{ observation.equipment|default:'Not specified' }}</li>
+                <li>Seeing: {{ observation.get_seeing_display }}</li>
+                <li>Light pollution: {{ observation.get_light_pollution_display }}</li>
+                </ul>
+            </div>
             </div>
         </div>
     </div>
     <div class="col-md-9">
         <div class="colwrap">
-            <div>
-                <ul>
-                <li>Observed with: {{ observation.equipment }}</li>
-                <li>Seeing: {{ observation.get_seeing_display }}</li>
-                <li>Light pollution: {{ observation.get_light_pollution_display }}</li>
-                </ul>
-            </div>
             <div class="markdown-text">
             {{ observation.description|markdown_safe }}
             </div>

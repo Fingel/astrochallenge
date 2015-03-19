@@ -4,12 +4,10 @@
 {% block content %}
 {% if not user.is_authenticated %}
 <div class="hook colwrap">
-    <center><h1>Welcome to Astro Challenge!</h1></center>
-    <p>The <b>Astro Challenge</b> is an online community of amateur
-    astronomers challenging themselves in the field of observational
-    astronomy. Users can browse the database of astronomical objects
-    and events, keep track of their observations and earn points. There are monthly
-    observation challenges and special awards for sketching and photography.</p>
+    <center><h1>Welcome to AstroChallenge!</h1></center>
+    <p><b>AstroChallenge</b> is an online community of amateur
+    astronomers logging their observations and completing challenges
+    related to observational astronomy. The site includes information on a huge database of <a href="{% url 'constellation-list' %}">constellations</a>, <a href="{% url 'solarsystemobject-list' %}">solar system objects and <a href="{% url 'astroobject-list' %}">deep space objects</a> with <a href="{% url 'solarsystemobject-detail' slug='Jupiter' %}">detailed to-the-second observation information</a>, customizeable <a href="{% url 'astroobject-detail' catalog='M' designation='42' %}#tab_finder">finder charts</a> and more.</p>
     <center>
     <a href="{% url 'auth_login' %}"><button class="btn btn-primary btn-lg">Login</button></a>
     <a href="{% url 'registration_register' %}"><button class="btn btn-info btn-lg">Register</button></a>

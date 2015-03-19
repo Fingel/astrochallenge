@@ -9,7 +9,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>AstroChallenge | {% block title %}{% endblock %}</title>
-        <meta name="description" content="">
+        <meta name="description" content="A place for amateur astronomers to log their observations and complete challenges with fellow observers. ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
@@ -96,12 +96,26 @@
       </footer>
     </div> <!-- /container -->
 
-
         {% bootstrap_javascript %}
 
         <script src="{{STATIC_PREFIX}}js/main.js"></script>
 
         {% block extra_javascript %}
         {% endblock %}
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="//piwik.toxiccode.com/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', 8]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript><p><img src="//piwik.toxiccode.com/piwik.php?idsite=8" style="border:0;" alt="" /></p></noscript>
+        <!-- End Piwik Code -->
     </body>
 </html>
