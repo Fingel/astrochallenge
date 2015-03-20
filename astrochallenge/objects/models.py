@@ -207,19 +207,22 @@ class AstroObject(models.Model):
         p_object = self.fixed_body
         p_object.compute(observer)
         up = True if ephem.degrees(p_object.alt) > 0 else False
+        info = {
+            'alt': str(p_object.alt),
+            'az': str(p_object.az),
+            'up': up,
+            'neverup': p_object.neverup
+        }
         try:
             next_rising = observer.next_rising(p_object)
             next_setting = observer.next_setting(p_object)
         except:
             next_rising, next_setting = None, None
-        return {
-            'alt': str(p_object.alt),
-            'az': str(p_object.az),
-            'up': up,
-            'neverup': p_object.neverup,
+        info.update({
             'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
             'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None
-        }
+        })
+        return info
 
     def __unicode__(self):
         return self.common_name if self.common_name else "{0}:{1}-{2}".format(self.constellation, self.ra_hours, self.dec_deg)
