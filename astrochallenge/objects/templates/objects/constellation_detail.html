@@ -3,7 +3,7 @@
 {% block title %} {{ object.latin_name }}{% endblock %}
 {% block content %}
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
     <div class="colwrap">
         <h1>{{ object.latin_name }}</h1>
         <table class="table">
@@ -21,7 +21,7 @@
         </ul>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <div class="colwrap">
         <a href="{{ object.image.url }}" alt="{{ object.latin_name }}"><img src="{{ object.image.url }}" class="img-responsive"></a>
         </div>
