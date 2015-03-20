@@ -30,10 +30,11 @@ class Challenge(models.Model):
     complete_bonus = models.IntegerField(default=0)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+    index = models.PositiveIntegerField(default=9999)
     image = models.ImageField(upload_to="challenges", blank=True, null=True)
 
     class Meta:
-        ordering = ['rating']
+        ordering = ['index', 'rating']
 
     def get_absolute_url(self):
         return urlresolvers.reverse("challenge-detail", args=(self.pk,))
