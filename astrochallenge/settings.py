@@ -18,6 +18,7 @@ SECRET_KEY = 't_ncv-#2$+0h&u@w-!1qu*b(qa4459cli#49@t0nxq!5h6^4#p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['.astrochallenge.com', ]
 
 TEMPLATE_DEBUG = True
 
