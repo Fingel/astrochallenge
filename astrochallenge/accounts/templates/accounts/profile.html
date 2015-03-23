@@ -64,10 +64,7 @@
                                     <span class="emphasize">{{ observation.content_object }}</span>
                                 </a>
                                 <span class="pull-right">
-                                <a href="{{ observation.get_absolute_url }}">{{ observation.date }}<span class="glyphicon glyphicon-link"></span></a>
-                                {% if observation.user_profile == user.userprofile %}
-                                    <a href="{% url 'delete-observation' observation.id %}">Delete</a>
-                                {% endif %}
+                                <a href="{{ observation.get_absolute_url }}">{{ observation.date }} <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-link"></span></button></a>
                                 </span>
                                 <p>Observed with: {{ observation.equipment }}</p>
                                 <div class="markdown-text">

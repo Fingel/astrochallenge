@@ -176,7 +176,7 @@ QUALITATIVE_RATINGS = (
 
 CHALLENGE_TYPES = (
     ('astro object', 'astro object'),
-    ('solar ststem object', 'solar system object'),
+    ('solar system object', 'solar system object'),
     ('composite', 'solar system or deep space object'),
 )
 

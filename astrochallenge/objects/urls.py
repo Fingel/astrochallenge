@@ -3,8 +3,8 @@ from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from astrochallenge.objects.models import Constellation, SolarSystemObject
-from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, SSODetailView, post_observation, delete_observation, post_finderchart
+from astrochallenge.objects.models import Constellation, SolarSystemObject, Observation
+from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, SSODetailView, ObservationDetailView, post_observation, delete_observation, post_finderchart
 
 urlpatterns = patterns('',
     url(r'^objects/$', TemplateView.as_view(template_name="objects/index.html"), name="object-index"),
@@ -22,8 +22,10 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
+    url(r'^observations/(?P<slug>\d+)/$', ObservationDetailView.as_view(model=Observation, slug_field='pk'), name='observation-detail'),
     url(r'^observation/$', post_observation, name="post-observation"),
-    url(r'^observation/(?P<observation_id>\d+)/delete/$', delete_observation, name="delete-observation")
+    url(r'^observation/(?P<observation_id>\d+)/delete/$', delete_observation, name="delete-observation"),
+    url(r'^observation/(?P<observation_id>\d+)/edit/$', post_observation, name="edit-observation"),
 )
 
 urlpatterns += patterns('',

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load gravatar thumbnail django_markdown comments bootstrap3 %}
+{% load gravatar thumbnail django_markdown comments bootstrap3 django_markdown %}
 {% block title %}{{ object.user_profile.user.username }} - {{ observation.date }} - {{ observation.content_object }} {% endblock %}
 {% block content %}
 {% with object.content_object as target %}
@@ -41,6 +41,10 @@
             <li role="presentation" class="active"><a href="#observation" aria-controls="observation" role="tab" data-toggle="tab">Observation</a></li>
             {% get_comment_count for object as comment_count %}
             <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion ({{ comment_count }})</a></li>
+            {% if observation.user_profile.user == user %}
+            <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
+            <a class="pull-right" href="{% url 'delete-observation' observation.id %}"><button class="btn btn-danger">Delete Observation</button></a>
+            {% endif %}
           </ul>
         <div class="colwrap">
             <div class="tab-content">
@@ -67,7 +71,41 @@
                     <p> Please login to post comments</p>
                     {% endif %}
                 </div>
-            </div>
+                {% if observation.user_profile == user.userprofile %}
+                <div role="tabpanel" class="tab-pane" id="edit">
+                    <form method="post" action="{% url 'edit-observation' observation.id %}">
+                        {% csrf_token %}
+                        {{observation_form.content_type}}
+                        {{observation_form.object_id}}
+                        <span class="col-xs-6">
+                        {% bootstrap_field observation_form.date %}
+                        </span>
+                        <span class="col-xs-3">
+                        {% bootstrap_field observation_form.lng %}
+                        </span>
+                        <span class="col-xs-3">
+                        {% bootstrap_field observation_form.lat %}
+                        </span>
+                        <span class="col-xs-12">
+                        {% bootstrap_field observation_form.equipment %}
+                        <a href="{% url 'edit-profile' %}"><span class="pull-right">Add equipment</span></a>
+                        </span>
+                        <span class="col-xs-6">
+                        {% bootstrap_field observation_form.seeing %}
+                        </span>
+                        <span class="col-xs-6">
+                        {% bootstrap_field observation_form.light_pollution %}
+                        </span>
+                        <span class="col-xs-12">
+                        {% bootstrap_field observation_form.description %}
+                        </span>
+                        {% buttons %}
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <input type="hidden" name="next" value="{% url 'observation-detail' observation_form.instance.pk %}#tab_observations"/>
+                        {% endbuttons %}
+                    </form>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -75,4 +113,6 @@
 {% endblock %}
 {% block extra_javascript %}
 <script type="text/javascript" src="{{STATIC_URL}}/js/tabpage.js"></script>
+{{ observation_form.media }}
+{% markdown_media %}
 {% endblock %}

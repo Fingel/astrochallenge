@@ -71,7 +71,7 @@ def post_finderchart(request, next=None):
 @csrf_protect
 @login_required
 @require_POST
-def post_observation(request, next=None):
+def post_observation(request, next=None, observation_id=None):
     data = request.POST.copy()
     content_type = data.get("content_type")
     object_id = data.get("object_id")
@@ -79,7 +79,11 @@ def post_observation(request, next=None):
         return ValueError("Missing content type or object id")
     model = ContentType.objects.get(pk=content_type).model_class()
     target = model.objects.get(pk=object_id)
-    observation_form = ObservationForm(data, user=request.user)
+    try:
+        instance = Observation.objects.get(pk=observation_id, user_profile=request.user.userprofile)
+    except Observation.DoesNotExist:
+        instance = None
+    observation_form = ObservationForm(data, user=request.user, instance=instance)
 
     if not observation_form.is_valid():
         messages.error(request, "Error with observation submission:" + str(observation_form.errors))
@@ -124,7 +128,7 @@ def post_observation(request, next=None):
                 CompletedChallenge(user_profile=request.user.userprofile, challenge=challenge).save()
                 messages.success(request, "Congratulations! You completed the challenge: {0} and earned {1} points!".format(str(challenge), challenge.complete_bonus))
 
-    return next_redirect(request, fallback=next or observation_form.instance.get_absolute_url())
+    return redirect(observation_form.instance.get_absolute_url())
 
 
 def get_object_context(request, object):
@@ -150,6 +154,14 @@ def get_object_context(request, object):
 class SSODetailView(DetailView):
     def get_context_data(self, **kwargs):
         return get_object_context(self.request, self.get_object())
+
+
+class ObservationDetailView(DetailView):
+    def get_context_data(self, **kwargs):
+        context = super(ObservationDetailView, self).get_context_data(**kwargs)
+        if self.request.user.userprofile == self.get_object().user_profile:
+            context['observation_form'] = ObservationForm(instance=self.get_object(), user=self.request.user)
+        return context
 
 
 class DSODetailView(DetailView):
