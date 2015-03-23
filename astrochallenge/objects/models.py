@@ -30,7 +30,7 @@ class Observation(models.Model):
         ordering = ['-date']
 
     def __unicode__(self):
-        return "{0}-{1}".format(self.date, self.user_profile.user.username)
+        return "{0} {1}: {2}".format(self.user_profile.user.username, self.date.strftime('%m/%d/%y'), str(self.content_object))
 
     @property
     def thing(self):

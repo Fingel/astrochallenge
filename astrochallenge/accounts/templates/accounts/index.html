@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load tz bootstrap3 endless gravatar thumbnail django_markdown challenges_extras %}
+{% load tz bootstrap3 endless gravatar thumbnail django_markdown challenges_extras comments %}
 {% block title %}Home{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
@@ -45,6 +45,7 @@
         <hr/>
         {% paginate 10 observations using "ob_page" %}
         {% for observation in observations %}
+        {% get_comment_count for observation as comment_count %}
         <div class="row observation-row">
             <div class="col-sm-2">
                 <div class="user-deets">
@@ -65,19 +66,24 @@
                 </div>
             </div>
             <div class="col-sm-10">
-                <span class="pull-right">
-                    <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"SHORT_DATETIME_FORMAT" }} <span class="glyphicon glyphicon-link"></span></a></p>
-                </span>
-                <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}">{{ observation.name }}</a></span>
-                </p>
-                <p>Observed with: {{ observation.equipment|default:'Not Specified' }}</p>
-                <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
-                {% if observation.description|length > 500 %}
-                <a href="{{ observation.get_absolute_url }}">
-                Read more
-                </a>
-                {% endif %}
-                </div></p>
+                <div class="observation-header">
+                    <span class="pull-right">
+                        <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"SHORT_DATETIME_FORMAT" }} <span class="glyphicon glyphicon-link"></span></a></p>
+                        <p><a href="{{ observation.get_absolute_url }}#tab_discussion"> {{ comment_count }} comment{{ comment_count|pluralize }} </a></p>
+                    </span>
+                    <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}">{{ observation.name }}</a></span>
+                    <p>Observed with: {{ observation.equipment|default:'Not Specified' }}<br/>
+                    Points Earned: {{ observation.points_earned }}</p>
+                </div>
+                <div class="observation-body">
+                    <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
+                    {% if observation.description|length > 500 %}
+                    <a href="{{ observation.get_absolute_url }}">
+                    Read more
+                    </a>
+                    {% endif %}
+                    </div></p>
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -94,13 +100,16 @@
         {% for comment in comments %}
         <div id="c{{ comment.id }}">
             <div class="comment-author">
+                <a href="{{comment.content_object.get_absolute_url}}#tab_discussion">
+                <span class="pull-right">{{ comment.submit_date|date:"j M" }}</span>
+                </a>
                 <a href="{% url 'profile' comment.user.username %}">
                 <img class="profile-image" src="{% gravatar_url comment.user.email 40 %}">
-                <span class="pull-right">{{ comment.submit_date|date:"j M" }}</span>
                 <span class="comment-author-username">{{comment.user.username}}</span>
                 </a>
                 <br/>
-                <a href="{{comment.content_object.get_absolute_url}}#tab_discussion"<span class="comment-target">{{comment.content_object}}</span></a>
+                <a href="{{comment.content_object.get_absolute_url}}#tab_discussion">
+                <span class="comment-target">{{comment.content_object}}</span></a>
             </div>
             <div class="comment">
                 <p>{{ comment.comment|truncatewords:50}}</p>

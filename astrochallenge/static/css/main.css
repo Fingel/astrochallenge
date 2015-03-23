@@ -266,3 +266,7 @@ div.satellite-text {
 .table-fixed {
     table-layout: fixed;
 }
+
+.observation-header {
+    border-bottom: 1px solid #000000;
+}

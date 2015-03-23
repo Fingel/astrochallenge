@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load gravatar thumbnail django_markdown %}
+{% load gravatar thumbnail django_markdown comments bootstrap3 %}
 {% block title %}{{ object.user_profile.user.username }} - {{ observation.date }} - {{ observation.content_object }} {% endblock %}
 {% block content %}
 {% with object.content_object as target %}
@@ -37,12 +37,42 @@
         </div>
     </div>
     <div class="col-md-9">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#observation" aria-controls="observation" role="tab" data-toggle="tab">Observation</a></li>
+            {% get_comment_count for object as comment_count %}
+            <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion ({{ comment_count }})</a></li>
+          </ul>
         <div class="colwrap">
-            <div class="markdown-text">
-            {{ observation.description|markdown_safe }}
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="observation">
+                    <div class="markdown-text">
+                    {{ observation.description|markdown_safe }}
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="discussion">
+                    {% render_comment_list for object %}
+                    {% if user.is_authenticated %}
+                    {% get_comment_form for object as form %}
+                    <div id="comment-form-div">
+                      <form action="{% comment_form_target %}" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        {% buttons %}
+                        <button class="btn btn-default" type="submit" name="submit" value="Post">Post</button>
+                        <input type="hidden" name="next" value="{% url 'observation-detail' observation.pk %}#tab_discussion" />
+                        {% endbuttons %}
+                      </form>
+                    </div>
+                    {% else %}
+                    <p> Please login to post comments</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
 </div>
 {% endwith %}
+{% endblock %}
+{% block extra_javascript %}
+<script type="text/javascript" src="{{STATIC_URL}}/js/tabpage.js"></script>
 {% endblock %}
