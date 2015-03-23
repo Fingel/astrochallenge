@@ -45,7 +45,11 @@
                 {% for object in objects %}
                     <tr>
                     <td>
+                    {% if object.image %}
                     <img class="img-responsive" src="{{ object.image|thumbnail_url:'tiny' }}">
+                    {% else %}
+                    <img class="img-responsive" src="{{STATIC_URL}}images/default.png">
+                    {% endif %}
                     </td>
 
                     <td><a href="{{ object.get_absolute_url }}"><h3>{{ object }}
