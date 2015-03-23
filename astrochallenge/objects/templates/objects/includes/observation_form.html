@@ -89,5 +89,5 @@ $(document).ready(function(){
   </div>
 </div>
 {% else %}
-<p>Please <a href="{% url 'auth_login' %}">login</a> to record an observation of this object.</p>
+<a href="{% url 'auth_login' %}"><button class="btn btn-success form-control">Log Observation</button></a>
 {% endif %}
