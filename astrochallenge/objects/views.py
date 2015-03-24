@@ -159,7 +159,7 @@ class SSODetailView(DetailView):
 class ObservationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ObservationDetailView, self).get_context_data(**kwargs)
-        if self.request.user.userprofile == self.get_object().user_profile:
+        if self.request.user.is_authenticated() and self.request.user.userprofile == self.get_object().user_profile:
             context['observation_form'] = ObservationForm(instance=self.get_object(), user=self.request.user)
         return context
 
