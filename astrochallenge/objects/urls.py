@@ -7,7 +7,6 @@ from astrochallenge.objects.models import Constellation, SolarSystemObject, Obse
 from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, SSODetailView, ObservationDetailView, post_observation, delete_observation, post_finderchart
 
 urlpatterns = patterns('',
-    url(r'^objects/$', TemplateView.as_view(template_name="objects/index.html"), name="object-index"),
     url(r'^objects/constellations/$', ListView.as_view(model=Constellation), name="constellation-list"),
     url(r'^objects/constellations/(?P<slug>\D+)/$', DetailView.as_view(model=Constellation, slug_field="abbreviation"), name='constellation-detail'),
     url(r'^objects/constellations/(?P<slug>\d+)/$', DetailView.as_view(model=Constellation, slug_field="pk"), name='constellation-detail'),
@@ -23,6 +22,7 @@ urlpatterns = patterns('',
 
 urlpatterns += patterns('',
     url(r'^observations/(?P<slug>\d+)/$', ObservationDetailView.as_view(model=Observation, slug_field='pk'), name='observation-detail'),
+    url(r'^observation/choose/$', TemplateView.as_view(template_name="objects/choose.html"), name="choose-observation"),
     url(r'^observation/$', post_observation, name="post-observation"),
     url(r'^observation/(?P<observation_id>\d+)/delete/$', delete_observation, name="delete-observation"),
     url(r'^observation/(?P<observation_id>\d+)/edit/$', post_observation, name="edit-observation"),

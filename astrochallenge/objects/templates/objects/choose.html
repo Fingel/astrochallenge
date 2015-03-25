@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Object Database {% endblock %}
+{% block content %}
+<div class="colwrap">
+    <div class="row">
+        <div class="col-md-12">
+            <center>
+                <h1>What kind of object have you observed?</h1>
+            </center>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'astroobject-list' %}">
+                <div class="observation-target" style="background-image: url({{STATIC_URL}}images/dso.jpg">
+                    <center><h1>Deep Space Object</h1></center>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'solarsystemobject-list' %}">
+                <div class="observation-target" style="background-image: url({{STATIC_URL}}images/sso.jpg">
+                    <center><h1>Solar System Object</h1></center>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

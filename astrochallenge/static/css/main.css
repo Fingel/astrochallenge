@@ -270,3 +270,12 @@ div.satellite-text {
 .observation-header {
     border-bottom: 1px solid #000000;
 }
+
+.navbar-btn {
+    margin-right: 5px;
+}
+
+.observation-target {
+    min-height: 400px;
+    padding-top: 40px;
+}
