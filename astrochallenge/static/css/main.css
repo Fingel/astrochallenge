@@ -116,10 +116,12 @@ label[for=id_comment] {
 
 .user-deets {
     display: inline-block;
+    vertical-align: top;
+    margin-bottom: 5px;
 }
 
 .user-deets img {
-    width: 80px;
+    min-width: 80px;
     height: 80px;
     margin-right: 5px;
     border-radius: 5px;
