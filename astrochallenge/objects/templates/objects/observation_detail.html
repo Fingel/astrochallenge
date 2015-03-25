@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% load gravatar thumbnail django_markdown comments bootstrap3 django_markdown %}
 {% block title %}{{ object.user_profile.user.username }} - {{ observation.date }} - {{ observation.content_object }} {% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/rrssb.css" />
+<meta property="og:url" content="http://astrochallenge.com/{{ request.path }}" />
+<meta property="og:title" content="{{ observation }}">
+<meta property="og:descripton" content="{{ observation.description|truncatechars:500 }}"/>
+<meta property="og:site_name" content="AstroChallenge" />
+<meta property="og:image" content="http://astrochallenge.com{{ object.content_object.image.url }}" />
+
+{% endblock %}
 {% block content %}
 {% with object.content_object as target %}
 <div class="row observation-detail">
@@ -32,6 +41,7 @@
                 <li>Seeing: {{ observation.get_seeing_display }}</li>
                 <li>Light pollution: {{ observation.get_light_pollution_display }}</li>
                 </ul>
+                {% include 'accounts/includes/sharing.html' %}
             </div>
             </div>
         </div>
@@ -113,6 +123,7 @@
 {% endblock %}
 {% block extra_javascript %}
 <script type="text/javascript" src="{{STATIC_URL}}/js/tabpage.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}/js/vendor/rrssb.min.js"></script>
 {{ observation_form.media }}
 {% markdown_media %}
 {% endblock %}
