@@ -282,3 +282,12 @@ div.satellite-text {
     min-height: 400px;
     padding-top: 40px;
 }
+
+@media (max-width: 1200px) and (min-width: 768px) {
+#nav-datetime {
+        display: none !important;
+    }
+#nav-name-points {
+        display: none !important;
+    }
+}
