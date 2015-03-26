@@ -2,15 +2,17 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.core.mail import mail_admins
 from django.utils import timezone
 from django.views.decorators.http import require_POST, require_GET
+from django.views.generic import View
 
 from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation
 from astrochallenge.accounts.models import Equipment
 from astrochallenge.objects.utils import moon_phase
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
-from forms import UserForm, ProfileForm, EquipmentForm
+from forms import UserForm, ProfileForm, EquipmentForm, ContactForm
 
 
 def index(request):
@@ -92,3 +94,22 @@ def edit_profile(request):
         else:
             messages.error(request, 'There was an error with the form')
             return render(request, 'accounts/profile_form.html', {'user_form': user_form, 'profile_form': profile_form, 'equipment_form': equipment_form})
+
+
+class ContactView(View):
+    def get(self, request):
+        form = ContactForm()
+        return render(request, 'accounts/contact.html', {'form': form})
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if not form.is_valid():
+            messages.error(request, "Looks like your captcha was wrong!")
+            return render(request, 'accounts/contact.html', {'form': form})
+        else:
+            mail_admins(
+                "New contact form submission from {0}".format(form.cleaned_data['email']),
+                form.cleaned_data["feedback"],
+                )
+            messages.success(request, "Thank you! We'll get back to you as soon as possible.")
+            return render(request, 'accounts/contact.html', {'form': ContactForm()})

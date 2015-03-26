@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms.models import ModelForm
 from django.core.validators import MaxValueValidator, MinValueValidator
+from captcha.fields import CaptchaField
 
 
 from models import UserProfile, Equipment
@@ -38,3 +39,11 @@ class EquipmentForm(ModelForm):
     class Meta:
         model = Equipment
         fields = ('instrument',)
+
+
+class ContactForm(forms.Form):
+    email = forms.EmailField()
+    feedback = forms.CharField(
+            widget=forms.Textarea
+        )
+    captcha = CaptchaField()

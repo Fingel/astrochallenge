@@ -19,6 +19,7 @@ SECRET_KEY = 't_ncv-#2$+0h&u@w-!1qu*b(qa4459cli#49@t0nxq!5h6^4#p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['.astrochallenge.com', ]
+ADMINS = (('Austin', 'root@austinriba.com'),)
 
 TEMPLATE_DEBUG = True
 
@@ -46,6 +47,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'django_markdown',
     'bootstrap3_datetime',
+    'captcha',
 )
 
 COMMENTS_APP = 'astro_comments'
@@ -85,6 +87,7 @@ EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 MAILGUN_ACCESS_KEY = ''
 MAILGUN_SERVER_NAME = 'astrochallenge.com'
 DEFAULT_FROM_EMAIL = 'noreply@astrochallenge.com'
+SERVER_EMAIL = 'server@astrochallenge.com'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
