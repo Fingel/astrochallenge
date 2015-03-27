@@ -30,7 +30,7 @@ def index(request):
 
     #  TODO: Change make this much more effecient
     userprofiles = UserProfile.objects.all().exclude(observation=None)
-    leaderboard = reversed(sorted(userprofiles, key=lambda userprofile: userprofile.points))
+    leaderboard = list(reversed(sorted(userprofiles, key=lambda userprofile: userprofile.points)))
     context = {
         "comments": comments,
         "observations": observations,

@@ -40,7 +40,7 @@
         <div id="leaderboard">
             <center><h3>Leaderboard</h3></center>
             <ol>
-                {% for userprofile in leaderboard %}
+                {% for userprofile in leaderboard|slice:":10" %}
                 <li>
                     <a href="{% url 'profile' userprofile.user.username %}">{{userprofile.user.username}}</a><br/>
                     <span class="glyphicon glyphicon-star"></span> {{userprofile.points}}&nbsp;
