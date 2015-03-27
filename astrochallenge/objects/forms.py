@@ -42,17 +42,23 @@ class ObservationForm(ModelForm):
 
 class FinderChartForm(forms.Form):
     field_of_view = forms.FloatField(
-        label="Field of view (degrees)",
+        label="F.O.V (deg)",
         initial=15.0,
         validators=[MinValueValidator(0.0), MaxValueValidator(100.0)]
     )
     limiting_magnitude_stars = forms.FloatField(
-        label="Min. magnitude for stars",
+        label="Min. mag for stars",
         initial=10.0,
     )
     limiting_magnitude_deepsky = forms.FloatField(
-        label="Min. magnitude for DSOs",
+        label="Min. mag for DSOs",
         initial=12.5
+    )
+    date = forms.DateTimeField(
+        initial=timezone.now,
+        widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD HH:mm:ss"}
+        )
     )
     object_id = forms.IntegerField(widget=forms.HiddenInput)
     content_type = forms.IntegerField(widget=forms.HiddenInput)

@@ -51,13 +51,19 @@ def post_finderchart(request, next=None):
     if not finder_chart_form.is_valid():
         messages.error(request, "Finder Chart form invalid")
         return next_redirect(request, fallback=next or target.get_absolute_url())
+    date = finder_chart_form.cleaned_data['date']
+    if c_type.model == 'solarsystemobject':
+        ra, dec = target.ra_dec_on_date(date)
+    else:
+        ra, dec = target.ra, target.dec
+
     settings = FchartSettings(
         limiting_magnitude_stars=finder_chart_form.cleaned_data['limiting_magnitude_stars'],
         limiting_magnitude_deepsky=finder_chart_form.cleaned_data['limiting_magnitude_deepsky'],
-        fieldsize=finder_chart_form.cleaned_data['field_of_view']
+        fieldsize=finder_chart_form.cleaned_data['field_of_view'],
     )
     x_label = str(target) if c_type.model == 'solarsystemobject' else ''
-    settings.add_target(target.ra, target.dec, str(target), content_type, object_id, x_label)
+    settings.add_target(ra, dec, str(target), content_type, object_id, x_label)
     file = generate_fchart(settings)
     wrapper = FileWrapper(file)
     response = HttpResponse(wrapper, content_type='application/pdf')

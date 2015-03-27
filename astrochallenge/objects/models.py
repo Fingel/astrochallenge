@@ -130,6 +130,14 @@ class SolarSystemObject(models.Model):
     def dec(self):
         return self.general_info['dec']
 
+    def ra_dec_on_date(self, date):
+        p_object = self.ephem_object
+        if p_object:
+            p_object.compute(date)
+            return (str(p_object.dec), str(p_object.dec))
+        else:
+            return (None, None)
+
     def observation_info(self, observer):
         p_object = self.ephem_object
         if p_object:

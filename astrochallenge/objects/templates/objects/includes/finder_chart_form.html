@@ -1,7 +1,11 @@
 {% load bootstrap3 %}
+{% block extra_javascript %}
+{{ finder_chart_form.media }}
+{% endblock %}
 <h4>Generate a finder chart</h4>
 <p>The following form will generate a PDF finder chart suitable for printing using to locate objects in the sky with your telescope!</p>
-<p>The larger the field of view, the more "zoomed out" the object will appear. It can be helpful to print several charts of the same
+<p>The Date is only really useful for solar system objects, as deep space objects move measurably only on a galactic timescale.</p>
+<p>The larger the F.O.V (field of view), the more "zoomed out" the object will appear. It can be helpful to print several charts of the same
 object with different field of views.</p>
 <p>Limiting the magnitude (remember, lower magnitude means brighter!) of stars and objects can make sure your chart is not cluttered with
 dim objects that you may not be visible to you anyway. The defaults are good, but try experimenting with raising and lowering the values.</p>
@@ -12,12 +16,15 @@ dim objects that you may not be visible to you anyway. The defaults are good, bu
     {{ finder_chart_form.content_type }}
     {{ finder_chart_form.object_id }}
     <span class="col-sm-4">
+    {% bootstrap_field finder_chart_form.date %}
+    </span>
+    <span class="col-sm-2">
     {% bootstrap_field finder_chart_form.field_of_view %}
     </span>
-    <span class="col-sm-4">
+    <span class="col-sm-3">
     {% bootstrap_field finder_chart_form.limiting_magnitude_stars %}
     </span>
-    <span class="col-sm-4">
+    <span class="col-sm-3">
     {% bootstrap_field finder_chart_form.limiting_magnitude_deepsky %}
     </span>
     {% buttons %}
