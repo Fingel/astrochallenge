@@ -162,6 +162,7 @@ label[for=id_comment] {
 
 #moon-info {
     padding: 20px;
+    padding-bottom: 0px;
     font-size: 18px;
     display: inline-block;
 }

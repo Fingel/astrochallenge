@@ -9,7 +9,7 @@ from django.views.generic import View
 
 from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation
-from astrochallenge.accounts.models import Equipment
+from astrochallenge.accounts.models import Equipment, UserProfile
 from astrochallenge.objects.utils import moon_phase
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from forms import UserForm, ProfileForm, EquipmentForm, ContactForm
@@ -28,6 +28,9 @@ def index(request):
     else:
         next_challenge = Challenge.current_challenges().first()
 
+    #  TODO: Change make this much more effecient
+    userprofiles = UserProfile.objects.all().exclude(observation=None)
+    leaderboard = reversed(sorted(userprofiles, key=lambda userprofile: userprofile.points))
     context = {
         "comments": comments,
         "observations": observations,
@@ -36,6 +39,7 @@ def index(request):
         "moon_letter": letter,
         "time": timezone.now(),
         "next_challenge": next_challenge,
+        "leaderboard": leaderboard,
     }
     return render(request, 'accounts/index.html', context)
 

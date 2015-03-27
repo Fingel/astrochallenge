@@ -37,6 +37,18 @@
             </a>
             </center>
         </div>
+        <div id="leaderboard">
+            <center><h3>Leaderboard</h3></center>
+            <ol>
+                {% for userprofile in leaderboard %}
+                <li>
+                    <a href="{% url 'profile' userprofile.user.username %}">{{userprofile.user.username}}</a><br/>
+                    <span class="glyphicon glyphicon-star"></span> {{userprofile.points}}&nbsp;
+                    <span class="glyphicon glyphicon-eye-open"></span> {{userprofile.observation_set.all|length }}
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
         </div>
     </div>
     <div class="col-md-7">
