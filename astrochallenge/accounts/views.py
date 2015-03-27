@@ -71,9 +71,10 @@ def delete_equipment(request, pk):
 
 @login_required
 def edit_profile(request):
+    user = get_object_or_404(User, username=request.user.username)
     if request.method == 'GET':
-        user_form = UserForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.userprofile)
+        user_form = UserForm(instance=user)
+        profile_form = ProfileForm(instance=user.userprofile)
         equipment_form = EquipmentForm()
         context = {
             'user_form': user_form,
@@ -82,17 +83,16 @@ def edit_profile(request):
         }
         return render(request, 'accounts/profile_form.html', context)
     if request.method == 'POST':
-        user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, instance=request.user.userprofile)
+        user_form = UserForm(request.POST, instance=user)
+        profile_form = ProfileForm(request.POST, instance=user.userprofile)
         equipment_form = EquipmentForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             del(request.session['django_timezone'])
             messages.success(request, "Profile sucessfully updated")
-            return redirect('profile', username=request.user.username)
+            return redirect('profile', username=user.username)
         else:
-            messages.error(request, 'There was an error with the form')
             return render(request, 'accounts/profile_form.html', {'user_form': user_form, 'profile_form': profile_form, 'equipment_form': equipment_form})
 
 
