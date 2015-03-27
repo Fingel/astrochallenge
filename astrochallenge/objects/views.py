@@ -198,7 +198,7 @@ class DSOListView(TemplateView):
 class DSOListViewJson(BaseDatatableView):
     model = AstroObject
     columns = ['pk', 'index', 'common_name', 'catalog_rep', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
-    order_columns = ['index', 'common_name', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
+    order_columns = columns
 
     def filter_queryset(self, qs):
         if not self.pre_camel_case_notation:
