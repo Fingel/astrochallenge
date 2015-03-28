@@ -7,7 +7,10 @@
 <meta property="og:title" content="{{ observation }}">
 <meta property="og:description" content="{{ observation.description|truncatechars:500 }}"/>
 <meta property="og:site_name" content="AstroChallenge" />
+{% if object.content.image %}
 <meta property="og:image" content="http://astrochallenge.com{{ object.content_object.image.url }}" />
+{% endif %}
+
 
 {% endblock %}
 {% block content %}
@@ -33,9 +36,11 @@
             </div>
             <div clas="row">
                 <a href="{{ target.get_absolute_url }}"><center><h4>{{ target }}</h4></center>
+                {% if target.image %}
                 <img src="{{ target.image|thumbnail_url:'detail'}}" alt="{{ target.name }}" class="img-responsive" style="margin-bottom: 10px;">
+                {% endif %}
                 </a>
-                            <div>
+            <div>
                 <ul>
                 <li>Observed with: {{ observation.equipment|default:'Not specified' }}</li>
                 <li>Seeing: {{ observation.get_seeing_display }}</li>
