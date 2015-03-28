@@ -9,6 +9,9 @@
         {% if object.image %}
         <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image|thumbnail_url:'detail' }}" class="img-responsive"></a>
         {% endif %}
+        {% if object.image_attribution %}
+        <span class="glyphicon glyphicon-info-sign attribution" data-toggle="tooltip" data-placement="bottom" title="{{ object.image_attribution }}"></span>
+        {% endif %}
         {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='solarsystemobject-detail' %}
     </div>
     </div>
@@ -133,4 +136,9 @@
 {% endblock %}
 {% block extra_javascript %}
 <script type="text/javascript" src="{{STATIC_URL}}/js/tabpage.js"></script>
+<script type="text/javascript">
+ $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 {% endblock %}

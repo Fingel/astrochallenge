@@ -75,6 +75,7 @@ class SolarSystemObject(models.Model):
     mass_unit = models.CharField(max_length=5, choices=(('s', 's'), ('e', 'e'), ('j', 'j'), ('kg', 'kg')), default="e")
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="ss_objects", blank=True, null=True)
+    image_attribution = models.CharField(max_length=1000, default="", blank=True)
     observations = GenericRelation(Observation)
 
     class Meta:
@@ -187,6 +188,7 @@ class AstroObject(models.Model):
     common_name = models.CharField(max_length=200, blank=True, default="")
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="astro_objects", blank=True, null=True)
+    image_attribution = models.CharField(max_length=1000, default="", blank=True)
     observations = GenericRelation(Observation)
 
     class Meta:
