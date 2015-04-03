@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 
 def required(wrapping_functions, patterns_rslt):
@@ -42,6 +43,7 @@ def _wrap_instance__resolve(wrapping_functions, instance):
 urlpatterns = patterns('',
     url('^markdown/', include('django_markdown.urls')),
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^robots.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: ", content_type="text/plain")),
     url(r'^', include('astrochallenge.accounts.urls')),
     url(r'^', include('astrochallenge.objects.urls')),
     url(r'^', include('astrochallenge.challenges.urls')),
