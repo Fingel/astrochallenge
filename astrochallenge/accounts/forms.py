@@ -30,7 +30,7 @@ class ProfileForm(ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        fields = ('lat', 'lng', 'elevation', 'timezone', 'location', 'profile_text')
 
 
 class EquipmentForm(ModelForm):
