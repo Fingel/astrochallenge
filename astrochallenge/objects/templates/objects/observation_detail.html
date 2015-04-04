@@ -7,7 +7,7 @@
 <meta property="og:title" content="{{ observation }}">
 <meta property="og:description" content="{{ observation.description|truncatechars:500 }}"/>
 <meta property="og:site_name" content="AstroChallenge" />
-{% if object.content.image %}
+{% if object.content_object.image %}
 <meta property="og:image" content="http://astrochallenge.com{{ object.content_object.image.url }}" />
 {% endif %}
 
