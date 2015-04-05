@@ -273,6 +273,7 @@ div.satellite-text {
 
 .observation-header {
     border-bottom: 1px solid #000000;
+    min-height: 65px;
 }
 
 .navbar-btn {
