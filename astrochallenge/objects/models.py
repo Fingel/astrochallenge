@@ -244,6 +244,12 @@ class AstroObject(models.Model):
     def get_absolute_url(self):
         return urlresolvers.reverse("astroobject-detail", args=(self.pk,))
 
+    def get_magnitude_display(self):
+        if self.magnitude > 100:
+            return ""
+        else:
+            return str(self.magnitude)
+
 
 class CatalogObject(models.Model):
     astro_object = models.ForeignKey(AstroObject)
