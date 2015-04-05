@@ -72,6 +72,10 @@
                 <div class="user-deets">
                 <a href="{% url 'profile' observation.user_profile.user.username %}">
                 <img class="profile-image" src="{% gravatar_url observation.user_profile.user.email 80 %}">
+                </a>
+                </div>
+                <div class="user-deets">
+                <a href="{% url 'profile' observation.user_profile.user.username %}">
                 {{ observation.user_profile.user.username }} ({{ observation.user_profile.points }})
                 </a>
                 </div>
@@ -79,12 +83,16 @@
             <div class="col-sm-10">
                 <div class="observation-header">
                     <span class="pull-right">
-                        <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"SHORT_DATETIME_FORMAT" }} <button class="btn btn-sm btn-info"> <span class="glyphicon glyphicon-link"></span></button></a></p>
+                        <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"M j P" }} <button class="btn btn-sm btn-info"> <span class="glyphicon glyphicon-link"></span></button></a></p>
                         <p><a href="{{ observation.get_absolute_url }}#tab_discussion"> {{ comment_count }} comment{{ comment_count|pluralize }} </a></p>
                     </span>
                     <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}">{{ observation.name }}</a></span>
-                    <p>Observed with: {{ observation.equipment|default:'Not Specified' }}<br/>
-                    Points Earned: {{ observation.points_earned }}</p>
+                    <p>
+                    {% if observation.equipment %}
+                    {{ observation.equipment }}<br/>
+                    {% endif %}
+                    Points Earned: {{ observation.points_earned }}
+                    </p>
                 </div>
                 <div class="observation-body">
                     <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
