@@ -13,7 +13,7 @@
                 <p><a href="{% gravatar_profile_url member.email %}">Change your avatar</a>
                 <span class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Gravatar is a service that displays an image that is linked to your email address. Many sites use Gravatar so you only have to set your image once!"></span></p>
                 {% endif %}
-                {% if user.is_staff %}
+                {% if member.is_staff %}
                 <em>AstroChallenge contributor</em>
                 {% endif %}
                 <h4>Points: {{ member.userprofile.points }}</h4>
