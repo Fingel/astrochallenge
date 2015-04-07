@@ -16,6 +16,7 @@ class UserProfile(models.Model):
     lng = models.FloatField("longitude", default=0.0, help_text="The longitude from which you most often observe from.")
     elevation = models.IntegerField(default=0, help_text="The elevation, in meters, from which you most often observe from.")
     profile_text = models.TextField(blank=True, default="")
+    recieve_notification_emails = models.BooleanField(default=True, help_text="Recieve emails when someone gives you kudos or comments on your observations.")
 
     def __unicode__(self):
         return self.user.username

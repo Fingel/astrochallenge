@@ -47,7 +47,7 @@ class ProfileForm(ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ('lat', 'lng', 'elevation', 'timezone', 'location', 'profile_text')
+        fields = ('lat', 'lng', 'elevation', 'timezone', 'location', 'profile_text', 'recieve_notification_emails')
 
 
 class EquipmentForm(ModelForm):

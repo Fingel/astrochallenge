@@ -92,24 +92,24 @@ def give_kudos(request, observation):
     if not Kudos.objects.filter(user_profile=request.user.userprofile, observation=ob).exists():
         kudos = Kudos(user_profile=request.user.userprofile, observation=ob)
         kudos.save()
+        if ob.user_profile.recieve_notification_emails:
+            class KudosThread(threading.Thread):
+                def __init__(self, kudos, **kwargs):
+                    self.kudos = kudos
+                    super(KudosThread, self).__init__(**kwargs)
 
-        class KudosThread(threading.Thread):
-            def __init__(self, kudos, **kwargs):
-                self.kudos = kudos
-                super(KudosThread, self).__init__(**kwargs)
+                def run(self):
+                    observation = self.kudos.observation
+                    from_user = self.kudos.user_profile.user
+                    text = get_template('accounts/mail/kudos.txt')
+                    context = Context({'from_user': from_user.username, 'observation': observation})
+                    message = text.render(context)
+                    subject = "{0} gave you kudos on your observation!".format(from_user.username)
+                    to = (observation.user_profile.user.email,)
+                    email = EmailMessage(subject=subject, body=message, to=to)
+                    email.send()
 
-            def run(self):
-                observation = self.kudos.observation
-                from_user = self.kudos.user_profile.user
-                text = get_template('accounts/mail/kudos.txt')
-                context = Context({'from_user': from_user.username, 'observation': observation})
-                message = text.render(context)
-                subject = "{0} gave you kudos on your observation!".format(from_user.username)
-                to = (observation.user_profile.user.email,)
-                email = EmailMessage(subject=subject, body=message, to=to)
-                email.send()
-
-        KudosThread(kudos).start()
+            KudosThread(kudos).start()
     return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
 
 
