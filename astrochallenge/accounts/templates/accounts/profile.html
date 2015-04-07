@@ -17,8 +17,8 @@
                 <em>AstroChallenge contributor</em>
                 {% endif %}
                 <h4>Points: {{ member.userprofile.points }}</h4>
-                <h4>Observations: {{ member.userprofile.observation_set.all|length }}
-                </h4>
+                <h4>Observations: {{ member.userprofile.observation_set.all|length }}</h4>
+                <h4>Kudos: {{ kudos }}</h4>
                 {% if member == user %}
                 <a href="{% url 'edit-profile' %}"><button class="btn btn-default">Edit profile</button></a>
                 <a href="{% url 'auth_password_change' %}"><button class="btn btn-danger">Change password</button></a>

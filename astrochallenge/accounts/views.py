@@ -52,7 +52,10 @@ def index(request):
 def profile(request, username):
     member = get_object_or_404(User, username=username)
     anchor = ""
+    kudos = 0
     observations = Observation.objects.filter(user_profile=member.userprofile)
+    for observation in observations:
+        kudos += observation.kudos_set.count()
     form = ObservationLogForm()
     if request.method == "POST":
         form = ObservationLogForm(request.POST)
@@ -66,7 +69,12 @@ def profile(request, username):
         else:
             messages.error(request, "Invalid date range")
     challenges = [completed_challenge.challenge for completed_challenge in member.userprofile.completedchallenge_set.all()]
-    return render(request, 'accounts/profile.html', {'member': member, 'challenges': challenges, 'observations': observations, 'form': form, 'anchor': anchor})
+    return render(request, 'accounts/profile.html', {'member': member,
+                                                    'challenges': challenges,
+                                                    'observations': observations,
+                                                    'form': form,
+                                                    'anchor': anchor,
+                                                    'kudos': kudos})
 
 
 @login_required
