@@ -1,6 +1,8 @@
 {% load accounts_extras %}
+{% if user.is_authenticated %}
 {% if user|has_kudoed:observation %}
 <button class="btn btn-sm btn-success">{{ observation.kudos_set.all|length }} <span class="glyphicon glyphicon-thumbs-up"></span></span></button>
 {% else %}
 <button data-observation="{{observation.pk}}" {% if observation.user_profile == user.userprofile %} disabled {% endif %} class="give-kudos btn btn-primary btn-sm">{{observation.kudos_set.all|length}} <span class="glyphicon glyphicon-thumbs-up"></span></button>
+{% endif %}
 {% endif %}
