@@ -156,6 +156,8 @@ CATALOGS = {
     'M': 'Messier',
     'NGC': 'NGC',
     'C': 'Caldwell',
+    'HIP': 'Hipparcos',
+    'HD': 'Henry Draper',
 }
 
 SOLAR_SYSTEM_OBJECT_TYPES = (

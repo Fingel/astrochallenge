@@ -10,15 +10,56 @@
         <tr><td>Abbreviation</td><td>{{ object.abbreviation }}</td></tr>
         <tr><td>Translation</td><td>{{ object.english_name }}</td></tr>
         </table>
-        <ul class="two-column">
-        {% for dso in object.astroobject_set.all %}
-            <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.common_name }}
-            {% if user|has_observed:dso %}
-                <span class="glyphicon glyphicon-ok green"></span>
-            {% endif %}
-            </a></li>
-        {% endfor %}
-        </ul>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading link-cursor" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" role="tab" id="headingOne" aria-expanded="false" aria-controls="collapseOne">
+              <h4 class="panel-title">
+                <a >
+                  Stars
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <ul class="two-column">
+                {% for dso in object.astroobject_set.all %}
+                    {% if 'Star' in dso.type %}
+                    <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.common_name }}
+                    {% if user|has_observed:dso %}
+                        <span class="glyphicon glyphicon-ok green"></span>
+                    {% endif %}
+                    </a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading link-cursor" href="#collapseTwo" data-toggle="collapse" data-parent="#accordion" role="tab" id="headingTwo">
+              <h4 class="panel-title" aria-expanded="false" aria-controls="collapseTwo">
+                <a >
+                  Deep Space Objects
+                </a>
+              </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+              <div class="panel-body">
+                <ul class="two-column">
+                {% for dso in object.astroobject_set.all %}
+                    {% if 'Star' not in dso.type %}
+                    <li><a href="{% url 'astroobject-detail' pk=dso.pk %}">{{ dso.common_name }}
+                    {% if user|has_observed:dso %}
+                        <span class="glyphicon glyphicon-ok green"></span>
+                    {% endif %}
+                    </a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
     </div>
     <div class="col-md-8">

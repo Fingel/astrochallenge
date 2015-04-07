@@ -177,9 +177,11 @@ class AstroObject(models.Model):
     index = models.IntegerField(default=999999)
     ra_hours = models.IntegerField()
     ra_minutes = models.FloatField()
+    ra_seconds = models.FloatField(default=0.0, blank=True)
     dec_sign = models.CharField(max_length=1, choices=(('+', '+'), ('-', '-')), default="+")
     dec_deg = models.IntegerField()
     dec_min = models.FloatField()
+    dec_seconds = models.FloatField(default=0.0, blank=True)
     magnitude = models.FloatField(blank=True, null=True)
     size = models.FloatField(blank=True, null=True)
     distance = models.FloatField(blank=True, null=True)
@@ -200,17 +202,17 @@ class AstroObject(models.Model):
 
     @property
     def ra(self):
-        return "{0}:{1}:0".format(self.ra_hours, self.ra_minutes)
+        return "{0}:{1}:{2}".format(self.ra_hours, self.ra_minutes, self.ra_seconds)
 
     @property
     def dec(self):
-        return "{0}{1}:{2}:0".format(self.dec_sign, self.dec_deg, self.dec_min)
+        return "{0}{1}:{2}:{3}".format(self.dec_sign, self.dec_deg, self.dec_min, self.dec_seconds)
 
     @property
     def fixed_body(self):
         object = ephem.FixedBody()
-        object._ra = "{0}:{1}".format(self.ra_hours, self.ra_minutes)
-        object._dec = "{0}{1}:{2}".format(self.dec_sign, self.dec_deg, self.dec_min)
+        object._ra = "{0}:{1}:{2}".format(self.ra_hours, self.ra_minutes, self.ra_seconds)
+        object._dec = "{0}{1}:{2}:{3}".format(self.dec_sign, self.dec_deg, self.dec_min, self.dec_seconds)
         return object
 
     def observation_info(self, observer):
