@@ -2,11 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.core.mail import mail_admins
+from django.core.mail import mail_admins, EmailMessage
 from django.utils import timezone
 from django.views.decorators.http import require_POST, require_GET
 from django.views.generic import View
 from django.http import JsonResponse
+from django.template.loader import get_template
+from django.template import Context
+import threading
 import datetime
 
 from astro_comments.models import CustomComment
@@ -89,6 +92,24 @@ def give_kudos(request, observation):
     if not Kudos.objects.filter(user_profile=request.user.userprofile, observation=ob).exists():
         kudos = Kudos(user_profile=request.user.userprofile, observation=ob)
         kudos.save()
+
+        class KudosThread(threading.Thread):
+            def __init__(self, kudos, **kwargs):
+                self.kudos = kudos
+                super(KudosThread, self).__init__(**kwargs)
+
+            def run(self):
+                observation = self.kudos.observation
+                from_user = self.kudos.user_profile.user
+                text = get_template('accounts/mail/kudos.txt')
+                context = Context({'from_user': from_user.username, 'observation': observation})
+                message = text.render(context)
+                subject = "{0} gave you kudos on your observation!".format(from_user.username)
+                to = (observation.user_profile.user.email,)
+                email = EmailMessage(subject=subject, body=message, to=to)
+                email.send()
+
+        KudosThread(kudos).start()
     return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
 
 

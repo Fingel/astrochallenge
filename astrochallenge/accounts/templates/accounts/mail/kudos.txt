@@ -1,0 +1,2 @@
+Nice! {{from_user}} has given you kudos on {{observation}}! You can view this observation here: http://astrochallenge.com{{observation.get_absolute_url}}
+If you no longer wish to recieve these emails, update your profile settings here: http://astrochallenge.com/accounts/edit/
