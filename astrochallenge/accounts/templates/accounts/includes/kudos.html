@@ -1,6 +1,6 @@
 {% load accounts_extras %}
 {% if user|has_kudoed:observation %}
-<button class="btn btn-sm btn-success">{{ observation.kudos_set.all|length }} kudos  <span class="glyphicon glyphicon-ok"></span></button>
+<button class="btn btn-sm btn-success">{{ observation.kudos_set.all|length }} <span class="glyphicon glyphicon-thumbs-up"></span></span></button>
 {% else %}
-<button data-observation="{{observation.pk}}" {% if observation.user_profile == user.userprofile %} disabled {% endif %} class="give-kudos btn btn-info btn-sm">{{observation.kudos_set.all|length}} kudos</button>
+<button data-observation="{{observation.pk}}" {% if observation.user_profile == user.userprofile %} disabled {% endif %} class="give-kudos btn btn-primary btn-sm">{{observation.kudos_set.all|length}} <span class="glyphicon glyphicon-thumbs-up"></span></button>
 {% endif %}
