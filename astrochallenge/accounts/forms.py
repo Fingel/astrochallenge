@@ -3,9 +3,26 @@ from django import forms
 from django.forms.models import ModelForm
 from django.core.validators import MaxValueValidator, MinValueValidator
 from captcha.fields import CaptchaField
+from bootstrap3_datetime.widgets import DateTimePicker
+from django.utils import timezone
 
 
 from models import UserProfile, Equipment
+
+
+class ObservationLogForm(forms.Form):
+    start_time = forms.DateTimeField(required=False, widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD HH:mm:ss"}
+        ))
+    end_time = forms.DateTimeField(required=False, widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD HH:mm:ss"}
+        ))
+
+    def clean_start_time(self):
+        start_time = self.cleaned_data['start_time']
+        if start_time > timezone.now():
+            raise forms.ValidationError("You can't have observed anything in the future")
+        return start_time
 
 
 class UserForm(ModelForm):

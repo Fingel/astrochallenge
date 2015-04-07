@@ -10,6 +10,15 @@ from models import Observation
 from astrochallenge.accounts.models import Equipment
 
 
+class ObservationLogForm(forms.Form):
+    start_time = DateTimeField(widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD HH:mm:ss"}
+        ))
+    end_time = DateTimeField(widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD HH:mm:ss"}
+        ))
+
+
 class ObservationForm(ModelForm):
     date = DateTimeField(initial=timezone.now, widget=DateTimePicker(
             options={"format": "YYYY-MM-DD HH:mm:ss"}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load gravatar endless thumbnail django_markdown %}
+{% load gravatar endless thumbnail django_markdown bootstrap3 %}
 {% block title %}
 {{ member.username }}
 {% endblock %}
@@ -47,8 +47,33 @@
                         </table>
                     </div>
                     <div role="tabpanel" class="tab-pane" id="observations">
-                        {% with observations=member.userprofile.observation_set.all %}
+
+                        <div class="row">
+                        <div class="col-md-12">
+                        <a class="pull-right" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          <span class="glyphicon glyphicon-calendar"></span> Filter by date
+                        </a>
+                        <div class="collapse" id="collapseExample">
+                          <div class="well">
+                            <form method="POST" action="{% url 'profile' member.username %}">
+                                {% csrf_token %}
+                                <span class="col-xs-4">
+                                {% bootstrap_field form.start_time %}
+                                </span>
+                                <span class="col-xs-4">
+                                {% bootstrap_field form.end_time %}
+                                </span>
+                                {% buttons %}
+                                <button type="submit" id="observation-filter" class="btn btn-primary">Go</button>
+                                {% endbuttons %}
+                            </form>
+                          </div>
+                          </div>
+                        </div>
+                        </div>
+                        {% if not anchor %}
                         {% paginate 5 observations using "ob_page" %}
+                        {% endif %}
                         {% for observation in observations %}
                         <div class="row observation-row">
                             <div class="col-xs-2">
@@ -77,9 +102,10 @@
                             </div>
                         </div>
                         {% endfor %}
+                        {% if not anchor %}
                         {% get_pages %}
                         {% include 'includes/astropagination.html' with url_hash='#tab_observations' %}
-                        {% endwith %}
+                        {% endif %}
                     </div>
                     <div role="tabpanel" class="tab-pane" id="challenges">
 
@@ -110,6 +136,9 @@
 {% block extra_javascript %}
 <script type="text/javascript">
 // Javascript to enable link to tab
+{% if anchor %}
+document.location.hash = '{{ anchor }}';
+{% endif %}
 var hash = document.location.hash;
 var prefix = "tab_";
 if (hash) {
@@ -121,10 +150,9 @@ $('.nav-tabs a').on('click', function (e) {
     window.location.hash = e.target.hash.replace("#", "#" + prefix);
 });
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 </script>
-<script type="text/javascript">
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    })
-</script>
+{{ form.media }}
 {% endblock %}

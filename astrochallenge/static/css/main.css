@@ -303,3 +303,7 @@ div.satellite-text {
 .link-cursor {
     cursor: pointer;
 }
+
+#observation-filter {
+   margin-top: 25px;
+}

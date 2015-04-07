@@ -6,13 +6,14 @@ from django.core.mail import mail_admins
 from django.utils import timezone
 from django.views.decorators.http import require_POST, require_GET
 from django.views.generic import View
+import datetime
 
 from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation
 from astrochallenge.accounts.models import Equipment, UserProfile
 from astrochallenge.objects.utils import moon_phase
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
-from forms import UserForm, ProfileForm, EquipmentForm, ContactForm
+from forms import UserForm, ProfileForm, EquipmentForm, ContactForm, ObservationLogForm
 
 
 def index(request):
@@ -46,8 +47,22 @@ def index(request):
 
 def profile(request, username):
     member = get_object_or_404(User, username=username)
+    anchor = ""
+    observations = Observation.objects.filter(user_profile=member.userprofile)
+    form = ObservationLogForm()
+    if request.method == "POST":
+        form = ObservationLogForm(request.POST)
+        anchor = "#tab_observations"
+        if form.is_valid():
+            start_time = form.cleaned_data['start_time'] if form.cleaned_data['start_time'] else datetime.date(1900, 1, 1)
+            end_time = form.cleaned_data['end_time'] if form.cleaned_data['end_time'] else datetime.date(2999, 1, 1)
+            observations = Observation.objects.filter(user_profile=member.userprofile,
+                date__gte=start_time,
+                date__lte=end_time)
+        else:
+            messages.error(request, "Invalid date range")
     challenges = [completed_challenge.challenge for completed_challenge in member.userprofile.completedchallenge_set.all()]
-    return render(request, 'accounts/profile.html', {'member': member, 'challenges': challenges})
+    return render(request, 'accounts/profile.html', {'member': member, 'challenges': challenges, 'observations': observations, 'form': form, 'anchor': anchor})
 
 
 @login_required
