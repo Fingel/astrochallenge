@@ -30,6 +30,9 @@
                     <li>{{ observation.date|date:"P" }}</li>
                     <li>{{ observation.points_earned }} points</li>
                     <li><a href="https://www.openstreetmap.org/?mlat={{observation.lat}}&mlon={{observation.lng}}" target="_blank"><span class="glyphicon glyphicon-map-marker"></span> view</a></li>
+                    <li>
+                    {% include 'accounts/includes/kudos.html' %}
+                    </li>
                     </ul>
                 </div>
                 </a>

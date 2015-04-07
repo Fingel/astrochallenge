@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^accounts/profile/(?P<username>.+)/$', views.profile, name='profile'),
     url(r'^equipment/add/$', views.add_equipment, name='add-equipment'),
     url(r'^equipment/delete/(?P<pk>\d+)/$', views.delete_equipment, name='delete-equipment'),
+    url(r'^accounts/kudos/(?P<observation>\d+)/$', views.give_kudos, name='give-kudos'),
 )

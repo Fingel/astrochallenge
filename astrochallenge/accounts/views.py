@@ -6,11 +6,12 @@ from django.core.mail import mail_admins
 from django.utils import timezone
 from django.views.decorators.http import require_POST, require_GET
 from django.views.generic import View
+from django.http import JsonResponse
 import datetime
 
 from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation
-from astrochallenge.accounts.models import Equipment, UserProfile
+from astrochallenge.accounts.models import Equipment, UserProfile, Kudos
 from astrochallenge.objects.utils import moon_phase
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from forms import UserForm, ProfileForm, EquipmentForm, ContactForm, ObservationLogForm
@@ -77,6 +78,18 @@ def add_equipment(request):
     else:
         messages.error(request, "There was an error with your submission")
     return redirect('edit-profile')
+
+
+@login_required
+@require_GET
+def give_kudos(request, observation):
+    ob = get_object_or_404(Observation, pk=observation)
+    if ob.user_profile == request.user.userprofile:
+        return JsonResponse({'result': 'error', 'msg': 'You can\'t give yourself kudos!'})
+    if not Kudos.objects.filter(user_profile=request.user.userprofile, observation=ob).exists():
+        kudos = Kudos(user_profile=request.user.userprofile, observation=ob)
+        kudos.save()
+    return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
 
 
 @login_required

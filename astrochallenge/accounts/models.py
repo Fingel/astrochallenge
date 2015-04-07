@@ -58,6 +58,12 @@ class Equipment(models.Model):
         return self.instrument
 
 
+class Kudos(models.Model):
+    observation = models.ForeignKey('objects.Observation')
+    user_profile = models.ForeignKey(UserProfile)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+
 #  Initial account setup
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, **kwargs):
