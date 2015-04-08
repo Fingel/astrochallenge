@@ -1,6 +1,8 @@
+{% load comments %}
 <div class="observation-header">
     <div class="pull-right" style="text-align:right;">
         <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"M j P" }} <button class="btn btn-sm btn-info"> <span class="glyphicon glyphicon-link"></span></button></a></p>
+        {% get_comment_count for observation as comment_count %}
         <p><a href="{{ observation.get_absolute_url }}#tab_discussion"> {{ comment_count }} comment{{ comment_count|pluralize }} </a>{% include 'accounts/includes/kudos.html' %}</p>
     </div>
     <div>

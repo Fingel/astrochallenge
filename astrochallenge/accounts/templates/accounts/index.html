@@ -57,7 +57,6 @@
         <hr/>
         {% paginate 10 observations using "ob_page" %}
         {% for observation in observations %}
-        {% get_comment_count for observation as comment_count %}
         <div class="row observation-row">
             <div class="col-sm-2">
                 <div class="user-deets">
