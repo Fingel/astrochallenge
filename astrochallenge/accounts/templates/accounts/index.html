@@ -81,21 +81,7 @@
                 </div>
             </div>
             <div class="col-sm-10">
-                <div class="observation-header">
-                    <div class="pull-right" style="text-align:right;">
-                        <p><a href="{{ observation.get_absolute_url }}#tab_observations">{{ observation.date|date:"M j P" }} <button class="btn btn-sm btn-info"> <span class="glyphicon glyphicon-link"></span></button></a></p>
-                        <p><a href="{{ observation.get_absolute_url }}#tab_discussion"> {{ comment_count }} comment{{ comment_count|pluralize }} </a>{% include 'accounts/includes/kudos.html' %}</p>
-                    </div>
-                    <div>
-                    <span class="emphasize"><a href="{{ observation.content_object.get_absolute_url }}">{{ observation.name }}</a></span>
-                    <p>
-                    {% if observation.equipment %}
-                    {{ observation.equipment }}<br/>
-                    {% endif %}
-                    {{ observation.points_earned }} points
-                    </p>
-                    </div>
-                </div>
+                {% include 'objects/includes/observation_header.html' %}
                 <div class="observation-body">
                     <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
                     {% if observation.description|length > 500 %}

@@ -2,19 +2,21 @@
 {% paginate 5 observations using "ob_page" %}
 {% for observation in observations %}
 <div class="row observation-row">
-    <div class="col-xs-2">
+    <div class="col-sm-2">
         <a href="{% url 'profile' observation.user_profile.user.username %}">
             <img class="profile-image img-responsive" src="{% gravatar_url observation.user_profile.user.email size=100 %}"/>
 
             {{observation.user_profile.user.username}} ({{ observation.user_profile.points }})
         </a>
     </div>
-    <div class="col-xs-10">
-        <span class="pull-right"><a href="{{ observation.get_absolute_url}}">{{ observation.date }} <button class="btn btn-sm btn-info"><span class="glyphicon glyphicon-link"></span></button></a>
-        </span>
-        <p>Observed with: {{ observation.equipment }}</p>
-        <div class="markdown-text">
-        {{ observation.description | markdown_safe }}</p>
+    <div class="col-sm-10">
+        {% include 'objects/includes/observation_header.html' %}
+        <div class="observation-body">
+            <p>
+                <div class="markdown-text">
+                    {{ observation.description | markdown_safe }}
+                </div>
+            </p>
         </div>
     </div>
 </div>

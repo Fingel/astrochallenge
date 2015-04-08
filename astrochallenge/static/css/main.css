@@ -307,3 +307,13 @@ div.satellite-text {
 #observation-filter {
    margin-top: 25px;
 }
+
+@media(max-width: 800px) {
+    .hidden-800 {
+        display: none;
+    }
+
+    .stretch-800 {
+        width: 100%;
+    }
+}
