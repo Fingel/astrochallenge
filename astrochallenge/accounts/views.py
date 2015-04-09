@@ -108,6 +108,8 @@ def give_kudos(request, observation):
             kudos = Kudos(user_profile=request.user.userprofile, observation=ob)
             kudos.save()
             if ob.user_profile.recieve_notification_emails:
+                logger.info('{0} WILL SEND EMAIL: Dest: {1}'.format(datetime.datetime.now(), ob.user_profile.user.email))
+
                 class KudosThread(threading.Thread):
                     def __init__(self, kudos, **kwargs):
                         self.kudos = kudos
@@ -123,8 +125,9 @@ def give_kudos(request, observation):
                             subject = "{0} gave you kudos on your observation!".format(from_user.username)
                             to = (observation.user_profile.user.email,)
                             email = EmailMessage(subject=subject, body=message, to=to)
+                            logger.info('{0} EMAIL PREPARE: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
                             email.send()
-                            logger.info('{0} EMAIL: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
+                            logger.info('{0} EMAIL SENT: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
                         except Exception as exception:
                             logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
 
