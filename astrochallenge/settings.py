@@ -83,6 +83,27 @@ DATABASES = {
     }
 }
 
+DEFAULT_LOGGER = 'astrolog'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/app.log',
+        },
+    },
+    'loggers': {
+        'astrolog': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
+
 EMAIL_BACKEND = 'django_mailgun.MailgunBackend'
 MAILGUN_ACCESS_KEY = ''
 MAILGUN_SERVER_NAME = 'astrochallenge.com'

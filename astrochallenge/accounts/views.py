@@ -9,6 +9,8 @@ from django.views.generic import View
 from django.http import JsonResponse
 from django.template.loader import get_template
 from django.template import Context
+from django.conf import settings
+import logging
 import threading
 import datetime
 
@@ -18,6 +20,9 @@ from astrochallenge.accounts.models import Equipment, UserProfile, Kudos
 from astrochallenge.objects.utils import moon_phase
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from forms import UserForm, ProfileForm, EquipmentForm, ContactForm, ObservationLogForm
+
+
+logger = logging.getLogger(settings.DEFAULT_LOGGER)
 
 
 def index(request):
@@ -109,15 +114,19 @@ def give_kudos(request, observation):
                         super(KudosThread, self).__init__(**kwargs)
 
                     def run(self):
-                        observation = self.kudos.observation
-                        from_user = self.kudos.user_profile.user
-                        text = get_template('accounts/mail/kudos.txt')
-                        context = Context({'from_user': from_user.username, 'observation': observation})
-                        message = text.render(context)
-                        subject = "{0} gave you kudos on your observation!".format(from_user.username)
-                        to = (observation.user_profile.user.email,)
-                        email = EmailMessage(subject=subject, body=message, to=to)
-                        email.send()
+                        try:
+                            observation = self.kudos.observation
+                            from_user = self.kudos.user_profile.user
+                            text = get_template('accounts/mail/kudos.txt')
+                            context = Context({'from_user': from_user.username, 'observation': observation})
+                            message = text.render(context)
+                            subject = "{0} gave you kudos on your observation!".format(from_user.username)
+                            to = (observation.user_profile.user.email,)
+                            email = EmailMessage(subject=subject, body=message, to=to)
+                            email.send()
+                            logger.info('{0} EMAIL: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
+                        except Exception as exception:
+                            logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
 
                 KudosThread(kudos).start()
         return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
