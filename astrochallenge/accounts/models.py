@@ -64,6 +64,9 @@ class Kudos(models.Model):
     user_profile = models.ForeignKey(UserProfile)
     timestamp = models.DateTimeField(auto_now_add=True)
 
+    def __unicode__(self):
+        return "{0} on {1}".format(self.user_profile.user.username, self.observation)
+
 
 #  Initial account setup
 @receiver(post_save, sender=User)
