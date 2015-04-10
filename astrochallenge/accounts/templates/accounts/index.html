@@ -82,6 +82,11 @@
             <div class="col-sm-10">
                 {% include 'objects/includes/observation_header.html' %}
                 <div class="observation-body">
+                    {% if observation.image %}
+                    <div class="observation-image">
+                        <a href="{{ observation.image.url }}" alt="{{ target }}" title="{{ target }}"><img class="img-responsive" src="{{ observation.image|thumbnail_url:'observation' }}"></a>
+                    </div>
+                    {% endif %}
                     <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
                     {% if observation.description|length > 500 %}
                     <a href="{{ observation.get_absolute_url }}">

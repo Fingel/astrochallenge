@@ -166,10 +166,12 @@ THUMBNAIL_ALIASES = {
         'satellite': {'size': (175, 175), 'crop': False},
         'log': {'size': (200, 200), 'crop': False},
         'challenge': {'size': (350, 350), 'crop': 'smart'},
+        'observation': {'size': (1200, 1200), 'crop': False},
     }
 }
 
 THUMBNAIL_BASEDIR = 'thumbs'
+MAX_UPLOAD_SIZE = 50 * 1024 * 1024
 
 # Astro Specific stuff
 

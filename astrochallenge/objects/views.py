@@ -89,7 +89,7 @@ def post_observation(request, next=None, observation_id=None):
         instance = Observation.objects.get(pk=observation_id, user_profile=request.user.userprofile)
     except Observation.DoesNotExist:
         instance = None
-    observation_form = ObservationForm(data, user=request.user, instance=instance)
+    observation_form = ObservationForm(data, request.FILES, user=request.user, instance=instance)
 
     if not observation_form.is_valid():
         messages.error(request, "Error with observation submission:" + str(observation_form.errors))

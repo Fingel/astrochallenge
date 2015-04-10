@@ -1,0 +1,13 @@
+{% load thumbnail django_markdown %}
+{% if observation.image %}
+<div class="observation-image">
+    <a href="{{ observation.image.url }}" alt="{{ target }}" title="{{ target }}"><img class="img-responsive" src="{{ observation.image|thumbnail_url:'observation' }}"></a>
+</div>
+{% endif %}
+<div class="observation-body">
+    <div class="markdown-text">
+        <p>
+            {{ observation.description | markdown_safe }}
+        </p>
+    </div>
+</div>

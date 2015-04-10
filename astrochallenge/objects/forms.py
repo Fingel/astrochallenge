@@ -1,5 +1,6 @@
 from django.forms.models import ModelForm
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.conf import settings
 from django import forms
 from django.forms import HiddenInput, DateTimeField, ModelChoiceField
 from django.utils import timezone
@@ -36,9 +37,15 @@ class ObservationForm(ModelForm):
             raise forms.ValidationError("Unless you've learned to bend the laws of time and space, you can't observe in the future!")
         return date
 
+    def clean_image(self):
+        image = self.cleaned_data['image']
+        if image.size > settings.MAX_UPLOAD_SIZE:
+            raise forms.ValidationError("Image is too large! Image must be less than 50mb in size.")
+        return image
+
     class Meta:
         model = Observation
-        fields = ('content_type', 'object_id', 'date', 'lat', 'lng', 'equipment', 'seeing', 'light_pollution', 'description')
+        fields = ('content_type', 'object_id', 'date', 'lat', 'lng', 'equipment', 'seeing', 'light_pollution', 'description', 'image')
         widgets = {
             'content_type': HiddenInput(),
             'object_id': HiddenInput(),

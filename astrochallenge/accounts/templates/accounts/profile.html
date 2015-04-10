@@ -88,14 +88,8 @@
                                 </a>
                             </div>
                             <div class="col-xs-10 stretch-800">
-                              {% include 'objects/includes/observation_header.html' %}
-                                <div class="observation-body">
-                                    <p>
-                                        <div class="markdown-text">
-                                            {{ observation.description | markdown_safe }}
-                                        </div>
-                                    </p>
-                                </div>
+                                {% include 'objects/includes/observation_header.html' %}
+                                {% include 'objects/includes/observation_body.html' %}
                             </div>
                         </div>
                         {% endfor %}

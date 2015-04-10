@@ -7,7 +7,9 @@
 <meta property="og:title" content="{{ observation }}">
 <meta property="og:description" content="{{ observation.description|truncatechars:500 }}"/>
 <meta property="og:site_name" content="AstroChallenge" />
-{% if object.content_object.image %}
+{% if object.image %}
+<meta property="og:image" content="http://astrochallenge.com{{ object.image|thumbnail_url:'observation' }}" />
+{% elif object.content_object.image %}
 <meta property="og:image" content="http://astrochallenge.com{{ object.content_object.image.url }}" />
 {% endif %}
 
@@ -67,6 +69,11 @@
         <div class="colwrap">
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="observation">
+                    {% if observation.image %}
+                    <div class="observation-image">
+                        <a href="{{ observation.image.url }}" alt="{{ target }}" title="{{ target }}"><img class="img-responsive" src="{{ observation.image|thumbnail_url:'observation' }}"></a>
+                    </div>
+                    {% endif %}
                     <div class="markdown-text">
                     {{ observation.description|markdown_safe }}
                     </div>
@@ -91,7 +98,7 @@
                 </div>
                 {% if observation.user_profile == user.userprofile %}
                 <div role="tabpanel" class="tab-pane" id="edit">
-                    <form method="post" action="{% url 'edit-observation' observation.id %}">
+                    <form method="post" action="{% url 'edit-observation' observation.id %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{observation_form.content_type}}
                         {{observation_form.object_id}}
@@ -113,6 +120,9 @@
                         </span>
                         <span class="col-xs-6">
                         {% bootstrap_field observation_form.light_pollution %}
+                        </span>
+                        <span class="col-xs-12">
+                        {% bootstrap_field observation_form.image %}
                         </span>
                         <span class="col-xs-12">
                         {% bootstrap_field observation_form.description %}

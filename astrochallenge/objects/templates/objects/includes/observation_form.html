@@ -70,7 +70,7 @@ $(document).ready(function(){
         {% endif %}
         <p>Provide the time and most accurate location possible for this observation. In your description detail how difficult it was to find the object,
         what equipment you used, what the object looked like, etc.</p>
-        <form method="post" action="{% url 'post-observation' %}">
+        <form method="post" action="{% url 'post-observation' %}" enctype="multipart/form-data">
             {% csrf_token %}
             {{observation_form.content_type}}
             {{observation_form.object_id}}
@@ -93,6 +93,9 @@ $(document).ready(function(){
             </span>
             <span class="col-xs-6">
             {% bootstrap_field observation_form.light_pollution %}
+            </span>
+            <span class="col-xs-12">
+            {% bootstrap_field observation_form.image %}
             </span>
             <span class="col-xs-12">
             {% bootstrap_field observation_form.description %}
