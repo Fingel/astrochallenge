@@ -39,7 +39,7 @@ class ObservationForm(ModelForm):
 
     def clean_image(self):
         image = self.cleaned_data['image']
-        if image.size > settings.MAX_UPLOAD_SIZE:
+        if image and image.size > settings.MAX_UPLOAD_SIZE:
             raise forms.ValidationError("Image is too large! Image must be less than 50mb in size.")
         return image
 
