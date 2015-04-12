@@ -26,6 +26,7 @@ class Observation(models.Model):
     light_pollution = models.CharField(max_length=2, choices=settings.QUALITATIVE_RATINGS, default='A')
     description = models.TextField(blank=True, default="")
     image = models.ImageField(upload_to="observations", blank=True, null=True, help_text="Maximum file size: 50mb.")
+    featured = models.BooleanField(default=False, help_text="Feature this observation on your profile.")
 
     class Meta:
         ordering = ['-date']

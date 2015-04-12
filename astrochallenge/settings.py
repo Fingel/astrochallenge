@@ -166,6 +166,7 @@ THUMBNAIL_ALIASES = {
         'satellite': {'size': (175, 175), 'crop': False},
         'log': {'size': (200, 200), 'crop': False},
         'challenge': {'size': (350, 350), 'crop': 'smart'},
+        'featured_observation': {'size': (250, 250), 'crop': ",0"},
         'observation': {'size': (1200, 1200), 'crop': False},
     }
 }

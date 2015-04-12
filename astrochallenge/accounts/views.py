@@ -58,8 +58,12 @@ def profile(request, username):
     anchor = ""
     kudos = 0
     observations = Observation.objects.filter(user_profile=member.userprofile)
+    featured_observations = []
     for observation in observations:
         kudos += observation.kudos_set.count()
+        if observation.featured:
+            featured_observations.append(observation)
+
     form = ObservationLogForm()
     if request.method == "POST":
         form = ObservationLogForm(request.POST)
@@ -78,7 +82,8 @@ def profile(request, username):
                                                     'observations': observations,
                                                     'form': form,
                                                     'anchor': anchor,
-                                                    'kudos': kudos})
+                                                    'kudos': kudos,
+                                                    'featured_observations': featured_observations[:6]})
 
 
 @login_required

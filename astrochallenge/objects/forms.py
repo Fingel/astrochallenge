@@ -45,7 +45,7 @@ class ObservationForm(ModelForm):
 
     class Meta:
         model = Observation
-        fields = ('content_type', 'object_id', 'date', 'lat', 'lng', 'equipment', 'seeing', 'light_pollution', 'description', 'image')
+        fields = ('content_type', 'object_id', 'date', 'lat', 'lng', 'equipment', 'seeing', 'light_pollution', 'description', 'image', 'featured')
         widgets = {
             'content_type': HiddenInput(),
             'object_id': HiddenInput(),

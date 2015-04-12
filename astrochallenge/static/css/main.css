@@ -326,3 +326,13 @@ div.satellite-text {
 input[type=file]{
     color: #FFFFFF;
 }
+
+.featured-observation {
+    min-height: 250px;
+    background-repeat: no-repeat;
+    background-position: center-top;
+}
+
+#featured-observations {
+    margin-bottom: 10px;
+}

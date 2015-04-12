@@ -36,6 +36,26 @@
             <div class="colwrap">
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="info">
+                        {% if featured_observations %}
+                        <div class="row" id="featured-observations">
+                            <span class="col-md-12">
+                            <h2>Featured Observations:</h2>
+                            </span>
+                            {% for observation in featured_observations %}
+                                <a href="{{ observation.get_absolute_url }}">
+                                <div class="col-md-4">
+                                    {% with featured_image=observation.image|default:observation.content_object.image %}
+                                    <div class="featured-observation" style="background-image: url({{ featured_image|thumbnail_url:'featured_observation' }})">
+                                        <center>
+                                        <h3>{{ observation.content_object }}</h3>
+                                        <h4>{{ observation.date }}</h4>
+                                    </div>
+                                    {% endwith %}
+                                </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
                         <table class="table">
                             <tr><td>Name</td><td>{{member.first_name}} {{member.last_name}}</td></tr>
                             <tr><td>Location</td><td>{{member.userprofile.location}}</td></tr>
