@@ -45,7 +45,7 @@
                                 <a href="{{ observation.get_absolute_url }}">
                                 <div class="col-md-4">
                                     {% with featured_image=observation.image|default:observation.content_object.image %}
-                                    <div class="featured-observation" style="background-image: url({{ featured_image|thumbnail_url:'featured_observation' }})">
+                                    <div class="featured-observation" style="background-image: url({{ featured_image|thumbnail_url:'detail' }})">
                                         <center>
                                         <h3>{{ observation.content_object }}</h3>
                                         <h4>{{ observation.date }}</h4>
