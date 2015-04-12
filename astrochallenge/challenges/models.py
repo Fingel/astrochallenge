@@ -44,6 +44,10 @@ class Challenge(models.Model):
         return Challenge.objects.filter(start_time__lt=timezone.now(), end_time__gt=timezone.now())
 
     @property
+    def current(self):
+        return self.start_time < timezone.now() and self.end_time > timezone.now()
+
+    @property
     def all_objects(self):
         all_objects = list(self.solarsystemobjects.all())
         all_objects += list(self.astroobjects.all())

@@ -49,7 +49,9 @@ $(document).ready(function(){
         <p>Available Challenges:</p>
         <ul>
         {% for challenge in object.challenge_set.all %}
+            {% if challenge.current %}
             <li><a href="{{ challenge.get_absolute_url }}">{{ challenge }}</a></li>
+            {% endif %}
         {% endfor %}
         </ul>
     {% endif %}
