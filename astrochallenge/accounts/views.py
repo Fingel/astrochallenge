@@ -107,7 +107,6 @@ def give_kudos(request, observation):
             kudos = Kudos(user_profile=request.user.userprofile, observation=ob)
             kudos.save()
             if ob.user_profile.recieve_notification_emails:
-                logger.info('{0} WILL SEND EMAIL: Dest: {1}'.format(datetime.datetime.now(), ob.user_profile.user.email))
                 try:
                     observation = kudos.observation
                     from_user = kudos.user_profile.user
@@ -117,34 +116,11 @@ def give_kudos(request, observation):
                     subject = "{0} gave you kudos on your observation!".format(from_user.username)
                     to = (observation.user_profile.user.email,)
                     email = EmailMessage(subject=subject, body=message, to=to)
-                    logger.info('{0} EMAIL PREPARE: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
                     email.send()
                     logger.info('{0} EMAIL SENT: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
                 except Exception as exception:
                     logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
 
-                # class KudosThread(threading.Thread):
-                #     def __init__(self, kudos, **kwargs):
-                #         self.kudos = kudos
-                #         super(KudosThread, self).__init__(**kwargs)
-
-                #     def run(self):
-                #         try:
-                #             observation = self.kudos.observation
-                #             from_user = self.kudos.user_profile.user
-                #             text = get_template('accounts/mail/kudos.txt')
-                #             context = Context({'from_user': from_user.username, 'observation': observation})
-                #             message = text.render(context)
-                #             subject = "{0} gave you kudos on your observation!".format(from_user.username)
-                #             to = (observation.user_profile.user.email,)
-                #             email = EmailMessage(subject=subject, body=message, to=to)
-                #             logger.info('{0} EMAIL PREPARE: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
-                #             email.send()
-                #             logger.info('{0} EMAIL SENT: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
-                #         except Exception as exception:
-                #             logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
-
-                # KudosThread(kudos).start()
         return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
 
 

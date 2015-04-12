@@ -1,0 +1,6 @@
+{{from_user}} commented on {{observation}}:
+
+"{{ comment }}"
+
+You can reply to this comment here: http://astrochallenge.com{{observation.get_absolute_url}}#tab_discussion
+If you no longer wish to recieve these emails, update your profile settings: http://astrochallenge.com/accounts/edit/
