@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load gravatar thumbnail django_markdown comments bootstrap3 django_markdown %}
 {% block title %}{{ object.user_profile.user.username }} - {{ observation.date }} - {{ observation.content_object }} {% endblock %}
+{% block description %}{{ observation.description|default:block.super }}{% endblock %}
 {% block extra_head %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/rrssb.css" />
 <meta property="og:url" content="http://astrochallenge.com/{{ request.path }}" />

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load comments bootstrap3 humanize objects_extras thumbnail %}
 {% block title %} {{ object }}{% endblock %}
+{% block description %}{{ object.description|default:block.super }}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col-md-3">
