@@ -215,5 +215,6 @@ except ImportError:
 
 try:
     INSTALLED_APPS += LOCAL_INSTALLED_APPS
+    ALLOWED_HOSTS += LOCAL_ALLOWED_HOSTS
 except:
     pass
