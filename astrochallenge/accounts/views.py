@@ -30,12 +30,12 @@ def index(request):
     percentage, name, letter = moon_phase(timezone.now())
     next_challenge = None
     if request.user.is_authenticated():
-        for challenge in Challenge.current_challenges():
+        for challenge in Challenge.current_challenges().exclude(type='numeric'):
             if not CompletedChallenge.objects.filter(user_profile=request.user.userprofile, challenge=challenge).exists():
                 next_challenge = challenge
                 break
     else:
-        next_challenge = Challenge.current_challenges().first()
+        next_challenge = Challenge.current_challenges().exclude(type='numeric').first()
 
     #  TODO: Change make this much more effecient
     userprofiles = UserProfile.objects.all().exclude(observation=None)
