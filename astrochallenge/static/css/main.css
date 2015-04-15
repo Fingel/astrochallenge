@@ -337,3 +337,8 @@ input[type=file]{
 #featured-observations {
     margin-bottom: 10px;
 }
+
+.user-list img {
+    display: inline;
+    margin-right: 5px;
+}
