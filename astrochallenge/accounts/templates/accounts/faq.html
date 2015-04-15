@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} FAQ {% endblock %}
+{% block content %}
+<div class="colwrap">
+<h1>Help/Frequently Asked Questions</h1>
+<h2>1. How do I log an obervation?</h2>
+<p>To post an observation, you must have first <a href="{% url 'registration_register' %}"> registered for an account</a> and <a href="{% url 'auth_login' %}">be logged in</a>. Now click on the "Log Observation" button in the header and choose which type of object you'd like to make an observation for (Solar system or deep space). You will be taken to a table of objects. Here you can search and sort the items; once you have found the object you are looking for, click the row. You will see a "Log observation" button on the left hand side under the name and image of the object. Click that button to bring up the observation form and log your observation!</p>
+<h2>2. I can't find the object I'm looking for!</h2>
+<p>Probably because it doesn't yet exist in our database. If you find something that is missing, <a href="{% url 'contact' %}">contact us</a> and we'll be sure to add it.</p>
+<h2>3. How do I view my or someone else's observation journal?</h2>
+<p>To view your observation journal, try {% if user.is_authenticated %}<a href="{% url 'profile' %}#tab_observations">this link</a>{% else %}<a href="{% url 'auth_login' %}?next={% url 'profile' %}#tab_observations">this link</a>{% endif %} or click the profile link in the dropdown at the upper right hand side of the screen (where it shows your avatar and points). To view another user's journal, visit the <a href="{% url 'user-list' %}">user directory</a> and select the user you'd like to view.</p>
+<h2>4. Help! I can't figure something out!</h2>
+<p><a href="{% url 'contact' %}">Contact us!</a></p>
+</div>
+{% endblock %}

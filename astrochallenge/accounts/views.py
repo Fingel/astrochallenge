@@ -53,8 +53,14 @@ def index(request):
     return render(request, 'accounts/index.html', context)
 
 
-def profile(request, username):
-    member = get_object_or_404(User, username=username)
+def profile(request, username=None):
+    if not username:
+        if request.user.is_authenticated():
+            member = request.user
+        else:
+            return redirect('auth_login')
+    else:
+        member = get_object_or_404(User, username=username)
     anchor = ""
     kudos = 0
     observations = Observation.objects.filter(user_profile=member.userprofile)

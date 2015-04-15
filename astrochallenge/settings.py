@@ -173,7 +173,6 @@ THUMBNAIL_ALIASES = {
 
 THUMBNAIL_BASEDIR = 'thumbs'
 MAX_UPLOAD_SIZE = 50 * 1024 * 1024
-
 # Astro Specific stuff
 
 CATALOGS = {
