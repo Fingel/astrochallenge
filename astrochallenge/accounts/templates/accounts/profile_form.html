@@ -9,6 +9,12 @@
     $(document).ready(function(){
         lat = 37;
         lng = -122;
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(location){
+                lat = location.coords.latitude;
+                lng = location.coords.longitude;
+            });
+        }
         $('#locationModal').on('shown.bs.modal', function(e){
             $('#locationpicker').locationpicker({
             location: {latitude: lat, longitude: lng},
