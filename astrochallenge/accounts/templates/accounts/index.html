@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load tz bootstrap3 endless gravatar thumbnail django_markdown challenges_extras comments %}
-{% block title %}Home{% endblock %}
+{% block title %}
+    Home - Latest Observations
+    {% if request.GET.ob_page > 1 %}
+    page {{ request.GET.ob_page }}
+    {% endif %}
+{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
 <div class="hook colwrap">
