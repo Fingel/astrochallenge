@@ -3,6 +3,8 @@ from django.conf import settings
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.contrib.sitemaps.views import sitemap
+from sitemap import *
 
 
 def required(wrapping_functions, patterns_rslt):
@@ -39,6 +41,14 @@ def _wrap_instance__resolve(wrapping_functions, instance):
 
     return instance
 
+sitemaps = {
+    'AstroObjectSitemap': AstroObjectSitemap,
+    'SolarSystemObjectSitemap': SolarSystemObjectSitemap,
+    'ObservationSitemap': ObservationSitemap,
+    'ConstellationSitemap': ConstellationSitemap,
+    'ChallengeSitemap': ChallengeSitemap,
+    'StaticViewsSitemap': StaticViewsSitemap,
+}
 
 urlpatterns = patterns('',
     url('^markdown/', include('django_markdown.urls')),
@@ -48,6 +58,7 @@ urlpatterns = patterns('',
     url(r'^', include('astrochallenge.objects.urls')),
     url(r'^', include('astrochallenge.challenges.urls')),
     url(r'^redrock/', include(admin.site.urls)),
+    url(r'sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 )
 
 urlpatterns += required(

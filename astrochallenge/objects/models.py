@@ -65,6 +65,9 @@ class Constellation(models.Model):
     def __unicode__(self):
         return self.latin_name
 
+    def get_absolute_url(self):
+        return urlresolvers.reverse("constellation-detail", args=(self.pk,))
+
 
 class SolarSystemObject(models.Model):
     name = models.CharField(max_length=200)
