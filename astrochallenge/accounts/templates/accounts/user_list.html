@@ -27,6 +27,7 @@
                 </thead>
                 <tbody>
                 {% for user in object_list %}
+                {% if user.is_active %}
                 <tr href="{% url 'profile' user.username %}">
                     <td><img class="img-responsive" src="{% gravatar_url user.email 25 %}"> {{ user.username }}</td>
                     <td>{{ user.first_name }} {{ user.last_name }}</td>
@@ -34,6 +35,7 @@
                     <td>{{ user.userprofile.points }}</td>
                     <td>{{ user.userprofile.observation_set.count }}</td>
                 </tr>
+                {% endif %}
                 {% endfor %}
                 </tbody>
             </table>
