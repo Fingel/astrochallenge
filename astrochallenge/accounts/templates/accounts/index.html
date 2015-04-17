@@ -8,6 +8,7 @@
 {% endblock %}
 {% block extra_head %}
 <meta property="og:image" content="http://astrochallenge.com{{STATIC_URL}}images/astrochallenge.jpg" />
+<meta itemprop="image" content="http://astrochallenge.com{{STATIC_URL}}images/astrochallenge.jpg" />
 {% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
