@@ -6,6 +6,9 @@
     page {{ request.GET.ob_page }}
     {% endif %}
 {% endblock %}
+{% block extra_head %}
+<meta property="og:image" content="{{STATIC_URL}}images/ogimage.png" />
+{% endblock %}
 {% block content %}
 {% if not user.is_authenticated %}
 <div class="hook colwrap">
