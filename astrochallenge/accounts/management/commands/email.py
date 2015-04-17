@@ -17,7 +17,7 @@ class Command(BaseCommand):
         email = EmailMessage(subject=subject, body=body, to=to, from_email="info@astrochallenge.com")
         try:
             email.send()
-            print ("Email sent successfully")
+            print ("\nEmail sent successfully")
             self.logger.info('{0} EMAIL SENT: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
         except Exception as exception:
             self.logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
