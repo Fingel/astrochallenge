@@ -342,3 +342,8 @@ input[type=file]{
     display: inline;
     margin-right: 5px;
 }
+
+/***ALADIN***/
+.aladin-location {
+    display: none;
+}

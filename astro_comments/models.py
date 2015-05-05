@@ -1,4 +1,4 @@
-from django_comments import Comment
+from django_comments.models import Comment
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.template.loader import get_template

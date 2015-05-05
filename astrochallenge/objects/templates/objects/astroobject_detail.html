@@ -9,9 +9,12 @@
         <h1 class="no-top-margin">{{ object }}</h1>
         {% if object.image %}
         <a href="{{ object.image.url }}" alt="{{ object }}"><img src="{{ object.image|thumbnail_url:'detail' }}" class="img-responsive"></a>
-        {% endif %}
+
         {% if object.image_attribution %}
         <span class="glyphicon glyphicon-info-sign attribution" data-toggle="tooltip" data-placement="bottom" title="{{ object.image_attribution }}"></span>
+        {% endif %}
+        {% else %}
+        {% include "objects/includes/aladin.html" with object=object %}
         {% endif %}
         {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='astroobject-detail' %}
         </div>
