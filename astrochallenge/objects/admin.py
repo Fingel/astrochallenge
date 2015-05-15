@@ -2,7 +2,12 @@ from django.contrib import admin
 from astrochallenge.objects.models import AstroObject, CatalogObject, Constellation, SolarSystemObject, Observation
 
 
+class CatalogObjectInline(admin.StackedInline):
+    model = CatalogObject
+
+
 class AstroObjectAdmin(admin.ModelAdmin):
+    inlines = (CatalogObjectInline, )
     list_display = ('common_name', 'catalog_rep')
     list_filter = ('type', 'constellation')
     search_fields = ('common_name', 'description')
