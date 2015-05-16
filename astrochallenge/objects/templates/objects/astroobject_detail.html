@@ -78,7 +78,12 @@
             <td>Catalog Designations</td>
             <td> {{ object.catalog_rep }}</td>
             </tr>
-
+            {% if object.discoverer or object.discovery_date %}
+            <tr>
+                <td>Discovered</td>
+                <td>{{ object.discovery_date|date:"Y" }} {{ object.discoverer }}</td>
+            </tr>
+            {% endif %}
             {% if object.description %}
             <tr><td colspan="2">{{ object.description }}</td></tr>
             {% endif %}

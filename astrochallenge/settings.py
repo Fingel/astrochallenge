@@ -180,6 +180,7 @@ CATALOGS = {
     'C': 'Caldwell',
     'HIP': 'Hipparcos',
     'HD': 'Henry Draper',
+    'IC': 'Index Catalog',
 }
 
 SOLAR_SYSTEM_OBJECT_TYPES = (

@@ -196,6 +196,8 @@ class AstroObject(models.Model):
     points = models.IntegerField(default=0)
     image = models.ImageField(upload_to="astro_objects", blank=True, null=True)
     image_attribution = models.CharField(max_length=1000, default="", blank=True)
+    discoverer = models.CharField(max_length=200, default="", blank=True)
+    discovery_date = models.DateField(blank=True, null=True)
     observations = GenericRelation(Observation)
 
     class Meta:
