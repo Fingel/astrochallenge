@@ -37,6 +37,7 @@
         <div id="moon-info">
             <center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
         </div>
+        {% if next_challenge %}
         <div id="next-challenge">
             <center><h3>Try This:</h3>
             <a href="{{ next_challenge.get_absolute_url }}">
@@ -46,6 +47,7 @@
             </a>
             </center>
         </div>
+        {% endif %}
         <div id="leaderboard">
             <center><h3>Top Observers</h3></center>
             <ol>
