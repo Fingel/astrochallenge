@@ -18,7 +18,7 @@ class UserFactory(factory.Factory):
     class Meta:
         model = User
 
-    username = 'stargazer'
+    username = factory.Sequence(lambda n: 'stargazer{0}'.format(n))
     password = factory.PostGenerationMethodCall('set_password', 'supersecret')
     first_name = 'Edwin'
     last_name = 'Hubble'
