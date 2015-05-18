@@ -24,3 +24,5 @@ django-markdown
 django-bootstrap3-datetimepicker
 django-simple-captcha
 https://github.com/Fingel/fchart/archive/master.zip
+django_nose
+coverage
