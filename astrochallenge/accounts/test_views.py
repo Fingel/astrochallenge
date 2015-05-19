@@ -10,7 +10,7 @@ import base64
 
 class AccountsViewTest(TransactionTestCase):
     def setUp(self):
-        AdminFactory.build().save()
+        AdminFactory.create()
         self.user = UserFactory.create()
 
     def test_homepage(self):
