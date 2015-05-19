@@ -4,14 +4,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from registration.models import RegistrationProfile
 from test_helpers import AdminFactory, UserFactory
+from captcha.models import CaptchaStore
 import base64
 
 
 class AccountsViewTest(TransactionTestCase):
     def setUp(self):
         AdminFactory.build().save()
-        self.user = UserFactory.build()
-        self.user.save()
+        self.user = UserFactory.create()
 
     def test_homepage(self):
         response = self.client.get(reverse('index'))
@@ -143,3 +143,79 @@ class AccountsViewTest(TransactionTestCase):
 
         u = User.objects.get(pk=self.user.id)
         self.assertTrue(u.check_password('newpassword'))
+
+
+class AccountsProfileViewTest(TransactionTestCase):
+    def setUp(self):
+        self.user = UserFactory.create()
+
+    def test_profile_page(self):
+        # Anonymous user
+        response = self.client.get(reverse('profile', args=(self.user.username,)))
+        self.assertEquals(response.status_code, 200)
+        self.assertIn(self.user.username, response.content)
+
+        # logged in
+        self.client.login(username=self.user.username, password='supersecret')
+        response = self.client.get(reverse('profile'))
+        self.assertEquals(response.status_code, 200)
+        self.assertIn(self.user.username, response.content)
+
+    def test_equipment(self):
+        self.client.login(username=self.user.username, password='supersecret')
+        response = self.client.post(reverse('add-equipment'),
+                                    {'instrument': 'testscope'}, follow=True)
+        self.assertEquals(response.status_code, 200)
+        self.assertIn('testscope', response.content)
+
+        response = self.client.get(reverse('delete-equipment',
+                                   args=(self.user.userprofile.equipment_set.first().id,)
+                                   ), follow=True)
+        self.assertEquals(response.status_code, 200)
+        self.assertIn('Equipment deleted', response.content)
+
+    def test_edit_profile(self):
+        self.client.login(username=self.user.username, password='supersecret')
+        response = self.client.get(reverse('edit-profile'))
+        self.assertEquals(response.status_code, 200)
+        self.assertIn('Edit profile', response.content)
+
+        data = {
+            'username': 'testuser',
+            'location': 'anywhere USA',
+            'timezone': 'America/Los_Angeles',
+            'lat': 99999.0,
+            'lng': 90.0,
+            'elevation': 200,
+            'profile_text': "my lat is WAY OFF!",
+            'recieve_noification_emails': True
+        }
+
+        response = self.client.post(reverse('edit-profile'), data, follow=True)
+        self.assertIn('Ensure this value is less than or equal to 90.0', response.content)
+
+        data['lat'] = 45
+        response = self.client.post(reverse('edit-profile'), data, follow=True)
+        self.assertIn('Profile sucessfully updated', response.content)
+
+
+class AccountsMiscViewTests(TransactionTestCase):
+    def test_contact_form(self):
+        captcha_count = CaptchaStore.objects.count()
+        self.assertEqual(captcha_count, 0)
+
+        response = self.client.get(reverse('contact'))
+        self.assertEquals(response.status_code, 200)
+        captcha_count = CaptchaStore.objects.count()
+        self.assertEqual(captcha_count, 1)
+
+        captcha = CaptchaStore.objects.first()
+        data = {
+            'email': 'contactemail@example.com',
+            'feedback': 'I like ur site',
+            'captcha_0': captcha.hashkey,
+            'captcha_1': captcha.response
+        }
+        response = self.client.post(reverse('contact'), data, follow=True)
+        self.assertEquals(response.status_code, 200)
+        self.assertIn('Thank you', response.content)
