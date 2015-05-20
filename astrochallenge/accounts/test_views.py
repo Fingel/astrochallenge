@@ -2,10 +2,11 @@ from django.core.urlresolvers import reverse
 from django.test import TransactionTestCase
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from registration.models import RegistrationProfile
-from test_helpers import AdminFactory, UserFactory
 from captcha.models import CaptchaStore
 import base64
+
+from test_helpers import AdminFactory, UserFactory
+from registration.models import RegistrationProfile
 
 
 class AccountsViewTest(TransactionTestCase):

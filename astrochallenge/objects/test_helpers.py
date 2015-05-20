@@ -52,6 +52,8 @@ class AstroObjectFactory(factory.django.DjangoModelFactory):
     discoverer = FuzzyText(length=20)
     discovery_date = FuzzyDate(start_date=datetime.date(1700, 1, 1))
 
+    constellation = factory.SubFactory(ConstellationFactory)
+
 
 class SolarSystemObjectFactory(factory.django.DjangoModelFactory):
     class Meta:
@@ -66,8 +68,6 @@ class SolarSystemObjectFactory(factory.django.DjangoModelFactory):
     points = FuzzyInteger(0, 100)
     image = None
     image_attribution = FuzzyText(length=50)
-    discoverer = FuzzyText(length=20)
-    discovery_date = FuzzyDate(start_date=datetime.date(1700, 1, 1))
 
 
 class ObservationFactory(factory.django.DjangoModelFactory):
