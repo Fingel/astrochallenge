@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from django.db.models import signals
-from models import UserProfile
+from models import UserProfile, Equipment
+from factory.fuzzy import FuzzyText, FuzzyFloat, FuzzyInteger
 import factory
-import random
 
 
 class AdminFactory(factory.django.DjangoModelFactory):
@@ -23,12 +23,13 @@ class UserProfileFactory(factory.django.DjangoModelFactory):
 
     timezone = "UTC"
     location = "Santa Cruz"
-    lat = factory.LazyAttribute(lambda x: random.randint(-45, 45))
-    lng = factory.LazyAttribute(lambda x: random.randint(-180, 180))
-    elevation = factory.LazyAttribute(lambda x: random.randint(0, 4000))
+    lat = FuzzyFloat(-90, 90)
+    lng = FuzzyFloat(-180, 180)
+    elevation = FuzzyInteger(0, 4000)
     profile_text = "Test user please ignore"
     recieve_notification_emails = True
-    user = factory.SubFactory('app.factories.UserFactory', userprofile=None)
+    user = factory.SubFactory('astrochallenge.accounts.test_helpers.UserFactory',
+                              userprofile=None)
 
 
 @factory.django.mute_signals(signals.pre_save, signals.post_save)
@@ -43,3 +44,11 @@ class UserFactory(factory.django.DjangoModelFactory):
     is_active = True
     email = factory.Sequence(lambda n: 'gazer{0}@example.com'.format(n))
     userprofile = factory.RelatedFactory(UserProfileFactory, 'user')
+
+
+class EquipmentFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Equipment
+
+    user_profile = factory.SubFactory(UserProfileFactory)
+    instrument = FuzzyText(length=20)
