@@ -5,6 +5,7 @@ import json
 from test_helpers import AstroObjectFactory, SolarSystemObjectFactory, AstroObjectObservationFactory, SolarSystemObjectObservationFactory
 from astrochallenge.accounts.test_helpers import UserFactory
 from astrochallenge.challenges.test_helpers import ChallengeFactory
+from astro_comments.test_helpers import CustomCommentFactory
 
 
 class ObjectsViewTests(TransactionTestCase):
@@ -18,8 +19,18 @@ class ObjectsViewTests(TransactionTestCase):
         )
         self.ao = self.astroobjects[0]
         self.sso = self.solarystemobjects[0]
-        self.ao_observation = AstroObjectObservationFactory.create(content_object=self.ao)
-        self.sso_observation = SolarSystemObjectObservationFactory.create(content_object=self.sso)
+        self.ao_observation = AstroObjectObservationFactory.create(
+            content_object=self.ao
+        )
+        self.sso_observation = SolarSystemObjectObservationFactory.create(
+            content_object=self.sso
+        )
+        self.ao_comment = CustomCommentFactory.create(
+            content_object=self.ao,
+        )
+        self.ao_observation_comment = CustomCommentFactory.create(
+            content_object=self.ao_observation
+        )
 
     def test_choose(self):
         response = self.client.get(reverse('choose-observation'))
@@ -51,5 +62,9 @@ class ObjectsViewTests(TransactionTestCase):
         )
         self.assertEquals(response.status_code, 200)
         self.assertIn(self.ao.common_name, response.content)
+        self.assertIn(self.ao.type, response.content)
         self.assertIn(self.ao_challenge.name, response.content)
         self.assertIn(self.ao_observation.description, response.content)
+        self.assertIn('Please login to post comments', response.content)
+        self.assertIn('Generate a finder chart', response.content)
+        self.assertIn(self.ao_comment.comment, response.content)
