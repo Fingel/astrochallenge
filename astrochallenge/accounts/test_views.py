@@ -2,22 +2,28 @@ from django.core.urlresolvers import reverse
 from django.test import TransactionTestCase
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils import timezone
 from captcha.models import CaptchaStore
 import base64
 
 from test_helpers import AdminFactory, UserFactory
 from registration.models import RegistrationProfile
+from astrochallenge.challenges.test_helpers import ChallengeFactory
+from astrochallenge.objects.utils import moon_phase
 
 
 class AccountsViewTest(TransactionTestCase):
     def setUp(self):
         AdminFactory.create()
         self.user = UserFactory.create()
+        self.challenge = ChallengeFactory.create(name="Test Challenge",
+                                                 type='set')
 
     def test_homepage(self):
         response = self.client.get(reverse('index'))
         self.assertEquals(response.status_code, 200)
         self.assertIn("Latest Observations", response.content)
+        self.assertIn(moon_phase(timezone.now())[1], response.content)
 
         # Logged in
         login_result = self.client.login(username=self.user.username, password='supersecret')
@@ -25,6 +31,7 @@ class AccountsViewTest(TransactionTestCase):
         response = self.client.get(reverse('index'))
         self.assertEquals(response.status_code, 200)
         self.assertIn("Latest Observations", response.content)
+        self.assertIn(self.challenge.name, response.content)
 
     def test_login(self):
         response = self.client.get(reverse('auth_login'))

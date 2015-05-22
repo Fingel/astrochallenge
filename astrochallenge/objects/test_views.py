@@ -2,16 +2,24 @@ from django.core.urlresolvers import reverse
 from django.test import TransactionTestCase
 import json
 
-from models import SolarSystemObject
-from test_helpers import AstroObjectFactory, SolarSystemObjectFactory
+from test_helpers import AstroObjectFactory, SolarSystemObjectFactory, AstroObjectObservationFactory, SolarSystemObjectObservationFactory
 from astrochallenge.accounts.test_helpers import UserFactory
+from astrochallenge.challenges.test_helpers import ChallengeFactory
 
 
 class ObjectsViewTests(TransactionTestCase):
     def setUp(self):
-        AstroObjectFactory.create_batch(10)
-        SolarSystemObjectFactory.create_batch(3)
+        self.astroobjects = AstroObjectFactory.create_batch(10)
+        self.solarystemobjects = SolarSystemObjectFactory.create_batch(3)
         self.user = UserFactory.create()
+        self.ao_challenge = ChallengeFactory.create(
+            type='set',
+            astroobjects=(self.astroobjects[:3])
+        )
+        self.ao = self.astroobjects[0]
+        self.sso = self.solarystemobjects[0]
+        self.ao_observation = AstroObjectObservationFactory.create(content_object=self.ao)
+        self.sso_observation = SolarSystemObjectObservationFactory.create(content_object=self.sso)
 
     def test_choose(self):
         response = self.client.get(reverse('choose-observation'))
@@ -34,4 +42,14 @@ class ObjectsViewTests(TransactionTestCase):
         response = self.client.get(reverse('solarsystemobject-list'))
         self.assertEquals(response.status_code, 200)
         self.assertIn("Solar System Objects", response.content)
-        self.assertIn(SolarSystemObject.objects.first().name, response.content)
+        self.assertIn(self.sso.name, response.content)
+
+    def test_astroobject_detail(self):
+        response = self.client.get(reverse(
+            'astroobject-detail',
+            args=(self.ao.id,))
+        )
+        self.assertEquals(response.status_code, 200)
+        self.assertIn(self.ao.common_name, response.content)
+        self.assertIn(self.ao_challenge.name, response.content)
+        self.assertIn(self.ao_observation.description, response.content)

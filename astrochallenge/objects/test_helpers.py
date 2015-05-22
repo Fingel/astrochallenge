@@ -79,8 +79,8 @@ class ObservationFactory(factory.django.DjangoModelFactory):
     points_earned = FuzzyInteger(0, 100)
     lat = FuzzyFloat(-90, 90)
     lng = FuzzyFloat(-180, 180)
-    seeing = FuzzyChoice(choices=settings.QUALITATIVE_RATINGS)
-    light_pollution = FuzzyChoice(choices=settings.QUALITATIVE_RATINGS)
+    seeing = FuzzyChoice(choices=['P', 'BA', 'A', 'AA', 'E'])
+    light_pollution = FuzzyChoice(choices=['P', 'BA', 'A', 'AA', 'E'])
     description = FuzzyText(length=200)
     featured = FuzzyChoice(choices=[True, False])
 
