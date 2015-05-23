@@ -11,14 +11,19 @@ from astro_comments.test_helpers import CustomCommentFactory
 class ObjectsViewTests(TransactionTestCase):
     def setUp(self):
         self.astroobjects = AstroObjectFactory.create_batch(10)
-        self.solarystemobjects = SolarSystemObjectFactory.create_batch(3)
+        self.solarsystemobjects = SolarSystemObjectFactory.create_batch(3)
         self.user = UserFactory.create()
         self.ao_challenge = ChallengeFactory.create(
             type='set',
             astroobjects=(self.astroobjects[:3])
         )
+        self.sso_challenge = ChallengeFactory.create(
+            type='set',
+            solarsystemobjects=(self.solarsystemobjects)
+        )
         self.ao = self.astroobjects[0]
-        self.sso = self.solarystemobjects[0]
+        self.sso = self.solarsystemobjects[0]
+
         self.ao_observation = AstroObjectObservationFactory.create(
             content_object=self.ao
         )
@@ -28,8 +33,8 @@ class ObjectsViewTests(TransactionTestCase):
         self.ao_comment = CustomCommentFactory.create(
             content_object=self.ao,
         )
-        self.ao_observation_comment = CustomCommentFactory.create(
-            content_object=self.ao_observation
+        self.sso_comment = CustomCommentFactory.create(
+            content_object=self.sso
         )
 
     def test_choose(self):
@@ -68,3 +73,17 @@ class ObjectsViewTests(TransactionTestCase):
         self.assertIn('Please login to post comments', response.content)
         self.assertIn('Generate a finder chart', response.content)
         self.assertIn(self.ao_comment.comment, response.content)
+
+    def test_solarsystemobject_detail(self):
+        response = self.client.get(reverse(
+            'solarsystemobject-detail',
+            args=(self.sso.id,))
+        )
+        self.assertEquals(response.status_code, 200)
+        self.assertContains(response, self.sso.name)
+        self.assertContains(response, self.sso.type[1])
+        self.assertContains(response, self.sso_challenge.name)
+        self.assertContains(response, self.sso_observation.description)
+        self.assertContains(response, 'Please login to post comments')
+        self.assertContains(response, 'Generate a finder chart')
+        self.assertContains(response, self.sso_comment.comment)
