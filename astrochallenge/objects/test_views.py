@@ -1,9 +1,11 @@
 from django.core.urlresolvers import reverse
 from django.test import TransactionTestCase
+from django.contrib.contenttypes.models import ContentType
+import datetime
 import json
 
 from test_helpers import AstroObjectFactory, SolarSystemObjectFactory, AstroObjectObservationFactory, SolarSystemObjectObservationFactory
-from astrochallenge.accounts.test_helpers import UserFactory
+from astrochallenge.accounts.test_helpers import UserFactory, EquipmentFactory
 from astrochallenge.challenges.test_helpers import ChallengeFactory
 from astro_comments.test_helpers import CustomCommentFactory
 
@@ -13,6 +15,16 @@ class ObjectsViewTests(TransactionTestCase):
         self.astroobjects = AstroObjectFactory.create_batch(10)
         self.solarsystemobjects = SolarSystemObjectFactory.create_batch(3)
         self.user = UserFactory.create()
+        self.equipment = EquipmentFactory(
+            user_profile=self.user.userprofile,
+            instrument='10in Dob'
+        )
+        self.single_challenge = ChallengeFactory.create(
+            type='numeric',
+            target='composite',
+            number=1,
+            name='first_challenge'
+        )
         self.ao_challenge = ChallengeFactory.create(
             type='set',
             astroobjects=(self.astroobjects[:3])
@@ -87,3 +99,57 @@ class ObjectsViewTests(TransactionTestCase):
         self.assertContains(response, 'Please login to post comments')
         self.assertContains(response, 'Generate a finder chart')
         self.assertContains(response, self.sso_comment.comment)
+
+    def test_post_finderchart(self):
+        content_type = ContentType.objects.get(model='astroobject')
+        data = {
+            'content_type': content_type.id,
+            'object_id': self.ao.id,
+            'date': datetime.datetime.now(),
+            'field_of_view': 15.0,
+            'limiting_magnitude_stars': 8.0,
+            'limiting_magnitude_deepsky': 9.0,
+        }
+        response = self.client.post(
+            reverse('post-finderchart'),
+            data,
+            follow=True
+        )
+        self.assertEquals(response.get('Content-Type'), 'application/pdf')
+        self.assertTrue(response.get('Content-Length') > 0)
+
+    def test_post_observation(self):
+        self.client.login(username=self.user.username, password='supersecret')
+        observation_count = len(self.user.userprofile.observation_set.all())
+        points = self.user.userprofile.points
+        completed_challenges = len(self.user.userprofile.completedchallenge_set.all())
+        content_type = ContentType.objects.get(model='astroobject')
+        data = {
+            'content_type': content_type.id,
+            'object_id': self.ao.id,
+            'date': datetime.datetime.now(),
+            'lat': 32.0,
+            'lng': 122.0,
+            'equipment': self.equipment.id,
+            'seeing': 'A',
+            'light_pollution': 'A',
+            'featured': True,
+            'image': None,
+            'description': 'Test description for observation'
+
+        }
+        response = self.client.post(
+            reverse('post-observation'),
+            data,
+            follow=True
+        )
+        self.assertContains(response, 'Observation recorded sucessfully')
+        self.assertContains(response, self.single_challenge.name)
+        self.assertEquals(
+            len(self.user.userprofile.observation_set.all()),
+            observation_count + 1
+        )
+        self.assertTrue(self.user.userprofile.points > points)
+        self.assertTrue(
+            len(self.user.userprofile.completedchallenge_set.all()) > completed_challenges
+        )
