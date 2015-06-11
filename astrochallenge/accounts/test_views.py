@@ -5,11 +5,13 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils import timezone
 from captcha.models import CaptchaStore
 import base64
+import datetime
 
 from test_helpers import AdminFactory, UserFactory
 from registration.models import RegistrationProfile
 from astrochallenge.challenges.test_helpers import ChallengeFactory
 from astrochallenge.objects.utils import moon_phase
+from astrochallenge.objects.test_helpers import SolarSystemObjectObservationFactory
 
 
 class AccountsViewTest(TransactionTestCase):
@@ -206,8 +208,24 @@ class AccountsProfileViewTest(TransactionTestCase):
         response = self.client.post(reverse('edit-profile'), data, follow=True)
         self.assertIn('Profile sucessfully updated', response.content)
 
+    def test_observation_dates(self):
+        data = {
+            'start_time': datetime.date.today(),
+            'end_time': datetime.date.today()
+        }
+        response = self.client.post(
+            reverse('profile', args=(self.user.username,)),
+            data,
+            follow=True
+        )
+        self.assertContains(response, 'Filter by date')
+
 
 class AccountsMiscViewTests(TransactionTestCase):
+    def setUp(self):
+        self.user = UserFactory.create()
+        self.observation = SolarSystemObjectObservationFactory.create()
+
     def test_contact_form(self):
         captcha_count = CaptchaStore.objects.count()
         self.assertEqual(captcha_count, 0)
@@ -227,3 +245,23 @@ class AccountsMiscViewTests(TransactionTestCase):
         response = self.client.post(reverse('contact'), data, follow=True)
         self.assertEquals(response.status_code, 200)
         self.assertIn('Thank you', response.content)
+
+    def test_give_kudos(self):
+        self.client.login(username=self.user.username, password='supersecret')
+        response = self.client.get(
+            reverse('give-kudos', args=(self.observation.id,))
+        )
+        self.assertContains(response, 'success')
+
+        response = self.client.get(
+            reverse('profile', args=(self.observation.user_profile.user.username,))
+        )
+
+        self.assertContains(response, 'Kudos: 1')
+
+
+# Putting this here due to lack of other place to put it
+class SitemapViewTest(TransactionTestCase):
+    def test_sitemap(self):
+        response = self.client.get(reverse('django.contrib.sitemaps.views.sitemap'))
+        self.assertContains(response, 'urlset')
