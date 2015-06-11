@@ -101,5 +101,5 @@ class CatalogObjectFactory(factory.django.DjangoModelFactory):
         model = CatalogObject
 
     astro_object = factory.SubFactory(AstroObjectFactory)
-    catalog = FuzzyChoice(choices=settings.CATALOGS.items())
-    designation = FuzzyText(length=2)
+    catalog = FuzzyChoice(choices=settings.CATALOGS.keys())
+    designation = FuzzyInteger(0, 10000)
