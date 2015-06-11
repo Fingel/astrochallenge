@@ -35,15 +35,6 @@ class Observation(models.Model):
         return "{0} {1}: {2}".format(self.user_profile.user.username, self.date.strftime('%m/%d/%y'), str(self.content_object))
 
     @property
-    def thing(self):
-        thing = ""
-        if self.content_type.model_class() == AstroObject:
-            thing = "deep space object ({0})".format(self.content_object.type)
-        elif self.content_type.model_class() == Constellation:
-            thing = "constellation"
-        return thing
-
-    @property
     def name(self):
         if self.content_type.model_class() == Constellation:
             return self.content_object.latin_name
