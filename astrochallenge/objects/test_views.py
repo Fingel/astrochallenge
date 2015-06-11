@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.test import TransactionTestCase
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.comments.forms import CommentSecurityForm
+from django_comments.forms import CommentSecurityForm
 import datetime
 import time
 import json
