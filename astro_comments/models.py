@@ -16,6 +16,7 @@ class CustomComment(Comment):
 
     class Meta:
         ordering = ["-submit_date"]
+        app_label = 'astro_comments'
 
 
 @receiver(post_save, sender=CustomComment)
