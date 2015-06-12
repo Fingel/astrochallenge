@@ -50,7 +50,7 @@
         {% endif %}
         <div id="leaderboard">
             <center><h3>Top Observers</h3></center>
-            <ol>
+            <ol class="clearfix">
                 {% for userprofile in leaderboard|slice:":10" %}
                 <li>
                     <a href="{% url 'profile' userprofile.user.username %}">{{userprofile.user.username}}</a><br/>

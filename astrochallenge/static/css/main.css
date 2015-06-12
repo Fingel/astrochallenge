@@ -172,6 +172,15 @@ label[for=id_comment] {
     display: inline-block;
 }
 
+#next-challenge {
+    display: inline-block;
+}
+
+#leaderboard > ol > li {
+    float: left;
+    margin-right: 40px;
+    padding-bottom: 10px;
+}
 #sunset {
     width: 100px;
     padding-bottom: 5px;
