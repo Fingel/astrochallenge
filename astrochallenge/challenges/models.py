@@ -19,8 +19,8 @@ difficulty_levels = (
 class Challenge(models.Model):
     target = models.CharField(max_length=200, choices=settings.CHALLENGE_TYPES)
     type = models.CharField(max_length=200, choices=(('set', 'set'), ('numeric', 'numeric')))
-    solarsystemobjects = models.ManyToManyField(SolarSystemObject, null=True, blank=True)
-    astroobjects = models.ManyToManyField(AstroObject, null=True, blank=True)
+    solarsystemobjects = models.ManyToManyField(SolarSystemObject, blank=True)
+    astroobjects = models.ManyToManyField(AstroObject, blank=True)
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True, default="")
     rating = models.PositiveIntegerField(default=3, choices=difficulty_levels)
