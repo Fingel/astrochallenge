@@ -18,7 +18,7 @@ from django.utils import timezone
 import os
 import re
 
-from models import Constellation, CatalogObject, AstroObject, Observation
+from models import Constellation, CatalogObject, AstroObject, Observation, SolarSystemObject
 from astrochallenge.objects.forms import ObservationForm, FinderChartForm
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from utils import FchartSettings, generate_fchart
@@ -195,6 +195,57 @@ class DSOListView(TemplateView):
             return context
 
 
+class SSOListViewJson(BaseDatatableView):
+    model = SolarSystemObject
+    columns = ['pk', 'index', 'name', 'constellation', 'type', 'points', 'magnitude', 'observed']
+    order_columns = columns
+
+    def filter_queryset(self, qs):
+        if not self.pre_camel_case_notation:
+            # get global search value
+            search = self.request.GET.get('search[value]', None)
+            col_data = self.extract_datatables_column_data()
+            q = Q()
+            for col_no, col in enumerate(col_data):
+
+                # apply global search to all searchable columns
+                if search and col['searchable']:
+                    q |= Q(**{'{0}__icontains'.format(self.columns[col_no].replace(".", "__")): search})
+
+                # column specific filter
+                if col['search.value']:
+                    qs = qs.filter(**{'{0}__icontains'.format(self.columns[col_no].replace(".", "__")): col['search.value']})
+            qs = qs.filter(q).distinct()
+        return qs
+
+    def render_column(self, row, column):
+        if column == "observed":
+            if self.request.user.is_authenticated():
+                if row.observations.filter(user_profile__user__username=self.request.user.username).exists():
+                    return "<span class=\"green glyphicon glyphicon-ok\"></span>"
+            return ""
+        elif column == 'magnitude':
+            return row.general_info.get('magnitude')
+        elif column == 'constellation':
+            if row.constellation:
+                return row.constellation.latin_name
+        else:
+            if hasattr(row, 'get_%s_display' % column):
+                # It's a choice field
+                text = getattr(row, 'get_%s_display' % column)()
+            else:
+                try:
+                    text = getattr(row, column)
+                except AttributeError:
+                    obj = row
+                    for part in column.split('.'):
+                        if obj is None:
+                            break
+                        obj = getattr(obj, part)
+                    text = obj
+            return text
+
+
 class DSOListViewJson(BaseDatatableView):
     model = AstroObject
     columns = ['pk', 'index', 'common_name', 'catalog_rep', 'constellation.latin_name', 'type', 'magnitude', 'points', 'observed']
@@ -207,7 +258,6 @@ class DSOListViewJson(BaseDatatableView):
             col_data = self.extract_datatables_column_data()
             q = Q()
             for col_no, col in enumerate(col_data):
-                print col
                 # regex to search for Catalog Objects
                 if col['name'] == 'designations':
                         p = re.compile('^([M-NGC]+)(\d+)', re.IGNORECASE)

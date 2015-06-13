@@ -88,8 +88,11 @@ class SolarSystemObject(models.Model):
         p_object = self.ephem_object
         if p_object:
             p_object.compute()
-            abbrv = ephem.constellation(p_object)[0]
-            return Constellation.objects.get(abbreviation=abbrv)
+            try:
+                abbrv = ephem.constellation(p_object)[0]
+                return Constellation.objects.get(abbreviation=abbrv)
+            except:
+                return None
         else:
             return None
 
@@ -169,23 +172,26 @@ class SolarSystemObject(models.Model):
             ephemeride.compute(time)
             return getattr(ephemeride, prop)
 
-        now = ephem.now()
-        # 100 year from now bounds
-        bounds = [ephem.Date(now - ephem.hour * 24 * 365 * 100),
-                  ephem.Date(now + ephem.hour * 24 * 365 * 100)]
-        result = optimize.minimize_scalar(
-            compute_min,
-            method='Bounded',
-            bounds=bounds
-        )
-        if result['message'] == 'Solution found.':
-            ephemeride.compute(result['x'])
-            data = {
-                'ephemeride': ephemeride,
-                'date': ephem.Date(result['x']).datetime()
-            }
-            data[prop] = getattr(ephemeride, prop)
-            return data
+        if ephemeride:
+            now = ephem.now()
+            # 100 year from now bounds
+            bounds = [ephem.Date(now - ephem.hour * 24 * 365 * 100),
+                      ephem.Date(now + ephem.hour * 24 * 365 * 100)]
+            result = optimize.minimize_scalar(
+                compute_min,
+                method='Bounded',
+                bounds=bounds
+            )
+            if result['message'] == 'Solution found.':
+                ephemeride.compute(result['x'])
+                data = {
+                    'ephemeride': ephemeride,
+                    'date': ephem.Date(result['x']).datetime()
+                }
+                data[prop] = getattr(ephemeride, prop)
+                return data
+            else:
+                return None
         else:
             return None
 

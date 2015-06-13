@@ -37,22 +37,10 @@
         <table class="table table-striped table-hover" id="table">
             <thead>
                 <tr>
-                    <td>Name</td><td>Type</td><td>Orbits</td><td>Points</td><td>Observed</td>
+                    <td>pk</td><td>index</td><td>Name</td><td>Constellation</td><td>Type</td><td>Points</td><td>Magnitude</td><td>Observed</td>
                 </tr>
             </thead>
             <tbody>
-            {% for solar_system_object in object_list %}
-                <tr href="{{solar_system_object.get_absolute_url}}">
-                    <td>{{ solar_system_object.name }}</td>
-                    <td>{{ solar_system_object.get_type_display|capfirst }}</td>
-                    <td>{{ solar_system_object.parent|default:""}}</td>
-                    <td>{{ solar_system_object.points }}</td>
-                    <td>{% if user|has_observed:solar_system_object %}
-                        <span class="glyphicon glyphicon-ok green"></span>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
             </tbody>
         </table>
         </div>
@@ -64,12 +52,19 @@
 <script src="{% get_static_prefix %}js/vendor/dataTables.bootstrap.js"></script>
 <script type="text/javascript">
     table = $("#table").DataTable({
-        'lengthChange': false,
-        'sDom': 'lrtip',
-        'aaSorting': []
+        "processing": true,
+        "serverSide": true,
+        "lengthChange": false,
+        "sDom": "lrtip",
+        "ajax": "{% url 'solarsystemobject-list-json' %}",
+        columnDefs: [
+            { 'targets': [ 0, 1], 'visible': false, 'searchable': false},
+            { 'targets': [ 3, 6, 7 ], 'searchable': false},
+            { 'targets': [ 3, 6, 7], 'orderable': false},
+         ],
     });
-     $('#table').on('click', 'tbody tr', function(){
-        window.location.href = $(this).attr('href');
+     $('#table tbody').on('click', 'tr', function(){
+        window.location.href = "/objects/solarsystem/" + table.row( this ).data()[0];
     });
 
     $('#search').keyup(function(){
