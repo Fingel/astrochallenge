@@ -70,6 +70,12 @@
         <p>as of {% now 'SHORT_DATETIME_FORMAT' %}</p>
         <table class="table">
             <tr><td>Type</td><td>{{ object.get_type_display|capfirst }}</td></tr>
+            <tr>
+                <td>Constellation</td>
+                <td><a href="{{ object.constellation.get_absolute_url }}">
+                {{ object.constellation }}
+                </a></td>
+            </tr>
             {% if object.parent %}
             <tr><td>Orbits</td><td><a href="{{ object.parent.get_absolute_url }}">{{ object.parent.name }}</a></td></tr>
             {% endif %}

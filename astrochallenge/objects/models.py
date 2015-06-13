@@ -73,6 +73,7 @@ class SolarSystemObject(models.Model):
     image = models.ImageField(upload_to="ss_objects", blank=True, null=True)
     image_attribution = models.CharField(max_length=1000, default="", blank=True)
     observations = GenericRelation(Observation)
+    date_added = models.DateTimeField(default=timezone.now)
 
     class Meta:
         ordering = ['index']
@@ -80,6 +81,16 @@ class SolarSystemObject(models.Model):
     @property
     def bonus_points(self):
         return calculate_points(self) - self.points
+
+    @property
+    def constellation(self):
+        p_object = self.ephem_object
+        if p_object:
+            p_object.compute()
+            abbrv = ephem.constellation(p_object)[0]
+            return Constellation.objects.get(abbreviation=abbrv)
+        else:
+            return None
 
     @property
     def ephem_object(self):
@@ -106,6 +117,13 @@ class SolarSystemObject(models.Model):
                     "earth_distance": str(p_object.earth_distance),
                     "sun_distance": str(p_object.sun_distance),
                     "phase": str(p_object.phase),
+                    "magnitude": str(p_object.mag),
+                })
+            elif self.type == 'C':
+                info.update({
+                    "elongation": str(p_object.elong),
+                    "earth_distance": str(p_object.earth_distance),
+                    "sun_distance": str(p_object.sun_distance),
                     "magnitude": str(p_object.mag),
                 })
             elif self.type == 'M' and self.name is not 'Moon':

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load tz bootstrap3 endless gravatar thumbnail django_markdown challenges_extras comments %}
 {% block title %}
-    Home - Latest Observations
-    {% if request.GET.ob_page > 1 %}
-    page {{ request.GET.ob_page }}
-    {% endif %}
+	Home - Latest Observations
+	{% if request.GET.ob_page > 1 %}
+	page {{ request.GET.ob_page }}
+	{% endif %}
 {% endblock %}
 {% block extra_head %}
 <meta property="og:image" content="http://astrochallenge.com{{STATIC_URL}}images/astrochallenge.jpg" />
@@ -13,143 +13,161 @@
 {% block content %}
 {% if not user.is_authenticated %}
 <div class="hook colwrap">
-    <center><h1>Welcome to AstroChallenge!</h1></center>
-    <p><b>AstroChallenge</b> is an online community of amateur
-    astronomers logging their observations and completing challenges
-    related to observational astronomy. The site includes information on a huge database of <a href="{% url 'constellation-list' %}">constellations</a>, <a href="{% url 'solarsystemobject-list' %}">solar system objects and <a href="{% url 'astroobject-list' %}">deep space objects</a> with <a href="{% url 'solarsystemobject-detail' slug='Jupiter' %}">detailed to-the-second observation information</a>, customizeable <a href="{% url 'astroobject-detail' catalog='M' designation='42' %}#tab_finder">finder charts</a> and more.</p>
-    <center>
-    <a href="{% url 'auth_login' %}"><button class="btn btn-primary btn-lg">Login</button></a>
-    <a href="{% url 'registration_register' %}"><button class="btn btn-info btn-lg">Register</button></a>
-    </center>
+	<center><h1>Welcome to AstroChallenge!</h1></center>
+	<p><b>AstroChallenge</b> is an online community of amateur
+	astronomers logging their observations and completing challenges
+	related to observational astronomy. The site includes information on a huge database of <a href="{% url 'constellation-list' %}">constellations</a>, <a href="{% url 'solarsystemobject-list' %}">solar system objects and <a href="{% url 'astroobject-list' %}">deep space objects</a> with <a href="{% url 'solarsystemobject-detail' slug='Jupiter' %}">detailed to-the-second observation information</a>, customizeable <a href="{% url 'astroobject-detail' catalog='M' designation='42' %}#tab_finder">finder charts</a> and more.</p>
+	<center>
+	<a href="{% url 'auth_login' %}"><button class="btn btn-primary btn-lg">Login</button></a>
+	<a href="{% url 'registration_register' %}"><button class="btn btn-info btn-lg">Register</button></a>
+	</center>
 </div>
 {% endif %}
 <div class="row">
-    <div class="col-md-2">
-    <div class="colwrap">
-    {% if user.is_authenticated %}
-        <div id="sunset-info">
-            <center>
-            <img src="{{STATIC_URL}}/images/sunset.svg" id="sunset" class="img-responsive"/>
-            <b>{{ user.userprofile.sunset|date:"P" }}</b>
-            </center>
-        </div>
-        {% endif %}
-        <div id="moon-info">
-            <center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
-        </div>
-        {% if next_challenge %}
-        <div id="next-challenge">
-            <center><h3>Try This:</h3>
-            <a href="{{ next_challenge.get_absolute_url }}">
-            <h4>{{ next_challenge.name }}</h4>
-            <p>{{ next_challenge.rating|rating_stars|safe }}</p>
-            <img class="img-responsive" src="{{ next_challenge.image|thumbnail_url:'log' }}" alt="challenge">
-            </a>
-            </center>
-        </div>
-        {% endif %}
-        <div id="leaderboard">
-            <center><h3>Top Observers</h3></center>
-            <ol class="clearfix">
-                {% for userprofile in leaderboard|slice:":10" %}
-                <li>
-                    <a href="{% url 'profile' userprofile.user.username %}">{{userprofile.user.username}}</a><br/>
-                    <span class="glyphicon glyphicon-star"></span> {{userprofile.points}}&nbsp;
-                    <span class="glyphicon glyphicon-eye-open"></span> {{userprofile.observation_set.all|length }}
-                </li>
-                {% endfor %}
-            </ol>
-        </div>
-        </div>
-    </div>
-    <div class="col-md-7">
-        <div class="colwrap">
-        <h1>Latest Observations</h1>
-        <hr/>
-        {% paginate 10 observations using "ob_page" %}
-        {% for observation in observations %}
-        <div class="row observation-row">
-            <div class="col-sm-2">
-                <div class="user-deets">
-                {% if observation.content_object.image %}
-                    <center>
-                    <img class="img-responsive" src="{{observation.content_object.image|thumbnail_url:'log'}}"/>
-                    </center>
-                {% else %}
-                <img class="img-responsive" src="{{STATIC_URL}}images/default.png">
-                {% endif %}
-                </div>
-                <div class="user-deets">
-                <a href="{% url 'profile' observation.user_profile.user.username %}">
-                <img class="profile-image" src="{% gravatar_url observation.user_profile.user.email 80 %}">
-                </a>
-                </div>
-                <div class="user-deets">
-                <a href="{% url 'profile' observation.user_profile.user.username %}">
-                {{ observation.user_profile.user.username }} ({{ observation.user_profile.points }})
-                </a>
-                </div>
-            </div>
-            <div class="col-sm-10">
-                {% include 'objects/includes/observation_header.html' %}
-                <div class="observation-body">
-                    {% if observation.image %}
-                    <div class="observation-image">
-                        <a href="{{ observation.image.url }}" alt="{{ target }}" title="{{ target }}"><img class="img-responsive" src="{{ observation.image|thumbnail_url:'observation' }}"></a>
-                    </div>
-                    {% endif %}
-                    <p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
-                    {% if observation.description|length > 500 %}
-                    <a href="{{ observation.get_absolute_url }}">
-                    Read more
-                    </a>
-                    {% endif %}
-                    </div></p>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-        {% show_pages %}
-        <!-- {% include 'includes/astropagination.html' with url_hash='#tab_observations' %} -->
+	<div class="col-md-2">
+	<div class="colwrap">
+	{% if user.is_authenticated %}
+		<div id="sunset-info">
+			<center>
+			<img src="{{STATIC_URL}}/images/sunset.svg" id="sunset" class="img-responsive"/>
+			<b>{{ user.userprofile.sunset|date:"P" }}</b>
+			</center>
+		</div>
+		{% endif %}
+		<div id="moon-info">
+			<center><span class="moon">{{moon_letter}}</span> <br/><b>{{ moon_percentage | floatformat:"0" }}%</b> <br/>{{moon_name}} </center>
+		</div>
+		{% if next_challenge %}
+		<div id="next-challenge">
+			<center><h3>Try This:</h3>
+			<a href="{{ next_challenge.get_absolute_url }}">
+			<h4>{{ next_challenge.name }}</h4>
+			<p>{{ next_challenge.rating|rating_stars|safe }}</p>
+			<img class="img-responsive" src="{{ next_challenge.image|thumbnail_url:'log' }}" alt="challenge">
+			</a>
+			</center>
+		</div>
+		{% endif %}
+		<div id="leaderboard">
+			<center><h3>Top Observers</h3></center>
+			<ol class="clearfix">
+				{% for userprofile in leaderboard|slice:":10" %}
+				<li>
+					<a href="{% url 'profile' userprofile.user.username %}">{{userprofile.user.username}}</a><br/>
+					<span class="glyphicon glyphicon-star"></span> {{userprofile.points}}&nbsp;
+					<span class="glyphicon glyphicon-eye-open"></span> {{userprofile.observation_set.all|length }}
+				</li>
+				{% endfor %}
+			</ol>
+		</div>
+		</div>
+	</div>
+	<div class="col-md-7">
+		<div class="colwrap">
+		<h1>Latest Observations</h1>
+		<hr/>
+		{% paginate 10 observations using "ob_page" %}
+		{% for observation in observations %}
+		<div class="row observation-row">
+			<div class="col-sm-2">
+				<div class="user-deets">
+				{% if observation.content_object.image %}
+					<center>
+					<img class="img-responsive" src="{{observation.content_object.image|thumbnail_url:'log'}}"/>
+					</center>
+				{% else %}
+				<img class="img-responsive" src="{{STATIC_URL}}images/default.png">
+				{% endif %}
+				</div>
+				<div class="user-deets">
+				<a href="{% url 'profile' observation.user_profile.user.username %}">
+				<img class="profile-image" src="{% gravatar_url observation.user_profile.user.email 80 %}">
+				</a>
+				</div>
+				<div class="user-deets">
+				<a href="{% url 'profile' observation.user_profile.user.username %}">
+				{{ observation.user_profile.user.username }} ({{ observation.user_profile.points }})
+				</a>
+				</div>
+			</div>
+			<div class="col-sm-10">
+				{% include 'objects/includes/observation_header.html' %}
+				<div class="observation-body">
+					{% if observation.image %}
+					<div class="observation-image">
+						<a href="{{ observation.image.url }}" alt="{{ target }}" title="{{ target }}"><img class="img-responsive" src="{{ observation.image|thumbnail_url:'observation' }}"></a>
+					</div>
+					{% endif %}
+					<p><div class="markdown-text">{{ observation.description| markdown_safe | truncatechars_html:500}}
+					{% if observation.description|length > 500 %}
+					<a href="{{ observation.get_absolute_url }}">
+					Read more
+					</a>
+					{% endif %}
+					</div></p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		{% show_pages %}
+		<!-- {% include 'includes/astropagination.html' with url_hash='#tab_observations' %} -->
 
-    </div>
-    </div>
-    <div class="col-md-3">
-        <div class="colwrap">
-        <div class="row">
-        <div class="col-md-12">
-        <h3>Recent Comments</h3>
-        <hr/>
-        {% for comment in comments %}
-        <div id="c{{ comment.id }}">
-            <div class="comment-author">
-                <a href="{{comment.content_object.get_absolute_url}}#tab_discussion">
-                <span class="pull-right">{{ comment.submit_date|date:"j M" }}</span>
-                </a>
-                <a href="{% url 'profile' comment.user.username %}">
-                <img class="profile-image" src="{% gravatar_url comment.user.email 40 %}">
-                <span class="comment-author-username">{{comment.user.username}}</span>
-                </a>
-                <br/>
-                <a href="{{comment.content_object.get_absolute_url}}#tab_discussion">
-                <span class="comment-target">{{comment.content_object}}</span></a>
-            </div>
-            <div class="comment">
-                <p>{{ comment.comment|truncatewords:50}}</p>
-            </div>
-        </div>
-        {% endfor %}
-            </div>
-        </div>
-        <div class="row">
-        <div class="col-md-12">
-        <h3>Twitter</h3>
-        <hr/>
-         <a class="twitter-timeline" data-chrome="nofooter noheader transparent noscrollbar noborders" data-tweet-limit="4" href="https://twitter.com/astrochallenger" data-widget-id="571916701059411968">Tweets by @astrochallenger</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-         </script>
-         </div>
-         </div>
-     </div>
-     </div>
+	</div>
+	</div>
+	<div class="col-md-3">
+		<div class="colwrap">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Latest Comet</h3>
+					<h4><a href="{{ latest_comet.get_absolute_url }}">
+						{{ latest_comet.name }}
+						</a>
+					</h4>
+					<dl>
+					<dt>Magnitude:</dt>
+					<dd> {{ latest_comet.general_info.magnitude }}</dd>
+					<dt>Constellation</dt>
+					<dd><a href="{{ latest_comet.constellation.get_absolute_url }}">
+					{{ latest_comet.constellation }}
+					</a></dd>
+					</dl>
+					<hr/>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Recent Comments</h3>
+					{% for comment in comments %}
+					<div id="c{{ comment.id }}">
+						<div class="comment-author">
+							<a href="{{comment.content_object.get_absolute_url}}#tab_discussion">
+							<span class="pull-right">{{ comment.submit_date|date:"j M" }}</span>
+							</a>
+							<a href="{% url 'profile' comment.user.username %}">
+							<img class="profile-image" src="{% gravatar_url comment.user.email 40 %}">
+							<span class="comment-author-username">{{comment.user.username}}</span>
+							</a>
+							<br/>
+							<a href="{{comment.content_object.get_absolute_url}}#tab_discussion">
+							<span class="comment-target">{{comment.content_object}}</span></a>
+						</div>
+						<div class="comment">
+							<p>{{ comment.comment|truncatewords:50}}</p>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Twitter</h3>
+					<hr/>
+					 <a class="twitter-timeline" data-chrome="nofooter noheader transparent noscrollbar noborders" data-tweet-limit="4" href="https://twitter.com/astrochallenger" data-widget-id="571916701059411968">Tweets by @astrochallenger</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+					 </script>
+				</div>
+			</div>
+		 	</div>
+		 </div>
 </div>
 {% endblock %}
