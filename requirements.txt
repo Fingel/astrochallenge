@@ -27,3 +27,4 @@ https://github.com/Fingel/fchart/archive/master.zip
 django_nose
 coverage
 factory_boy
+scipy

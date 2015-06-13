@@ -5,6 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericRelation
 from django.utils import timezone
 from django.core import urlresolvers
+from scipy import optimize
 import ephem
 import pytz
 
@@ -152,6 +153,41 @@ class SolarSystemObject(models.Model):
             return (str(p_object.dec), str(p_object.dec))
         else:
             return (None, None)
+
+    @property
+    def peak_magnitude(self):
+        return self.compute_min_property('mag')
+
+    @property
+    def min_earth_distance(self):
+        return self.compute_min_property('earth_distance')
+
+    def compute_min_property(self, prop):
+        ephemeride = self.ephem_object
+
+        def compute_min(time):
+            ephemeride.compute(time)
+            return getattr(ephemeride, prop)
+
+        now = ephem.now()
+        # 100 year from now bounds
+        bounds = [ephem.Date(now - ephem.hour * 24 * 365 * 100),
+                  ephem.Date(now + ephem.hour * 24 * 365 * 100)]
+        result = optimize.minimize_scalar(
+            compute_min,
+            method='Bounded',
+            bounds=bounds
+        )
+        if result['message'] == 'Solution found.':
+            ephemeride.compute(result['x'])
+            data = {
+                'ephemeride': ephemeride,
+                'date': ephem.Date(result['x']).datetime()
+            }
+            data[prop] = getattr(ephemeride, prop)
+            return data
+        else:
+            return None
 
     def observation_info(self, observer):
         p_object = self.ephem_object

@@ -40,7 +40,7 @@ def index(request):
     #  TODO: Change make this much more effecient
     userprofiles = UserProfile.objects.all().exclude(observation=None)
     leaderboard = list(sorted(userprofiles, key=lambda userprofile: userprofile.points, reverse=True))
-    latest_comet = SolarSystemObject.objects.order_by('-date_added')[0]
+    latest_comet = SolarSystemObject.objects.filter(type='C').order_by('-date_added')[0]
     context = {
         "comments": comments,
         "observations": observations,
