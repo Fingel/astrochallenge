@@ -118,19 +118,29 @@
 		<div class="colwrap">
 			<div class="row">
 				<div class="col-md-12">
+				<center><img src="{{STATIC_URL}}/images/asteroid.svg" id="sunset" class="img-responsive"/>
 					<h3>Latest Comet</h3>
+					</center>
 					<h4><a href="{{ latest_comet.get_absolute_url }}">
 						{{ latest_comet.name }}
 						</a>
 					</h4>
 					<dl>
 					<dt>Magnitude:</dt>
-					<dd> {{ latest_comet.general_info.magnitude }}</dd>
+					<dd> Current: {{ latest_comet.general_info.magnitude }},
+					Peak: {{ latest_comet.peak_magnitude.mag }}
+					</dd>
+					<dt>Closest Approach</dt>
+					<dd> {{ latest_comet.min_earth_distance.date | date }}
 					<dt>Constellation</dt>
 					<dd><a href="{{ latest_comet.constellation.get_absolute_url }}">
 					{{ latest_comet.constellation }}
 					</a></dd>
 					</dl>
+					<!-- <table>
+					<tbody>
+					<tr><td>Magnitude:</td><td>{{ latest_comet.general_info.magnitude }}</td></tr>
+					<td -->
 					<hr/>
 
 				</div>
