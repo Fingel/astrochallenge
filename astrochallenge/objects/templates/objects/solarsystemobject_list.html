@@ -18,14 +18,14 @@
             <label for="type-search">Type:</label>
             <select class="form-control" id="type-search">
                 <option value="">All</option>
-                <option value="Planet">Planet</option>
-                <option value="Star">Star</option>
-                <option value="Dwarf planet">Dwarf planet</option>
-                <option value="Moon">Moon</option>
-                <option value="Asteroid">Asteroid</option>
-                <option value="Comet">Comet</option>
-                <option value="Spacecraft">Spacecraft</option>
-                <option value="Satellite">Satellite</option>
+                <option value="P">Planet</option>
+                <option value="ST">Star</option>
+                <option value="DP">Dwarf planet</option>
+                <option value="M">Moon</option>
+                <option value="A">Asteroid</option>
+                <option value="C">Comet</option>
+                <option value="SC">Spacecraft</option>
+                <option value="S">Satellite</option>
             </select>
         </div>
         </form>
@@ -60,7 +60,7 @@
         columnDefs: [
             { 'targets': [ 0, 1], 'visible': false, 'searchable': false},
             { 'targets': [ 3, 6, 7 ], 'searchable': false},
-            { 'targets': [ 3, 6, 7], 'orderable': false},
+            { 'targets': [ 3, 6, 7 ], 'orderable': false},
          ],
     });
      $('#table tbody').on('click', 'tr', function(){
@@ -71,7 +71,7 @@
         table.search($(this).val()).draw();
     });
     $('#type-search').change(function(){
-        table.columns([1]).search($(this).find(':selected').val()).draw();
+        table.columns([4]).search($(this).find(':selected').val()).draw();
     });
 </script>
 {% endblock %}

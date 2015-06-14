@@ -18,7 +18,6 @@ class Command(BaseCommand):
         response = urllib2.urlopen('http://www.minorplanetcenter.net/iau/Ephemerides/Comets/Soft03Cmt.txt')
         ss_objects = []
         sun = SolarSystemObject.objects.get(name='Sun')
-        # search from botom up so we don't have to parse the entire list
         for line in response.readlines():
             if line[0] == '#':
                 pass
@@ -48,14 +47,12 @@ class Command(BaseCommand):
                 if magnitude < 10:
                     points = 50
                 if magnitude < 7:
-                    points = 100
+                    points = 75
                 ss_object.points = points
                 ss_objects.append(ss_object)
         for sso in ss_objects:
-            # so we get the new comets in the order in which they are added to
-            # the remote list
             sso.date_added = timezone.now()
-            # sso.save()
+            sso.save()
             self.logger.info("{0} - Added comet: {1} ({2} points) - {3}".format(
                 datetime.datetime.now(), sso.name, sso.points, sso.date_added,
             ))
