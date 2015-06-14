@@ -54,7 +54,8 @@
 				{% for userprofile in leaderboard|slice:":10" %}
 				<li>
 					<a href="{% url 'profile' userprofile.user.username %}">{{userprofile.user.username}}</a><br/>
-					<span class="glyphicon glyphicon-star"></span> {{userprofile.points}}&nbsp;
+					<span class="glyphicon glyphicon-star"></span>
+					 {{userprofile.points}}&nbsp;<br/>
 					<span class="glyphicon glyphicon-eye-open"></span> {{userprofile.observation_set.all|length }}
 				</li>
 				{% endfor %}
