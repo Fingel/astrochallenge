@@ -24,32 +24,29 @@ class Command(BaseCommand):
             else:
                 data = line.split(',')
                 if SolarSystemObject.objects.filter(name=data[0]).exists():
-                    self.logger.info("{0} - Skipped comet {1}".format(
-                        datetime.datetime.now(),
-                        data[0])
-                    )
                     pass
-                ss_object = SolarSystemObject(
-                    index=999999,
-                    name=data[0],
-                    type='C',
-                    ephemeride=line,
-                    parent=sun,
-                )
-                magnitude = ss_object.peak_magnitude['mag']
-                points = 1
-                if magnitude < 18:
-                    points = 10
-                if magnitude < 16:
-                    points = 20
-                if magnitude < 12:
-                    points = 30
-                if magnitude < 10:
-                    points = 50
-                if magnitude < 7:
-                    points = 75
-                ss_object.points = points
-                ss_objects.append(ss_object)
+                else:
+                    ss_object = SolarSystemObject(
+                        index=999999,
+                        name=data[0],
+                        type='C',
+                        ephemeride=line,
+                        parent=sun,
+                    )
+                    magnitude = ss_object.peak_magnitude['mag']
+                    points = 1
+                    if magnitude < 18:
+                        points = 10
+                    if magnitude < 16:
+                        points = 20
+                    if magnitude < 12:
+                        points = 30
+                    if magnitude < 10:
+                        points = 50
+                    if magnitude < 7:
+                        points = 75
+                    ss_object.points = points
+                    ss_objects.append(ss_object)
         for sso in ss_objects:
             sso.date_added = timezone.now()
             sso.save()
