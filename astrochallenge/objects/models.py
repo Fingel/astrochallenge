@@ -206,8 +206,13 @@ class SolarSystemObject(models.Model):
                 'alt': str(p_object.alt),
                 'az': str(p_object.az),
                 'up': up,
-                'neverup': p_object.neverup
             }
+            try:
+                info.update({
+                    'neverup': p_object.neverup
+                })
+            except:
+                pass
             try:
                 next_rising = observer.next_rising(p_object)
                 next_setting = observer.next_setting(p_object)
