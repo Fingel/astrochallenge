@@ -180,11 +180,15 @@ class AccountsProfileViewTest(TransactionTestCase):
         self.assertEquals(response.status_code, 200)
         self.assertIn('testscope', response.content)
 
+        response = self.client.get(reverse('list-equipment'))
+        self.assertEquals(response.status_code, 200)
+        self.assertIn('testscope', response.content)
+
         response = self.client.get(reverse('delete-equipment',
                                    args=(self.user.userprofile.equipment_set.first().id,)
                                    ), follow=True)
         self.assertEquals(response.status_code, 200)
-        self.assertIn('Equipment deleted', response.content)
+        self.assertIn('success', response.content)
 
     def test_edit_profile(self):
         self.client.login(username=self.user.username, password='supersecret')

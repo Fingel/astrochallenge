@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.template.loader import get_template
 from django.template import Context
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 import logging
 import datetime
 
@@ -96,16 +97,24 @@ def profile(request, username=None):
 
 @login_required
 @require_POST
+@csrf_exempt
 def add_equipment(request):
-    equipment_form = EquipmentForm(request.POST)
-    if equipment_form.is_valid():
-        equipment = equipment_form.save(commit=False)
-        equipment.user_profile = request.user.userprofile
+    instrument = request.POST['instrument']
+    if len(instrument) > 0:
+        equipment = Equipment(
+            instrument=instrument,
+            user_profile=request.user.userprofile
+        )
         equipment.save()
-        messages.success(request, "Equipment added")
+        return JsonResponse({
+            'result': 'success',
+            'equipment': {
+                'id': equipment.id,
+                'instrument': equipment.instrument
+            }
+        })
     else:
-        messages.error(request, "There was an error with your submission")
-    return redirect('edit-profile')
+        return JsonResponse({'result': 'error'})
 
 
 @require_GET
@@ -139,11 +148,22 @@ def give_kudos(request, observation):
 
 @login_required
 @require_GET
+def list_equipment(request):
+    if not request.user.is_authenticated():
+        return JsonResponse({'result': 'error', 'redirect': '/accounts/login/'})
+    else:
+        equipment = []
+        for e in request.user.userprofile.equipment_set.all():
+            equipment.append({'id': e.id, 'instrument': e.instrument})
+        return JsonResponse({'equipment': equipment})
+
+
+@login_required
+@require_GET
 def delete_equipment(request, pk):
     equipment = get_object_or_404(Equipment, pk=pk, user_profile=request.user.userprofile)
     equipment.delete()
-    messages.success(request, "Equipment deleted.")
-    return redirect('edit-profile')
+    return JsonResponse({'result': 'success'})
 
 
 @login_required

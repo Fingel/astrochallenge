@@ -2,10 +2,101 @@
 {% load i18n bootstrap3 %}
 
 {% block title %}{% trans "Edit profile" %}{% endblock %}
+{% block content %}
+<div class="row" id="profile-form">
+    <div class="col-md-6">
+        <div class="colwrap">
+                <h2>Edit Profile</h2>
+        <p>
+            Please fill out the following fields to complete your profile.
+        </p>
+        <ul>
+            <li>Timezone: Used to determine your local time</li>
+            <li>Latitude/Longitude: Used to determine your location on earth
+            </li>
+        </ul>
+        <p>Combined, this data determines which objects are visible to you
+        in the night sky!</p>
+        <h3>Equipment</h3>
+        <ul>
+        <li rv-each-equipment="equipment">
+            { equipment.instrument }
+            <a rv-on-click="equipment.destroy">[delete]</a>
+        </li>
+        </ul>
+        <input type="text" rv-value="temp_equipment.instrument" />
+        <button type="submit" rv-on-click="temp_equipment.save" class="btn btn-primary">Add instrument</button>
+        </div>
+    </div>
+    <div class="col-md-6">
+    <div class="colwrap">
+    <form method="post" action="">
+        {% csrf_token %}
+        {% bootstrap_form user_form %}
+        <hr/>
+        <p><button type="button" data-toggle="modal" data-target="#locationModal" class="btn btn-primary"><span class="glyphicon glyphicon-screenshot"></span> Select Latitude/Longitude</button></p>
+        {% bootstrap_form profile_form %}
+        {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {% endbuttons %}
+    </form>
+    </div>
+    </div>
+</div>
+<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="locationModalLabel">Drag the marker to choose your latitude/longitude</h4>
+      </div>
+      <div class="modal-body">
+        <div id="locationpicker" style="width: 500px; height: 400px;"></div>
+        Latitude: <input type="text" id="lat"/> Longitude <input type="text" id="lng"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
 {% block extra_javascript %}
 <script type="text/javascript" src='http://maps.google.com/maps/api/js?sensor=false&libraries=places'></script>
 <script src="{{STATIC_URL}}js/vendor/locationpicker.jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/vendor/rivets.bundled.min.js"></script>
 <script type="text/javascript">
+    var rivetBindings = {
+        equipment : [],
+        temp_equipment : new equipment(0, '')
+    }
+    function equipment(id, instrument){
+        var self = this
+        this.id = id
+        this.instrument = instrument
+        this.destroy = function(){
+            $.getJSON("/equipment/delete/" + self.id, function(data){
+                if(data.result == 'success'){
+                    rivetBindings.equipment.splice(
+                        rivetBindings.equipment.indexOf(self), 1
+                    )
+                }
+            })
+        },
+        this.save = function(){
+            data = {
+                'instrument': self.instrument
+            }
+            $.post('/equipment/add/', data, function(data){
+                if(data.result == 'success'){
+                    rivetBindings.equipment.push(
+                        new equipment(data.equipment.id, data.equipment.instrument)
+                    )
+                    self.instrument = ''
+                }
+            })
+        }
+    }
     $(document).ready(function(){
         lat = 37;
         lng = -122;
@@ -26,70 +117,14 @@
             }
             });
         })
+        $.getJSON("{% url 'list-equipment' %}", function(data){
+            for (var i = 0; i < data.equipment.length; i++) {
+                e = new equipment(data.equipment[i].id, data.equipment[i].instrument)
+                rivetBindings.equipment.push(e)
+            };
+        })
+        rivets.bind($("#profile-form"), rivetBindings)
+
     })
 </script>
-{% endblock %}
-
-{% block content %}
-    <div class="row">
-    <div class="col-md-6">
-        <div class="colwrap">
-                <h2>Edit Profile</h2>
-        <p>
-            Please fill out the following fields to complete your profile.
-        </p>
-        <ul>
-            <li>Timezone: Used to determine your local time</li>
-            <li>Latitude/Longitude: Used to determine your location on earth
-            </li>
-        </ul>
-        <p>Combined, this data determines which objects are visible to you
-        in the night sky!</p>
-        <h3>Equipment</h3>
-        <ul>
-        {% for eq in user.userprofile.equipment_set.all %}
-        <li>{{ eq }} <span class="red"><a href="{% url 'delete-equipment' eq.pk %}">[delete]</a></span></li>
-        {% endfor %}
-        </ul>
-        <form method="post" action="{% url 'add-equipment' %}">
-        {% csrf_token %}
-        {% bootstrap_form equipment_form %}
-        {% buttons %}
-        <button type="submit" class="btn btn-primary">Add instrument</button>
-        {% endbuttons %}
-        </form>
-        </div>
-    </div>
-    <div class="col-md-6">
-    <div class="colwrap">
-    <form method="post" action="">
-        {% csrf_token %}
-        {% bootstrap_form user_form %}
-        <hr/>
-        <p><button type="button" data-toggle="modal" data-target="#locationModal" class="btn btn-primary"><span class="glyphicon glyphicon-screenshot"></span> Select Latitude/Longitude</button></p>
-        {% bootstrap_form profile_form %}
-        {% buttons %}
-        <button type="submit" class="btn btn-primary">Submit</button>
-        {% endbuttons %}
-    </form>
-    </div>
-    </div>
-    </div>
-    <div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="locationModalLabel">Drag the marker to choose your latitude/longitude</h4>
-          </div>
-          <div class="modal-body">
-            <div id="locationpicker" style="width: 500px; height: 400px;"></div>
-            Latitude: <input type="text" id="lat"/> Longitude <input type="text" id="lng"/>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
-          </div>
-        </div>
-      </div>
-    </div>
 {% endblock %}
