@@ -206,21 +206,23 @@ class SolarSystemObject(models.Model):
                 'alt': str(p_object.alt),
                 'az': str(p_object.az),
                 'up': up,
+                'neverup': p_object.neverup
             }
-            if self.type == 'P' or self.name == 'Moon':
-                try:
-                    next_rising = observer.next_rising(p_object)
-                    next_setting = observer.next_setting(p_object)
-                except:
-                    next_rising, next_setting = None, None
+            try:
+                next_rising = observer.next_rising(p_object)
+                next_setting = observer.next_setting(p_object)
                 info.update({
                     'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
                     'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None,
                 })
+            except ephem.AlwaysUpError:
+                info.update({
+                    'alwaysup': True
+                })
+            except:
+                pass
 
             return info
-        else:
-            return {}
 
     def __unicode__(self):
         return self.name
@@ -288,12 +290,17 @@ class AstroObject(models.Model):
         try:
             next_rising = observer.next_rising(p_object)
             next_setting = observer.next_setting(p_object)
+            info.update({
+                'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
+                'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None
+            })
+        except ephem.AlwaysUpError:
+                info.update({
+                    'alwaysup': True
+                })
         except:
-            next_rising, next_setting = None, None
-        info.update({
-            'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
-            'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None
-        })
+                pass
+
         return info
 
     def __unicode__(self):

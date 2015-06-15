@@ -41,10 +41,26 @@
             <span class="red"><b>No</b></span>
             {% endif %}
             </td></tr>
+            {% if current_info.alwaysup %}
+            <tr>
+                <td>Always Up</td>
+                <td><span class="green"><b>Yes</b></span></td>
+            </tr>
+            {% endif %}
+            {% if current_info.neverup %}
+            <tr>
+                <td>Never Up</td>
+                <td><span class="red"><b>Yes</b></span></td>
+            </tr>
+            {% endif %}
             <tr><td>Az</td><td>{{current_info.az}}</td></tr>
             <tr><td>Alt</td><td>{{current_info.alt}}</td></tr>
+            {% if current_info.rise %}
             <tr><td>Next Rise</td><td>{{current_info.rise|default:"N/A"}}</td></tr>
+            {% endif %}
+            {% if current_info.set %}
             <tr><td>Next Set</td><td>{{current_info.set|default:"N/A"}}</td></tr>
+            {% endif %}
         </table>
         {% else %}
         <p>Please <a href="{% url 'auth_login' %}">login</a> to view current observation details</p>
