@@ -115,20 +115,22 @@ class SolarSystemObject(models.Model):
                 "dec": str(p_object.dec),
                 "ra": str(p_object.ra),
             }
-            if self.type == 'P' or self.name == 'Moon':
+            if self.type != 'M':
                 info.update({
                     "elongation": str(p_object.elong),
                     "earth_distance": str(p_object.earth_distance),
                     "sun_distance": str(p_object.sun_distance),
-                    "phase": str(p_object.phase),
                     "magnitude": str(p_object.mag),
+                })
+
+            if self.type == 'P' or self.name == 'Moon':
+                info.update({
+                    "phase": str(p_object.phase),
                 })
             elif self.type == 'C':
                 info.update({
-                    "elongation": str(p_object.elong),
-                    "earth_distance": str(p_object.earth_distance),
-                    "sun_distance": str(p_object.sun_distance),
-                    "magnitude": str(p_object.mag),
+                    "peak_magnitude": self.peak_magnitude,
+                    "closest_approach": self.min_earth_distance
                 })
             elif self.type == 'M' and self.name is not 'Moon':
                 info.update({

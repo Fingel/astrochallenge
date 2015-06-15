@@ -76,19 +76,34 @@
                 {{ object.constellation }}
                 </a></td>
             </tr>
+            {% if object.general_info.magnitude %}
+            <tr><td>Magnitude</td><td>{{ object.general_info.magnitude | floatformat:"-3" }}</td></tr>
+            {% endif %}
+            {% if object.general_info.peak_magnitude %}
+            <tr>
+                <td>Peak Magnitude</td>
+                <td>{{ object.general_info.peak_magnitude.mag }}
+                ({{object.general_info.peak_magnitude.date | date }})</td>
+            </tr>
+            {% endif %}
             {% if object.parent %}
             <tr><td>Orbits</td><td><a href="{{ object.parent.get_absolute_url }}">{{ object.parent.name }}</a></td></tr>
             {% endif %}
             <tr><td>Right ascension</td><td>{{ object.general_info.ra }} (Hours)</td></tr>
             <tr><td>Declination</td><td>{{ object.general_info.dec }} (Deg)</td></tr>
-            {% if object.general_info.magnitude %}
-            <tr><td>Magnitude</td><td>{{ object.general_info.magnitude | floatformat:"-3" }}</td></tr>
-            {% endif %}
             {% if object.general_info.phase %}
             <tr><td>% illuminated</td><td>{{ object.general_info.phase |floatformat:"-3" }}</td></tr>
             {% endif %}
             {% if object.general_info.earth_distance %}
             <tr><td>Distance from Earth</td><td>{{ object.general_info.earth_distance | floatformat:"-5" | intcomma }}AU</td></tr>
+            {% endif %}
+            {% if object.general_info.closest_approach %}
+            <tr>
+                <td>Closest Approach</td>
+                <td>{{ object.general_info.closest_approach.date | date}}
+                ({{ object.general_info.closest_approach.earth_distance |floatformat:"-3"}}AU)
+                </td>
+            </tr>
             {% endif %}
             {% if object.general_info.sun_distance %}
             <tr><td>Distance from Sun</td><td>{{ object.general_info.sun_distance | floatformat:"-5" | intcomma }}AU</td></tr>
