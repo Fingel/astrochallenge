@@ -2,7 +2,6 @@ from django.core.management.base import BaseCommand
 from astrochallenge.objects.models import SolarSystemObject
 from django.conf import settings
 from django.utils import timezone
-import datetime
 import logging
 from decimal import *
 import urllib2
@@ -14,7 +13,7 @@ class Command(BaseCommand):
     logger = logging.getLogger(settings.DEFAULT_LOGGER)
 
     def handle(self, *args, **options):
-        self.logger.info("{0} - starting fetch comets.".format(datetime.datetime.now()))
+        self.logger.info("starting fetch comets.")
         response = urllib2.urlopen('http://www.minorplanetcenter.net/iau/Ephemerides/Comets/Soft03Cmt.txt')
         ss_objects = []
         sun = SolarSystemObject.objects.get(name='Sun')
@@ -50,9 +49,7 @@ class Command(BaseCommand):
         for sso in ss_objects:
             sso.date_added = timezone.now()
             sso.save()
-            self.logger.info("{0} - Added comet: {1} ({2} points) - {3}".format(
-                datetime.datetime.now(), sso.name, sso.points, sso.date_added,
+            self.logger.info("Added comet: {0} ({1} points) - {2}".format(
+                sso.name, sso.points, sso.date_added,
             ))
-        self.logger.info("{0} - retrieved {1} comets.".format(
-            datetime.datetime.now(), len(ss_objects))
-        )
+        self.logger.info("retrieved {0} comets.".format(len(ss_objects)))

@@ -86,18 +86,24 @@ DEFAULT_LOGGER = 'astrolog'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'standard': {
+            'format': '%(levelname)s - %(asctime)s: %(message)s'
+        }
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': 'logs/app.log',
+            'formatter': 'standard'
         },
     },
     'loggers': {
         'astrolog': {
             'handlers': ['file'],
-            'level': 'INFO',
             'propagate': True,
+            'level': 'INFO'
         },
     },
 }
