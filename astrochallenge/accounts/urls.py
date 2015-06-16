@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^accounts/kudos/(?P<observation>\d+)/$', views.give_kudos, name='give-kudos'),
     url(r'^accounts/users/$', ListView.as_view(model=User, template_name="accounts/user_list.html"), name='user-list'),
     url(r'^faq/$', TemplateView.as_view(template_name="accounts/faq.html"), name="faq"),
+    url(r'^comment/delete/(?P<pk>\d+)/$', views.delete_comment, name='delete-comment'),
 )

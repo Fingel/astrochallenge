@@ -13,7 +13,12 @@
         </a>
     </div>
     <div class="col-xs-10">
-        <span class="pull-right">{{ comment.submit_date }}</span>
+        <span class="pull-right">
+            {{ comment.submit_date }}
+            {% if comment.user == request.user %}<br/>
+            <a href="{% url 'delete-comment' comment.id %}" class="btn btn-sm btn-danger pull-right">Delete</a>
+            {% endif %}
+        </span>
         <p>{{ comment.comment | linebreaks }}</p>
     </div>
 </div>

@@ -167,6 +167,14 @@ def delete_equipment(request, pk):
 
 
 @login_required
+@require_GET
+def delete_comment(request, pk):
+    comment = get_object_or_404(CustomComment, pk=pk, user=request.user)
+    comment.delete()
+    return redirect(comment.content_object.get_absolute_url() + '#tab_discussion')
+
+
+@login_required
 def edit_profile(request):
     user = get_object_or_404(User, username=request.user.username)
     if request.method == 'GET':

@@ -224,3 +224,22 @@ class ObjectsViewTests(TransactionTestCase):
             follow=True
         )
         self.assertContains(response, 'Thank you for your comment.')
+
+    def test_delete_comment(self):
+        comment = CustomCommentFactory.create(
+            content_object=self.ao,
+            user=self.user
+        )
+        self.client.login(username=self.user.username, password='supersecret')
+        response = self.client.get(reverse(
+            'astroobject-detail',
+            args=(self.ao.id,))
+        )
+        self.assertContains(response, comment.comment)
+
+        response = self.client.get(reverse(
+            'delete-comment',
+            args=(comment.id,)),
+            follow=True
+        )
+        self.assertNotContains(response, comment.comment)
