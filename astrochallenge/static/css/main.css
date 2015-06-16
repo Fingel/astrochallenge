@@ -181,6 +181,10 @@ label[for=id_comment] {
     padding-bottom: 5px;
 }
 
+#comet {
+    width: 80px;
+}
+
 .moon {
     font-size: 4em;
     line-height: 0.5;
