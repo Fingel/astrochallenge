@@ -7,7 +7,6 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from django.contrib.contenttypes.models import ContentType
 import logging
-import datetime
 
 logger = logging.getLogger(settings.DEFAULT_LOGGER)
 
@@ -33,6 +32,6 @@ def send_comment_email(sender, instance, **kwargs):
                     to = (observation.user_profile.user.email,)
                     email = EmailMessage(subject=subject, body=message, to=to)
                     email.send()
-                    logger.info('{0} EMAIL SENT: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
+                    logger.info('EMAIL SENT: Subject: {0} Dest: {1}'.format(subject, to))
                 except Exception as exception:
-                    logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
+                    logger.error('EMAIL - EXCEPTION: Subject: {0} Dest: {1} {2}'.format(subject, to, str(exception)))

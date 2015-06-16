@@ -139,9 +139,9 @@ def give_kudos(request, observation):
                     to = (observation.user_profile.user.email,)
                     email = EmailMessage(subject=subject, body=message, to=to)
                     email.send()
-                    logger.info('{0} EMAIL SENT: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
+                    logger.info('EMAIL SENT: Subject: {0} Dest: {1}'.format(subject, to))
                 except Exception as exception:
-                    logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
+                    logger.error('EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(subject, to, str(exception)))
 
         return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
 

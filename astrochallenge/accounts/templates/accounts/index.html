@@ -65,8 +65,6 @@
 	</div>
 	<div class="col-md-7">
 		<div class="colwrap">
-		<h1>Latest Observations</h1>
-		<hr/>
 		{% paginate 10 observations using "ob_page" %}
 		{% for observation in observations %}
 		<div class="row observation-row">

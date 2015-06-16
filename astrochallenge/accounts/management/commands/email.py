@@ -3,7 +3,6 @@ from django.core.management.base import BaseCommand
 from django.core.mail import EmailMessage
 from django.conf import settings
 import logging
-import datetime
 
 
 class Command(BaseCommand):
@@ -18,6 +17,6 @@ class Command(BaseCommand):
         try:
             email.send()
             print ("\nEmail sent successfully")
-            self.logger.info('{0} EMAIL SENT: Subject: {1} Dest: {2}'.format(datetime.datetime.now(), subject, to))
+            self.logger.info('EMAIL SENT: Subject: {1} Dest: {2}'.format(subject, to))
         except Exception as exception:
-            self.logger.error('{0} EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(datetime.datetime.now(), subject, to, str(exception)))
+            self.logger.error('EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(subject, to, str(exception)))
