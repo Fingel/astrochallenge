@@ -91,7 +91,7 @@
 				</a>
 				</div>
 			</div>
-			<div class="col-sm-10">
+			<div class="col-sm-10 well">
 				{% include 'objects/includes/observation_header.html' %}
 				<div class="observation-body">
 					{% if observation.image %}
@@ -136,12 +136,8 @@
 					{{ latest_comet.constellation }}
 					</a></dd>
 					<dt>Closest Approach</dt>
-					<dd> {{ latest_comet.min_earth_distance.date | date }}
+					<dd> {{ latest_comet.min_earth_distance.date | date }}</dd>
 					</dl>
-					<!-- <table>
-					<tbody>
-					<tr><td>Magnitude:</td><td>{{ latest_comet.general_info.magnitude }}</td></tr>
-					<td -->
 					<hr/>
 
 				</div>
@@ -161,12 +157,13 @@
 							</a>
 							<br/>
 							<a href="{{comment.content_object.get_absolute_url}}#tab_discussion">
-							<span class="comment-target">{{comment.content_object}}</span></a>
+							<span class="comment-target">{{comment.content_object.name}}</span></a>
 						</div>
 						<div class="comment">
 							<p>{{ comment.comment|truncatewords:50}}</p>
 						</div>
 					</div>
+					<hr/>
 					{% endfor %}
 				</div>
 			</div>

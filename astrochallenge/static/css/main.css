@@ -112,6 +112,7 @@ label[for=id_comment] {
     border: 1px solid #000;
     padding: 5px;
     min-height: 230px;
+    background-color: #353A41;
 }
 
 .user-deets {
@@ -126,13 +127,6 @@ label[for=id_comment] {
     height: 80px;
     margin-right: 5px;
     border-radius: 5px;
-}
-.observation-row:nth-child(2n+1){
-    background-color: #353A41;
-}
-
-.observation-row:nth-child(2n){
-     background-color: #2E3338;
 }
 
 .profile-image {
@@ -193,6 +187,9 @@ label[for=id_comment] {
     font-family: moonphases;
 }
 
+.comment {
+    padding-top: 5px;
+}
 .comment-author {
     line-height: 1.5;
 }
