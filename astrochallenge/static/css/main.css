@@ -319,7 +319,7 @@ div.satellite-text {
     cursor: pointer;
 }
 
-#observation-filter {
+.observation-filter {
    margin-top: 25px;
 }
 

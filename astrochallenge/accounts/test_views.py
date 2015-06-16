@@ -215,16 +215,21 @@ class AccountsProfileViewTest(TransactionTestCase):
         self.assertIn('Profile sucessfully updated', response.content)
 
     def test_observation_dates(self):
-        data = {
-            'start_time': datetime.date.today(),
-            'end_time': datetime.date.today()
-        }
-        response = self.client.post(
-            reverse('profile', args=(self.user.username,)),
-            data,
-            follow=True
+        observation = SolarSystemObjectObservationFactory.create(
+            date=datetime.date.today() - datetime.timedelta(days=1),
+            user_profile=self.user.userprofile
         )
-        self.assertContains(response, 'Filter by date')
+        start_time = datetime.date.today() - datetime.timedelta(days=2),
+        end_time = datetime.date.today()
+        response = self.client.get(
+            "{0}?start_time={1}&end_time={2}".format(
+                reverse('profile', args=(self.user.username,)),
+                start_time,
+                end_time
+            )
+        )
+        print response
+        self.assertContains(response, observation.description)
 
 
 class AccountsMiscViewTests(TransactionTestCase):

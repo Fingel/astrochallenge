@@ -70,13 +70,8 @@
 
                         <div class="row">
                         <div class="col-md-12">
-                        <a class="pull-right" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                          <span class="glyphicon glyphicon-calendar"></span> Filter by date
-                        </a>
-                        <div class="collapse" id="collapseExample">
                           <div class="well">
-                            <form method="POST" action="{% url 'profile' member.username %}">
-                                {% csrf_token %}
+                            <form method="GET" action="{% url 'profile' member.username %}">
                                 <span class="col-xs-4">
                                 {% bootstrap_field form.start_time %}
                                 </span>
@@ -84,15 +79,18 @@
                                 {% bootstrap_field form.end_time %}
                                 </span>
                                 {% buttons %}
-                                <button type="submit" id="observation-filter" class="btn btn-primary">Go</button>
+                                <button type="submit" class="btn btn-info observation-filter">Filter</button>
+                                <a href="{% url 'profile' member.username %}?start_time=&end_time=#tab_observations" class="btn btn-primary observation-filter">Clear</a>
                                 {% endbuttons %}
                             </form>
-                          </div>
                           </div>
                         </div>
                         </div>
                         {% if not anchor %}
                         {% paginate 5 observations using "ob_page" %}
+                        {% endif %}
+                        {% if observations|length < 1 %}
+                        <p>No observations</p>
                         {% endif %}
                         {% for observation in observations %}
                         <div class="row observation-row">

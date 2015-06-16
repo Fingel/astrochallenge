@@ -11,16 +11,16 @@ from models import UserProfile, Equipment
 
 
 class ObservationLogForm(forms.Form):
-    start_time = forms.DateTimeField(required=False, widget=DateTimePicker(
-            options={"format": "YYYY-MM-DD HH:mm:ss"}
+    start_time = forms.DateField(required=False, widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD"}
         ))
-    end_time = forms.DateTimeField(required=False, widget=DateTimePicker(
-            options={"format": "YYYY-MM-DD HH:mm:ss"}
+    end_time = forms.DateField(required=False, widget=DateTimePicker(
+            options={"format": "YYYY-MM-DD"}
         ))
 
     def clean_start_time(self):
         start_time = self.cleaned_data['start_time']
-        if start_time > timezone.now():
+        if start_time > timezone.now().date():
             raise forms.ValidationError("You can't have observed anything in the future")
         return start_time
 

@@ -74,15 +74,15 @@ def profile(request, username=None):
             featured_observations.append(observation)
 
     form = ObservationLogForm()
-    if request.method == "POST":
-        form = ObservationLogForm(request.POST)
+    if request.GET.get('start_time'):
+        form = ObservationLogForm(request.GET)
         anchor = "#tab_observations"
         if form.is_valid():
             start_time = form.cleaned_data['start_time'] if form.cleaned_data['start_time'] else datetime.date(1900, 1, 1)
             end_time = form.cleaned_data['end_time'] if form.cleaned_data['end_time'] else datetime.date(2999, 1, 1)
             observations = Observation.objects.filter(user_profile=member.userprofile,
                 date__gte=start_time,
-                date__lte=end_time)
+                date__lte=end_time).order_by('date')
         else:
             messages.error(request, "Invalid date range")
     challenges = [completed_challenge.challenge for completed_challenge in member.userprofile.completedchallenge_set.all()]
