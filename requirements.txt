@@ -28,3 +28,5 @@ django_nose
 coverage
 factory_boy
 scipy
+redis
+celery

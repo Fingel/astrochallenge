@@ -214,6 +214,15 @@ CHALLENGE_TYPES = (
     ('composite', 'solar system or deep space object'),
 )
 
+# Celery
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_ENABLE_UTC = True
+
 try:
     from local_settings import *
 except ImportError:

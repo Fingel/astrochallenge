@@ -24,11 +24,18 @@ class UserProfile(models.Model):
 
     @property
     def points(self):
-        return self.observation_set.all().aggregate(
+        points = 0
+        ob_points = self.observation_set.all().aggregate(
             Sum('points_earned')
-        )['points_earned__sum'] + self.completedchallenge_set.all().aggregate(
+        ).get('points_earned__sum', 0)
+        challenge_points = self.completedchallenge_set.all().aggregate(
             Sum('challenge__complete_bonus')
-        )['challenge__complete_bonus__sum']
+        ).get('challenge__complete_bonus__sum', 0)
+        if ob_points:
+            points = points + ob_points
+        if challenge_points:
+            points = points + challenge_points
+        return points
 
     @property
     def observer(self):

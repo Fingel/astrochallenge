@@ -2,13 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.core.mail import mail_admins, EmailMessage
+from django.core.mail import mail_admins
 from django.utils import timezone
 from django.views.decorators.http import require_POST, require_GET
 from django.views.generic import View
 from django.http import JsonResponse
-from django.template.loader import get_template
-from django.template import Context
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 import logging
@@ -17,6 +15,7 @@ import datetime
 from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation, SolarSystemObject
 from astrochallenge.accounts.models import Equipment, UserProfile, Kudos
+from astrochallenge.accounts.tasks import kudos_email
 from astrochallenge.objects.utils import moon_phase
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from forms import UserForm, ProfileForm, EquipmentForm, ContactForm, ObservationLogForm
@@ -129,20 +128,7 @@ def give_kudos(request, observation):
             kudos = Kudos(user_profile=request.user.userprofile, observation=ob)
             kudos.save()
             if ob.user_profile.recieve_notification_emails:
-                try:
-                    observation = kudos.observation
-                    from_user = kudos.user_profile.user
-                    text = get_template('accounts/mail/kudos.txt')
-                    context = Context({'from_user': from_user.username, 'observation': observation})
-                    message = text.render(context)
-                    subject = "{0} gave you kudos on your observation!".format(from_user.username)
-                    to = (observation.user_profile.user.email,)
-                    email = EmailMessage(subject=subject, body=message, to=to)
-                    email.send()
-                    logger.info('EMAIL SENT: Subject: {0} Dest: {1}'.format(subject, to))
-                except Exception as exception:
-                    logger.error('EMAIL - EXCEPTION: Subject: {1} Dest: {2} {3}'.format(subject, to, str(exception)))
-
+                kudos_email.delay(kudos.user_profile.id, kudos.observation.id)
         return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
 
 
