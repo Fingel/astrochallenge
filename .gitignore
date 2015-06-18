@@ -60,3 +60,4 @@ local_settings.py
 /media
 /logs
 /scratch
+celery
