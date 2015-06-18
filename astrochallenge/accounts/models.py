@@ -1,6 +1,7 @@
 import pytz
 import ephem
 from django.db import models
+from django.db.models import Sum
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
@@ -23,12 +24,11 @@ class UserProfile(models.Model):
 
     @property
     def points(self):
-        points = 0
-        for observation in self.observation_set.all():
-            points += observation.points_earned
-        for completed_challenge in self.completedchallenge_set.all():
-            points += completed_challenge.challenge.complete_bonus
-        return points
+        return self.observation_set.all().aggregate(
+            Sum('points_earned')
+        )['points_earned__sum'] + self.completedchallenge_set.all().aggregate(
+            Sum('challenge__complete_bonus')
+        )['challenge__complete_bonus__sum']
 
     @property
     def observer(self):
