@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.template.loader import get_template
+from django.template import Context
 from django.contrib.auth.models import User
 from django.core.mail import mail_admins
 from django.utils import timezone
@@ -15,7 +17,7 @@ import datetime
 from astro_comments.models import CustomComment
 from astrochallenge.objects.models import Observation, SolarSystemObject
 from astrochallenge.accounts.models import Equipment, UserProfile, Kudos
-from astrochallenge.accounts.tasks import kudos_email
+from astrochallenge.accounts.tasks import email_task
 from astrochallenge.objects.utils import moon_phase
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from forms import UserForm, ProfileForm, EquipmentForm, ContactForm, ObservationLogForm
@@ -128,7 +130,17 @@ def give_kudos(request, observation):
             kudos = Kudos(user_profile=request.user.userprofile, observation=ob)
             kudos.save()
             if ob.user_profile.recieve_notification_emails:
-                kudos_email.delay(kudos.user_profile.id, kudos.observation.id)
+                text = get_template('accounts/mail/kudos.txt')
+                context = Context(
+                    {'from_user': kudos.user_profile.user.username,
+                     'observation': kudos.observation}
+                )
+                body = text.render(context)
+                subject = "{0} gave you kudos on your observation!".format(
+                    kudos.user_profile.user.username
+                )
+                to = (kudos.observation.user_profile.user.email,)
+                email_task.delay(subject=subject, body=body, to=to)
         return JsonResponse({'result': 'success', 'kudos': len(ob.kudos_set.all())})
 
 
