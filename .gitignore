@@ -61,3 +61,4 @@ local_settings.py
 /logs
 /scratch
 celery
+celerybeat-schedule

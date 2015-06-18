@@ -5,6 +5,8 @@ Django settings for astrochallenge project.
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+from datetime import timedelta
+
 
 APP_ROOT = os.path.dirname(os.path.realpath(__file__))
 PROJECT_ROOT = os.path.dirname(APP_ROOT)
@@ -224,7 +226,10 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_ENABLE_UTC = True
 
 CELERYBEAT_SCHEDULE = {
-
+    'fetch-comets-every-day': {
+        'task': 'astrochallenge.objects.tasks.fetch_comets',
+        'schedule': timedelta(days=1),
+    },
 }
 
 CELERY_TIMEZONE = 'UTC'
