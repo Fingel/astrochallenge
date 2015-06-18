@@ -3,8 +3,8 @@ CELERYD_NODES="w1"
 # or we could have three nodes:
 #CELERYD_NODES="w1 w2 w3"
 
-# Absolute or relative path to the 'celery' command:
-CELERY_BIN=/home/austin/.virtualenvs/astroc/bin/celery
+# Absolute or relative path to the 'celery' command: proably not used
+CELERY_BIN=/home/austin/www/astrochallenge/env/bin/celery
 
 # How to call manage.py
 CELERYD_MULTI="multi"
@@ -13,7 +13,7 @@ CELERYD_MULTI="multi"
 CELERYD_OPTS="--time-limit=300 --concurrency=8"
 
 # %N will be replaced with the first part of the nodename.
-CELERYD_LOG_FILE="/home/austin/Documents/astroc/celery/%N.log"
-CELERYD_PID_FILE="/home/austin/Documents/astroc/celery/%N.pid"
+CELERYD_LOG_FILE="/home/austin/www/astrochallenge/logs/celery/%N.log"
+CELERYD_PID_FILE="/home/austin/www/astrochallenge/logs/celery/%N.pid"
 
 CELERY_APP="astrochallenge"
