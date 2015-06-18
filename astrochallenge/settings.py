@@ -4,6 +4,7 @@ Django settings for astrochallenge project.
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from datetime import timedelta
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 APP_ROOT = os.path.dirname(os.path.realpath(__file__))
@@ -222,6 +223,15 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_ENABLE_UTC = True
+
+CELERYBEAT_SCHEDULE = {
+    'add-every-30-seconds': {
+        'task': 'debug_task',
+        'schedule': timedelta(seconds=10),
+    },
+}
+
+CELERY_TIMEZONE = 'UTC'
 
 try:
     from local_settings import *
