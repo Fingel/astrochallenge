@@ -358,3 +358,10 @@ input[type=file]{
 .aladin-location {
     display: none;
 }
+
+.footer {
+    color: #c8c8c8;
+    font-size: 8px;
+    text-align: center;
+    padding-top: 20px;
+}
