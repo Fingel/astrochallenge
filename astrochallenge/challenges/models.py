@@ -4,7 +4,7 @@ from django.core import urlresolvers
 from django.utils import timezone
 from operator import attrgetter
 
-from astrochallenge.objects.models import AstroObject, SolarSystemObject
+from astrochallenge.objects.models import AstroObject, SolarSystemObject, Supernova
 from astrochallenge.accounts.models import UserProfile
 
 difficulty_levels = (
@@ -21,6 +21,7 @@ class Challenge(models.Model):
     type = models.CharField(max_length=200, choices=(('set', 'set'), ('numeric', 'numeric')))
     solarsystemobjects = models.ManyToManyField(SolarSystemObject, blank=True)
     astroobjects = models.ManyToManyField(AstroObject, blank=True)
+    supernovae = models.ManyToManyField(Supernova, blank=True)
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True, default="")
     rating = models.PositiveIntegerField(default=3, choices=difficulty_levels)
@@ -51,6 +52,7 @@ class Challenge(models.Model):
     def all_objects(self):
         all_objects = list(self.solarsystemobjects.all())
         all_objects += list(self.astroobjects.all())
+        all_objects += list(self.supernovae.all())
         return sorted(all_objects, key=attrgetter('pk'))
 
     def __unicode__(self):

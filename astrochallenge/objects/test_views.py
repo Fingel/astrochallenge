@@ -6,7 +6,9 @@ import datetime
 import time
 import json
 
-from test_helpers import AstroObjectFactory, SolarSystemObjectFactory, AstroObjectObservationFactory, SolarSystemObjectObservationFactory, CatalogObjectFactory
+from test_helpers import (AstroObjectFactory, SolarSystemObjectFactory,
+    AstroObjectObservationFactory, SolarSystemObjectObservationFactory,
+    CatalogObjectFactory, SupernovaFactory)
 from astrochallenge.accounts.test_helpers import UserFactory, EquipmentFactory
 from astrochallenge.challenges.test_helpers import ChallengeFactory
 from astro_comments.test_helpers import CustomCommentFactory
@@ -16,8 +18,10 @@ class ObjectsViewTests(TransactionTestCase):
     def setUp(self):
         self.astroobjects = AstroObjectFactory.create_batch(10)
         self.solarsystemobjects = SolarSystemObjectFactory.create_batch(3)
+        self.supernovae = SupernovaFactory.create_batch(10)  # this will create 10 more astroobjects
         self.ao = self.astroobjects[0]
         self.sso = self.solarsystemobjects[0]
+        self.sn = self.supernovae[0]
         self.catalog_object = CatalogObjectFactory.create(astro_object=self.ao)
         self.user = UserFactory.create()
         self.equipment = EquipmentFactory(
@@ -70,7 +74,7 @@ class ObjectsViewTests(TransactionTestCase):
         # response = self.client.get('astroobject-list-json')
         self.assertEquals(response.status_code, 200)
         data = json.loads(response.content)
-        self.assertEquals(data['recordsTotal'], 10)
+        self.assertEquals(data['recordsTotal'], 20)
 
         response = self.client.get(reverse(
             'astroobject-list-json',
@@ -112,6 +116,13 @@ class ObjectsViewTests(TransactionTestCase):
         ))
         self.assertEquals(response.status_code, 200)
         self.assertIn(self.ao.common_name, response.content)
+
+    def test_supernova_detail(self):
+        response = self.client.get(reverse(
+            'supernova-detail',
+            args=(self.sn.id,))
+        )
+        self.assertContains(response, self.sn.name)
 
     def test_solarsystemobject_detail(self):
         response = self.client.get(reverse(

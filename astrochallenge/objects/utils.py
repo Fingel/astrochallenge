@@ -16,6 +16,14 @@ import ephem
 
 class FixedElement:
     @property
+    def ra(self):
+        return "{0}:{1}:{2}".format(self.ra_hours, int(self.ra_minutes), self.ra_seconds)
+
+    @property
+    def dec(self):
+        return "{0}{1}:{2}:{3}".format(self.dec_sign, int(self.dec_deg), int(self.dec_min), self.dec_seconds)
+
+    @property
     def fixed_body(self):
         object = ephem.FixedBody()
         object._ra = "{0}:{1}:{2}".format(self.ra_hours, self.ra_minutes, self.ra_seconds)

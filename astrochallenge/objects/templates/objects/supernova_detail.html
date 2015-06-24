@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load comments bootstrap3 humanize objects_extras thumbnail %}
+{% block title %} {{ object }}{% endblock %}
+{% block description %}{{ object.description|default:block.super }}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="colwrap">
+        <h1 class="no-top-margin">{{ object }}</h1>
+        {% include "objects/includes/observation_form.html" with observation_form=observation_form next_target='astroobject-detail' %}
+        </div>
+    </div>
+    <div class="col-md-9">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">Info</a></li>
+            <li role="presentation"><a href="#finder" aria-controls="finder" role="tab" data-toggle="tab">Finder Chart</a></li>
+            <li role="presentation"><a href="#observations" aria-controls="observations" role="tab" data-toggle="tab">Observations ({{ object.observations.all | length }})</a></li>
+            {% get_comment_count for object as comment_count %}
+            <li role="presentation"><a href="#discussion" aria-controls="discussion" role="tab" data-toggle="tab">Discussion ({{ comment_count }})</a></li>
+          </ul>
+
+  <!-- Tab panes -->
+  <div class="colwrap">
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="info">
+        <h4>Current Info for {{user.username|default:"Observer"}}</h4>
+        <p> as of {% now 'SHORT_DATETIME_FORMAT' %}</p>
+        {% if user.is_authenticated %}
+        <table class="table">
+            <tr><td>Up</td><td>
+            {% if current_info.up %}
+            <span class="green"><b>Yes</b></span>
+            {% else %}
+            <span class="red"><b>No</b></span>
+            {% endif %}
+            {% if current_info.neverup %}
+            <tr><td>Never Up</td>
+            <td><span class="red"><b>Yes</b></span></td>
+            </tr>
+            {% endif %}
+            {% if current_info.alwaysup %}
+            <tr><td>Always Up</td>
+            <td><span class="green"><b>Yes</b></span></td>
+            </tr>
+            {% endif %}
+            <tr><td>Az</td><td>{{current_info.az}}</td></tr>
+            <tr><td>Alt</td><td>{{current_info.alt}}</td></tr>
+            {% if current_info.rise %}
+            <tr><td>Next Rise</td><td>{{current_info.rise|default:"N/A"}}</td></tr>
+            {% endif %}
+            {% if current_info.set %}
+            <tr><td>Next Set</td><td>{{current_info.set|default:"N/A"}}</td></tr>
+            {% endif %}
+        </table>
+        {% else %}
+        <p>Please <a href="{% url 'auth_login' %}">login</a> to view current observation details</p>
+        {% endif %}
+        <h4>General Info</h4>
+        <table class="table">
+            <tr><td>Type</td><td>{{ object.sntype }}</td></tr>
+            {% if object.constellation %}
+            <tr><td>Constellation</td><td><a href="{% url 'constellation-detail' object.constellation.abbreviation %}">{{ object.constellation.latin_name }}</a></td></tr>
+            {% endif %}
+            {% if object.astro_object %}
+            <tr>
+                <td>Galaxy</td>
+                <td>
+                    <a href="{% url 'astroobject-detail' object.astro_object.pk %}">
+                    {{ object.astro_object }}
+                    </a>
+                </td>
+            </tr>
+            {% endif %}
+            <tr><td>Right ascension</td><td>{{ object.ra }}</td></tr>
+            <tr><td>Declination</td><td>{{ object.dec }}</td></tr>
+            <tr>
+                <td>Latest Magnitude</td>
+                <td>
+                    {{ object.latest_magnitude.magnitude }}
+                    ({{ object.latest_magnitude.time|date }})
+                </td>
+            </tr>
+            <tr>
+                <td>Max Magnitude</td>
+                <td>
+                    {{ object.max_magnitude.magnitude }}
+                    ({{ object.max_magnitude.time|date}})
+                </td>
+            </tr>
+            {% if object.distance %}
+            <tr><td>Distance</td><td>{{ object.distance | floatformat:"-3" | intcomma }}ly</td></tr>
+            {% endif %}
+            {% if object.size %}
+            <tr><td>Size</td><td>{{ object.size | floatformat:"-3" }} arc min</td></tr>
+            {% endif %}
+            {% if object.discovery_date %}
+            <tr>
+                <td>Discovered</td>
+                <td>{{ object.discovery_date|date }}</td>
+            </tr>
+            {% endif %}
+            {% if object.z %}
+            <tr><td>z</td><td>{{ object.z }}</td></tr>
+            {% endif %}
+            {% if object.description %}
+            <tr><td colspan="2">{{ object.description }}</td></tr>
+            {% endif %}
+        </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="finder">
+             {% include "objects/includes/finder_chart_form.html" with finder_char_form=finder_chart_form %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="observations">
+            {% include "objects/includes/observation_list.html" with observations=object.observations.all %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="discussion">
+            {% render_comment_list for object %}
+            {% if user.is_authenticated %}
+            {% get_comment_form for object as form %}
+            <div id="comment-form-div">
+              <form action="{% comment_form_target %}" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                <button class="btn btn-default" type="submit" name="submit" value="Post">Post</button>
+                <input type="hidden" name="next" value="{% url 'astroobject-detail' object.pk %}#tab_discussion" />
+                {% endbuttons %}
+              </form>
+            </div>
+            {% else %}
+            <p> Please login to post comments</p>
+            {% endif %}
+        </div>
+      </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block extra_javascript %}
+<script type="text/javascript" src="{{STATIC_URL}}/js/tabpage.js"></script>
+<script type="text/javascript">
+ $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+{% endblock %}

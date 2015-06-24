@@ -271,14 +271,6 @@ class AstroObject(models.Model, FixedElement):
     def bonus_points(self):
         return calculate_points(self) - self.points
 
-    @property
-    def ra(self):
-        return "{0}:{1}:{2}".format(self.ra_hours, self.ra_minutes, self.ra_seconds)
-
-    @property
-    def dec(self):
-        return "{0}{1}:{2}:{3}".format(self.dec_sign, self.dec_deg, self.dec_min, self.dec_seconds)
-
     def __unicode__(self):
         return self.common_name if self.common_name else "{0}:{1}-{2}".format(self.constellation, self.ra_hours, self.dec_deg)
 
@@ -323,6 +315,7 @@ class Supernova(models.Model, FixedElement):
     z = models.FloatField(blank=True, null=True)
     points = models.IntegerField(default=10)
     date_added = models.DateTimeField(default=timezone.now)
+    observations = GenericRelation(Observation)
 
     @staticmethod
     def brightest_supernova():
@@ -337,6 +330,9 @@ class Supernova(models.Model, FixedElement):
     def latest_magnitude(self):
         return self.supernovamagnitude_set.order_by('-time').first()
 
+    def max_magnitude(self):
+        return self.supernovamagnitude_set.order_by('magnitude').first()
+
     @property
     def constellation(self):
         p_object = self.fixed_body
@@ -349,6 +345,16 @@ class Supernova(models.Model, FixedElement):
                 return None
         else:
             return None
+
+    def __unicode__(self):
+        return "Supernova {0}".format(self.name)
+
+    def get_absolute_url(self):
+        return urlresolvers.reverse("supernova-detail", args=(self.pk,))
+
+    @property
+    def bonus_points(self):
+        return calculate_points(self) - self.points
 
 
 class SupernovaMagnitude(models.Model):
