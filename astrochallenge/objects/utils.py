@@ -14,6 +14,41 @@ from fchart.pdf import *
 import ephem
 
 
+class FixedElement:
+    @property
+    def fixed_body(self):
+        object = ephem.FixedBody()
+        object._ra = "{0}:{1}:{2}".format(self.ra_hours, self.ra_minutes, self.ra_seconds)
+        object._dec = "{0}{1}:{2}:{3}".format(self.dec_sign, self.dec_deg, self.dec_min, self.dec_seconds)
+        return object
+
+    def observation_info(self, observer):
+        p_object = self.fixed_body
+        p_object.compute(observer)
+        up = True if ephem.degrees(p_object.alt) > 0 else False
+        info = {
+            'alt': str(p_object.alt),
+            'az': str(p_object.az),
+            'up': up,
+            'neverup': p_object.neverup
+        }
+        try:
+            next_rising = observer.next_rising(p_object)
+            next_setting = observer.next_setting(p_object)
+            info.update({
+                'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
+                'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None
+            })
+        except ephem.AlwaysUpError:
+                info.update({
+                    'alwaysup': True
+                })
+        except:
+                pass
+
+        return info
+
+
 def calculate_points(object):
     points = object.points
     current_challenges = object.challenge_set.filter(start_time__lt=timezone.now(), end_time__gt=timezone.now())

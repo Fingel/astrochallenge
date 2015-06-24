@@ -15,7 +15,7 @@ import logging
 import datetime
 
 from astro_comments.models import CustomComment
-from astrochallenge.objects.models import Observation, SolarSystemObject
+from astrochallenge.objects.models import Observation, SolarSystemObject, Supernova
 from astrochallenge.accounts.models import Equipment, UserProfile, Kudos
 from astrochallenge.accounts.tasks import email_task
 from astrochallenge.objects.utils import moon_phase
@@ -43,6 +43,7 @@ def index(request):
     userprofiles = UserProfile.objects.all().exclude(observation=None)
     leaderboard = list(sorted(userprofiles, key=lambda userprofile: userprofile.points, reverse=True))
     latest_comet = SolarSystemObject.objects.filter(type='C').order_by('-date_added')[0]
+    supernova = Supernova.brightest_supernova()
     context = {
         "comments": comments,
         "observations": observations,
@@ -52,7 +53,8 @@ def index(request):
         "time": timezone.now(),
         "next_challenge": next_challenge,
         "leaderboard": leaderboard,
-        "latest_comet": latest_comet
+        "latest_comet": latest_comet,
+        "supernova": supernova,
     }
     return render(request, 'accounts/index.html', context)
 

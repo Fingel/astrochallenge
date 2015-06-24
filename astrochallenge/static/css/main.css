@@ -181,7 +181,7 @@ label[for=id_comment] {
     padding-bottom: 5px;
 }
 
-#comet {
+#comet, #supernova {
     width: 80px;
 }
 

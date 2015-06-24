@@ -7,10 +7,14 @@ from django.utils import timezone
 from django.core import urlresolvers
 from scipy import optimize
 import ephem
+import logging
 import pytz
+import datetime
 
 from astrochallenge.accounts.models import UserProfile, Equipment
-from astrochallenge.objects.utils import calculate_points
+from astrochallenge.objects.utils import calculate_points, FixedElement
+
+logger = logging.getLogger(settings.DEFAULT_LOGGER)
 
 
 class Observation(models.Model):
@@ -236,7 +240,7 @@ class SolarSystemObject(models.Model):
         return urlresolvers.reverse("solarsystemobject-detail", args=(self.pk,))
 
 
-class AstroObject(models.Model):
+class AstroObject(models.Model, FixedElement):
     constellation = models.ForeignKey(Constellation, blank=True, null=True)
     type = models.CharField(max_length=200)
     index = models.IntegerField(default=999999)
@@ -275,39 +279,6 @@ class AstroObject(models.Model):
     def dec(self):
         return "{0}{1}:{2}:{3}".format(self.dec_sign, self.dec_deg, self.dec_min, self.dec_seconds)
 
-    @property
-    def fixed_body(self):
-        object = ephem.FixedBody()
-        object._ra = "{0}:{1}:{2}".format(self.ra_hours, self.ra_minutes, self.ra_seconds)
-        object._dec = "{0}{1}:{2}:{3}".format(self.dec_sign, self.dec_deg, self.dec_min, self.dec_seconds)
-        return object
-
-    def observation_info(self, observer):
-        p_object = self.fixed_body
-        p_object.compute(observer)
-        up = True if ephem.degrees(p_object.alt) > 0 else False
-        info = {
-            'alt': str(p_object.alt),
-            'az': str(p_object.az),
-            'up': up,
-            'neverup': p_object.neverup
-        }
-        try:
-            next_rising = observer.next_rising(p_object)
-            next_setting = observer.next_setting(p_object)
-            info.update({
-                'rise': timezone.make_aware(next_rising.datetime(), pytz.UTC) if next_rising else None,
-                'set': timezone.make_aware(next_setting.datetime(), pytz.UTC) if next_setting else None
-            })
-        except ephem.AlwaysUpError:
-                info.update({
-                    'alwaysup': True
-                })
-        except:
-                pass
-
-        return info
-
     def __unicode__(self):
         return self.common_name if self.common_name else "{0}:{1}-{2}".format(self.constellation, self.ra_hours, self.dec_deg)
 
@@ -337,7 +308,7 @@ class CatalogObject(models.Model):
         return "{0}{1}".format(self.catalog, self.designation)
 
 
-class Supernova(models.Model):
+class Supernova(models.Model, FixedElement):
     name = models.CharField(max_length=255, unique=True)
     astro_object = models.ForeignKey(AstroObject, null=True, blank=True, default=None)
     ra_hours = models.IntegerField()
@@ -351,6 +322,33 @@ class Supernova(models.Model):
     sntype = models.CharField(max_length=255)
     z = models.FloatField(blank=True, null=True)
     points = models.IntegerField(default=10)
+    date_added = models.DateTimeField(default=timezone.now)
+
+    @staticmethod
+    def brightest_supernova():
+        try:
+            return SupernovaMagnitude.objects.filter(
+                time__gt=timezone.now() - datetime.timedelta(days=30)
+            ).order_by('magnitude')[:1][0].supernova
+        except:
+            logger.error("no SN readings in the last month!")
+            return Supernova.objects.last()
+
+    def latest_magnitude(self):
+        return self.supernovamagnitude_set.order_by('-time').first()
+
+    @property
+    def constellation(self):
+        p_object = self.fixed_body
+        if p_object:
+            p_object.compute()
+            try:
+                abbrv = ephem.constellation(p_object)[0]
+                return Constellation.objects.get(abbreviation=abbrv)
+            except:
+                return None
+        else:
+            return None
 
 
 class SupernovaMagnitude(models.Model):
