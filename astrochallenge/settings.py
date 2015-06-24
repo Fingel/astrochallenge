@@ -230,6 +230,10 @@ CELERYBEAT_SCHEDULE = {
         'task': 'astrochallenge.objects.tasks.fetch_comets',
         'schedule': timedelta(days=1),
     },
+    'fetch-supernovae-every-day': {
+        'task': 'astrochallenge.objects.tasks.fetch_supernovae',
+        'schedule': timedelta(days=1),
+    }
 }
 
 CELERY_TIMEZONE = 'UTC'

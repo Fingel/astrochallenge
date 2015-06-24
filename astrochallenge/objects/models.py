@@ -335,3 +335,25 @@ class CatalogObject(models.Model):
 
     def __unicode__(self):
         return "{0}{1}".format(self.catalog, self.designation)
+
+
+class Supernova(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    astro_object = models.ForeignKey(AstroObject, null=True, blank=True, default=None)
+    ra_hours = models.IntegerField()
+    ra_minutes = models.FloatField()
+    ra_seconds = models.FloatField(default=0.0, blank=True)
+    dec_sign = models.CharField(max_length=1, choices=(('+', '+'), ('-', '-')), default="+")
+    dec_deg = models.IntegerField()
+    dec_min = models.FloatField()
+    dec_seconds = models.FloatField(default=0.0, blank=True)
+    discovery_date = models.DateTimeField()
+    sntype = models.CharField(max_length=255)
+    z = models.FloatField(blank=True, null=True)
+    points = models.IntegerField(default=10)
+
+
+class SupernovaMagnitude(models.Model):
+    supernova = models.ForeignKey(Supernova)
+    magnitude = models.FloatField()
+    time = models.DateTimeField()
