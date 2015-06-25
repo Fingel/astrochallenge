@@ -369,3 +369,7 @@ input[type=file]{
     text-align: center;
     padding-top: 20px;
 }
+
+.inner-well {
+    padding: 0px;
+}

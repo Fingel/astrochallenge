@@ -11,11 +11,12 @@ from django.views.generic import View
 from django.http import JsonResponse
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Count
 import logging
 import datetime
 
 from astro_comments.models import CustomComment
-from astrochallenge.objects.models import Observation, SolarSystemObject, Supernova
+from astrochallenge.objects.models import Observation, SolarSystemObject, Supernova, AstroObject
 from astrochallenge.accounts.models import Equipment, UserProfile, Kudos
 from astrochallenge.accounts.tasks import email_task
 from astrochallenge.objects.utils import moon_phase
@@ -44,6 +45,8 @@ def index(request):
     leaderboard = list(sorted(userprofiles, key=lambda userprofile: userprofile.points, reverse=True))
     latest_comet = SolarSystemObject.objects.filter(type='C').order_by('-date_added')[0]
     supernova = Supernova.brightest_supernova()
+    popular_dso = AstroObject.objects.annotate(Count('observations')).order_by('-observations__count')[:5]
+    popular_sso = SolarSystemObject.objects.annotate(Count('observations')).order_by('-observations__count')[:5]
     context = {
         "comments": comments,
         "observations": observations,
@@ -55,6 +58,8 @@ def index(request):
         "leaderboard": leaderboard,
         "latest_comet": latest_comet,
         "supernova": supernova,
+        "popular_dso": popular_dso,
+        "popular_sso": popular_sso,
     }
     return render(request, 'accounts/index.html', context)
 

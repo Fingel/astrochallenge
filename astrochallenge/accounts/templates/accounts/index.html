@@ -49,7 +49,10 @@
 		</div>
 		{% endif %}
 		<div id="leaderboard">
-			<center><h3>Top Observers</h3></center>
+			<center><h3>
+			<span class="glyphicon glyphicon-sunglasses"></span><br/>
+			Top Observers
+			</h3></center>
 			<ol class="clearfix">
 				{% for userprofile in leaderboard|slice:":10" %}
 				<li>
@@ -65,6 +68,53 @@
 	</div>
 	<div class="col-md-7">
 		<div class="colwrap">
+		<div class="row">
+			<div class="col-md-12">
+				<center><h3>
+				<span class="glyphicon glyphicon-arrow-up"></span>
+				Most Popular
+				<span class="glyphicon glyphicon-arrow-up"></span>
+				</h3></center>
+			</div>
+			<div class="col-md-6">
+				<div class="well inner-well">
+					<center><h4>Deep Space Objects</h4></center>
+					<ol>
+						{% for dso in popular_dso %}
+						<li>
+							<a href="{{ dso.get_absolute_url }}#tab_observations">{{ dso }}</a>
+							({{ dso.observations__count }})
+						</li>
+						{% endfor %}
+					</ol>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="well inner-well">
+					<center><h4>Solar System Objects</h4></center>
+					<ol>
+						{% for sso in popular_sso %}
+						<li>
+							<a href="{{ sso.get_absolute_url }}#tab_observations">{{ sso }}</a>
+							({{ sso.observations__count }})
+						</li>
+						{% endfor %}
+					</ol>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<center><h3>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				Latest Observations
+				<span class="glyphicon glyphicon-eye-open"></span>
+				{% if request.GET.ob_page %}
+				<br/> Page {{ request.GET.ob_page }}
+				{% endif %}
+				</h3></center>
+			</div>
+		</div>
 		{% paginate 10 observations using "ob_page" %}
 		{% for observation in observations %}
 		<div class="row observation-row">
