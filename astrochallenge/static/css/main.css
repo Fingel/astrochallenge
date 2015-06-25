@@ -48,6 +48,10 @@ h1 > a {
     text-decoration: none;
 }
 
+dd {
+    margin-left: 10px;
+}
+
 .navbar a{
     text-decoration: none;
 }
@@ -181,7 +185,7 @@ label[for=id_comment] {
     padding-bottom: 5px;
 }
 
-#comet {
+#comet, #supernova {
     width: 80px;
 }
 

@@ -1,5 +1,5 @@
 from django.contrib.sitemaps import Sitemap
-from objects.models import AstroObject, SolarSystemObject, Constellation, Observation
+from objects.models import AstroObject, SolarSystemObject, Constellation, Observation, Supernova
 from challenges.models import Challenge
 from django.core.urlresolvers import reverse
 
@@ -16,6 +16,13 @@ class SolarSystemObjectSitemap(Sitemap):
 
     def items(self):
         return SolarSystemObject.objects.all()
+
+
+class SuperNovaSitemap(Sitemap):
+    changefreq = 'daily'
+
+    def items(self):
+        return Supernova.objects.all()
 
 
 class ObservationSitemap(Sitemap):

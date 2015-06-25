@@ -142,6 +142,31 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
+					<center>
+						<img src="{{STATIC_URL}}/images/supernova.svg" id="supernova" class="img-responsive"/>
+						<h3>Brightest Supernova</h3>
+					</center>
+					<h4><a href="{{ supernova.get_absolute_url }}">{{ supernova.name }}</a></h4>
+					<dl>
+						<dt>Last Observed Magnitude:</dt>
+						<dd>
+							{{ supernova.latest_magnitude.magnitude }}
+							({{ supernova.latest_magnitude.time|date }} )
+						</dd>
+						{% if supernova.astro_object %}
+						<dt>Galaxy:</dt>
+						<dd>{{ supernova.astro_object.catalog_rep }}</dd>
+						{% else %}
+						<dt>Constellation:</dt>
+						<dd>{{ supernova.constellation }}</dd>
+						{% endif %}
+						<dt>Type:</dt>
+						<dd>{{ supernova.sntype }}</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
 					<h3>Recent Comments</h3>
 					{% for comment in comments %}
 					<div id="c{{ comment.id }}">

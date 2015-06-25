@@ -11,7 +11,7 @@ from test_helpers import AdminFactory, UserFactory
 from registration.models import RegistrationProfile
 from astrochallenge.challenges.test_helpers import ChallengeFactory
 from astrochallenge.objects.utils import moon_phase
-from astrochallenge.objects.test_helpers import SolarSystemObjectObservationFactory, SolarSystemObjectFactory
+from astrochallenge.objects.test_helpers import SolarSystemObjectObservationFactory, SolarSystemObjectFactory, SupernovaMagnitudeFactory
 
 
 class AccountsViewTest(TransactionTestCase):
@@ -22,6 +22,9 @@ class AccountsViewTest(TransactionTestCase):
                                                  type='set')
         # need 1 comet for the homepage
         SolarSystemObjectFactory.create(type='C')
+
+        # 1 supernova for the homepage
+        SupernovaMagnitudeFactory.create()
 
     def test_homepage(self):
         response = self.client.get(reverse('index'))

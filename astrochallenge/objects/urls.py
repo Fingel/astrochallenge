@@ -3,8 +3,10 @@ from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from astrochallenge.objects.models import Constellation, SolarSystemObject, Observation
-from astrochallenge.objects.views import DSODetailView, DSOListView, DSOListViewJson, SSODetailView, SSOListViewJson, ObservationDetailView, post_observation, delete_observation, post_finderchart
+from astrochallenge.objects.models import Constellation, SolarSystemObject, Observation, Supernova
+from astrochallenge.objects.views import (DSODetailView, DSOListView, DSOListViewJson,
+    SSODetailView, SSOListViewJson, ObservationDetailView, post_observation,
+    delete_observation, post_finderchart, SNDetailView)
 
 urlpatterns = patterns('',
     url(r'^objects/constellations/$', ListView.as_view(model=Constellation), name="constellation-list"),
@@ -19,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^objects/solarsystem/$', ListView.as_view(model=SolarSystemObject), name="solarsystemobject-list"),
     url(r'^objects/solarsystem/(?P<slug>\D+)/$', SSODetailView.as_view(model=SolarSystemObject, slug_field="name"), name="solarsystemobject-detail"),
     url(r'^objects/solarsystem/(?P<slug>\d+)/$', SSODetailView.as_view(model=SolarSystemObject, slug_field="pk"), name="solarsystemobject-detail"),
+    url(r'^objects/supernovae/(?P<slug>\D+)/$', SNDetailView.as_view(model=Supernova, slug_field="name"), name="supernova-detail"),
+    url(r'^objects/supernovae/(?P<slug>\d+)/$', SNDetailView.as_view(model=Supernova, slug_field="pk"), name="supernova-detail"),
 )
 
 urlpatterns += patterns('',

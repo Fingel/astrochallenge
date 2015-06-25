@@ -162,6 +162,11 @@ class SSODetailView(DetailView):
         return get_object_context(self.request, self.get_object())
 
 
+class SNDetailView(DetailView):
+    def get_context_data(self, **kwargs):
+        return get_object_context(self.request, self.get_object())
+
+
 class ObservationDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ObservationDetailView, self).get_context_data(**kwargs)

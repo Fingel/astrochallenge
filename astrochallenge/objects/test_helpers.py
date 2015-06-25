@@ -1,7 +1,8 @@
-from models import AstroObject, SolarSystemObject, Constellation, Observation, CatalogObject
-from factory.fuzzy import FuzzyText, FuzzyChoice, FuzzyFloat, FuzzyInteger, FuzzyDate
+from models import AstroObject, SolarSystemObject, Constellation, Observation, CatalogObject, Supernova, SupernovaMagnitude
+from factory.fuzzy import FuzzyText, FuzzyChoice, FuzzyFloat, FuzzyInteger, FuzzyDate, FuzzyDateTime
 from astrochallenge.accounts.test_helpers import UserProfileFactory, EquipmentFactory
 from django.conf import settings
+from django.utils import timezone
 import factory
 import datetime
 
@@ -53,6 +54,43 @@ class AstroObjectFactory(factory.django.DjangoModelFactory):
     discovery_date = FuzzyDate(start_date=datetime.date(1700, 1, 1))
 
     constellation = factory.SubFactory(ConstellationFactory)
+
+
+class SupernovaFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Supernova
+
+    sntype = FuzzyChoice(choices=[u'Ia', u'II', u'IIb'])
+    ra_hours = FuzzyFloat(0.0, 23.0)
+    ra_minutes = FuzzyFloat(0.0, 59.0)
+    ra_seconds = FuzzyFloat(0.0, 59.0)
+    dec_sign = FuzzyChoice(choices=['+', '-'])
+    dec_deg = FuzzyInteger(0, 89)
+    dec_min = FuzzyFloat(0.0, 59.0)
+    dec_seconds = FuzzyFloat(0.0, 59)
+    z = FuzzyFloat(0, 0.5)
+    name = factory.Sequence(lambda n: "SN/{0}".format(n))
+    points = FuzzyInteger(0, 100)
+    date_added = timezone.now()
+    discovery_date = FuzzyDateTime(
+        start_dt=timezone.now() - datetime.timedelta(days=29),
+        end_dt=timezone.now()
+    )
+
+    astro_object = factory.SubFactory(AstroObjectFactory)
+
+
+class SupernovaMagnitudeFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = SupernovaMagnitude
+
+    magnitude = FuzzyFloat(-2.0, 4.0)
+    time = FuzzyDateTime(
+        start_dt=timezone.now() - datetime.timedelta(days=29),
+        end_dt=timezone.now()
+    )
+
+    supernova = factory.SubFactory(SupernovaFactory)
 
 
 class SolarSystemObjectFactory(factory.django.DjangoModelFactory):
