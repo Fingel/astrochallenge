@@ -18,7 +18,7 @@ class SolarSystemObjectSitemap(Sitemap):
         return SolarSystemObject.objects.all()
 
 
-class SuperNovaSitemap(Sitemap):
+class SupernovaSitemap(Sitemap):
     changefreq = 'daily'
 
     def items(self):

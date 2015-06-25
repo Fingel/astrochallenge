@@ -47,6 +47,7 @@ sitemaps = {
     'ObservationSitemap': ObservationSitemap,
     'ConstellationSitemap': ConstellationSitemap,
     'ChallengeSitemap': ChallengeSitemap,
+    'SupernovaSitemap': SupernovaSitemap,
     'StaticViewsSitemap': StaticViewsSitemap,
 }
 
