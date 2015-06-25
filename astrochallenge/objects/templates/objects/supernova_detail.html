@@ -72,8 +72,6 @@
                 </td>
             </tr>
             {% endif %}
-            <tr><td>Right ascension</td><td>{{ object.ra }}</td></tr>
-            <tr><td>Declination</td><td>{{ object.dec }}</td></tr>
             <tr>
                 <td>Latest Magnitude</td>
                 <td>
@@ -88,12 +86,8 @@
                     ({{ object.max_magnitude.time|date}})
                 </td>
             </tr>
-            {% if object.distance %}
-            <tr><td>Distance</td><td>{{ object.distance | floatformat:"-3" | intcomma }}ly</td></tr>
-            {% endif %}
-            {% if object.size %}
-            <tr><td>Size</td><td>{{ object.size | floatformat:"-3" }} arc min</td></tr>
-            {% endif %}
+            <tr><td>Right ascension</td><td>{{ object.ra }}</td></tr>
+            <tr><td>Declination</td><td>{{ object.dec }}</td></tr>
             {% if object.discovery_date %}
             <tr>
                 <td>Discovered</td>

@@ -79,8 +79,8 @@ def fetch_supernovae():
                 astroobject = None
 
             # Get the damn name
-            nametext = record[-1:][0]
-            name = nametext[nametext.index('>'):nametext.index('<')][1:]
+            nametext = ' '.join(record[record.index('<a'):])
+            name = nametext[nametext.index('>'):nametext.index('</a>')][1:]
 
             if Supernova.objects.filter(name=name).exists():
                 sn = Supernova.objects.get(name=name)
