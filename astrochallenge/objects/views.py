@@ -173,7 +173,7 @@ class SNListView(ListView):
     def get_queryset(self):
         return Supernova.objects.filter(
             supernovamagnitude__time__gt=timezone.now() - datetime.timedelta(days=30)
-        ).order_by('-supernovamagnitude__time')
+        ).distinct()
 
 
 class ObservationDetailView(DetailView):
