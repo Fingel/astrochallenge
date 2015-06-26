@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Supernovae {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% get_static_prefix %}css/dataTables.bootstrap.css">
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="colwrap">
+            <h1>Supernovae observed in the last 30 days</h1>
+            <form autocomplete="off">
+                <div class="form-group">
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" placeholder="ex: 2015g" class="form-control"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="colwrap">
+            <table class="table table-striped table-hover" id="table">
+                <thead>
+                    <tr>
+                        <td>Name</td><td>Type</td><td>Discovered</td>
+                        <td>Last Obs.</td><td>Last Obs. Mag</td>
+                        <td>Host Galaxy</td><td>Constellation</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for supernova in object_list %}
+                <tr href="{{ supernova.get_absolute_url }}">
+                    <td>{{ supernova.name }}</td>
+                    <td>{{ supernova.sntype }}</td>
+                    <td>{{ supernova.discovery_date|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td>{{ supernova.supernovamagnitude_set.last.time|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td>{{ supernova.supernovamagnitude_set.last.magnitude }}</td>
+                    <td>{{ supernova.astro_object|default_if_none:"Unknown" }}</td>
+                    <td>{{ supernova.constellation }}</td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_javascript %}
+<script src="{% get_static_prefix %}js/vendor/jquery.dataTables.min.js"></script>
+<script src="{% get_static_prefix %}js/vendor/dataTables.bootstrap.js"></script>
+<script type="text/javascript">
+    var table = $("#table").DataTable({
+        'lengthChange': false,
+        'sDom': 'lrtip',
+        'order': [[3, "desc"]]
+    });
+    $('#table').on('click', 'tbody tr', function(){
+        window.location.href = $(this).attr('href');
+    })
+    $('#search').keyup(function(){
+        table.search($(this).val()).draw();
+    })
+</script>
+{% endblock %}

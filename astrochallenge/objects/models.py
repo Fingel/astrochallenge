@@ -361,3 +361,6 @@ class SupernovaMagnitude(models.Model):
     supernova = models.ForeignKey(Supernova)
     magnitude = models.FloatField()
     time = models.DateTimeField()
+
+    class Meta:
+        ordering = ('time',)

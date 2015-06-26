@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.base import TemplateView
+from django.views.generic.list import ListView
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
@@ -15,10 +16,11 @@ from django.http import HttpResponse
 from django.core.servers.basehttp import FileWrapper
 from django.shortcuts import render
 from django.utils import timezone
+import datetime
 import os
 import re
 
-from models import Constellation, CatalogObject, AstroObject, Observation, SolarSystemObject
+from models import Constellation, CatalogObject, AstroObject, Observation, SolarSystemObject, Supernova
 from astrochallenge.objects.forms import ObservationForm, FinderChartForm
 from astrochallenge.challenges.models import Challenge, CompletedChallenge
 from utils import FchartSettings, generate_fchart
@@ -165,6 +167,13 @@ class SSODetailView(DetailView):
 class SNDetailView(DetailView):
     def get_context_data(self, **kwargs):
         return get_object_context(self.request, self.get_object())
+
+
+class SNListView(ListView):
+    def get_queryset(self):
+        return Supernova.objects.filter(
+            supernovamagnitude__time__gt=timezone.now() - datetime.timedelta(days=30)
+        ).order_by('-supernovamagnitude__time')
 
 
 class ObservationDetailView(DetailView):

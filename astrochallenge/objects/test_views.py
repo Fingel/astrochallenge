@@ -8,7 +8,7 @@ import json
 
 from test_helpers import (AstroObjectFactory, SolarSystemObjectFactory,
     AstroObjectObservationFactory, SolarSystemObjectObservationFactory,
-    CatalogObjectFactory, SupernovaFactory)
+    CatalogObjectFactory, SupernovaMagnitudeFactory)
 from astrochallenge.accounts.test_helpers import UserFactory, EquipmentFactory
 from astrochallenge.challenges.test_helpers import ChallengeFactory
 from astro_comments.test_helpers import CustomCommentFactory
@@ -18,10 +18,10 @@ class ObjectsViewTests(TransactionTestCase):
     def setUp(self):
         self.astroobjects = AstroObjectFactory.create_batch(10)
         self.solarsystemobjects = SolarSystemObjectFactory.create_batch(3)
-        self.supernovae = SupernovaFactory.create_batch(10)  # this will create 10 more astroobjects
+        self.supernovae = SupernovaMagnitudeFactory.create_batch(10)  # this will create 10 more astroobjects
         self.ao = self.astroobjects[0]
         self.sso = self.solarsystemobjects[0]
-        self.sn = self.supernovae[0]
+        self.sn = self.supernovae[0].supernova
         self.catalog_object = CatalogObjectFactory.create(astro_object=self.ao)
         self.user = UserFactory.create()
         self.equipment = EquipmentFactory(
@@ -116,6 +116,12 @@ class ObjectsViewTests(TransactionTestCase):
         ))
         self.assertEquals(response.status_code, 200)
         self.assertIn(self.ao.common_name, response.content)
+
+    def test_supernova_list(self):
+        response = self.client.get(
+            reverse('supernova-list')
+        )
+        self.assertContains(response, self.sn.name)
 
     def test_supernova_detail(self):
         response = self.client.get(reverse(
