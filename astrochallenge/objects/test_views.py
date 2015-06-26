@@ -130,6 +130,13 @@ class ObjectsViewTests(TransactionTestCase):
         )
         self.assertContains(response, self.sn.name)
 
+    def test_supernova_image(self):
+        response = self.client.get(reverse(
+            'snlightcurve',
+            args=(self.sn.id,))
+        )
+        self.assertEquals(response.status_code, 200)
+
     def test_solarsystemobject_detail(self):
         response = self.client.get(reverse(
             'solarsystemobject-detail',
