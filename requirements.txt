@@ -30,3 +30,4 @@ factory_boy
 scipy
 redis
 celery
+matplotlib

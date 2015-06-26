@@ -56,6 +56,8 @@
         {% else %}
         <p>Please <a href="{% url 'auth_login' %}">login</a> to view current observation details</p>
         {% endif %}
+        <h4>Light Curve</h4>
+        <img src="{% url 'snlightcurve' object.id %}" class="img-responsive"/>
         <h4>General Info</h4>
         <table class="table">
             <tr><td>Type</td><td>{{ object.sntype }}</td></tr>

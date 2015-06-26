@@ -7,6 +7,7 @@ from astrochallenge.objects.models import Constellation, SolarSystemObject, Obse
 from astrochallenge.objects.views import (DSODetailView, DSOListView, DSOListViewJson,
     SSODetailView, SSOListViewJson, ObservationDetailView, post_observation,
     delete_observation, post_finderchart, SNDetailView, SNListView)
+from astrochallenge.objects.plot_views import snlightcurve
 
 urlpatterns = patterns('',
     url(r'^objects/constellations/$', ListView.as_view(model=Constellation), name="constellation-list"),
@@ -31,6 +32,10 @@ urlpatterns += patterns('',
     url(r'^observation/$', post_observation, name="post-observation"),
     url(r'^observation/(?P<observation_id>\d+)/delete/$', delete_observation, name="delete-observation"),
     url(r'^observation/(?P<observation_id>\d+)/edit/$', post_observation, name="edit-observation"),
+)
+
+urlpatterns += patterns('',
+    url(r'^plots/snlightcurve/(?P<supernova_id>\d+)/plot\.png$', snlightcurve, name="snlightcurve"),
 )
 
 urlpatterns += patterns('',
