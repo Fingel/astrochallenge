@@ -23,6 +23,7 @@ class Challenge(models.Model):
     astroobjects = models.ManyToManyField(AstroObject, blank=True)
     supernovae = models.ManyToManyField(Supernova, blank=True)
     name = models.CharField(max_length=200)
+    short_name = models.CharField(max_length=50, blank=True, default="")
     description = models.TextField(blank=True, default="")
     rating = models.PositiveIntegerField(default=3, choices=difficulty_levels)
     number = models.PositiveIntegerField(default=1)
@@ -54,6 +55,13 @@ class Challenge(models.Model):
         all_objects += list(self.astroobjects.all())
         all_objects += list(self.supernovae.all())
         return sorted(all_objects, key=attrgetter('pk'))
+
+    @property
+    def object_count(self):
+        return self.solarsystemobjects.count() + self.astroobjects.count() + self.supernovae.count()
+
+    def objects_observed(self, user):
+        return set(self.all_objects).intersection(set([observation.content_object for observation in user.userprofile.observation_set.all()]))
 
     def __unicode__(self):
         return self.name
