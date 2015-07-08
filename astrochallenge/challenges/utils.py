@@ -13,7 +13,7 @@ class SigImage():
         self.challenges = challenges
         self.im = Image.new('RGB', (300, len(challenges) * 10 + 10), self.bg_color)
         self.dr = ImageDraw.Draw(self.im)
-        self.font = ImageFont.truetype(settings.STATIC_ROOT + "fonts/LiberationMono-Regular.ttf", 10)
+        self.font = ImageFont.truetype(settings.STATIC_ROOT + "/fonts/LiberationMono-Regular.ttf", 10)
 
     def draw_row(self, text, observed, total, rownum):
         self.dr.text((1, rownum * 10), "{0}:".format(
