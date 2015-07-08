@@ -16,8 +16,11 @@ class SigImage():
         self.font = ImageFont.truetype(settings.STATIC_ROOT + "fonts/LiberationMono-Regular.ttf", 10)
 
     def draw_row(self, text, observed, total, rownum):
-        self.dr.text((1, rownum * 10), "{0}: {1}/{2}".format(
-            text, int(observed), int(total)
+        self.dr.text((1, rownum * 10), "{0}:".format(
+            text), self.text_color, self.font
+        )
+        self.dr.text((55, rownum * 10), "{0}/{1}".format(
+            int(observed), int(total)
             ), self.text_color, self.font
         )
         self.dr.rectangle(
@@ -29,7 +32,7 @@ class SigImage():
         i = 0
         for challenge in self.challenges:
             total = float(challenge.object_count)
-            observed = float(len(challenge.objects_observed(self.user)))
+            observed = float(challenge.objects_observed(self.user))
             self.draw_row(challenge.short_name, observed, total, i)
             i = i + 1
         self.dr.text((1, i * 10), "Total Observations: {0}".format(

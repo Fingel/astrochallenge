@@ -58,10 +58,16 @@ class Challenge(models.Model):
 
     @property
     def object_count(self):
-        return self.solarsystemobjects.count() + self.astroobjects.count() + self.supernovae.count()
+        if self.type == "set":
+            return self.solarsystemobjects.count() + self.astroobjects.count() + self.supernovae.count()
+        else:
+            return self.number
 
     def objects_observed(self, user):
-        return set(self.all_objects).intersection(set([observation.content_object for observation in user.userprofile.observation_set.all()]))
+        if self.type == "set":
+            return len(set(self.all_objects).intersection(set([observation.content_object for observation in user.userprofile.observation_set.all()])))
+        else:
+            return min(self.number, user.userprofile.observation_set.count())
 
     def __unicode__(self):
         return self.name
