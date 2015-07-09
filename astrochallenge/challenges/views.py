@@ -3,6 +3,7 @@ from django.views.generic import View
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 
 from models import Challenge
 from utils import SigImage
@@ -31,3 +32,12 @@ class SigImageView(View):
         response = HttpResponse(content_type="image/png")
         image.save(response, "PNG")
         return response
+
+
+def challenge_list_json(request):
+    challenges = []
+    for challenge in Challenge.current_challenges():
+        challenges.append({'id': challenge.id,
+                           'name': challenge.name,
+                           'short_name': challenge.short_name})
+    return JsonResponse({'challenges': challenges})

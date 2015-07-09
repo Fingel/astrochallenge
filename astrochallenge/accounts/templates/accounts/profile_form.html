@@ -26,6 +26,22 @@
         </ul>
         <input type="text" rv-value="temp_equipment.instrument" />
         <button type="submit" rv-on-click="temp_equipment.save" class="btn btn-primary">Add instrument</button>
+        <h3>Forum badge</h3>
+        <p>Want to show off your observations, in real time,  on Cloudy Nights, Stargazers Lounge or your blog?
+        Select the challenges you would like to display in your badge below.
+        Then simply copy and paste the URL in the text box and use it as the
+        image source on a forum, blog, or website.</p>
+        <div id="challenge-select" style="height: 250px; overflow: scroll; overflow-x: hidden;">
+        <div class="checkbox" rv-each-challenge="challenges">
+        <label>
+          <input type="checkbox" rv-checked="challenge.selected" rv-value="challenge.id" rv-on-click="challenge.activate"> { challenge.name }
+        </label>
+      </div>
+        </div>
+        <h4>Badge preview:</h4>
+        <img id="profile-stats" src="{% url 'sigimage' %}?user={{ request.user.id }}&challenges=6">
+        <h4>Badge url:</h4>
+        <input id="forum-url" class="form-control" type="text" value="http://{{ request.META.HTTP_HOST }}{% url 'sigimage' %}?user={{ request.user.id }}&challenges=6"/>
         </div>
     </div>
     <div class="col-md-6">
@@ -68,8 +84,30 @@
 <script type="text/javascript">
     var rivetBindings = {
         equipment : [],
+        challenges : [],
         temp_equipment : new equipment(0, '')
     }
+    var checked_ids = []
+
+    function challenge(id, name, short_name, selected){
+        var self = this
+        this.id = id
+        this.name = name
+        this.short_name = short_name
+        this.selected = selected
+        this.activate = function(){
+            if(self.selected){
+                checked_ids.splice(checked_ids.indexOf(self.id), 1)
+            }else{
+                checked_ids.push(self.id)
+            }
+            console.log(checked_ids)
+            img_src = "http://{{ request.META.HTTP_HOST }}{% url 'sigimage' %}?user={{ request.user.id }}&challenges=" + checked_ids.join(',')
+            $('#profile-stats').attr('src', img_src )
+            $("#forum-url").val(img_src).focus().select()
+        }
+    }
+
     function equipment(id, instrument){
         var self = this
         this.id = id
@@ -121,6 +159,19 @@
             for (var i = 0; i < data.equipment.length; i++) {
                 e = new equipment(data.equipment[i].id, data.equipment[i].instrument)
                 rivetBindings.equipment.push(e)
+            };
+        })
+        $.getJSON("{% url 'challenge-list-json' %}", function(data){
+            for (var i = 0; i < data.challenges.length; i++) {
+                if(data.challenges[i].short_name == "Messier"){
+                    selected = true
+                    checked_ids.push(data.challenges[i].id)
+                }
+                else {
+                    selected = false
+                }
+                e = new challenge(data.challenges[i].id, data.challenges[i].name, data.challenges[i].short_name, selected)
+                rivetBindings.challenges.push(e)
             };
         })
         rivets.bind($("#profile-form"), rivetBindings)
