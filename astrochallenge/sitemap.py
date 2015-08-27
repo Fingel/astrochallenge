@@ -12,7 +12,7 @@ class AstroObjectSitemap(Sitemap):
 
 
 class SolarSystemObjectSitemap(Sitemap):
-    changefreq = 'monthly'
+    changefreq = 'weekly'
 
     def items(self):
         return SolarSystemObject.objects.all()
