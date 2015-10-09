@@ -14,6 +14,18 @@ logger = logging.getLogger(settings.DEFAULT_LOGGER)
 
 
 @shared_task
+def update_sso_magnitude():
+    logger.info('starting update sso magnitude')
+    for sso in SolarSystemObject.objects.all():
+        try:
+            sso.magnitude = float(sso.general_info.get('magnitude'))
+        except:
+            sso.magnitude = None
+        sso.save()
+    logger.info('finished update sso magnitude')
+
+
+@shared_task
 def fetch_supernovae():
     logger.info("starting fetch supernovae")
     response = urllib2.urlopen("http://www.rochesterastronomy.org/snimages/snmag.html")

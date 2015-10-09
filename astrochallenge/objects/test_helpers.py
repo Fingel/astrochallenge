@@ -106,6 +106,7 @@ class SolarSystemObjectFactory(factory.django.DjangoModelFactory):
     points = FuzzyInteger(0, 100)
     image = None
     image_attribution = FuzzyText(length=50)
+    magnitude = FuzzyFloat(-30, 90)
 
 
 class ObservationFactory(factory.django.DjangoModelFactory):

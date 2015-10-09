@@ -233,6 +233,10 @@ CELERYBEAT_SCHEDULE = {
     'fetch-supernovae-every-day': {
         'task': 'astrochallenge.objects.tasks.fetch_supernovae',
         'schedule': timedelta(days=1),
+    },
+    'update-sso-magnitude-twice-a-day': {
+        'task': 'astrochallenge.objects.tasks.update_sso_magnitude',
+        'schedule': timedelta(hours=12),
     }
 }
 

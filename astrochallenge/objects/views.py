@@ -238,8 +238,6 @@ class SSOListViewJson(BaseDatatableView):
                 if row.observations.filter(user_profile__user__username=self.request.user.username).exists():
                     return "<span class=\"green glyphicon glyphicon-ok\"></span>"
             return ""
-        elif column == 'magnitude':
-            return row.general_info.get('magnitude')
         elif column == 'constellation':
             if row.constellation:
                 return row.constellation.latin_name

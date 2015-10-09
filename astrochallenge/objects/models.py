@@ -79,6 +79,7 @@ class SolarSystemObject(models.Model):
     image_attribution = models.CharField(max_length=1000, default="", blank=True)
     observations = GenericRelation(Observation)
     date_added = models.DateTimeField(default=timezone.now)
+    magnitude = models.FloatField(null=True, blank=True)
 
     class Meta:
         ordering = ['index']
