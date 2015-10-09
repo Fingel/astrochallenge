@@ -47,6 +47,7 @@ def index(request):
     supernova = Supernova.brightest_supernova()
     popular_dso = AstroObject.objects.annotate(Count('observations')).order_by('-observations__count')[:5]
     popular_sso = SolarSystemObject.objects.annotate(Count('observations')).order_by('-observations__count')[:5]
+    brightest_comets = SolarSystemObject.objects.filter(type='C').order_by('magnitude')[:5]
     context = {
         "comments": comments,
         "observations": observations,
@@ -60,6 +61,7 @@ def index(request):
         "supernova": supernova,
         "popular_dso": popular_dso,
         "popular_sso": popular_sso,
+        "brightest_comets": brightest_comets,
     }
     return render(request, 'accounts/index.html', context)
 

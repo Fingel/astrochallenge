@@ -175,17 +175,21 @@
 						</a>
 					</h4>
 					<dl>
-					<dt>Magnitude:</dt>
-					<dd> {{ latest_comet.general_info.magnitude }},
-					Peak: {{ latest_comet.peak_magnitude.mag }}
-					</dd>
-					<dt>Constellation</dt>
-					<dd><a href="{{ latest_comet.constellation.get_absolute_url }}">
-					{{ latest_comet.constellation }}
-					</a></dd>
-					<dt>Closest Approach</dt>
-					<dd> {{ latest_comet.min_earth_distance.date | date }}</dd>
+						<dt>Magnitude:</dt>
+						<dd> {{ latest_comet.general_info.magnitude }},
+						Peak: {{ latest_comet.peak_magnitude.mag }}
+						</dd>
+						<dt>Constellation</dt>
+						<dd><a href="{{ latest_comet.constellation.get_absolute_url }}">
+						{{ latest_comet.constellation }}
+						</a></dd>
+						<dt>Closest Approach</dt>
+						<dd> {{ latest_comet.min_earth_distance.date | date }}</dd>
 					</dl>
+					<h4>Brightest Comets</h4>
+					{% for comet in brightest_comets %}
+					<a href="{{ comet.get_absolute_url }}">{{ comet.name }}</a>: {{ comet.magnitude }}<br/>
+					{% endfor %}
 					<hr/>
 
 				</div>
@@ -237,7 +241,7 @@
 						<div class="comment">
 							<p>{{ comment.comment|truncatewords:50}}</p>
 						</div>
-					</div>
+					</div>5
 					<hr/>
 					{% endfor %}
 				</div>

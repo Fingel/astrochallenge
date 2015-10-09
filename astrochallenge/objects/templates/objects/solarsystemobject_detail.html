@@ -93,7 +93,7 @@
                 </a></td>
             </tr>
             {% if object.general_info.magnitude %}
-            <tr><td>Magnitude</td><td>{{ object.magnitude | floatformat:"-3" }}</td></tr>
+            <tr><td>Magnitude</td><td>{{ object.general_info.magnitude | floatformat:"-2" }}</td></tr>
             {% endif %}
             {% if object.general_info.peak_magnitude %}
             <tr>
